@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+    <q-header elevated class="bg-indigo">
       <q-toolbar>
         <q-btn
           flat
@@ -19,7 +19,7 @@
       </q-toolbar>
     </q-header>
 
-    <q-drawer
+    <q-drawer class="bg-indigo-1"
       v-model="leftDrawerOpen"
       show-if-above
       bordered
