@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 module.exports = {
   // https://eslint.org/docs/user-guide/configuring#configuration-cascading-and-hierarchy
   // This option interrupts the configuration hierarchy at this file
@@ -9,14 +10,14 @@ module.exports = {
   // `parser: 'vue-eslint-parser'` is already included with any 'plugin:vue/**' config and should be omitted
   parserOptions: {
     parser: require.resolve('@typescript-eslint/parser'),
-    extraFileExtensions: ['.vue']
+    extraFileExtensions: ['.vue'],
   },
 
   env: {
     browser: true,
     es2021: true,
     node: true,
-    'vue/setup-compiler-macros': true
+    'vue/setup-compiler-macros': true,
   },
 
   // Rules order is important, please avoid shuffling them
@@ -35,7 +36,7 @@ module.exports = {
     // 'plugin:vue/vue3-strongly-recommended', // Priority B: Strongly Recommended (Improving Readability)
     // 'plugin:vue/vue3-recommended', // Priority C: Recommended (Minimizing Arbitrary Choices and Cognitive Overhead)
 
-    'airbnb-base'
+    'airbnb-base',
 
   ],
 
@@ -45,7 +46,7 @@ module.exports = {
 
     // https://eslint.vuejs.org/user-guide/#why-doesn-t-it-work-on-vue-files
     // required to lint *.vue files
-    'vue'
+    'vue',
 
   ],
 
@@ -59,7 +60,7 @@ module.exports = {
     __QUASAR_SSR_PWA__: 'readonly',
     process: 'readonly',
     Capacitor: 'readonly',
-    chrome: 'readonly'
+    chrome: 'readonly',
   },
 
   // add your custom rules here
@@ -100,6 +101,6 @@ module.exports = {
     // allow debugger during development only
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     // windows linebreaks when not in production environment
-    "linebreak-style": ["error", process.env.NODE_ENV === 'prod' ? "unix" : "windows"]
-  }
-}
+    'linebreak-style': ['error', process.env.NODE_ENV === 'prod' ? 'unix' : 'windows'],
+  },
+};
