@@ -1,102 +1,123 @@
+<!-- eslint-disable max-len -->
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated class="bg-indigo">
-      <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="toggleLeftDrawer"
-        />
+  <div class="q-pa-md">
+    <q-layout view="hHh Lpr lff" style="min-height: inherit;">
+      <q-header elevated class="bg-primary">
+        <q-toolbar>
+          <q-btn flat @click="drawer = !drawer" round dense icon="menu" />
+          <q-toolbar-title>Chichilo</q-toolbar-title>
+        </q-toolbar>
+      </q-header>
 
-        <q-toolbar-title>
-          Quasar App
-        </q-toolbar-title>
+      <q-drawer v-model="drawer" show-if-above :mini="!drawer || miniState" @click.capture="drawerClick" :width="200"
+        :breakpoint="500" bordered class="bg-grey-3">
+        <q-scroll-area class="fit">
+          <q-list padding>
+            <q-item clickable v-ripple>
+              <q-item-section avatar>
+                <q-icon name="inbox" />
+              </q-item-section>
 
-        <div>Quasar v{{ $q.version }}</div>
-      </q-toolbar>
-    </q-header>
+              <q-item-section>
+                Inbox
+              </q-item-section>
+            </q-item>
 
-    <q-drawer class="bg-indigo-1"
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-    >
-      <q-list>
-        <q-item-label
-          header
-        >
-          Essential Links
-        </q-item-label>
+            <q-item active clickable v-ripple>
+              <q-item-section avatar>
+                <q-icon name="star" />
+              </q-item-section>
 
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
-    </q-drawer>
+              <q-item-section>
+                Star
+              </q-item-section>
+            </q-item>
 
-    <q-page-container>
-      <router-view />
-    </q-page-container>
-  </q-layout>
+            <q-item clickable v-ripple>
+              <q-item-section avatar>
+                <q-icon name="send" />
+              </q-item-section>
+
+              <q-item-section>
+                Send
+              </q-item-section>
+            </q-item>
+
+            <q-item clickable v-ripple>
+              <q-item-section avatar>
+                <q-icon name="drafts" />
+              </q-item-section>
+
+              <q-item-section>
+                Drafts
+              </q-item-section>
+            </q-item>
+          </q-list>
+        </q-scroll-area>
+
+        <!--
+          in this case, we use a button (can be anything)
+          so that user can switch back
+          to mini-mode
+        -->
+        <div class="q-mini-drawer-hide absolute" style="top: 15px; right: -17px">
+          <q-btn dense round unelevated color="accent" icon="chevron_left" @click="miniState = true" />
+        </div>
+      </q-drawer>
+
+      <q-page-container>
+        <q-page class="q-px-lg q-py-md" style="min-height: inherit;">
+          <!-- <p v-for="n in 15" :key="n">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit nihil praesentium molestias a adipisci,
+            dolore vitae odit, quidem consequatur optio voluptates asperiores pariatur eos numquam rerum delectus
+            commodi perferendis voluptate?
+          </p> -->
+          <div class="row justify-evenly items-center">
+            <div class="col-4">
+              <p class="text-h1 text-center">Inicio</p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit nihil praesentium molestias a adipisci,
+                dolore vitae odit, quidem consequatur optio voluptates asperiores pariatur eos numquam rerum delectus
+                commodi perferendis voluptate?</p>
+            </div>
+            <div class="col-4">
+              <div class="row justify-end">
+                <img src="../assets/car-reserva.jpg" alt="car reserva" style="height: auto; min-width: 200px;">
+              </div>
+            </div>
+          </div>
+        </q-page>
+        <q-page-scroller position=" bottom-right" :scroll-offset="150" :offset="[18, 18]">
+          <q-btn fab icon="keyboard_arrow_up" color="accent" />
+        </q-page-scroller>
+      </q-page-container>
+    </q-layout>
+  </div>
 </template>
 
-<script setup lang="ts">
+<script>
 import { ref } from 'vue';
-import EssentialLink, { EssentialLinkProps } from 'components/EssentialLink.vue';
 
-const essentialLinks: EssentialLinkProps[] = [
-  {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev',
-  },
-  {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework',
-  },
-  {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev',
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev',
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev',
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev',
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev',
-  },
-];
+export default {
+  setup() {
+    const miniState = ref(false);
 
-const leftDrawerOpen = ref(false);
+    return {
+      drawer: ref(false),
+      miniState,
 
-function toggleLeftDrawer() {
-  leftDrawerOpen.value = !leftDrawerOpen.value;
-}
+      drawerClick(e) {
+        // if in "mini" state and user
+        // click on drawer, we switch it to "normal" mode
+        if (miniState.value) {
+          miniState.value = false;
+
+          // notice we have registered an event with capture flag;
+          // we need to stop further propagation as this click is
+          // intended for switching drawer to "normal" mode only
+          e.stopPropagation();
+        }
+      },
+    };
+  },
+};
 </script>
