@@ -1,3 +1,4 @@
+<!-- eslint-disable linebreak-style -->
 <!-- eslint-disable max-len -->
 <template>
   <q-page>
@@ -6,7 +7,10 @@
         <div class="col-12 col-md-5">
           <p class="text-h3">Benvenuti a Chihilo</p>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            <br>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          </p>
           <q-btn push color="purple" size="lg" class="q-px-lg q-py-xs q-mr-md q-mb-md border-radius-inherit"
             label="Registrarse" no-caps />
           <q-btn push color="purple" size="lg" class="q-px-lg q-py-xs q-mb-md border-radius-inherit" label="Registrarse"
