@@ -1,3 +1,4 @@
+<!-- eslint-disable linebreak-style -->
 <!-- eslint-disable max-len -->
 <template>
   <div class="q-pa-md">
@@ -93,7 +94,7 @@
     </q-layout>
   </div>
 </template>
-
+<!-- eslint-disable linebreak-style -->
 <script>
 import { ref } from 'vue';
 
