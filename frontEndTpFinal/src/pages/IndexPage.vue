@@ -7,14 +7,11 @@
         <div class="col-12 col-md-5">
           <p class="text-h3">Benvenuti a Chihilo</p>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            <br>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          </p>
-          <q-btn push color="purple" size="lg" class="q-px-lg q-py-xs q-mr-md q-mb-md border-radius-inherit"
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          <q-btn push color="accent" size="lg" class="q-px-lg q-py-xs q-mr-md q-mb-md border-radius-inherit"
             label="Registrarse" no-caps />
-          <q-btn push color="purple" size="lg" class="q-px-lg q-py-xs q-mb-md border-radius-inherit" label="Registrarse"
-            no-caps />
+          <q-btn push color="primary" size="lg" class="q-px-lg q-py-xs q-mb-md border-radius-inherit"
+            label="Descargar App" no-caps />
         </div>
         <div class="col-12 col-md-5">
           <div class="row justify-center">
