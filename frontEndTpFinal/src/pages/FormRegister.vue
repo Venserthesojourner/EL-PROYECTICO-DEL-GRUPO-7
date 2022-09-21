@@ -1,3 +1,4 @@
+<!-- eslint-disable linebreak-style -->
 <template>
   <q-page class="row items-center justify-evenly">
     <q-card class="col-6 q-pa-md rounded-borders" style="max-width: 400px">
@@ -25,7 +26,7 @@
     </q-card>
   </q-page>
 </template>
-
+<!-- eslint-disable linebreak-style -->
 <script>
 import { useQuasar } from 'quasar';
 import { ref } from 'vue';
@@ -51,14 +52,16 @@ export default {
             icon: 'warning',
             message: 'You need to accept the license and terms first',
           });
-        } else {
+        }
+        alert(`this is the name: ${name.value} and this is the age: ${age.value}`);
+        setTimeout(() => {
           $q.notify({
             color: 'green-4',
             textColor: 'white',
             icon: 'cloud_done',
-            message: 'Submitted',
+            message: 'Entrando al multiverso',
           });
-        }
+        }, 3000);
       },
 
       onReset() {

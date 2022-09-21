@@ -1,14 +1,13 @@
 /* eslint-disable linebreak-style */
 import { RouteRecordRaw } from 'vue-router';
-import Main from 'layouts/MainLayout.vue';
-import Register from 'pages/FormRegister.vue';
 
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
-    component: Main,
+    component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: 'register', component: Register },
+      { path: '', component: () => import('pages/IndexPage.vue') },
+      { path: 'register', component: () => import('pages/FormRegister.vue') },
     ],
   },
 
@@ -17,10 +16,6 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/:catchAll(.*)*',
     component: () => import('pages/ErrorNotFound.vue'),
-  },
-  {
-    path: '/register',
-    component: Register,
   },
 ];
 
