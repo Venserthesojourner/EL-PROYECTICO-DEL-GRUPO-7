@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -10,14 +11,12 @@ import { UsuarioModule } from './usuario/usuario.module';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(
-      {
-        envFilePath: enviroments[process.env.DEVELOPMENT],
-        load: [endpointConfig, databaseConfig],
-        isGlobal: true,
-        validationSchema: 'PLACEHOLDER' ,
-      }
-    ),
+    ConfigModule.forRoot({
+      envFilePath: enviroments[process.env.DEVELOPMENT],
+      load: [endpointConfig, databaseConfig],
+      isGlobal: true,
+      validationSchema: 'PLACEHOLDER',
+    }),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: process.env.DATABASE_HOST,
@@ -28,10 +27,9 @@ import { UsuarioModule } from './usuario/usuario.module';
       entities: [],
       synchronize: true,
     }),
-    UsuarioModule],
+    UsuarioModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
-
-
+export class AppModule { }
