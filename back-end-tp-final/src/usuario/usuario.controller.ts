@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe } from '@nestjs/common';
 import { UsuarioService } from './usuario.service';
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
 import { UpdateUsuarioDto } from './dto/update-usuario.dto';
@@ -10,26 +10,26 @@ export class UsuarioController {
 
   @Post()
   create(@Body() createUsuarioDto: CreateUsuarioDto) {
-    return this.usuarioService.create(createUsuarioDto);
+    return this.usuarioService.createNewUser(createUsuarioDto);
   }
 
   @Get()
   findAll() {
-    return this.usuarioService.findAll();
+    return this.usuarioService.findAllUsers();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.usuarioService.findOne(+id);
+  findOne(@Param('id', ParseIntPipe) id: number) {
+    return this.usuarioService.findUserbyId(+id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUsuarioDto: UpdateUsuarioDto) {
-    return this.usuarioService.update(+id, updateUsuarioDto);
+  update(@Param('id') id: number, @Body() updateUsuarioDto: UpdateUsuarioDto) {
+    return this.usuarioService.updateUserbyID(+id, updateUsuarioDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.usuarioService.remove(+id);
+    return this.usuarioService.deleteUserById(+id);
   }
 }

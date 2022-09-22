@@ -2,12 +2,12 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import databaseConfig from 'utils/config/database.config';
-import endpointConfig from 'utils/config/endpoint.config';
-import { enviroments } from 'utils/config/enviroments.config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsuarioModule } from './usuario/usuario.module';
+import databaseConfig from './utils/config/database.config';
+import endpointConfig from './utils/config/endpoint.config';
+import { enviroments } from './utils/config/enviroments.config';
 
 @Module({
   imports: [
@@ -24,7 +24,7 @@ import { UsuarioModule } from './usuario/usuario.module';
       username: process.env.DATABASE_USERNAME,
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_NAME,
-      entities: [],
+      entities: [__dirname + './../**/entity/*.entity{.ts,.js}'],
       synchronize: true,
     }),
     UsuarioModule,
