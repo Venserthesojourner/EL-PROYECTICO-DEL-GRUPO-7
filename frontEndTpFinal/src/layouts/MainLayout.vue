@@ -1,3 +1,4 @@
+<!-- eslint-disable linebreak-style -->
 <!-- eslint-disable max-len -->
 <template>
   <q-layout view="hHh Lpr lff">
@@ -23,7 +24,7 @@
     </q-page-container>
   </q-layout>
 </template>
-
+<!-- eslint-disable linebreak-style -->
 <style lang="sass" scoped>
 .chichilo
   font-family: $ff-chichilo
@@ -32,7 +33,7 @@
 :deep(.q-tab__label)
   font-size: 16px
 </style>
-
+<!-- eslint-disable linebreak-style -->
 <script>
 import { ref } from 'vue';
 
