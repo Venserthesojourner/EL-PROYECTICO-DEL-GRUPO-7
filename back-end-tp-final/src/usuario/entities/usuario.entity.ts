@@ -28,11 +28,11 @@ import {
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='En esta tabla se almacena los datos de los usuarios, '
  */
 
-export enum role{
+export enum role {
   CLIENT = 'client',
   OWNER = 'owner',
   EMPLOYEE = 'employee',
-  ADMIN = 'admin'
+  ADMIN = 'admin',
 }
 
 @Entity()
@@ -61,10 +61,10 @@ export class Usuario {
   })
   token: string;
 
-  @Column({ type: 'enum', enum: role, enumName:'role', default: role.CLIENT})
+  @Column({ type: 'enum', enum: role, enumName: 'role', default: role.CLIENT })
   role: role;
 
-  @Column({ name: 'id_card_number', type: 'int', nullable: false})
+  @Column({ name: 'id_card_number', type: 'int', nullable: false })
   dni: number;
 
   @CreateDateColumn('create_time')
