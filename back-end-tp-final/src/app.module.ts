@@ -1,11 +1,11 @@
-/* eslint-disable prettier/prettier */
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsuarioModule } from './usuario/usuario.module';
-import databaseConfig from './utils/config/database.config';
+import { AuthModule } from './utils/auth/auth.module';
+import databaseConfig from './utils/config/database/database.config';
 import endpointConfig from './utils/config/endpoint.config';
 import { enviroments } from './utils/config/enviroments.config';
 
@@ -15,19 +15,13 @@ import { enviroments } from './utils/config/enviroments.config';
       envFilePath: enviroments[process.env.DEVELOPMENT],
       load: [endpointConfig, databaseConfig],
       isGlobal: true,
-      validationSchema: 'PLACEHOLDER',
+      //validationSchema: 'PLACEHOLDER',
     }),
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: process.env.DATABASE_HOST,
-      port: parseInt(process.env.DATABASE_PORT),
-      username: process.env.DATABASE_USERNAME,
-      password: process.env.DATABASE_PASSWORD,
-      database: process.env.DATABASE_NAME,
-      entities: [__dirname + './../**/entity/*.entity{.ts,.js}'],
-      synchronize: true,
-    }),
+    TypeOrmModule.forRoot(
+
+    ),
     UsuarioModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

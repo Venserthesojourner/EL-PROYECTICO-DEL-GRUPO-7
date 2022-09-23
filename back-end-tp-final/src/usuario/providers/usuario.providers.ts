@@ -2,7 +2,7 @@ import { DataSource } from 'typeorm';
 import { Usuario } from '../entities/usuario.entity';
 
 
-export const CliDocumentoDigitalizadoAdjuntoProviders = [
+export const UsuarioProviders = [
     {
         provide: 'USUARIO_REPOSITORY',
         useFactory: (dataSource: DataSource) =>
