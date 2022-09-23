@@ -35,37 +35,37 @@ export enum role {
   ADMIN = 'admin',
 }
 
-@Entity()
+@Entity('usuario')
 export class Usuario {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ name: 'username', type: 'varchar', size: 15, nullable: false })
+  @Column({ name: 'username', type: 'varchar', length: 15, nullable: false })
   username: string;
 
-  @Column({ name: 'password', type: 'varchar', size: 15, nullable: false })
+  @Column({ name: 'password', type: 'varchar', length: 15, nullable: false })
   password: string;
 
-  @Column({ name: 'first_name', type: 'varchar', size: 45, nullable: false })
-  first_name: string;
+  @Column({ name: 'first_name', type: 'varchar', length: 45, nullable: false })
+  firstName: string;
 
-  @Column({ name: 'last_name', type: 'varchar', size: 45, nullable: false })
-  last_name: string;
+  @Column("varchar", { name: 'last_name', length: 45, nullable: false })
+  lastName: string;
 
   @Column({
     name: 'token',
     type: 'varchar',
-    size: 45,
+    length: 45,
     nullable: true,
     default: null,
   })
   token: string;
 
-  @Column({ type: 'enum', enum: role, enumName: 'role', default: role.CLIENT })
-  role: role;
-
   @Column({ name: 'id_card_number', type: 'int', nullable: false })
   dni: number;
+
+  @Column({ type: 'enum', enum: role, enumName: 'role', default: role.CLIENT })
+  role: string;
 
   @CreateDateColumn('create_time')
   createddAt: Timestamp;
