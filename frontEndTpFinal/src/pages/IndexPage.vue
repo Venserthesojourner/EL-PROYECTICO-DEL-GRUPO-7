@@ -7,14 +7,14 @@
         <div class="col-12 col-md-5">
           <p class="text-h3">Benvenuti a Chihilo</p>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            <br>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          </p>
-          <q-btn push color="purple" size="lg" class="q-px-lg q-py-xs q-mr-md q-mb-md border-radius-inherit"
-            label="Registrarse" no-caps />
-          <q-btn push color="purple" size="lg" class="q-px-lg q-py-xs q-mb-md border-radius-inherit" label="Registrarse"
-            no-caps />
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          <!-- TODO: Marcos, esto hace que el boton te lleve a la pagina, te lo cambia un poco al diseño-->
+          <router-link to="register">
+            <q-btn push color="accent" size="lg" class="q-px-lg q-py-xs q-mr-md q-mb-md border-radius-inherit"
+              label="Registrarse" no-caps />
+          </router-link>
+          <q-btn push color="primary" size="lg" class="q-px-lg q-py-xs q-mb-md border-radius-inherit"
+            label="Descargar App" no-caps />
         </div>
         <div class="col-12 col-md-5">
           <div class="row justify-center">

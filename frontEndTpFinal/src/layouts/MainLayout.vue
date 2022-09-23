@@ -2,14 +2,19 @@
 <!-- eslint-disable max-len -->
 <template>
   <q-layout view="hHh Lpr lff">
-    <q-header class="bg-white text-primary q-py-lg q-px-xl">
+    <q-header class="transparent text-primary q-py-lg q-px-xl">
       <q-toolbar>
-        <q-btn flat label="Chichilo" />
+        <q-avatar>
+          <img src="../assets/logo2.png">
+        </q-avatar>
+
+        <q-toolbar-title class="chichilo text-weight-bold text-uppercase">Chichilo</q-toolbar-title>
+
         <q-space />
         <q-tabs v-model="tab" shrink>
-          <q-tab name="tab1" label="Tab 1" />
-          <q-tab name="tab2" label="Tab 2" />
-          <q-tab name="tab3" label="Tab 3" />
+          <q-tab name="home" label="Home" />
+          <q-tab name="about" label="About" />
+          <q-tab name="contact" label="Contact" />
         </q-tabs>
       </q-toolbar>
     </q-header>
@@ -19,6 +24,15 @@
     </q-page-container>
   </q-layout>
 </template>
+<!-- eslint-disable linebreak-style -->
+<style lang="sass" scoped>
+.chichilo
+  font-family: $ff-chichilo
+  font-size: 26px
+
+:deep(.q-tab__label)
+  font-size: 16px
+</style>
 <!-- eslint-disable linebreak-style -->
 <script>
 import { ref } from 'vue';
