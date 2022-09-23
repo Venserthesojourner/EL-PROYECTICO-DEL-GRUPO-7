@@ -1,33 +1,46 @@
-# trabajoFinal (frontendtpfinal)
+# TP FINAL - FRONTEND
 
-Trabajo Final de la carrera
+## ¿Cómo levantar el proyecto de quasar?
 
-## Install the dependencies
-```bash
-yarn
-# or
-npm install
+- Nos paramos en la carpeta del frontend: `cd frontEndTpFinal`
+- Instalamos dependencias: `npm install`
+- Levantamos el proyecto: `quasar dev`
+
+## ¿Errores/Advertencias?
+
+1. Error de linebreak-style en windows: **`Expected linebreaks to be 'LF' but found 'CRLF' linebreak-style`**.
+
+Solución: Solución completa en [Stackoverflow](https://stackoverflow.com/questions/39114446/how-can-i-write-a-eslint-rule-for-linebreak-style-changing-depending-on-windo/43008668#43008668).
+
+```
+module.exports = {
+  extends: 'google',
+  quotes: [2, 'single'],
+  globals: {
+    SwaggerEditor: false
+  },
+  env: {
+    browser: true
+  },
+  rules:{
+    // windows linebreaks when not in production environment
+    "linebreak-style": ["error", process.env.NODE_ENV === 'prod' ? "unix" : "windows"] // <----------
+  }
+};
 ```
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
-```bash
-quasar dev
+2. Advertencia de soporte de typescript
+
+```
+WARNING: You are currently running a version of TypeScript which is not officially supported by @typescript-eslint/typescript-estree.
+
+You may find that it works just fine, or you may not.
+
+SUPPORTED TYPESCRIPT VERSIONS: >=3.3.1 <4.8.0
+
+YOUR TYPESCRIPT VERSION: 4.8.2
+
+Please only submit bug reports when using the officially supported version.
 ```
 
-
-### Lint the files
-```bash
-yarn lint
-# or
-npm run lint
-```
-
-
-
-### Build the app for production
-```bash
-quasar build
-```
-
-### Customize the configuration
-See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).
+Solución: Pasarse a una versión anterior que tenga soporte. De todas formas, esta advertencia no afecta en el proyecto en general, solo es un mensaje molesto al momento de levantar el servidor.
