@@ -21,11 +21,29 @@ export class UsuarioService {
     return newUser;
   }
 
-  async updateUserbyID(id: number, payload) { }
+  async updateUserbyID(id: number, payload: CreateUsuarioDto) {
+    await this.userRepository.update(id, payload)
+    const updatedUser = await this.userRepository.find({
+      where: { id },
+      relations: []
+    })
+    return updatedUser
+  }
 
-  async updateUserbyUsername() { }
+  async updateUserbyUsername(username: string, payload: CreateUsuarioDto) {
+    await this.userRepository.update(username, payload)
+    const updatedUser = await this.userRepository.find({
+      where: { username },
+      relations: []
+    })
+    return updatedUser
+  }
 
-  async findAllUsers() { }
+  async findAllUsers(
+
+  ) {
+    return this.userRepository.find()
+  }
 
   async findAllUsersByRole(role: string): Promise<Usuario[]> {
     const userList = await this.userRepository.find(
@@ -50,6 +68,12 @@ export class UsuarioService {
     return usuario;
   }
   async deleteUserById(id: number) {
-
+    const usuario = await this.userRepository.findOne({
+      where: { id: id },
+      relations: []
+    });
+    usuario.deletedAt = new Date();
+    const usuarioBorrado = await this.updateUserbyID(id, usuario)
+    return usuarioBorrado
   }
 }
