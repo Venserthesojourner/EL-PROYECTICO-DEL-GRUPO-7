@@ -1,14 +1,14 @@
 <!-- eslint-disable linebreak-style -->
 <!-- eslint-disable max-len -->
 <template>
-  <q-page class="row items-center justify-evenly">
-    <q-card class="col-6 q-pa-md rounded-borders" style="max-width: 400px">
+  <q-page padding class="row items-center justify-evenly">
+    <q-card class="col-12 col-md-6 q-pa-md rounded-borders" style="max-width: 500px">
 
-      <q-card-section>
-        <p class="text-h4 text-center">Solicitar el servicio</p>
-        <p class="text-h6 text-center">Los datos marcados con * son obligatorios</p>
+      <q-card-section class="text-center">
+        <p class="text-h4">Solicitar el servicio</p>
+        <span class="text-subtitle2">Los datos marcados con (*) son obligatorios</span>
       </q-card-section>
-      <!-- FIXME puede que quieras reoganizar como se ven, no me odies.-->
+
       <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
         <q-input filled v-model="nombre" type="text" label="Nombre *" hint="Ingrese su/s nombre" lazy-rules
           :rules="[ val => val && val.length > 0 || 'Please type something']" />
@@ -18,21 +18,48 @@
           :rules="[ val => val && val.length > 0 || 'Please type something', isValidEmail]" />
         <q-input v-model="comentario" filled type="textarea" label="Dejanos un mensaje (max 200 caracteres)" lazy-rules
           maxlength="200" />
-        <q-toggle v-model="accept" label="I accept the license and terms" />
+        <div class="row items-center">
+          <q-toggle v-model="third" checked-icon="check" color="green" unchecked-icon="clear" />
+          <span class="text-primary cursor-pointer" @click="toolbar = true">I accept the license and terms</span>
+        </div>
 
-        <div class="row justify-end">
-          <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm" />
-          <q-btn label="Submit" type="submit" color="primary" />
+        <div class="row justify-between">
+          <div>
+            <router-link to="/" style="text-decoration: none;">
+              <q-btn color="accent" label="Volver"></q-btn>
+            </router-link>
+          </div>
+          <div>
+            <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm" />
+            <q-btn label="Submit" type="submit" color="primary" />
+          </div>
         </div>
       </q-form>
 
     </q-card>
-    <!-- FIXME: Agrego esto, despues se puede reacomodar para que se vea mejor-->
-    <div class="flex flex-row justify-center align-center">
-      <router-link to="/">
-        <q-btn> Volver a la pagina principal </q-btn>
-      </router-link>
-    </div>
+
+    <!-- Modal / Dialog de Terminos y Condiciones -->
+    <q-dialog v-model="toolbar">
+      <q-card>
+        <q-toolbar>
+          <q-avatar>
+            <img src="../assets/logo2.png">
+          </q-avatar>
+
+          <q-toolbar-title>
+            <div class="text-h6">Terms of Agreement</div>
+          </q-toolbar-title>
+
+          <q-btn flat round dense icon="close" v-close-popup />
+        </q-toolbar>
+        <q-separator />
+        <q-card-section style="max-height: 50vh" class="scroll">
+          <p v-for="n in 15" :key="n">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum repellendus sit
+            voluptate voluptas eveniet porro. Rerum blanditiis perferendis totam, ea at omnis vel numquam
+            exercitationem aut, natus minima, porro labore.</p>
+        </q-card-section>
+      </q-card>
+    </q-dialog>
   </q-page>
 </template>
 <!-- eslint-disable linebreak-style -->
@@ -56,6 +83,8 @@ export default {
       mail,
       comentario,
       accept,
+      toolbar: ref(false),
+      third: ref(false),
 
       isValidEmail(val) {
         const emailRegex = /^(?=[a-zA-Z0-9@._%+-]{6,254}$)[a-zA-Z0-9._%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\.){1,8}[a-zA-Z]{2,63}$/;
