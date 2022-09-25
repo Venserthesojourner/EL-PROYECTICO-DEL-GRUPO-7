@@ -8,15 +8,16 @@
         <p class="text-h4 text-center">Ingresar al panel</p>
       </q-card-section>
       <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
-        <q-input filled v-model="username" type="text" label="Nombre de usuario *" hint="Name and surname" lazy-rules
-          :rules="[ val => val && val.length > 0 || 'Por favor, ingrese su nombre de usuario']" />
+        <q-input filled v-model="username" type="text" label="Nombre de usuario *" hint="Ingrese su nombre de usuario"
+          lazy-rules :rules="[ val => val && val.length > 0 || 'Por favor, ingrese su nombre de usuario']" />
 
-        <q-input filled type="password" v-model="password" label="Contraseña *" lazy-rules :rules="[
-                  val => val !== null && val !== '' || 'Por favor, ingrese su contraseña',
-        ]" />
+        <q-input filled type="password" v-model="password" label="Contraseña *" hint="Ingrese su contraseña" lazy-rules
+          :rules="[
+                    val => val !== null && val !== '' || 'Por favor, ingrese su contraseña',
+          ]" />
         <div class="row justify-end">
-          <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm" />
-          <q-btn label="Submit" type="submit" color="primary" />
+          <q-btn label="Limpiar" type="reset" color="primary" flat class="q-ml-sm" />
+          <q-btn label="Ingresar" type="submit" color="primary" />
         </div>
       </q-form>
 

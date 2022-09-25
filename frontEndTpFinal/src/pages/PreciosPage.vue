@@ -1,5 +1,8 @@
 <!-- eslint-disable max-len -->
 <!-- eslint-disable comma-dangle -->
+<!-- eslint-disable linebreak-style -->
+<!-- eslint-disable max-len -->
+<!-- eslint-disable comma-dangle -->
 <template>
   <q-page class="q-pa-md row q-col-gutter-sm">
     <div class="col-12 col-md-6 justify-center">
@@ -9,14 +12,23 @@
           <p class="text-h4 text-center">Modificar Precios</p>
         </q-card-section>
         <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
-          <q-input filled v-model="precio" type="text" label="Precio *" hint="En pesos" lazy-rules
-            :rules="[ val => val && val.length > 0 || 'Por favor, ingrese un precio']" />
+          <q-input filled v-model="precioActual" type="number" label="Precio Actual" readonly=""
+            hint="Este es el precio actual por hora" lazy-rules
+            :rules="[ val => val && val.length > 0 || 'Por favor, ingrese un precio']">
+            <template v-slot:prepend>
+              <q-icon name="attach_money" />
+            </template>
+          </q-input>
 
-          <q-input filled type="text" v-model="hora" label="Hora *" lazy-rules
-            :rules="[ val => val && val.length > 0 || 'Por favor, ingrese un horario']" />
+          <q-input filled v-model="precioNew" type="number" label="Nuevo precio por hora" hint="En pesos" lazy-rules
+            :rules="[ val => val && val.length > 0 || 'Por favor, ingrese un precio']">
+            <template v-slot:prepend>
+              <q-icon name="attach_money" />
+            </template>
+          </q-input>
           <div class="row justify-end">
-            <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm" />
-            <q-btn label="Submit" type="submit" color="primary" />
+            <q-btn label="Limpiar" type="reset" color="primary" flat class="q-ml-sm" />
+            <q-btn label="Actualizar precio" type="submit" color="primary" />
           </div>
         </q-form>
 
@@ -27,8 +39,12 @@
     </div>
   </q-page>
 </template>
-
+<!-- eslint-disable linebreak-style -->
 <script>
+
+import { useQuasar } from 'quasar';
+import { ref } from 'vue';
+
 const columns = [
   {
     name: 'name',
@@ -90,7 +106,14 @@ const rows = [
 
 export default {
   setup() {
+    const $q = useQuasar();
+
+    const precioActual = ref(100);
+    const precioNew = ref(null);
+
     return {
+      precioActual,
+      precioNew,
       columns,
       rows,
     };

@@ -19,8 +19,10 @@
         <q-input v-model="comentario" filled type="textarea" label="Dejanos un mensaje (max 200 caracteres)" lazy-rules
           maxlength="200" />
         <div class="row items-center">
-          <q-toggle v-model="third" checked-icon="check" color="green" unchecked-icon="clear" />
-          <span class="text-primary cursor-pointer" @click="toolbar = true">I accept the license and terms</span>
+          <pre>{{accept}}</pre>
+          <q-toggle v-model="accept" checked-icon="check" color="green" unchecked-icon="clear" lazy-rules
+            @click="accept = false" :rules="[val => val && val === false || 'Debe ver los terminos y condiciones']" />
+          <span class="text-primary cursor-pointer" @click="toolbar = true">Ver terminos y condiciones</span>
         </div>
 
         <div class="row justify-between">
@@ -28,8 +30,8 @@
             <q-btn to="/" color="accent" label="Volver"></q-btn>
           </div>
           <div>
-            <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm" />
-            <q-btn label="Submit" type="submit" color="primary" />
+            <q-btn label="Limpiar" type="reset" color="primary" flat class="q-ml-sm" />
+            <q-btn label="Registrarse" type="submit" color="primary" />
           </div>
         </div>
       </q-form>
@@ -56,6 +58,9 @@
             voluptate voluptas eveniet porro. Rerum blanditiis perferendis totam, ea at omnis vel numquam
             exercitationem aut, natus minima, porro labore.</p>
         </q-card-section>
+        <q-card-actions align="right">
+          <q-btn flat label="Acepto los terminos y condiciones" color="primary" v-close-popup @click="accept = true" />
+        </q-card-actions>
       </q-card>
     </q-dialog>
   </q-page>
@@ -82,7 +87,6 @@ export default {
       comentario,
       accept,
       toolbar: ref(false),
-      third: ref(false),
 
       isValidEmail(val) {
         const emailRegex = /^(?=[a-zA-Z0-9@._%+-]{6,254}$)[a-zA-Z0-9._%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\.){1,8}[a-zA-Z]{2,63}$/;
@@ -95,7 +99,7 @@ export default {
             color: 'red-5',
             textColor: 'white',
             icon: 'warning',
-            message: 'You need to accept the license and terms first',
+            message: 'Tienes que ver y aceptar los terminos y condiciones',
           });
         }
         // alert(`this is the name: ${name.value} and this is the age: ${age.value}`);
