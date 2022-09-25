@@ -4,7 +4,7 @@
   <q-page>
     <section class="q-mx-lg">
       <div class="row justify-center items-center">
-        <div class="col-12 col-md-5">
+        <div class="pepe col-12 col-md-5">
           <p class="text-h3">Benvenuti a Chihilo</p>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>
             Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
@@ -21,14 +21,14 @@
       </div>
     </section>
     <!-- Section About -->
-    <section class="q-mx-lg">
+    <section id="about" class="q-mx-lg">
       <div class="row justify-center items-center">
         <div class="col-12 col-md-5">
           <div class="row justify-center">
             <img src="../assets/car-reserva2.jpg" alt="car reserva" style="height: auto; min-width: 200px;">
           </div>
         </div>
-        <div class="col-12 col-md-5">
+        <div class="pepe col-12 col-md-5">
           <p class="text-h3">Benvenuti a Chihilo</p>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>
             Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
@@ -40,9 +40,9 @@
       </div>
     </section>
     <!-- Section Contact -->
-    <section class="q-mx-lg">
+    <section id="contact" class="q-mx-lg">
       <div class="row justify-center items-center">
-        <div class="col-12 col-md-5">
+        <div class="pepe col-12 col-md-5">
           <p class="text-h3">Benvenuti a Chihilo</p>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>
             Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
@@ -63,3 +63,12 @@
     <q-btn fab icon="keyboard_arrow_up" color="accent" />
   </q-page-scroller>
 </template>
+
+<style lang="sass" scoped>
+.pepe
+  @media screen and (max-width: 1024px)
+    text-align: center
+.text-h3
+  @media screen and (max-width: 600px)
+    font-size: 2rem
+</style>
