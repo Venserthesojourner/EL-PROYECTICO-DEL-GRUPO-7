@@ -16,8 +16,8 @@
         <q-input filled v-model="razonSocial" type="text" label="Razon Social" hint="Ingresa tu razon social" lazy-rules
           :rules="[ val => val && val.length > 0 || 'Debes ingresar tu razon social']" />
 
-        <q-select filled v-model="cantPlazas" :options="optionsPlazas" label="Cantidad de plazas"
-          hint="Ingrese la cantidad de plazas" />
+        <q-select filled v-model="cantPlazas" :options="optionsPlazas" label="Cantidad de plazas" lazy-rules
+          :rules="[ val => val || 'Debes seleccionar la cantidad de plazas']" hint="Ingrese la cantidad de plazas" />
 
         <q-input filled v-model="timeOpen" mask="time" :rules="['time']" label="Ingrese la hora de apertura">
           <template v-slot:append>
@@ -47,15 +47,21 @@
           </template>
 
         </q-input>
-        <q-option-group v-model="dias" :options="optionsDays" color="green" type="checkbox" />
+        <q-field ref="inputDias" hint="Seleccione los dias que estará abierto el estacionamiento" lazy-rules
+          :rules="[ val => val && val.length > 0 || 'Debes seleccionar un dia']" :model-value="dias">
+          <template v-slot:control>
+            <q-option-group v-model="dias" :options="optionsDays" color="green" type="checkbox" />
+          </template>
+
+        </q-field>
 
         <q-input filled v-model="precio" type="number" label="Tarifa base (por hora)"
           hint="Ingresa la tarifa (por hora) en ARS" lazy-rules
           :rules="[ val => val && val.length > 0 || 'Debes ingresar una tarifa base']" />
 
         <div class="row justify-end">
-          <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm" />
-          <q-btn label="Submit" type="submit" color="primary" />
+          <q-btn label="Limpiar" type="reset" color="primary" flat class="q-ml-sm" />
+          <q-btn label="Continuar" type="submit" color="primary" />
         </div>
       </q-form>
 
@@ -76,7 +82,12 @@ export default {
     const cantPlazas = ref(null);
     const timeOpen = ref(null);
     const timeClose = ref(null);
+    const inputDias = ref([]);
+    const dias = ref([]);
     const precio = ref(null);
+
+    console.log(inputDias);
+    console.log(dias);
 
     return {
       document,
@@ -84,9 +95,36 @@ export default {
       cantPlazas,
       timeOpen,
       timeClose,
-      dias: ref(['']),
+      dias,
       optionsPlazas: [
-        4, 5, 6, 7, 8, 9, 10,
+        {
+          label: '4 plazas',
+          value: 4,
+        },
+        {
+          label: '5 plazas',
+          value: 5,
+        },
+        {
+          label: '6 plazas',
+          value: 6,
+        },
+        {
+          label: '7 plazas',
+          value: 7,
+        },
+        {
+          label: '8 plazas',
+          value: 8,
+        },
+        {
+          label: '9 plazas',
+          value: 9,
+        },
+        {
+          label: '10 plazas',
+          value: 10,
+        },
       ],
       optionsDays: [
         {
@@ -135,6 +173,7 @@ export default {
         cantPlazas.value = null;
         timeOpen.value = null;
         timeClose.value = null;
+        dias.value = [];
         precio.value = null;
       },
     };
