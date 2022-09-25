@@ -1,3 +1,5 @@
+<!-- eslint-disable max-len -->
+<!-- eslint-disable comma-dangle -->
 <!-- eslint-disable linebreak-style -->
 <!-- eslint-disable max-len -->
 <!-- eslint-disable comma-dangle -->

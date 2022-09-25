@@ -68,9 +68,9 @@ export class Usuario {
   role: string;
 
   @CreateDateColumn('create_time')
-  createddAt: Timestamp;
+  createddAt: Date;
   @UpdateDateColumn('update_time')
-  updatedAt: Timestamp;
+  updatedAt: Date;
   @DeleteDateColumn('delete_time')
-  deletedAt: Timestamp;
+  deletedAt: Date;
 }
