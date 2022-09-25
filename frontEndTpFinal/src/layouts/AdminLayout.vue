@@ -13,7 +13,7 @@
       <q-scroll-area class="fit">
         <div class="column justify-between" style="min-height: calc(100vh - 50px);">
           <q-list padding>
-            <q-item active clickable v-ripple>
+            <q-item to="plazas" active clickable v-ripple>
               <q-item-section avatar>
                 <q-icon name="grid_on" />
               </q-item-section>
@@ -23,17 +23,29 @@
               </q-item-section>
             </q-item>
 
-            <q-item clickable v-ripple>
-              <q-item-section avatar>
-                <q-icon name="monetization_on" />
-              </q-item-section>
+            <q-expansion-item expand-separator icon="monetization_on" label="Montos">
 
-              <q-item-section>
-                Precios
-              </q-item-section>
-            </q-item>
+              <q-list>
+                <q-item to="precios" clickable v-ripple>
+                  <q-item-section>
+                    Precios
+                  </q-item-section>
+                </q-item>
+                <q-item to="planes" clickable v-ripple>
+                  <q-item-section>
+                    Planes
+                  </q-item-section>
+                </q-item>
+                <q-item to="promociones" clickable v-ripple>
+                  <q-item-section>
+                    Promociones
+                  </q-item-section>
+                </q-item>
+              </q-list>
 
-            <q-item clickable v-ripple>
+            </q-expansion-item>
+
+            <q-item to="horarios" clickable v-ripple>
               <q-item-section avatar>
                 <q-icon name="query_builder" />
               </q-item-section>
@@ -43,7 +55,7 @@
               </q-item-section>
             </q-item>
 
-            <q-item clickable v-ripple>
+            <q-item to="configuraciones" clickable v-ripple>
               <q-item-section avatar>
                 <q-icon name="settings" />
               </q-item-section>

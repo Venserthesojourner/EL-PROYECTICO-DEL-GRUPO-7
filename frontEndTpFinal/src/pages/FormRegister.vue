@@ -1,7 +1,7 @@
 <!-- eslint-disable linebreak-style -->
 <!-- eslint-disable max-len -->
 <template>
-  <q-page padding class="row items-center justify-evenly">
+  <q-page padding class="row items-center justify-evenly q-mb-lg">
     <q-card class="col-12 col-md-6 q-pa-md rounded-borders" style="max-width: 500px">
 
       <q-card-section class="text-center">
@@ -25,9 +25,7 @@
 
         <div class="row justify-between">
           <div>
-            <router-link to="/" style="text-decoration: none;">
-              <q-btn color="accent" label="Volver"></q-btn>
-            </router-link>
+            <q-btn to="/" color="accent" label="Volver"></q-btn>
           </div>
           <div>
             <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm" />
