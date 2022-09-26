@@ -1,19 +1,21 @@
+// from Node Modules
 import { Module } from '@nestjs/common';
+import { HttpModule } from '@nestjs/axios';
+// from Own Modules
 import { UsuarioService } from './usuario.service';
 import { UsuarioController } from './usuario.controller';
 import { UsuarioProviders } from './providers/usuario.providers';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { Usuario } from './entities/usuario.entity';
-import { HttpModule } from '@nestjs/axios';
-import { DatabaseModule } from './../utils/config/database/database.module';
+import { DatabaseModule } from './../../database/database.module';
+
 
 @Module({
   imports: [
     HttpModule,
-    DatabaseModule,
-    TypeOrmModule.forFeature([Usuario])
+    DatabaseModule
   ],
   controllers: [UsuarioController],
   providers: [UsuarioService, ...UsuarioProviders],
+  exports: [UsuarioService]
 })
-export class UsuarioModule { }
+export class UsuarioModule {
+}

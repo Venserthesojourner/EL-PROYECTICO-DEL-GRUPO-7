@@ -1,10 +1,11 @@
+import { TimestampProvider } from 'rxjs';
 import {
+  BaseEntity,
   Column,
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
   PrimaryGeneratedColumn,
-  Timestamp,
   UpdateDateColumn,
 } from 'typeorm';
 
@@ -35,42 +36,41 @@ export enum role {
   ADMIN = 'admin',
 }
 
-@Entity('usuario')
-export class Usuario {
-  @PrimaryGeneratedColumn()
+@Entity({ name: 'usuario' })
+export class Usuario extends BaseEntity {
+  @PrimaryGeneratedColumn('increment')
   id: number;
 
-  @Column({ name: 'username', type: 'varchar', length: 15, nullable: false })
+  @Column('varchar', { name: 'username', length: 25, nullable: false })
   username: string;
 
-  @Column({ name: 'password', type: 'varchar', length: 15, nullable: false })
+  @Column('varchar', { name: 'password', length: 15, nullable: false })
   password: string;
 
-  @Column({ name: 'first_name', type: 'varchar', length: 45, nullable: false })
+  @Column('varchar', { name: 'first_name', length: 45, nullable: false })
   firstName: string;
 
   @Column("varchar", { name: 'last_name', length: 45, nullable: false })
   lastName: string;
 
-  @Column({
+  @Column('varchar', {
     name: 'token',
-    type: 'varchar',
     length: 45,
     nullable: true,
     default: null,
   })
   token: string;
 
-  @Column({ name: 'id_card_number', type: 'int', nullable: false })
+  @Column('int', { name: 'id_card_number', nullable: false })
   dni: number;
 
-  @Column({ type: 'enum', enum: role, enumName: 'role', default: role.CLIENT })
+  @Column('enum', { enum: role, enumName: 'role', default: role.CLIENT })
   role: string;
 
-  @CreateDateColumn('create_time')
-  createddAt: Date;
-  @UpdateDateColumn('update_time')
+  @CreateDateColumn({ name: 'create_time', nullable: false })
+  createdAt: TimestampProvider;
+  @UpdateDateColumn({ name: 'update_time', nullable: false, default: null })
   updatedAt: Date;
-  @DeleteDateColumn('delete_time')
+  @DeleteDateColumn({ name: 'delete_time', nullable: false, default: null })
   deletedAt: Date;
 }
