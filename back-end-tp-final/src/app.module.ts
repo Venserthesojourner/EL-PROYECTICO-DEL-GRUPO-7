@@ -10,6 +10,7 @@ import { PropietarioModule } from './modules/propietario/propietario.module';
 // VARIABLE UTILS
 import { enviroments } from './commons/enums/enviroments.enum';
 import { EmpleadoModule } from './modules/empleado/empleado.module';
+import { MailModule } from './mail/mail.module';
 import endpointConfig from './config/endpoint.config';
 import databaseConfig from './config/database.config';
 
@@ -26,6 +27,7 @@ import databaseConfig from './config/database.config';
     UsuarioModule,
     PropietarioModule,
     EmpleadoModule,
+    MailModule,
   ],
   controllers: [AppController],
   providers: [AppService],
