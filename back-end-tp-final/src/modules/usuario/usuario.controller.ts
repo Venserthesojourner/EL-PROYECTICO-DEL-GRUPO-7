@@ -19,9 +19,21 @@ export class UsuarioController {
   }
 
   @Get(':id')
-  findOne(@Param('id', ParseIntPipe) id: number) {
+  findOneById(@Param('id', ParseIntPipe) id: number) {
     return this.usuarioService.findUserbyId(+id);
   }
+
+  @Get(':username')
+  findOneByUsername(@Param('username') username: string) {
+    return this.usuarioService.findUserbyId(+username);
+  }
+
+
+  @Get(':role')
+  findOnebyRole(@Param('role') role: string) {
+    return this.usuarioService.findUserbyId(+role);
+  }
+
 
   @Patch(':id')
   update(@Param('id') id: number, @Body() updateUsuarioDto: UpdateUsuarioDto) {
