@@ -1,7 +1,6 @@
 <!-- eslint-disable max-len -->
 <template>
   <q-page padding class="row q-col-gutter-sm justify-center">
-    <div class="col-12 text-h3">User</div>
     <!-- Formulario -->
     <div class="col-12 col-md-6">
       <q-card flat class="q-pa-md" style="max-width: 500px">

@@ -2,7 +2,8 @@
 <!-- eslint-disable max-len -->
 <template>
   <q-page>
-    <section class="q-mx-lg">
+    <!-- Section Bienvenida -->
+    <section>
       <div class="row justify-center items-center">
         <div class="pepe col-12 col-md-5">
           <p class="text-h3">Benvenuti a Chihilo</p>
@@ -18,29 +19,30 @@
             <img src="../assets/car-reserva2.jpg" alt="car reserva" style="height: auto; min-width: 200px;">
           </div>
         </div>
+        <div class="end-coso col-12"></div>
       </div>
     </section>
     <!-- Section About -->
-    <section id="about" class="q-mx-lg">
+    <section id="about">
       <div class="row justify-center items-center">
         <div class="col-12 col-md-5">
           <div class="row justify-center">
-            <img src="../assets/car-reserva2.jpg" alt="car reserva" style="height: auto; min-width: 200px;">
+            <img src="../assets/car-reserva4.png" alt="car reserva" style="height: auto; min-width: 200px;">
           </div>
         </div>
-        <div class="pepe col-12 col-md-5">
+        <div class="pepe col-12 col-md-5 text-white">
           <p class="text-h3">Benvenuti a Chihilo</p>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>
             Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-          <q-btn to="register" push color="accent" size="lg"
+          <q-btn to="register" push color="positive" size="lg"
             class="q-px-lg q-py-xs q-mr-md q-mb-md border-radius-inherit" label="Registrarse" no-caps />
-          <q-btn push color="primary" size="lg" class="q-px-lg q-py-xs q-mb-md border-radius-inherit"
+          <q-btn push color="secondary" size="lg" class="q-px-lg q-py-xs q-mb-md border-radius-inherit"
             label="Descargar App" no-caps />
         </div>
       </div>
     </section>
     <!-- Section Contact -->
-    <section id="contact" class="q-mx-lg">
+    <section id="contact">
       <div class="row justify-center items-center">
         <div class="pepe col-12 col-md-5">
           <p class="text-h3">Benvenuti a Chihilo</p>
@@ -59,9 +61,6 @@
       </div>
     </section>
   </q-page>
-  <q-page-scroller position="bottom-right" :scroll-offset="150" :offset="[18, 18]">
-    <q-btn fab icon="keyboard_arrow_up" color="accent" />
-  </q-page-scroller>
 </template>
 
 <style lang="sass" scoped>
@@ -71,4 +70,18 @@
 .text-h3
   @media screen and (max-width: 600px)
     font-size: 2rem
+#about
+  background: $primary
+  background-image: url(../assets/separator-bottom.svg), linear-gradient($primary, $primary)
+  background-repeat: no-repeat
+  background-size: 100% 100px, 100%
+  background-position: bottom center, 50%
+  padding: 0 0 100px 0
+.end-coso
+  padding: 0
+  height: 100px
+  background-image: url(../assets/separator-top.svg)
+  background-repeat: no-repeat
+  background-size: 100% 100px
+  background-position: bottom center
 </style>

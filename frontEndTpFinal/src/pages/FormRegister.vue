@@ -19,7 +19,6 @@
         <q-input v-model="comentario" filled type="textarea" label="Dejanos un mensaje (max 200 caracteres)" lazy-rules
           maxlength="200" />
         <div class="row items-center">
-          <pre>{{accept}}</pre>
           <q-toggle v-model="accept" checked-icon="check" color="green" unchecked-icon="clear" lazy-rules
             @click="accept = false" :rules="[val => val && val === false || 'Debe ver los terminos y condiciones']" />
           <span class="text-primary cursor-pointer" @click="toolbar = true">Ver terminos y condiciones</span>
