@@ -1,5 +1,3 @@
-<!-- eslint-disable max-len -->
-<!-- eslint-disable comma-dangle -->
 <!-- eslint-disable linebreak-style -->
 <!-- eslint-disable max-len -->
 <!-- eslint-disable comma-dangle -->
@@ -41,8 +39,6 @@
 </template>
 <!-- eslint-disable linebreak-style -->
 <script>
-
-import { useQuasar } from 'quasar';
 import { ref } from 'vue';
 
 const columns = [
@@ -106,8 +102,6 @@ const rows = [
 
 export default {
   setup() {
-    const $q = useQuasar();
-
     const precioActual = ref(100);
     const precioNew = ref(null);
 

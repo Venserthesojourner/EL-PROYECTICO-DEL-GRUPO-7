@@ -2,7 +2,7 @@
 <!-- eslint-disable max-len -->
 <template>
   <q-page padding class="row justify-center">
-    <q-card flat class="col-12 q-pa-md rounded-borders" style="max-width: 800px">
+    <q-card flat class="col-12 q-pa-md" style="max-width: 800px">
 
       <q-card-section>
         <p class="text-h4 text-center">Completa esta informacion</p>
