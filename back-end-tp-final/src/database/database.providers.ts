@@ -1,6 +1,8 @@
 import { DataSource } from 'typeorm';
 import { ConfigType } from '@nestjs/config';
-import config from './database.config';
+import config from './../config/database.config'
+import { Usuario } from './../modules/usuario/entities/usuario.entity';
+import { Propietario } from './../modules/propietario/entities/propietario.entity';
 
 export const databaseProviders = [
     {
@@ -14,7 +16,7 @@ export const databaseProviders = [
                 username,
                 password,
                 database,
-                entities: [__dirname + './../**/entity/*.entity{.ts,.js}'],
+                entities: [Usuario, Propietario],
                 synchronize: false,
                 logging: false,
             });

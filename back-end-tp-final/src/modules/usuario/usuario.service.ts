@@ -14,9 +14,11 @@ export class UsuarioService {
     const newUser = await this.userRepository.save(payload)
     if (newUser.role === 'owner') {
       // Se crearia una instancia de usuario propietario y si le asigna la id de user al mismo
+      console.table(newUser)
     }
     if (newUser.role === 'employee') {
       // Se crea una instancia de operador (Necesito hacer una busqueda del Id del estacionamiento al que sera asociado)
+      console.table(newUser)
     }
     return newUser;
   }
@@ -42,7 +44,7 @@ export class UsuarioService {
   async findAllUsers(
 
   ) {
-    return this.userRepository.find()
+    return await this.userRepository.find()
   }
 
   async findAllUsersByRole(role: string): Promise<Usuario[]> {
