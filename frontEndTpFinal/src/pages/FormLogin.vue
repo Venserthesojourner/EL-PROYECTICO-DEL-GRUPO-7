@@ -28,6 +28,7 @@
 <script>
 import { useQuasar } from 'quasar';
 import { ref } from 'vue';
+import data from '../data/userRegister.json';
 
 export default {
   setup() {
@@ -41,12 +42,21 @@ export default {
       password,
 
       onSubmit() {
-        $q.notify({
-          color: 'green-4',
-          textColor: 'white',
-          icon: 'cloud_done',
-          message: 'Sesion iniciada',
-        });
+        if (data.users[0].name === username.value) {
+          $q.notify({
+            color: 'green-4',
+            textColor: 'white',
+            icon: 'cloud_done',
+            message: 'Sesion iniciada',
+          });
+        } else {
+          $q.notify({
+            color: 'red-4',
+            textColor: 'white',
+            icon: 'error',
+            message: 'Usuario y/o contraseña incorrecto',
+          });
+        }
       },
 
       onReset() {
