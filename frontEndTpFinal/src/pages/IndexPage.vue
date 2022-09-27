@@ -45,15 +45,15 @@
     <!-- Section Contact -->
     <section id="contact">
       <div class="row justify-center items-center popo">
-        <div class="col-3 text-center">
+        <div class="q-mx-lg q-px-lg text-center">
           <i class="fa-brands fa-github fa-3x"></i>
           <p class="q-mt-sm text-h6">Luis Cañete</p>
         </div>
-        <div class="col-3 text-center">
+        <div class="q-mx-lg q-px-lg text-center">
           <i class="fa-brands fa-github fa-3x"></i>
           <p class="q-mt-sm text-h6">Manuel Ortiz</p>
         </div>
-        <div class="col-3 text-center">
+        <div class="q-mx-lg q-px-lg text-center">
           <i class="fa-brands fa-github fa-3x"></i>
           <p class="q-mt-sm text-h6">Marcos Travaglini</p>
         </div>

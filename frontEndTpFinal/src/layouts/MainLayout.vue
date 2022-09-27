@@ -54,15 +54,6 @@
   </q-layout>
 </template>
 
-<style lang="sass" scoped>
-.chichilo
-  font-family: $ff-chichilo
-  font-size: 26px
-
-:deep(.q-tab__label)
-  font-size: 16px
-</style>
-
 <script>
 import { ref } from 'vue';
 
@@ -93,6 +84,12 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+.q-toolbar
+  &__title
+    font-family: $ff-chichilo
+    font-size: 26px
+:deep(.q-tab__label)
+  font-size: 16px
 .q-list
   display: flex
   flex-direction: column
