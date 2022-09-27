@@ -68,8 +68,10 @@
 <script>
 import { useQuasar } from 'quasar';
 import { ref } from 'vue';
+import data from '../data/userRegister.json';
 
 export default {
+
   setup() {
     const $q = useQuasar();
 
@@ -101,15 +103,26 @@ export default {
             message: 'Tienes que ver y aceptar los terminos y condiciones',
           });
         }
-        // alert(`this is the name: ${name.value} and this is the age: ${age.value}`);
-        setTimeout(() => {
-          $q.notify({
-            color: 'green-4',
-            textColor: 'white',
-            icon: 'cloud_done',
-            message: 'Entrando al multiverso',
-          });
-        }, 3000);
+        if (accept.value) {
+          const newUser = {
+            name: nombre.value,
+            username: apellido.value,
+            email: mail.value,
+            comment: comentario.value,
+          };
+
+          data.users = data.users.concat(newUser);
+          alert(JSON.stringify(data.users));
+
+          setTimeout(() => {
+            $q.notify({
+              color: 'green-4',
+              textColor: 'white',
+              icon: 'cloud_done',
+              message: 'Registro exitoso!',
+            });
+          }, 3000);
+        }
       },
 
       onReset() {
