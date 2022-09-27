@@ -86,9 +86,6 @@ export default {
     const dias = ref([]);
     const precio = ref(null);
 
-    console.log(inputDias);
-    console.log(dias);
-
     return {
       document,
       razonSocial,
