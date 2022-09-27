@@ -64,7 +64,7 @@ export class Usuario extends BaseEntity {
   @Column('int', { name: 'id_card_number', nullable: false })
   dni: number;
 
-  @Column('varchar', { name: 'email' })
+  @Column('varchar', { name: 'email', length: 45, nullable: false })
   email: string
 
   @Column('enum', { enum: role, enumName: 'role', default: role.CLIENT })
