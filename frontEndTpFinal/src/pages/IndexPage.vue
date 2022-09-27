@@ -27,11 +27,12 @@
       <div class="row justify-center items-center">
         <div class="col-12 col-md-5">
           <div class="row justify-center">
-            <img src="../assets/car-reserva4.png" alt="car reserva" style="height: auto; min-width: 200px;">
+            <img src="../assets/car-reserva4.png" alt="car reserva"
+              style="height: auto; min-width: 200px; max-width: 500px;">
           </div>
         </div>
         <div class="pepe col-12 col-md-5 text-white">
-          <p class="text-h3">Benvenuti a Chihilo</p>
+          <p class="text-h3">About</p>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>
             Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
           <q-btn to="register" push color="positive" size="lg"
@@ -43,20 +44,18 @@
     </section>
     <!-- Section Contact -->
     <section id="contact">
-      <div class="row justify-center items-center">
-        <div class="pepe col-12 col-md-5">
-          <p class="text-h3">Benvenuti a Chihilo</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-          <q-btn to="register" push color="accent" size="lg"
-            class="q-px-lg q-py-xs q-mr-md q-mb-md border-radius-inherit" label="Registrarse" no-caps />
-          <q-btn push color="primary" size="lg" class="q-px-lg q-py-xs q-mb-md border-radius-inherit"
-            label="Descargar App" no-caps />
+      <div class="row justify-center items-center popo">
+        <div class="col-3 text-center">
+          <i class="fa-brands fa-github fa-3x"></i>
+          <p class="q-mt-sm text-h6">Luis Cañete</p>
         </div>
-        <div class="col-12 col-md-5">
-          <div class="row justify-center">
-            <img src="../assets/car-reserva2.jpg" alt="car reserva" style="height: auto; min-width: 200px;">
-          </div>
+        <div class="col-3 text-center">
+          <i class="fa-brands fa-github fa-3x"></i>
+          <p class="q-mt-sm text-h6">Manuel Ortiz</p>
+        </div>
+        <div class="col-3 text-center">
+          <i class="fa-brands fa-github fa-3x"></i>
+          <p class="q-mt-sm text-h6">Marcos Travaglini</p>
         </div>
       </div>
     </section>
@@ -84,4 +83,8 @@
   background-repeat: no-repeat
   background-size: 100% 100px
   background-position: bottom center
+#contact
+  min-height: 300px
+  & .popo
+    min-height: 300px
 </style>

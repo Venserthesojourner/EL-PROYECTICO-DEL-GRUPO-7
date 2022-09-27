@@ -13,9 +13,9 @@
       <q-scroll-area class="fit">
         <div class="column justify-between" style="min-height: calc(100vh - 50px);">
           <q-list padding>
-            <q-item to="plazas" active clickable v-ripple>
+            <q-item to="plazas" clickable v-ripple>
               <q-item-section avatar>
-                <q-icon name="grid_on" />
+                <q-icon name="fa-solid fa-grip" />
               </q-item-section>
 
               <q-item-section>
@@ -23,7 +23,7 @@
               </q-item-section>
             </q-item>
 
-            <q-expansion-item expand-separator icon="monetization_on" label="Montos">
+            <q-expansion-item expand-separator icon="fa-solid fa-dollar-sign" label="Montos">
 
               <q-list>
                 <q-item to="precios" clickable v-ripple>
@@ -47,7 +47,7 @@
 
             <q-item to="horarios" clickable v-ripple>
               <q-item-section avatar>
-                <q-icon name="query_builder" />
+                <q-icon name="fa-regular fa-clock" />
               </q-item-section>
 
               <q-item-section>
@@ -57,7 +57,7 @@
 
             <q-item to="configuraciones" clickable v-ripple>
               <q-item-section avatar>
-                <q-icon name="settings" />
+                <q-icon name="fa-solid fa-gear" />
               </q-item-section>
 
               <q-item-section>
@@ -70,7 +70,7 @@
           <q-list padding>
             <q-item clickable v-ripple>
               <q-item-section avatar>
-                <q-icon name="logout" />
+                <q-icon name="fa-solid fa-right-from-bracket" />
               </q-item-section>
 
               <q-item-section>
@@ -82,7 +82,7 @@
       </q-scroll-area>
 
       <div class="q-mini-drawer-hide absolute" style="top: 15px; right: -17px">
-        <q-btn dense round unelevated color="secondary" icon="chevron_left" @click="miniState = true" />
+        <q-btn dense round unelevated color="secondary" icon="keyboard_arrow_left" @click="miniState = true" />
       </div>
     </q-drawer>
 
@@ -90,7 +90,7 @@
       <router-view />
       <!-- place QPageScroller at end of page -->
       <q-page-scroller position="bottom-right" :scroll-offset="150" :offset="[18, 18]">
-        <q-btn fab icon="keyboard_arrow_up" color="positive" />
+        <q-btn fab icon="fa-solid fa-chevron-up" color="positive" />
       </q-page-scroller>
     </q-page-container>
   </q-layout>
