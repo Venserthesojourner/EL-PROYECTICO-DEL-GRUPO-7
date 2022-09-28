@@ -6,7 +6,7 @@
         404
       </div>
 
-      <div class="text-h2" style="opacity:.5">
+      <div class="text-h3" style="opacity:.5">
         Nada por aquí, nada por allá
       </div>
 
