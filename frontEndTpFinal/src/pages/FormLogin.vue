@@ -15,6 +15,10 @@
           :rules="[
                     val => val !== null && val !== '' || 'Por favor, ingrese su contraseña',
           ]" />
+        <div class="row items-center">
+          <span>¿No tenes cuenta?,</span>
+          <q-btn to="register" flat no-caps dense style="color: #FF0080" label="Registrate" />
+        </div>
         <div class="row justify-end">
           <q-btn label="Limpiar" type="reset" color="primary" flat class="q-ml-sm" />
           <q-btn label="Ingresar" type="submit" color="primary" />
