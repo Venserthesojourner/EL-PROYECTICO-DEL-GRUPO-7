@@ -46,16 +46,19 @@
     <section id="contact">
       <div class="row justify-center items-center popo">
         <div class="q-mx-lg q-px-lg text-center">
-          <i class="fa-brands fa-github fa-3x"></i>
-          <p class="q-mt-sm text-h6">Luis Cañete</p>
+          <div><i class="fa-brands fa-github fa-3x"></i></div>
+          <q-btn href="https://github.com/Venserthesojourner" target="_blank" label="Luis Cañete"
+            class="q-mt-sm text-h6" dense flat no-caps />
         </div>
         <div class="q-mx-lg q-px-lg text-center">
-          <i class="fa-brands fa-github fa-3x"></i>
-          <p class="q-mt-sm text-h6">Manuel Ortiz</p>
+          <div><i class="fa-brands fa-github fa-3x"></i></div>
+          <q-btn href="https://github.com/hctmanuelortiz" target="_blank" label="Manuel Ortiz" class="q-mt-sm text-h6"
+            dense flat no-caps />
         </div>
-        <div class="q-mx-lg q-px-lg text-center">
-          <i class="fa-brands fa-github fa-3x"></i>
-          <p class="q-mt-sm text-h6">Marcos Travaglini</p>
+        <div class="columns q-mx-lg q-px-lg text-center">
+          <div><i class="fa-brands fa-github fa-3x"></i></div>
+          <q-btn href="https://github.com/Blackpachamame" target="_blank" label="Marcos Travaglini"
+            class="q-mt-sm text-h6" dense flat no-caps />
         </div>
       </div>
     </section>
