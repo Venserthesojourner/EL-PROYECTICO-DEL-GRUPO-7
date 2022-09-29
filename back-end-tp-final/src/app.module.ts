@@ -11,15 +11,17 @@ import { PropietarioModule } from './modules/propietario/propietario.module';
 import { enviroments } from './commons/enums/enviroments.enum';
 import { EmpleadoModule } from './modules/empleado/empleado.module';
 import { MailModule } from './mail/mail.module';
+import { EstacionamientoModule } from './modules/estacionamiento/estacionamiento.module';
 import endpointConfig from './config/endpoint.config';
 import databaseConfig from './config/database.config';
+import mailerConfig from './config/mailer.config';
 
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       envFilePath: enviroments[process.env.NODE_ENV] || '.env',
-      load: [endpointConfig, databaseConfig],
+      load: [endpointConfig, databaseConfig, mailerConfig],
       isGlobal: true,
     }),
     //ScheduleModule.forRoot(), (Cuando agregue schedules)
@@ -28,6 +30,7 @@ import databaseConfig from './config/database.config';
     PropietarioModule,
     EmpleadoModule,
     MailModule,
+    EstacionamientoModule,
   ],
   controllers: [AppController],
   providers: [AppService],

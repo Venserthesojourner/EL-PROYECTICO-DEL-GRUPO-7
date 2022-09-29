@@ -25,3 +25,6 @@ MAIL_TRANSPORT=smtp: //${MAIL_USER}:${MAIL_PASSWORD}@${MAIL_HOST}
 Voting APP With email sent
 https: //youtu.be/ixE0LetyyCk
 https: //github.com/zifahm/nestjs-voting-app/tree/5_send_confirm_email
+
+https: //blog.logrocket.com/how-to-implement-jwt-authentication-nestjs/
+https: //javascript.plainenglish.io/how-to-use-nestjs-logger-2a9cb107bce9

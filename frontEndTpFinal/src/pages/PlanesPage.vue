@@ -79,6 +79,7 @@ export default {
     const nombre = ref(null);
     const precio = ref(null);
 
+    const filter = ref('');
     const planes = ref([]);
 
     const onSubmit = () => {
