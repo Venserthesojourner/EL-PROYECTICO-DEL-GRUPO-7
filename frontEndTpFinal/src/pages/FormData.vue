@@ -86,6 +86,7 @@ export default {
     const cantPlazas = ref(null);
     const timeOpen = ref(null);
     const timeClose = ref(null);
+    const inputDias = ref([]);
     const dias = ref([]);
     const precio = ref(null);
 
@@ -95,6 +96,7 @@ export default {
       cantPlazas,
       timeOpen,
       timeClose,
+      inputDias,
       dias,
       optionsPlazas: [
         {

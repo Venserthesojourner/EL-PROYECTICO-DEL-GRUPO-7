@@ -2,16 +2,17 @@
 <!-- eslint-disable max-len -->
 <template>
   <q-layout view="hHh Lpr lff">
-    <q-header reveal class="bg-white text-primary q-py-lg q-px-xl">
+    <q-header reveal class="bg-white text-primary q-py-lg q-px-lg">
       <q-toolbar>
+        <!-- Logo -->
         <q-avatar>
           <img src="../assets/logo2.png">
         </q-avatar>
-
+        <!-- Nombre del sitio -->
         <q-toolbar-title class="chichilo text-weight-bold text-uppercase">Chichilo</q-toolbar-title>
 
         <q-space />
-
+        <!-- Menú -->
         <q-tabs class="gt-sm" v-model="tab" shrink>
           <q-route-tab to="/" name="home" label="Home" exact />
           <q-route-tab href="/#about" name="about" label="About" exact />
