@@ -48,8 +48,9 @@
           </template>
         </q-input>
         <!-- Seleccionar Días -->
-        <q-field filled hint="Seleccione los días en los que el estacionamiento estará abierto" lazy-rules
-          :rules="[ val => val && val.length > 0 || 'Debes seleccionar como mínimo un día']" :model-value="dias">
+        <q-field filled ref="inputDias" hint="Seleccione los días en los que el estacionamiento estará abierto"
+          lazy-rules :rules="[ val => val && val.length > 0 || 'Debes seleccionar como mínimo un día']"
+          :model-value="dias">
           <template v-slot:control>
             <q-option-group name="selection_day" v-model="dias" :options="optionsDays" color="green" type="checkbox"
               inline />
@@ -83,6 +84,7 @@ export default {
     const cantPlazas = ref(null);
     const timeOpen = ref(null);
     const timeClose = ref(null);
+    const inputDias = ref([]);
     const dias = ref([]);
     const precio = ref(null);
 
@@ -92,6 +94,7 @@ export default {
       cantPlazas,
       timeOpen,
       timeClose,
+      inputDias,
       dias,
       optionsPlazas: [
         4, 5, 6, 7, 8, 9, 10,

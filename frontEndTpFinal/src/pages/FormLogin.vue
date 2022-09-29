@@ -7,20 +7,25 @@
       <q-card-section>
         <p class="text-h4 text-center">Ingresar al panel</p>
       </q-card-section>
-      <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
-        <q-input filled v-model="username" type="text" label="Nombre de usuario *" hint="Ingrese su nombre de usuario"
-          lazy-rules :rules="[ val => val && val.length > 0 || 'Por favor, ingrese su nombre de usuario']" />
 
-        <q-input filled type="password" v-model="password" label="Contraseña *" hint="Ingrese su contraseña" lazy-rules
-          :rules="[
-                    val => val !== null && val !== '' || 'Por favor, ingrese su contraseña',
-          ]" />
+      <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
+        <!-- Nombre de Usuario -->
+        <q-input filled v-model="username" type="text" hint="Ingrese su nombre de usuario" lazy-rules
+          :rules="[ val => val && val.length > 0 || 'Por favor, ingrese su nombre de usuario']" />
+        <!-- Password -->
+        <q-input filled v-model="password" :type="isPwd ? 'password' : 'text'" hint="Ingrese su contraseña" :rules="[
+        val => val !== null && val !== '' || 'Por favor, ingrese su contraseña']">
+          <template v-slot:append>
+            <q-icon :name="isPwd ? 'visibility_off' : 'visibility'" class="cursor-pointer" @click="isPwd = !isPwd" />
+          </template>
+        </q-input>
+        <!-- Registrate -->
         <div class="row items-center">
-          <span>¿No tenes cuenta?,</span>
-          <q-btn to="register" flat no-caps dense style="color: #FF0080" label="Registrate" />
+          <span>¿No tenes cuenta?, <a href="register">Registrate</a></span>
         </div>
+        <!-- Botones -->
         <div class="row justify-end">
-          <q-btn label="Limpiar" type="reset" color="primary" flat class="q-ml-sm" />
+          <q-btn label="Limpiar" type="reset" color="primary" flat class="q-mr-sm" />
           <q-btn label="Ingresar" type="submit" color="primary" />
         </div>
       </q-form>
@@ -28,7 +33,7 @@
     </q-card>
   </q-page>
 </template>
-<!-- eslint-disable linebreak-style -->
+
 <script>
 import { useQuasar } from 'quasar';
 import { ref } from 'vue';
@@ -44,6 +49,7 @@ export default {
     return {
       username,
       password,
+      isPwd: ref(true),
 
       onSubmit() {
         if (data.users[0].name === username.value) {
