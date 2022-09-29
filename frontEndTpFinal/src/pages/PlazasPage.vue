@@ -1,3 +1,4 @@
+<!-- eslint-disable linebreak-style -->
 <template>
   <div class="q-pa-md">
     <div class="row justify-center q-gutter-x-sm q-gutter-y-lg">
@@ -10,7 +11,11 @@
     </div>
   </div>
 </template>
+<!-- eslint-disable linebreak-style -->
+<script>
 
+</script>
+<!-- eslint-disable linebreak-style -->
 <style lang="sass" scoped>
 .card
   border: 1px solid $primary

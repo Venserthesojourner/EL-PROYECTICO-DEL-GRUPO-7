@@ -33,11 +33,12 @@
     </q-card>
   </q-page>
 </template>
-
+<!-- eslint-disable linebreak-style -->
 <script>
 import { useQuasar } from 'quasar';
 import { ref } from 'vue';
 import data from '../data/userRegister.json';
+import { useSessionStatus } from '../stores/session-store';
 
 export default {
   setup() {
@@ -59,6 +60,7 @@ export default {
             icon: 'cloud_done',
             message: 'Sesion iniciada',
           });
+          useSessionStatus.changeStatus();
         } else {
           $q.notify({
             color: 'red-4',
