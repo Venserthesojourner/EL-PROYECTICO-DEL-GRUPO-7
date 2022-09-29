@@ -14,8 +14,8 @@
 
         <q-tabs class="gt-sm" v-model="tab" shrink>
           <q-route-tab to="/" name="home" label="Home" exact />
-          <q-route-tab href="#about" name="about" label="About" exact />
-          <q-route-tab href="#contact" name="contact" label="Contact" exact />
+          <q-route-tab to="/#about" name="about" label="About" exact />
+          <q-route-tab to="/#contact" name="contact" label="Contact" exact />
           <q-route-tab to="login" name="login" label="Login" exact />
         </q-tabs>
         <!-- Boton Menú -->

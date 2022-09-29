@@ -68,7 +68,7 @@
           </q-list>
 
           <q-list padding>
-            <q-item clickable v-ripple>
+            <q-item clickable v-ripple to="/">
               <q-item-section avatar>
                 <q-icon name="fa-solid fa-right-from-bracket" />
               </q-item-section>
