@@ -5,7 +5,7 @@
 </div>
 <br>
 <div align="center">
-    ![This is a alt text.](/frontEndTpFinal/src/assets/car-reserva4.png "Imagen de Estacionamiento de autos")
+    <img src="frontEndTpFinal/src/assets/car-reserva4.png"></img>
     <h3>
         <a href="https://github.com/Venserthesojourner/EL-PROYECTICO-DEL-GRUPO-7/blob/markinio/README.md#descripción-">
       Descripción 📝
