@@ -1,13 +1,14 @@
 <!-- eslint-disable max-len -->
 <template>
   <q-layout view="hHh Lpr lff">
+    <!-- Header -->
     <q-header class="bg-secondary">
       <q-toolbar>
         <q-btn flat @click="drawer = !drawer" round dense icon="menu" />
         <q-toolbar-title>Panel de Admin</q-toolbar-title>
       </q-toolbar>
     </q-header>
-
+    <!-- Barra Lateral -->
     <q-drawer v-model="drawer" show-if-above :mini="!drawer || miniState" @click.capture="drawerClick" :width="200"
       :breakpoint="500" bordered class="bg-grey-3">
       <q-scroll-area class="fit">
@@ -80,26 +81,28 @@
           </q-list>
         </div>
       </q-scroll-area>
-
+      <!-- Botón para minimizar la barra lateral -->
       <div class="q-mini-drawer-hide absolute" style="top: 15px; right: -17px">
         <q-btn dense round unelevated color="secondary" icon="keyboard_arrow_left" @click="miniState = true" />
       </div>
     </q-drawer>
-
+    <!-- Page Container -->
     <q-page-container>
       <router-view />
-      <!-- place QPageScroller at end of page -->
-      <q-page-scroller position="bottom-right" :scroll-offset="150" :offset="[18, 18]">
-        <q-btn fab icon="fa-solid fa-chevron-up" color="positive" />
-      </q-page-scroller>
+      <BtnScrollerTop></BtnScrollerTop>
     </q-page-container>
   </q-layout>
 </template>
 
 <script>
 import { ref } from 'vue';
+import BtnScrollerTop from '../components/BtnScrollerTop.vue';
 
 export default {
+  components: {
+    BtnScrollerTop,
+  },
+
   setup() {
     const miniState = ref(false);
 

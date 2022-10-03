@@ -9,7 +9,7 @@
           <img src="../assets/logo2.png">
         </q-avatar>
         <!-- Nombre del sitio -->
-        <q-toolbar-title class="chichilo text-weight-bold text-uppercase">Chichilo</q-toolbar-title>
+        <q-toolbar-title class="text-weight-bold text-uppercase">Chichilo</q-toolbar-title>
 
         <q-space />
         <!-- Menú -->
@@ -44,19 +44,17 @@
         </q-scroll-area>
       </q-drawer>
     </div>
-
+    <!-- Page Container -->
     <q-page-container>
       <router-view />
-      <!-- place QPageScroller at end of page -->
-      <q-page-scroller position="bottom-right" :scroll-offset="150" :offset="[18, 18]">
-        <q-btn fab icon="fa-solid fa-chevron-up" color="positive" />
-      </q-page-scroller>
+      <BtnScrollerTop></BtnScrollerTop>
     </q-page-container>
   </q-layout>
 </template>
 
 <script>
 import { ref } from 'vue';
+import BtnScrollerTop from '../components/BtnScrollerTop.vue';
 
 const menuList = [
   {
@@ -74,6 +72,10 @@ const menuList = [
 ];
 
 export default {
+  components: {
+    BtnScrollerTop,
+  },
+
   setup() {
     return {
       tab: ref(''),
