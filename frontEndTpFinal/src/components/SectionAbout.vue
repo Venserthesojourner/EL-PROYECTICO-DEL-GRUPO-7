@@ -47,7 +47,7 @@
     background-repeat: no-repeat
     background-size: 100% 100px
     background-position: bottom center
-    -webkit-transform:rotate(180deg)
+    -webkit-transform: rotate(180deg)
     -moz-transform: rotate(180deg)
     -ms-transform: rotate(180deg)
     -o-transform: rotate(180deg)
