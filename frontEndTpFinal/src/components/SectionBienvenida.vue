@@ -1,6 +1,6 @@
 <!-- eslint-disable max-len -->
 <template>
-    <section>
+    <section id="bienvenida" class="q-mt-sm q-mb-xl">
         <div class="row justify-center items-center">
             <div class="col-12 col-md-5">
                 <p class="text-h3">Benvenuti a Chihilo</p>
@@ -15,7 +15,7 @@
             </div>
             <div class="col-12 col-md-5">
                 <div class="row justify-center">
-                    <img src="../assets/car-reserva2.jpg" alt="car reserva" style="height: auto; min-width: 200px;">
+                    <img src="../assets/car-reserva1.png" alt="car reserva" style="height: auto; min-width: 200px;">
                 </div>
             </div>
         </div>

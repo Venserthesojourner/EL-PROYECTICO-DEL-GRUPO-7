@@ -1,12 +1,7 @@
 <h1 align="center">TP FINAL - GRUPO 7</h1>
 
 <div align="center">
-   Este es nuestro proyecto para el Trabajo Práctico Final
-</div>
-<br>
-<div align="center">
-    <img src="frontEndTpFinal/src/assets/car-reserva4.png"></img>
-    <h3>
+   <h3>
         <a href="https://github.com/Venserthesojourner/EL-PROYECTICO-DEL-GRUPO-7/blob/markinio/README.md#descripción-">
       Descripción 📝
     </a>
@@ -19,6 +14,10 @@
       Construido con 🔨
     </a>
     </h3>
+</div>
+<br>
+<div align="center">
+    <img src="frontEndTpFinal/src/assets/car-reserva4.png"></img>
 </div>
 
 - **Nombre del grupo:** Grupo 7
