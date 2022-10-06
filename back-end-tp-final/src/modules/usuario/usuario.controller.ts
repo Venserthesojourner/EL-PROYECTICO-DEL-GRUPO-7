@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe } from '@nestjs/common';
 import { UsuarioService } from './usuario.service';
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
@@ -23,13 +22,13 @@ export class UsuarioController {
     return this.usuarioService.findUserbyId(+id);
   }
 
-  @Get(':username')
+  @Get('/username/:username')
   findOneByUsername(@Param('username') username: string) {
     return this.usuarioService.findUserbyId(+username);
   }
 
 
-  @Get(':role')
+  @Get('/role/:role')
   findOnebyRole(@Param('role') role: string) {
     return this.usuarioService.findUserbyId(+role);
   }

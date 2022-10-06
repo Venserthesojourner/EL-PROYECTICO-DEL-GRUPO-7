@@ -1,6 +1,5 @@
 <!-- eslint-disable linebreak-style -->
 <!-- eslint-disable max-len -->
-<!-- eslint-disable comma-dangle -->
 <template>
   <q-page class="q-pa-md row q-col-gutter-sm">
     <div class="col-12 col-md-6 justify-center">
