@@ -32,12 +32,30 @@ export default route(() => {
     history: createHistory(process.env.VUE_ROUTER_BASE),
   });
 
+  /* Router.beforeEach((to, from) => {
+    const store = useSessionStatus();
+    if ((to.path === '/datos' && (store.login === 'logout'))
+      || (to.path === '/home' && (store.login === 'logout'))
+      || (to.path === '/home' && (store.login === 'logout'))
+    ) {
+      console.log('entre 1', to, from);
+      return { path: '/login', replace: true };
+    }
+    return { path: to.fullPath };
+  }); */
+
   Router.beforeEach((to, from, next) => {
     const store = useSessionStatus();
-    console.log(to);
-    if (!to.meta.auth && (store.login === 'logout')) {
-      console.log('entre');
-      next('/login');
+    if (to.matched.some((record) => record.meta.auth)) { // <-- check for requiresAuth here
+      // assuming your login mixin works
+      // if I were you I'd store some JWT in localStorage and check that somehow in a vuex getter
+      if (store.login === 'logout') {
+        next('/login');
+      } else {
+        next();
+      }
+    } else {
+      next();
     }
   });
 

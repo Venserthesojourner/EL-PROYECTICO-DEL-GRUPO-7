@@ -7,6 +7,8 @@
       <q-card-section class="text-center">
         <p class="text-h4">Solicitar el servicio</p>
         <span class="text-subtitle2">Los datos marcados con (*) son obligatorios</span>
+        <pre>{{store.login}}</pre>
+
       </q-card-section>
 
       <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
@@ -69,12 +71,13 @@
 import { useQuasar } from 'quasar';
 import { ref } from 'vue';
 import data from '../data/userRegister.json';
+import { useSessionStatus } from '../stores/session-store';
 
 export default {
 
   setup() {
     const $q = useQuasar();
-
+    const store = useSessionStatus();
     const nombre = ref(null);
     const apellido = ref(null);
     const mail = ref(null);
@@ -82,6 +85,7 @@ export default {
     const accept = ref(false);
 
     return {
+      store,
       nombre,
       apellido,
       mail,

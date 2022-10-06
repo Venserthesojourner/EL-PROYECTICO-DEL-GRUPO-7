@@ -1,5 +1,4 @@
 /* eslint-disable linebreak-style */
-import { Meta } from 'quasar';
 import { RouteRecordRaw } from 'vue-router';
 
 const routes: RouteRecordRaw[] = [
@@ -15,9 +14,9 @@ const routes: RouteRecordRaw[] = [
   },
 
   {
-    path: '/',
+    path: '/home',
     component: () => import('layouts/AdminLayout.vue'),
-    meta: { auth: false },
+    meta: { auth: true },
     children: [
       { path: 'plazas', component: () => import('pages/PlazasPage.vue') },
       { path: 'precios', component: () => import('pages/PreciosPage.vue') },
