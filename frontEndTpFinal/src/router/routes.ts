@@ -7,15 +7,16 @@ const routes: RouteRecordRaw[] = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/IndexPage.vue') },
-      { path: 'login', component: () => import('pages/FormLogin.vue') },
-      { path: 'register', component: () => import('pages/FormRegister.vue') },
-      { path: 'datos', component: () => import('pages/FormData.vue') },
+      { path: 'login', component: () => import('pages/FormLogin.vue'), meta: { auth: false } },
+      { path: 'register', component: () => import('pages/FormRegister.vue'), meta: { auth: false } },
+      { path: 'datos', component: () => import('pages/FormData.vue'), meta: { auth: true } },
     ],
   },
 
   {
-    path: '/',
+    path: '/home',
     component: () => import('layouts/AdminLayout.vue'),
+    meta: { auth: true },
     children: [
       { path: 'plazas', component: () => import('pages/PlazasPage.vue') },
       { path: 'precios', component: () => import('pages/PreciosPage.vue') },

@@ -6,6 +6,7 @@
 
       <q-card-section>
         <p class="text-h4 text-center">Ingresar al panel</p>
+        <pre>{{store.login}}</pre>
       </q-card-section>
 
       <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
@@ -33,24 +34,27 @@
     </q-card>
   </q-page>
 </template>
-
+<!-- eslint-disable linebreak-style -->
 <script>
 import { useQuasar } from 'quasar';
 import { ref } from 'vue';
 import data from '../data/userRegister.json';
+import { useSessionStatus } from '../stores/session-store';
 
 export default {
   setup() {
     const $q = useQuasar();
 
+    const store = useSessionStatus();
+
     const username = ref(null);
     const password = ref(null);
 
     return {
+      store,
       username,
       password,
       isPwd: ref(true),
-
       onSubmit() {
         if (data.users[0].name === username.value) {
           $q.notify({
@@ -59,6 +63,8 @@ export default {
             icon: 'cloud_done',
             message: 'Sesion iniciada',
           });
+          store.changeStatus();
+          alert(store.login);
         } else {
           $q.notify({
             color: 'red-4',

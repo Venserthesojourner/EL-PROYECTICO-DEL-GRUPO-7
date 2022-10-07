@@ -141,7 +141,7 @@ export default {
       border-radius: 1rem
       & .card-title
         background-color: #ffffff
-        background-image: url("../assets/background-c3.png")
+        background-image: url("../assets/background-rd1.png")
         &.text-h4
           text-shadow: 0 0 5px #dfd2ff
       & .card-precio
