@@ -14,7 +14,7 @@ const routes: RouteRecordRaw[] = [
   },
 
   {
-    path: '/home',
+    path: '/dashboard',
     component: () => import('layouts/AdminLayout.vue'),
     meta: { auth: true },
     children: [
