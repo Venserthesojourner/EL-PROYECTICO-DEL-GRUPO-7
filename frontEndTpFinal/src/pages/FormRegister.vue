@@ -23,7 +23,7 @@
         <div class="row items-center">
           <q-toggle v-model="accept" checked-icon="check" color="green" unchecked-icon="clear" lazy-rules
             @click="accept = false" :rules="[val => val && val === false || 'Debe ver los terminos y condiciones']" />
-          <span class="text-primary cursor-pointer" @click="toolbar = true">Ver terminos y condiciones</span>
+          <span class="text-primary cursor-pointer" @click="basic = true">Ver terminos y condiciones</span>
         </div>
 
         <div class="row justify-between">
@@ -40,27 +40,13 @@
     </q-card>
 
     <!-- Modal / Dialog de Terminos y Condiciones -->
-    <q-dialog v-model="toolbar">
+    <q-dialog v-model="basic">
       <q-card>
-        <q-toolbar>
-          <q-avatar>
-            <img src="../assets/logo2.png">
-          </q-avatar>
 
-          <q-toolbar-title>
-            <div class="text-h6">Terms of Agreement</div>
-          </q-toolbar-title>
+        <TerminosDeUso></TerminosDeUso>
 
-          <q-btn flat round dense icon="close" v-close-popup />
-        </q-toolbar>
-        <q-separator />
-        <q-card-section style="max-height: 50vh" class="scroll">
-          <p v-for="n in 15" :key="n">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum repellendus sit
-            voluptate voluptas eveniet porro. Rerum blanditiis perferendis totam, ea at omnis vel numquam
-            exercitationem aut, natus minima, porro labore.</p>
-        </q-card-section>
         <q-card-actions align="right">
-          <q-btn flat label="Acepto los terminos y condiciones" color="primary" v-close-popup @click="accept = true" />
+          <q-btn flat label="Aceptar" color="primary" v-close-popup @click="accept = true" />
         </q-card-actions>
       </q-card>
     </q-dialog>
@@ -72,8 +58,13 @@ import { useQuasar } from 'quasar';
 import { ref } from 'vue';
 import data from '../data/userRegister.json';
 import { useSessionStatus } from '../stores/session-store';
+import TerminosDeUso from '../components/TerminosDeUso.vue';
 
 export default {
+
+  components: {
+    TerminosDeUso,
+  },
 
   setup() {
     const $q = useQuasar();
@@ -91,7 +82,7 @@ export default {
       mail,
       comentario,
       accept,
-      toolbar: ref(false),
+      basic: ref(false),
 
       isValidEmail(val) {
         const emailRegex = /^(?=[a-zA-Z0-9@._%+-]{6,254}$)[a-zA-Z0-9._%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\.){1,8}[a-zA-Z]{2,63}$/;
@@ -116,7 +107,7 @@ export default {
           };
 
           data.users = data.users.concat(newUser);
-          alert(JSON.stringify(data.users));
+          // alert(JSON.stringify(data.users));
 
           setTimeout(() => {
             $q.notify({
