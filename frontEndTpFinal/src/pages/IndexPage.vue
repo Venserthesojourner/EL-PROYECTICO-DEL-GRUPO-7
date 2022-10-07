@@ -11,8 +11,8 @@
             Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
           <q-btn to="register" push color="accent" size="lg"
             class="q-px-lg q-py-xs q-mr-md q-mb-md border-radius-inherit" label="Registrarse" no-caps />
-          <q-btn push color="primary" size="lg" class="q-px-lg q-py-xs q-mb-md border-radius-inherit"
-            label="Descargar App" no-caps />
+          <q-btn push color="primary" size="lg" href="https://play.google.com/store/apps" target="blank"
+            class="q-px-lg q-py-xs q-mb-md border-radius-inherit" label="Descargar App" no-caps />
         </div>
         <div class="col-12 col-md-5">
           <div class="row justify-center">
