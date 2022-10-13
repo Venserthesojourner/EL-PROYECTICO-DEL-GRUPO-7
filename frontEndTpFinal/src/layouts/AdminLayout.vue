@@ -16,7 +16,7 @@
           <q-list padding>
             <q-item to="plazas" clickable v-ripple>
               <q-item-section avatar>
-                <q-icon name="fa-solid fa-grip" />
+                <q-icon name="apps" />
               </q-item-section>
 
               <q-item-section>
@@ -24,7 +24,7 @@
               </q-item-section>
             </q-item>
 
-            <q-expansion-item expand-separator icon="fa-solid fa-dollar-sign" label="Montos">
+            <q-expansion-item expand-separator icon="attach_money" label="Montos">
 
               <q-list>
                 <q-item to="precios" clickable v-ripple>
@@ -48,7 +48,7 @@
 
             <q-item to="horarios" clickable v-ripple>
               <q-item-section avatar>
-                <q-icon name="fa-regular fa-clock" />
+                <q-icon name="schedule" />
               </q-item-section>
 
               <q-item-section>
@@ -58,7 +58,7 @@
 
             <q-item to="configuraciones" clickable v-ripple>
               <q-item-section avatar>
-                <q-icon name="fa-solid fa-gear" />
+                <q-icon name="settings" />
               </q-item-section>
 
               <q-item-section>
@@ -71,7 +71,7 @@
           <q-list padding>
             <q-item clickable v-ripple to="/">
               <q-item-section avatar>
-                <q-icon name="fa-solid fa-right-from-bracket" />
+                <q-icon name="logout" />
               </q-item-section>
 
               <q-item-section>

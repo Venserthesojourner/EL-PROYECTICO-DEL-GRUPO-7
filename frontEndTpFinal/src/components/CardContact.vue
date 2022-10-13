@@ -1,14 +1,45 @@
+<!-- eslint-disable max-len -->
 <template>
+    <!-- Luis -->
     <q-card class="my-card q-my-xl">
-        <!-- <div class="img-contact">
-            <img src="https://cdn.quasar.dev/img/mountains.jpg" />
-        </div> -->
-        <q-img class="img-contact" src="https://cdn.quasar.dev/img/parallax2.jpg"></q-img>
+        <q-img class="img-contact" src="../assets/luisContact.jpg"></q-img>
 
         <div class="content column justify-end items-center">
             <q-card-section class="text-center">
-                <span class="text-h6">Luis Miguel Cañete</span><br>
+                <span class="text-h6">Luis Cañete</span><br>
                 <span class="contact-cite text-subtitle1">Odio a Mario Bros</span>
+
+                <q-card-actions class="justify-center">
+                    <q-btn round dense unelevated href="https://github.com/Venserthesojourner" target="_blank"
+                        icon="fa-brands fa-github" size=" 24px" />
+                </q-card-actions>
+            </q-card-section>
+        </div>
+    </q-card>
+    <!-- Manuel -->
+    <q-card class="my-card q-my-xl">
+        <q-img class="img-contact" src="../assets/manuContact.jpg"></q-img>
+
+        <div class="content column justify-end items-center">
+            <q-card-section class="text-center">
+                <span class="text-h6">Manuel Ortiz</span><br>
+                <span class="contact-cite text-subtitle1">Wakandaaaaaa</span>
+
+                <q-card-actions class="justify-center">
+                    <q-btn round dense unelevated href="https://github.com/hctmanuelortiz" target="_blank"
+                        icon="fa-brands fa-github" size=" 24px" />
+                </q-card-actions>
+            </q-card-section>
+        </div>
+    </q-card>
+    <!-- Marcos -->
+    <q-card class="my-card q-my-xl">
+        <q-img class="img-contact" src="../assets/marcosContact.jpg"></q-img>
+
+        <div class="content column justify-end items-center">
+            <q-card-section class="text-center">
+                <span class="text-h6">Marcos Travaglini</span><br>
+                <span class="contact-cite text-subtitle1">Que interesante Marge</span>
 
                 <q-card-actions class="justify-center">
                     <q-btn round dense unelevated href="https://github.com/Blackpachamame" target="_blank"
@@ -20,7 +51,7 @@
 </template>
 
 <style lang="sass" scoped>
-.my-card
+.q-card
     width: 250px
     height: 150px
     border-radius: 20px
