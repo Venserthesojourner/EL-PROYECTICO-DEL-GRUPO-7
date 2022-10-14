@@ -1,4 +1,6 @@
+<!-- eslint-disable linebreak-style -->
 <!-- eslint-disable max-len -->
+
 <template>
   <q-layout view="hHh Lpr lff">
     <!-- Header -->
@@ -69,7 +71,7 @@
           </q-list>
 
           <q-list padding>
-            <q-item clickable v-ripple to="/">
+            <q-item clickable @click=logoutSession() v-ripple to="/login">
               <q-item-section avatar>
                 <q-icon name="fa-solid fa-right-from-bracket" />
               </q-item-section>
@@ -93,10 +95,11 @@
     </q-page-container>
   </q-layout>
 </template>
-
+<!-- eslint-disable linebreak-style -->
 <script>
 import { ref } from 'vue';
 import BtnScrollerTop from '../components/BtnScrollerTop.vue';
+import { useSessionStatus } from '../stores/session-store';
 
 export default {
   components: {
@@ -105,11 +108,17 @@ export default {
 
   setup() {
     const miniState = ref(false);
+    const store = useSessionStatus();
 
     return {
       drawer: ref(false),
       miniState,
+      store,
 
+      logoutSession() {
+        store.changeStatus();
+        alert(store.login);
+      },
       drawerClick(e) {
         // if in "mini" state and user
         // click on drawer, we switch it to "normal" mode
@@ -124,5 +133,6 @@ export default {
       },
     };
   },
+
 };
 </script>

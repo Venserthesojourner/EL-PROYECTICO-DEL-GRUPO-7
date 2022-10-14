@@ -47,14 +47,32 @@ export default route(() => {
   Router.beforeEach((to, from, next) => {
     const store = useSessionStatus();
     if (to.matched.some((record) => record.meta.auth)) { // <-- check for requiresAuth here
-      // assuming your login mixin works
-      // if I were you I'd store some JWT in localStorage and check that somehow in a vuex getter
+      console.log('primer if');
+      console.log(to.matched.some((record) => record.meta.auth));
+      console.log('esta es la ruta: ', to.fullPath);
       if (store.login === 'logout') {
         next('/login');
+        console.log('No esta logeado y me redirige a Login');
       } else {
         next();
       }
+    } else if (!to.matched.some((record) => record.meta.auth)) {
+      console.log('else if');
+      // <-- check for requiresAuth here
+      if (store.login === 'login') {
+        console.log('entro, porque esta logueado');
+        if (to.fullPath === '/login' || to.fullPath === '/register') {
+          next('/home');
+          console.log('Esta logeado y me redirige a Home');
+        } else {
+          next();
+        }
+      } else {
+        console.log('todo pelota, siga siga');
+        next();
+      }
     } else {
+      console.log('no entro al if');
       next();
     }
   });

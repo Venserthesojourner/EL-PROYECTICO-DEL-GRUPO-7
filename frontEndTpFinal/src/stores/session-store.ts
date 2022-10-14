@@ -1,9 +1,10 @@
 /* eslint-disable linebreak-style */
 import { defineStore } from 'pinia';
+import { useStorage } from '@vueuse/core';
 
 export const useSessionStatus = defineStore('sessionStatus', {
   state: () => ({
-    status: false,
+    status: useStorage('state', false),
   }),
   getters: {
     login: (state) => {
