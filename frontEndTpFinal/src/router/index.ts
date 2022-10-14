@@ -62,7 +62,7 @@ export default route(() => {
       if (store.login === 'login') {
         console.log('entro, porque esta logueado');
         if (to.fullPath === '/login' || to.fullPath === '/register') {
-          next('/home');
+          next('/dashboard');
           console.log('Esta logeado y me redirige a Home');
         } else {
           next();
