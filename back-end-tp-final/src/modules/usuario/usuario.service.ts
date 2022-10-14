@@ -20,6 +20,13 @@ export class UsuarioService {
       // Se crea una instancia de operador (Necesito hacer una busqueda del Id del estacionamiento al que sera asociado)
       console.table(newUser)
     }
+    /*
+    {
+      object: newUser,
+      success: true || false,
+      msg: errorMsg.ENUM
+    }
+    */
     return newUser;
   }
 
