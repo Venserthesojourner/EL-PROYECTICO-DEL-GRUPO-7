@@ -1,13 +1,8 @@
 <!-- eslint-disable linebreak-style -->
 <template>
   <div class="q-pa-md">
-    <div class="row q-gutter-x-sm q-gutter-y-lg">
-      <!-- <q-intersection v-for="index in 5" :key="index" class="example-item">
-        <q-card class="card q-ma-sm q-pa-sm" style="height: 250px">
-          <div class="text-h6">Plaza #{{ index }}</div>
-          <div class="text-subtitle2">00:00:00</div>
-        </q-card>
-      </q-intersection>-->
+    <div class="container-plaza row justify-start">
+      <CardPlazaAdd></CardPlazaAdd>
       <CardPlaza></CardPlaza>
     </div>
   </div>
@@ -15,10 +10,18 @@
 
 <script>
 import CardPlaza from '../components/CardPlaza.vue';
+import CardPlazaAdd from '../components/CardPlazaAdd.vue';
 
 export default {
   components: {
     CardPlaza,
+    CardPlazaAdd,
   },
 };
 </script>
+
+<style lang="sass" scoped>
+@media(max-width: 600px)
+  .container-plaza
+      justify-content: center
+</style>

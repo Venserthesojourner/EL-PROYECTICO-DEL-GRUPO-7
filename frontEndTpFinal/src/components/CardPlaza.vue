@@ -1,7 +1,7 @@
 <!-- eslint-disable max-len -->
 <template>
     <q-intersection v-for="index in 10" :key="index">
-        <q-card dark class="card q-ma-sm column justify-between" style="height: 250px">
+        <q-card dark class="q-ma-sm column justify-between" style="height: 250px; width: 200px">
             <span class="cuadrito"></span>
             <q-card-section>
                 <div class="text-h6">
