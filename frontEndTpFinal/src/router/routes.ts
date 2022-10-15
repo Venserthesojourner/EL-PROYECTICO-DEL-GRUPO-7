@@ -18,12 +18,12 @@ const routes: RouteRecordRaw[] = [
     component: () => import('layouts/AdminLayout.vue'),
     meta: { auth: true },
     children: [
-      { path: '/plazas', component: () => import('pages/PlazasPage.vue'), meta: { auth: true } },
-      { path: '/precios', component: () => import('pages/PreciosPage.vue'), meta: { auth: true } },
-      { path: '/promociones', component: () => import('pages/PromocionesPage.vue'), meta: { auth: true } },
-      { path: '/planes', component: () => import('pages/PlanesPage.vue'), meta: { auth: true } },
-      { path: '/horarios', component: () => import('pages/HorariosPage.vue'), meta: { auth: true } },
-      { path: '/configuraciones', component: () => import('pages/ConfiguracionesPage.vue'), meta: { auth: true } },
+      { path: 'plazas', component: () => import('pages/PlazasPage.vue'), meta: { auth: true } },
+      { path: 'precios', component: () => import('pages/PreciosPage.vue'), meta: { auth: true } },
+      { path: 'promociones', component: () => import('pages/PromocionesPage.vue'), meta: { auth: true } },
+      { path: 'planes', component: () => import('pages/PlanesPage.vue'), meta: { auth: true } },
+      { path: 'horarios', component: () => import('pages/HorariosPage.vue'), meta: { auth: true } },
+      { path: 'configuraciones', component: () => import('pages/ConfiguracionesPage.vue'), meta: { auth: true } },
     ],
   },
 

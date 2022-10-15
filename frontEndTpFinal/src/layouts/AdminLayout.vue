@@ -1,6 +1,5 @@
 <!-- eslint-disable linebreak-style -->
 <!-- eslint-disable max-len -->
-
 <template>
   <q-layout view="hHh Lpr lff">
     <!-- Header -->
@@ -11,10 +10,11 @@
       </q-toolbar>
     </q-header>
     <!-- Barra Lateral -->
-    <q-drawer v-model="drawer" show-if-above :mini="!drawer || miniState" @click.capture="drawerClick" :width="200"
-      :breakpoint="500" bordered class="bg-grey-3">
-      <q-scroll-area class="fit">
-        <div class="column justify-between" style="min-height: calc(100vh - 50px);">
+    <q-drawer v-model="drawer" show-if-above :width="200" :breakpoint="500" class="bg-grey-3">
+      <!-- Opciones Dashboard -->
+      <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px;">
+        <div class="column justify-between" style="min-height: calc(100vh - 200px);">
+          <!-- Opciones -->
           <q-list padding>
             <q-item to="plazas" clickable v-ripple>
               <q-item-section avatar>
@@ -69,7 +69,7 @@
             </q-item>
 
           </q-list>
-
+          <!-- Cerrar Sesión -->
           <q-list padding>
             <q-item clickable @click=logoutSession() v-ripple to="/login">
               <q-item-section avatar>
@@ -83,10 +83,16 @@
           </q-list>
         </div>
       </q-scroll-area>
-      <!-- Botón para minimizar la barra lateral -->
-      <div class="q-mini-drawer-hide absolute" style="top: 15px; right: -17px">
-        <q-btn dense round unelevated color="secondary" icon="keyboard_arrow_left" @click="miniState = true" />
-      </div>
+      <!-- Perfil Usuario -->
+      <q-img class="absolute-top" src="../assets/background-l2.png" style="height: 150px">
+        <div class="absolute-bottom bg-transparent">
+          <q-avatar size="56px" class="q-mb-sm">
+            <img src="../assets/manuContact.jpg">
+          </q-avatar>
+          <div class="text-weight-bold">Manuel Ortiz</div>
+          <div>Admin</div>
+        </div>
+      </q-img>
     </q-drawer>
     <!-- Page Container -->
     <q-page-container>
