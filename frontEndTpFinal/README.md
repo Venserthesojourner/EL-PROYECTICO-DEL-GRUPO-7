@@ -62,6 +62,6 @@ Solución: Pasarse a una versión anterior que tenga soporte. De todas formas, e
 
 ## Bibliografía
 
-[Documentación de Quasar](https://quasar.dev)
-[Foro de Quasar](https://github.com/quasarframework/quasar/discussions/)
-[Comunidad de Quasar en Discord](https://discord.com/invite/5TDhbDg)
+- [Documentación de Quasar](https://quasar.dev)
+- [Foro de Quasar](https://github.com/quasarframework/quasar/discussions/)
+- [Comunidad de Quasar en Discord](https://discord.com/invite/5TDhbDg)
