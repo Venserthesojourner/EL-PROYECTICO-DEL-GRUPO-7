@@ -1,12 +1,27 @@
 # TP FINAL - FRONTEND
 
+## Requisitos
+
+```
+Node 12+ for Quasar CLI with Webpack, Node 14+ for Quasar CLI with Vite.
+Yarn v1 (strongly recommended), PNPM, or NPM.
+```
+
+## Instalación
+
+- Debemos estar parados en la carpeta del frontend: `cd frontEndTpFinal`
+
+`npm i -g @quasar/cli`
+`npm init quasar`
+
 ## ¿Cómo levantar el proyecto de quasar?
 
-- Nos paramos en la carpeta del frontend: `cd frontEndTpFinal`
 - Instalamos dependencias: `npm install`
 - Levantamos el proyecto: `quasar dev`
 
-## ¿Errores/Advertencias?
+Lo visualizamos en `http://localhost:9000/`
+
+## ¿Errores / Advertencias?
 
 1. Error de linebreak-style en windows: **`Expected linebreaks to be 'LF' but found 'CRLF' linebreak-style`**.
 
@@ -44,3 +59,9 @@ Please only submit bug reports when using the officially supported version.
 ```
 
 Solución: Pasarse a una versión anterior que tenga soporte. De todas formas, esta advertencia no afecta en el proyecto en general, solo es un mensaje molesto al momento de levantar el servidor.
+
+## Bibliografía
+
+[Documentación de Quasar](https://quasar.dev)
+[Foro de Quasar](https://github.com/quasarframework/quasar/discussions/)
+[Comunidad de Quasar en Discord](https://discord.com/invite/5TDhbDg)
