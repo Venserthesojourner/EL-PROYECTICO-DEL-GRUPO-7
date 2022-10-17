@@ -1,4 +1,3 @@
-import { TimestampProvider } from 'rxjs';
 import {
   BaseEntity,
   Column,
@@ -45,6 +44,15 @@ export class Usuario extends BaseEntity {
   @Column('varchar', { name: 'password', length: 250, nullable: false })
   password: string;
 
+<<<<<<< HEAD
+=======
+  @Column('varchar', { name: 'first_name', length: 45, nullable: false, default: '' })
+  firstName: string;
+
+  @Column("varchar", { name: 'last_name', length: 45, nullable: false, default: '' })
+  lastName: string;
+
+>>>>>>> abfe50c (Se modifican archivos que producian error de mailerconfig)
   @Column('varchar', {
     name: 'token',
     length: 45,
@@ -53,6 +61,7 @@ export class Usuario extends BaseEntity {
   })
   token: string;
 
+<<<<<<< HEAD
   @Column('varchar', {
     name: 'email',
     length: 45,
@@ -60,12 +69,19 @@ export class Usuario extends BaseEntity {
     unique: true,
   })
   email: string;
+=======
+  @Column('int', { name: 'dni', nullable: false })
+  dni: number;
+
+  @Column('varchar', { name: 'email', length: 45, nullable: false })
+  email: string
+>>>>>>> abfe50c (Se modifican archivos que producian error de mailerconfig)
 
   @Column('enum', { enum: role, enumName: 'role', default: role.CLIENT })
   role: string;
 
   @CreateDateColumn({ name: 'create_time', nullable: false })
-  createdAt: TimestampProvider;
+  createdAt: Date;
   @UpdateDateColumn({ name: 'update_time', nullable: false, default: null })
   updatedAt: Date;
   @DeleteDateColumn({ name: 'delete_time', nullable: false, default: null })

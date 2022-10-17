@@ -100,7 +100,11 @@ export class UsuarioService {
   }
 
   async findAllUsers() {
+<<<<<<< HEAD
     return await this.usuarioRepo.find();
+=======
+    return await this.userRepository.find()
+>>>>>>> abfe50c (Se modifican archivos que producian error de mailerconfig)
   }
 
   async findAllUsersByRole(role: string): Promise<Usuario[]> {

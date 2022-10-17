@@ -4,6 +4,10 @@ import { Module } from '@nestjs/common';
 import { MailService } from './mail.service';
 import { join } from 'path';
 import { ConfigService } from '@nestjs/config';
+<<<<<<< HEAD
+=======
+
+>>>>>>> abfe50c (Se modifican archivos que producian error de mailerconfig)
 
 @Module({
   imports: [
