@@ -34,7 +34,7 @@
     </div>
     <!-- Promoción -->
     <div class="col-12 col-md-6">
-      <q-table grid :card-container-class="cardContainerClass" title="Mis Promoción" :rows="rows" :columns="columns"
+      <q-table grid :card-container-class="cardContainerClass" title="Mis Promociones" :rows="rows" :columns="columns"
         row-key="name" :filter="filter" hide-header v-model:pagination="pagination"
         :rows-per-page-options="rowsPerPageOptions">
         <!-- Filtro -->
@@ -84,7 +84,7 @@ const deserts = [
 const rows = [];
 
 deserts.forEach((name) => {
-  for (let i = 0; i < 24; i += 1) {
+  for (let i = 0; i < 2; i += 1) {
     rows.push({ name: `${name}`, precio: 200 + Math.ceil(50 * Math.random()) });
   }
 });
