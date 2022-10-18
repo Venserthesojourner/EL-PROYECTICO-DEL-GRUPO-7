@@ -53,10 +53,11 @@
   </q-page>
 </template>
 <!-- eslint-disable linebreak-style -->
+<!-- eslint-disable max-len -->
 <script>
 import { useQuasar } from 'quasar';
 import { ref } from 'vue';
-import data from '../data/userRegister.json';
+import axios from 'axios';
 import { useSessionStatus } from '../stores/session-store';
 import TerminosDeUso from '../components/TerminosDeUso.vue';
 
@@ -97,29 +98,32 @@ export default {
             icon: 'warning',
             message: 'Tienes que ver y aceptar los terminos y condiciones',
           });
-        }
-        if (accept.value) {
-          const newUser = {
-            name: nombre.value,
-            username: apellido.value,
+        } else {
+          const body = {
+            firstName: nombre.value,
+            lastName: apellido.value,
             email: mail.value,
-            comment: comentario.value,
+            password: 'b7159b31a2fdf4ef8394df2234acca8fdbbc438f',
+            role: 'owner',
           };
-
-          data.users = data.users.concat(newUser);
-          // alert(JSON.stringify(data.users));
-
+          const route = '/usuario';
           setTimeout(() => {
+            axios.post(route, { body })
+              .then((response) => {
+                console.log(response);
+              })
+              .catch((error) => {
+                console.log(error);
+              });/*
             $q.notify({
               color: 'green-4',
               textColor: 'white',
               icon: 'cloud_done',
               message: 'Registro exitoso!',
-            });
+            }); */
           }, 3000);
         }
       },
-
       onReset() {
         nombre.value = null;
         apellido.value = null;
