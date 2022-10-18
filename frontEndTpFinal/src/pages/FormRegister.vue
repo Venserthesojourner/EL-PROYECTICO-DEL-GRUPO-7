@@ -106,7 +106,7 @@ export default {
             password: 'b7159b31a2fdf4ef8394df2234acca8fdbbc438f',
             role: 'owner',
           };
-          const route = '/usuario';
+          const route = 'http:/localhost:3000/usuario';
           setTimeout(() => {
             axios.post(route, { body })
               .then((response) => {
