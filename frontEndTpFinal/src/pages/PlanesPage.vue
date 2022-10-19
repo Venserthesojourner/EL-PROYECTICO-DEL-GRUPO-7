@@ -6,7 +6,7 @@
       <q-card flat class="q-pa-md" style="max-width: 500px">
 
         <q-card-section>
-          <p class="text-h4 text-center">Modificar Planes</p>
+          <p class="text-h4 text-center">Agregar Plan</p>
         </q-card-section>
 
         <q-form @submit.prevent="onSubmit" @reset="onReset" class="q-gutter-md">
@@ -23,8 +23,8 @@
           </q-input>
 
           <div class="row justify-end">
-            <q-btn label="Limpiar" type="reset" color="primary" flat class="q-ml-sm" />
-            <q-btn label="Actualizar plan" type="submit" color="primary" />
+            <q-btn label="Limpiar" type="reset" color="primary" flat class="q-mr-sm" />
+            <q-btn label="Agregar" type="submit" color="primary" />
           </div>
         </q-form>
 
@@ -63,22 +63,14 @@
 </template>
 
 <script>
-import { ref } from 'vue';
-
-const columns = [{
-  name: 'plan',
-}];
-
-const rows = [{
-  nombre: 'nombrePlan',
-  precio: 200 + Math.ceil(50 * Math.random()),
-}];
+import { useQuasar } from 'quasar';
+import { ref, computed, watch } from 'vue';
 
 export default {
   setup() {
+    const $q = useQuasar();
     const nombre = ref(null);
     const precio = ref(null);
-
     const filter = ref('');
     const planes = ref([]);
 
@@ -94,14 +86,36 @@ export default {
       precio.value = null;
     };
 
+    function getItemsPerPage() {
+      if ($q.screen.lt.sm) {
+        return 4;
+      }
+      if ($q.screen.lt.md) {
+        return 8;
+      }
+      return 2;
+    }
+
+    const pagination = ref({
+      page: 1,
+      rowsPerPage: getItemsPerPage(),
+    });
+
+    watch(() => $q.screen.name, () => {
+      pagination.value.rowsPerPage = getItemsPerPage();
+    });
+
     return {
       nombre,
       precio,
       onSubmit,
       onReset,
-      columns,
-      rows,
+      filter,
+      pagination,
       planes,
+      rowsPerPageOptions: computed(() => ($q.screen.gt.xs
+        ? $q.screen.gt.sm ? [2, 4, 8] : [2, 4]
+        : [2])),
     };
   },
 };
