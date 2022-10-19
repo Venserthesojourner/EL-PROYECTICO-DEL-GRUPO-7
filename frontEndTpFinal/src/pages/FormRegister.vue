@@ -2,6 +2,7 @@
 <!-- eslint-disable max-len -->
 <template>
   <q-page padding class="row items-center justify-evenly q-mb-lg">
+
     <q-card class="col-12 col-md-6 q-pa-md rounded-borders" style="max-width: 500px">
 
       <q-card-section class="text-center">
@@ -53,10 +54,12 @@
   </q-page>
 </template>
 <!-- eslint-disable linebreak-style -->
+<!-- eslint-disable max-len -->
 <script>
 import { useQuasar } from 'quasar';
 import { ref } from 'vue';
-import data from '../data/userRegister.json';
+import { useRouter } from 'vue-router';
+import axios from 'axios';
 import { useSessionStatus } from '../stores/session-store';
 import TerminosDeUso from '../components/TerminosDeUso.vue';
 
@@ -69,11 +72,22 @@ export default {
   setup() {
     const $q = useQuasar();
     const store = useSessionStatus();
+    const router = useRouter();
     const nombre = ref(null);
     const apellido = ref(null);
     const mail = ref(null);
     const comentario = ref(null);
     const accept = ref(false);
+
+    function alert() {
+      $q.dialog({
+        title: 'Importante!',
+        message: 'En breve recibira en email donde se indicaran los pasos a seguir, este atento a su bandeja de entrada por favor.',
+        persistent: true,
+      }).onDismiss(() => {
+        router.push('/login');
+      });
+    }
 
     return {
       store,
@@ -88,7 +102,6 @@ export default {
         const emailRegex = /^(?=[a-zA-Z0-9@._%+-]{6,254}$)[a-zA-Z0-9._%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\.){1,8}[a-zA-Z]{2,63}$/;
         return emailRegex.test(val) || 'Ingrese un email valido';
       },
-
       onSubmit() {
         if (accept.value !== true) {
           $q.notify({
@@ -97,29 +110,48 @@ export default {
             icon: 'warning',
             message: 'Tienes que ver y aceptar los terminos y condiciones',
           });
-        }
-        if (accept.value) {
-          const newUser = {
-            name: nombre.value,
-            username: apellido.value,
+        } else {
+          const body = {
+            firstName: nombre.value,
+            lastName: apellido.value,
             email: mail.value,
-            comment: comentario.value,
+            password: 'b7159b31a2fdf4ef8394df2234acca8fdbbc438f',
+            role: 'owner',
           };
-
-          data.users = data.users.concat(newUser);
-          // alert(JSON.stringify(data.users));
-
+          const route = 'http://localhost:3000/usuario';
           setTimeout(() => {
             $q.notify({
-              color: 'green-4',
-              textColor: 'white',
-              icon: 'cloud_done',
-              message: 'Registro exitoso!',
+              progress: true,
+              message: 'Registrando usuario...',
+              icon: 'progress',
+              color: 'white',
+              textColor: 'primary',
             });
-          }, 3000);
+            setTimeout(() => {
+              axios.post(route, { body })
+                .then((response) => {
+                  console.log(response);
+                  $q.notify({
+                    color: 'green-4',
+                    textColor: 'white',
+                    icon: 'cloud_done',
+                    message: 'Registro exitoso!',
+                  });
+                  alert();
+                })
+                .catch((error) => {
+                  console.log(error);
+                  $q.notify({
+                    message: 'Error en el registro de usuario, contactar con soporte.',
+                    icon: 'warning',
+                    color: 'red-5',
+                    textColor: 'white',
+                  });
+                });
+            }, 3000);
+          }, 2000);
         }
       },
-
       onReset() {
         nombre.value = null;
         apellido.value = null;
