@@ -1,13 +1,9 @@
 import { Inject, Injectable } from '@nestjs/common';
+import { hash } from 'bcrypt';
 import { Repository } from 'typeorm';
-import { CreateEmpleadoDto } from '../empleado/dto/create-empleado.dto';
-import { Empleado } from '../empleado/entities/empleado.entity';
-
-import { CreatePropietarioDto } from '../propietario/dto/create-propietario.dto';
-import { Propietario } from '../propietario/entities/propietario.entity';
-
-import { PropietarioService } from '../propietario/propietario.service';
+//import { PropietarioService } from '../propietario/propietario.service';
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
+import { UpdateUsuarioDto } from './dto/update-usuario.dto';
 import { Usuario } from './entities/usuario.entity';
 
 @Injectable()
@@ -15,12 +11,15 @@ export class UsuarioService {
   constructor(
     @Inject('USUARIO_REPOSITORY')
     private readonly usuarioRepo: Repository<Usuario>,
-    private readonly propietarioService: PropietarioService,
-    private readonly empleadoService: PropietarioService,
+    /* private readonly propietarioService: PropietarioService,
+    private readonly empleadoService: PropietarioService, */
   ) { }
 
-  async createNewUser(payload: CreateUsuarioDto, extraData): Promise<Usuario> {
+  async createNewUser(payload: CreateUsuarioDto): Promise<Usuario> {
+    const password = await hash(payload.password, 10)
+    payload.password = password
     const newUser = await this.usuarioRepo.save(payload)
+    /* 
     let response = {
       data: {
         user: CreateUsuarioDto || null,
@@ -63,10 +62,10 @@ export class UsuarioService {
       msg: errorMsg.ENUM
     }
     */
-    return response;
+    return newUser;
   }
 
-  async updateUserbyID(id: number, payload: CreateUsuarioDto) {
+  async updateUserbyID(id: number, payload: UpdateUsuarioDto) {
     await this.usuarioRepo.update(id, payload)
     const updatedUser = await this.usuarioRepo.find({
       where: { id },
@@ -75,7 +74,7 @@ export class UsuarioService {
     return updatedUser
   }
 
-  async updateUserbyUsername(username: string, payload: CreateUsuarioDto) {
+  async updateUserbyUsername(username: string, payload: UpdateUsuarioDto) {
     await this.usuarioRepo.update(username, payload)
     const updatedUser = await this.usuarioRepo.find({
       where: { username },

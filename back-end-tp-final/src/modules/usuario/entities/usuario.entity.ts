@@ -41,17 +41,11 @@ export class Usuario extends BaseEntity {
   @PrimaryGeneratedColumn('increment')
   id: number;
 
-  @Column('varchar', { name: 'username', length: 25, nullable: false })
+  @Column('varchar', { name: 'username', length: 25, nullable: false, unique: true })
   username: string;
 
   @Column('varchar', { name: 'password', length: 15, nullable: false })
   password: string;
-
-  @Column('varchar', { name: 'first_name', length: 45, nullable: false })
-  firstName: string;
-
-  @Column("varchar", { name: 'last_name', length: 45, nullable: false })
-  lastName: string;
 
   @Column('varchar', {
     name: 'token',
@@ -61,10 +55,7 @@ export class Usuario extends BaseEntity {
   })
   token: string;
 
-  @Column('int', { name: 'id_card_number', nullable: false })
-  dni: number;
-
-  @Column('varchar', { name: 'email', length: 45, nullable: false })
+  @Column('varchar', { name: 'email', length: 45, nullable: false, unique: true })
   email: string
 
   @Column('enum', { enum: role, enumName: 'role', default: role.CLIENT })
@@ -77,3 +68,16 @@ export class Usuario extends BaseEntity {
   @DeleteDateColumn({ name: 'delete_time', nullable: false, default: null })
   deletedAt: Date;
 }
+
+/* 
+
+  @Column('varchar', { name: 'first_name', length: 45, nullable: false })
+  firstName: string;
+
+  @Column("varchar", { name: 'last_name', length: 45, nullable: false })
+  lastName: string;
+
+  @Column('int', { name: 'id_card_number', nullable: false, unique: true })
+  dni: number;
+
+*/
