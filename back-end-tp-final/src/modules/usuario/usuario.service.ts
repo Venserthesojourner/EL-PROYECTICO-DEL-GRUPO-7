@@ -10,15 +10,14 @@ import { Usuario } from './entities/usuario.entity';
 export class UsuarioService {
   constructor(
     @Inject('USUARIO_REPOSITORY')
-    private readonly usuarioRepo: Repository<Usuario>,
-    /* private readonly propietarioService: PropietarioService,
-    private readonly empleadoService: PropietarioService, */
-  ) { }
+    private readonly usuarioRepo: Repository<Usuario> /* private readonly propietarioService: PropietarioService,
+    private readonly empleadoService: PropietarioService, */,
+  ) {}
 
   async createNewUser(payload: CreateUsuarioDto): Promise<Usuario> {
-    const password = await hash(payload.password, 10)
-    payload.password = password
-    const newUser = await this.usuarioRepo.save(payload)
+    //const password = await hash(payload.password, 10);
+    //payload.password = password;
+    const newUser = await this.usuarioRepo.save(payload);
     /* 
     let response = {
       data: {
@@ -66,58 +65,54 @@ export class UsuarioService {
   }
 
   async updateUserbyID(id: number, payload: UpdateUsuarioDto) {
-    await this.usuarioRepo.update(id, payload)
+    await this.usuarioRepo.update(id, payload);
     const updatedUser = await this.usuarioRepo.find({
       where: { id },
-      relations: []
-    })
-    return updatedUser
+      relations: [],
+    });
+    return updatedUser;
   }
 
   async updateUserbyUsername(username: string, payload: UpdateUsuarioDto) {
-    await this.usuarioRepo.update(username, payload)
+    await this.usuarioRepo.update(username, payload);
     const updatedUser = await this.usuarioRepo.find({
       where: { username },
-      relations: []
-    })
-    return updatedUser
+      relations: [],
+    });
+    return updatedUser;
   }
 
-  async findAllUsers(
-
-  ) {
-    return await this.usuarioRepo.find()
+  async findAllUsers() {
+    return await this.usuarioRepo.find();
   }
 
   async findAllUsersByRole(role: string): Promise<Usuario[]> {
-    const userList = await this.usuarioRepo.find(
-      { where: { role } }
-    );
+    const userList = await this.usuarioRepo.find({ where: { role } });
     return userList;
   }
 
   async findUserbyUsername(username: string): Promise<Usuario | undefined> {
     const usuario = this.usuarioRepo.findOne({
       where: { username: username },
-      relations: []
-    })
+      relations: [],
+    });
     return usuario;
   }
 
   async findUserbyId(id: number): Promise<Usuario | undefined> {
     const usuario = this.usuarioRepo.findOne({
       where: { id: id },
-      relations: []
-    })
+      relations: [],
+    });
     return usuario;
   }
   async deleteUserById(id: number) {
     const usuario = await this.usuarioRepo.findOne({
       where: { id: id },
-      relations: []
+      relations: [],
     });
     usuario.deletedAt = new Date();
-    const usuarioBorrado = await this.updateUserbyID(id, usuario)
-    return usuarioBorrado
+    const usuarioBorrado = await this.updateUserbyID(id, usuario);
+    return usuarioBorrado;
   }
 }

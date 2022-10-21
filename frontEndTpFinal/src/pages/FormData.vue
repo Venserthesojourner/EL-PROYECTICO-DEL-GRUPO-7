@@ -14,7 +14,7 @@
       <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
         <!-- DNI -->
         <q-input filled v-model="document" type="number" label="DNI" hint="Ingresa tu DNI" lazy-rules
-          :rules="[ val => val && val > 0 && val <= 8 || 'Debes ingresar tu DNI, solo se permiten 8 dígitos']" />
+          :rules="[ val => val && val > 0 && val <= 8 && val > 6 || 'Debes ingresar tu DNI, solo se permiten 8 dígitos']" />
         <!-- Razon Social -->
         <q-input filled v-model="razonSocial" type="text" label="Razon Social" hint="Ingresa tu razon social" lazy-rules
           :rules="[ val => val && val.length > 0 || 'Debes ingresar tu razon social']" />
@@ -72,7 +72,7 @@
     </q-card>
   </q-page>
 </template>
-
+<!-- eslint-disable linebreak-style -->
 <script>
 import { useQuasar } from 'quasar';
 import { ref } from 'vue';

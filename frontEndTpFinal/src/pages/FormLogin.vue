@@ -38,25 +38,37 @@
 <script>
 import { useQuasar } from 'quasar';
 import { ref } from 'vue';
-import data from '../data/userRegister.json';
 import { useSessionStatus } from '../stores/session-store';
 
 export default {
   setup() {
     const $q = useQuasar();
-
     const store = useSessionStatus();
-
+    const data = ref(null);
     const username = ref(null);
     const password = ref(null);
 
+    /* function loadData() {
+      api.get('/api/backend')
+        .then((response) => {
+          data.value = response.data;
+        })
+        .catch(() => {
+          $q.notify({
+            color: 'negative',
+            position: 'top',
+            message: 'Loading failed',
+            icon: 'report_problem',
+          });
+        });
+    } */
     return {
       store,
       username,
       password,
       isPwd: ref(true),
       onSubmit() {
-        if (data.users[0].name === username.value) {
+        if (username.value) {
           $q.notify({
             color: 'green-4',
             textColor: 'white',

@@ -13,9 +13,7 @@
       </q-card-section>
 
       <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
-        <q-input filled v-model="nombre" type="text" label="Nombre *" hint="Ingrese su/s nombre" lazy-rules
-          :rules="[ val => val && val.length > 0 || 'Please type something']" />
-        <q-input filled v-model="apellido" type="text" label="Apellido *" hint="Ingrese su/s apellido" lazy-rules
+        <q-input filled v-model="username" type="text" label="Nombre de usuario " hint="Ingrese su nombre de usuario" lazy-rules
           :rules="[ val => val && val.length > 0 || 'Please type something']" />
         <q-input filled v-model="mail" type="email" label="Email *" hint="Ingrese su email" lazy-rules
           :rules="[ val => val && val.length > 0 || 'Please type something', isValidEmail]" />
@@ -73,8 +71,7 @@ export default {
     const $q = useQuasar();
     const store = useSessionStatus();
     const router = useRouter();
-    const nombre = ref(null);
-    const apellido = ref(null);
+    const username = ref(null);
     const mail = ref(null);
     const comentario = ref(null);
     const accept = ref(false);
@@ -91,8 +88,7 @@ export default {
 
     return {
       store,
-      nombre,
-      apellido,
+      username,
       mail,
       comentario,
       accept,
@@ -112,8 +108,7 @@ export default {
           });
         } else {
           const body = {
-            firstName: nombre.value,
-            lastName: apellido.value,
+            username: username.value,
             email: mail.value,
             password: 'b7159b31a2fdf4ef8394df2234acca8fdbbc438f',
             role: 'owner',
@@ -153,8 +148,7 @@ export default {
         }
       },
       onReset() {
-        nombre.value = null;
-        apellido.value = null;
+        username.value = null;
         mail.value = null;
         comentario.value = null;
         accept.value = false;
