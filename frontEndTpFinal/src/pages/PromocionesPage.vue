@@ -32,7 +32,7 @@
     </div>
     <!-- Promoción -->
     <div class="col-12 col-md-6">
-      <q-table grid :card-container-class="cardContainerClass" title="Mis Promociones" :rows="promos" :columns="columns"
+      <q-table grid title="Mis Promociones" :rows="promos" :columns="columns"
         :promos="promos" row-key="name" :filter="filter" hide-header v-model:pagination="pagination"
         :rows-per-page-options="rowsPerPageOptions">
         <!-- Filtro -->
