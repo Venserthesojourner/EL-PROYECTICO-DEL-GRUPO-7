@@ -9,7 +9,7 @@
         </q-card-section>
 
         <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
-          <!-- Input Horario Entrada -->
+          <!-- Horario Entrada -->
           <q-input filled v-model="time" mask="time" :rules="['time']">
             <template v-slot:append>
               <q-icon name="access_time" class="cursor-pointer">
@@ -23,7 +23,7 @@
               </q-icon>
             </template>
           </q-input>
-          <!-- Input Horario Salida -->
+          <!-- Horario Salida -->
           <q-input filled v-model="time" mask="time" :rules="['time']">
             <template v-slot:append>
               <q-icon name="access_time" class="cursor-pointer">
@@ -37,17 +37,17 @@
               </q-icon>
             </template>
           </q-input>
-
+          <!-- Botones -->
           <div class="row justify-end">
-            <q-btn label="Limpiar" type="reset" color="primary" flat class="q-ml-sm" />
-            <q-btn label="Actualizar horario" type="submit" color="primary" />
+            <q-btn label="Limpiar" type="reset" color="primary" flat class="q-mr-sm" />
+            <q-btn label="Actualizar" type="submit" color="primary" />
           </div>
         </q-form>
       </q-card>
     </div>
     <!-- Horarios -->
     <div class="col-12 col-md-6">
-      <div class="q-pa-md col-12 col-lg-6 text-h4 text-center">Horarios</div>
+      <div class="q-pa-md col-12 q-mt-md col-lg-6 text-h4 text-center">Horarios</div>
       <!-- Entrada -->
       <div class="q-pa-md col-12 col-lg-6">
         <q-card class="text-center">
