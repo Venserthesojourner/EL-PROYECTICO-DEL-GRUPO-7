@@ -4,12 +4,12 @@
     <!-- Formulario -->
     <div class="col-12 col-md-6">
       <q-card flat class="q-pa-md" style="max-width: 500px">
-        <q-card-section>
+        <q-card-section class="q-pt-none">
           <p class="text-h4 text-center">Modificar Horarios</p>
         </q-card-section>
 
         <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
-          <!-- Input Horario Entrada -->
+          <!-- Horario Entrada -->
           <q-input filled v-model="time" mask="time" :rules="['time']">
             <template v-slot:append>
               <q-icon name="access_time" class="cursor-pointer">
@@ -23,7 +23,7 @@
               </q-icon>
             </template>
           </q-input>
-          <!-- Input Horario Salida -->
+          <!-- Horario Salida -->
           <q-input filled v-model="time" mask="time" :rules="['time']">
             <template v-slot:append>
               <q-icon name="access_time" class="cursor-pointer">
@@ -37,10 +37,10 @@
               </q-icon>
             </template>
           </q-input>
-
+          <!-- Botones -->
           <div class="row justify-end">
-            <q-btn label="Limpiar" type="reset" color="primary" flat class="q-ml-sm" />
-            <q-btn label="Actualizar horario" type="submit" color="primary" />
+            <q-btn label="Limpiar" type="reset" color="primary" flat class="q-mr-sm" />
+            <q-btn label="Actualizar" type="submit" color="primary" />
           </div>
         </q-form>
       </q-card>
@@ -84,12 +84,10 @@ export default {
   setup() {
     const $q = useQuasar();
 
-    const name = ref(null);
     const age = ref(null);
     const accept = ref(false);
 
     return {
-      name,
       age,
       accept,
       time: ref('10:56'),
@@ -113,7 +111,6 @@ export default {
       },
 
       onReset() {
-        name.value = null;
         age.value = null;
         accept.value = false;
       },
