@@ -4,7 +4,7 @@
     <!-- Formulario -->
     <div class="col-12 col-md-6">
       <q-card flat class="q-pa-md" style="max-width: 500px">
-        <q-card-section>
+        <q-card-section class="q-pt-none">
           <p class="text-h4 text-center">Modificar Horarios</p>
         </q-card-section>
 
@@ -47,7 +47,7 @@
     </div>
     <!-- Horarios -->
     <div class="col-12 col-md-6">
-      <div class="q-pa-md col-12 q-mt-md col-lg-6 text-h4 text-center">Horarios</div>
+      <div class="q-pa-md col-12 col-lg-6 text-h4 text-center">Horarios</div>
       <!-- Entrada -->
       <div class="q-pa-md col-12 col-lg-6">
         <q-card class="text-center">
@@ -84,12 +84,10 @@ export default {
   setup() {
     const $q = useQuasar();
 
-    const name = ref(null);
     const age = ref(null);
     const accept = ref(false);
 
     return {
-      name,
       age,
       accept,
       time: ref('10:56'),
@@ -113,7 +111,6 @@ export default {
       },
 
       onReset() {
-        name.value = null;
         age.value = null;
         accept.value = false;
       },

@@ -12,6 +12,9 @@
         <q-form @submit.prevent="onSubmit" @reset="onReset" class="q-gutter-md">
 
           <q-input filled v-model="name" type="text" label="Nombre" lazy-rules :rules="nameRules">
+            <template v-slot:prepend>
+              <q-icon name="edit" />
+            </template>
           </q-input>
 
           <q-input filled v-model="precio" type="number" label="Precio" hint="En pesos" lazy-rules :rules="precioRules">
@@ -137,7 +140,7 @@ export default {
       nameRules: [
         (val) => (val && val.length > 0) || 'Por favor, ingrese un nombre',
       ],
-      ageRules: [
+      precioRules: [
         (val) => (val && val.length > 0) || 'Por favor, ingrese un precio',
         (val) => (val > 0) || 'Por favor, ingrese un valor válido',
       ],
