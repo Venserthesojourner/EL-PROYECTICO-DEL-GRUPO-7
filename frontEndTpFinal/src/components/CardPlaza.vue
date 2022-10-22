@@ -1,12 +1,11 @@
 <!-- eslint-disable linebreak-style -->
 <!-- eslint-disable max-len -->
 <template>
-  <q-intersection v-for="index in 10" :key="index">
     <q-card dark class="q-ma-sm column justify-between" style="height: 250px; width: 200px">
       <span class="cuadrito"></span>
       <q-card-section>
         <div class="text-h6">
-          Plaza #{{ index }}
+          Plaza #{{ numPlaza }}
         </div>
       </q-card-section>
       <q-card-section class="column items-center">
@@ -18,7 +17,6 @@
         </q-btn-group>
       </q-card-section>
     </q-card>
-  </q-intersection>
 </template>
 <!-- eslint-disable linebreak-style -->
 <!-- eslint-disable max-len -->
@@ -26,6 +24,12 @@
 import { ref } from 'vue';
 
 export default {
+  props: ['index'],
+  data() {
+    return {
+      numPlaza: this.index,
+    };
+  },
   setup() {
     const timeShow = ref('00:00:00');
     const time = ref(Date.now());

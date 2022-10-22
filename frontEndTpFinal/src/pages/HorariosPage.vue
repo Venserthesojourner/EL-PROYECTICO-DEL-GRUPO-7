@@ -1,3 +1,4 @@
+<!-- eslint-disable linebreak-style -->
 <!-- eslint-disable max-len -->
 <template>
   <q-page padding class="row q-col-gutter-sm justify-center">
@@ -10,11 +11,11 @@
 
         <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
           <!-- Horario Entrada -->
-          <q-input filled v-model="time" mask="time" :rules="['time']">
+          <q-input filled v-model="timeEntrada" mask="time" :rules="['time']">
             <template v-slot:append>
               <q-icon name="access_time" class="cursor-pointer">
                 <q-popup-proxy cover transition-show="scale" transition-hide="scale">
-                  <q-time v-model="time">
+                  <q-time v-model="timeEntrada">
                     <div class="row items-center justify-end">
                       <q-btn v-close-popup label="Close" color="primary" flat />
                     </div>
@@ -24,11 +25,11 @@
             </template>
           </q-input>
           <!-- Horario Salida -->
-          <q-input filled v-model="time" mask="time" :rules="['time']">
+          <q-input filled v-model="timeSalida" mask="time" :rules="['time']">
             <template v-slot:append>
               <q-icon name="access_time" class="cursor-pointer">
                 <q-popup-proxy cover transition-show="scale" transition-hide="scale">
-                  <q-time v-model="time">
+                  <q-time v-model="timeSalida">
                     <div class="row items-center justify-end">
                       <q-btn v-close-popup label="Close" color="primary" flat />
                     </div>
@@ -56,7 +57,7 @@
           </q-card-section>
           <q-separator />
           <q-card-section class="card-precio flex flex-center">
-            00:00
+            {{timeEntrada}}
           </q-card-section>
         </q-card>
       </div>
@@ -68,14 +69,15 @@
           </q-card-section>
           <q-separator />
           <q-card-section class="card-precio flex flex-center">
-            00:00
+            {{timeSalida}}
           </q-card-section>
         </q-card>
       </div>
     </div>
   </q-page>
 </template>
-
+<!-- eslint-disable linebreak-style -->
+<!-- eslint-disable max-len -->
 <script>
 import { useQuasar } from 'quasar';
 import { ref } from 'vue';
@@ -90,7 +92,8 @@ export default {
     return {
       age,
       accept,
-      time: ref('10:56'),
+      timeEntrada: ref('07:00'),
+      timeSalida: ref('18:00'),
 
       onSubmit() {
         if (accept.value !== true) {
@@ -118,7 +121,8 @@ export default {
   },
 };
 </script>
-
+<!-- eslint-disable linebreak-style -->
+<!-- eslint-disable max-len -->
 <style lang="sass" scoped>
 .q-card
   border-radius: 1rem
