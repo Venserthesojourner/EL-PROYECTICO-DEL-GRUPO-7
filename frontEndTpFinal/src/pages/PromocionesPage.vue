@@ -10,13 +10,13 @@
         </q-card-section>
 
         <q-form @submit.prevent="onSubmit" @reset="onReset" class="q-gutter-md">
-
+          <!-- Nombre Promoción -->
           <q-input filled v-model="name" type="text" label="Nombre" lazy-rules :rules="nameRules">
             <template v-slot:prepend>
               <q-icon name="edit" />
             </template>
           </q-input>
-
+          <!-- Precio Promoción -->
           <q-input filled v-model="precio" type="number" label="Precio" hint="En pesos" lazy-rules :rules="precioRules">
             <template v-slot:prepend>
               <q-icon name="attach_money" />

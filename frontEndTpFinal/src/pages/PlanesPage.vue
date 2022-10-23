@@ -5,18 +5,19 @@
     <div class="col-12 col-md-6">
       <q-card flat class="q-pa-md" style="max-width: 500px">
 
-        <q-card-section>
+        <q-card-section class="q-pt-none">
           <p class="text-h4 text-center">Agregar Plan</p>
         </q-card-section>
 
         <q-form @submit.prevent="onSubmit" @reset="onReset" class="q-gutter-md">
-
-          <q-input filled v-model="nombre" type="text" label="Nuevo nombre" lazy-rules
-            :rules="[ val => val && val.length > 0 || 'Por favor, ingrese un nombre']">
+          <!-- Precio Plan -->
+          <q-input filled v-model="nombre" type="text" label="Nombre" lazy-rules :rules="nombreRules">
+            <template v-slot:prepend>
+              <q-icon name="edit" />
+            </template>
           </q-input>
-
-          <q-input filled v-model="precio" type="number" label="Nuevo precio" hint="En pesos" lazy-rules
-            :rules="[ val => val && val.length > 0 || 'Por favor, ingrese un precio']">
+          <!-- Precio Plan -->
+          <q-input filled v-model="precio" type="number" label="Precio" hint="En pesos" lazy-rules :rules="precioRules">
             <template v-slot:prepend>
               <q-icon name="attach_money" />
             </template>
@@ -32,9 +33,8 @@
     </div>
     <!-- Planes -->
     <div class="col-12 col-md-6">
-      <q-table grid :card-container-class="cardContainerClass" title="Mis Planes" :rows="planes" :columns="columns"
-        :planes="planes" row-key="name" :filter="filter" hide-header v-model:pagination="pagination"
-        :rows-per-page-options="rowsPerPageOptions">
+      <q-table grid title="Mis Planes" :rows="planes" :columns="columns" :planes="planes" row-key="name"
+        :filter="filter" hide-header v-model:pagination="pagination" :rows-per-page-options="rowsPerPageOptions">
         <!-- Filtro -->
         <template v-slot:top-right>
           <q-input borderless dense debounce="300" v-model="filter" placeholder="Buscar">
@@ -116,6 +116,13 @@ export default {
       rowsPerPageOptions: computed(() => ($q.screen.gt.xs
         ? $q.screen.gt.sm ? [2, 4, 8] : [2, 4]
         : [2])),
+      nombreRules: [
+        (val) => (val && val.length > 0) || 'Por favor, ingrese un nombre',
+      ],
+      precioRules: [
+        (val) => (val && val.length > 0) || 'Por favor, ingrese un precio',
+        (val) => (val > 0) || 'Por favor, ingrese un valor válido',
+      ],
     };
   },
 };
