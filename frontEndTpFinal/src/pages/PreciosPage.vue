@@ -1,31 +1,32 @@
-<!-- eslint-disable linebreak-style -->
 <!-- eslint-disable max-len -->
 <template>
-  <q-page class="q-pa-md row q-col-gutter-sm">
-    <div class="col-12 col-md-6 justify-center">
-      <q-card class="q-pa-md rounded-borders" style="max-width: 400px">
+  <q-page padding class="row q-col-gutter-sm justify-center">
+    <!-- Formulario -->
+    <div class="col-12 col-md-6">
+      <q-card flat class="q-pa-md" style="max-width: 500px">
 
-        <q-card-section>
+        <q-card-section class="q-pt-none">
           <p class="text-h4 text-center">Modificar Precios</p>
         </q-card-section>
-        <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
-          <q-input filled v-model="precioActual" type="number" label="Precio Actual" readonly=""
-            hint="Este es el precio actual por hora" lazy-rules
-            :rules="[ val => val && val.length > 0 || 'Por favor, ingrese un precio']">
-            <template v-slot:prepend>
-              <q-icon name="attach_money" />
-            </template>
-          </q-input>
 
-          <q-input filled v-model="precioNew" type="number" label="Nuevo precio por hora" hint="En pesos" lazy-rules
-            :rules="[ val => val && val.length > 0 || 'Por favor, ingrese un precio']">
+        <q-form @submit.prevent="onSubmit" @reset="onReset" class="q-gutter-md">
+          <!-- Seleccionar Hora -->
+          <q-select filled v-model="hora" :options="options" label="Seleccionar Hora">
+            <template v-slot:prepend>
+              <q-icon name="schedule" />
+            </template>
+          </q-select>
+          <!-- Nuevo Precio -->
+          <q-input filled v-model="precioNew" type="number" label="Nuevo Precio" hint="En pesos" lazy-rules
+            :rules="precioRules">
             <template v-slot:prepend>
               <q-icon name="attach_money" />
             </template>
           </q-input>
+          <!-- Botones -->
           <div class="row justify-end">
-            <q-btn label="Limpiar" type="reset" color="primary" flat class="q-ml-sm" />
-            <q-btn label="Actualizar precio" type="submit" color="primary" />
+            <q-btn label="Limpiar" type="reset" color="primary" flat class="q-mr-sm" />
+            <q-btn label="Actualizar" type="submit" color="primary" />
           </div>
         </q-form>
 
@@ -101,14 +102,35 @@ const rows = [
 
 export default {
   setup() {
-    const precioActual = ref(100);
+    const hora = ref(null);
     const precioNew = ref(null);
 
+    const onSubmit = () => {
+      rows.value = [...rows.value, {
+        hoar: hora.value,
+        precio: precioNew.value,
+      }];
+    };
+
+    const onReset = () => {
+      hora.value = null;
+      precioNew.value = null;
+    };
+
     return {
-      precioActual,
+      hora,
       precioNew,
+      onSubmit,
+      onReset,
       columns,
       rows,
+      options: [
+        1, 2, 3, 4, 5,
+      ],
+      precioRules: [
+        (val) => (val && val.length > 0) || 'Por favor, ingrese un precio',
+        (val) => (val > 0) || 'Por favor, ingrese un valor válido',
+      ],
     };
   },
 };
