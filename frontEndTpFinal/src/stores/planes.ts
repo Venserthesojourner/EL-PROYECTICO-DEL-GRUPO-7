@@ -1,11 +1,11 @@
-/* eslint-disable linebreak-style */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { defineStore } from 'pinia';
 import { useStorage } from '@vueuse/core';
 
 interface Props {
   precio: any;
   nombre: any;
-  plan: {nombre:string, precio:number};
+  plan: { nombre: string, precio: number };
 }
 export const usePlanesStore = defineStore('planes', {
   state: () => ({
@@ -25,12 +25,9 @@ export const usePlanesStore = defineStore('planes', {
     mostrar: (state) => state.planes,
   },
   actions: {
-    agregarPlan(plan:Props):void {
-      console.log(plan);
+    agregarPlan(plan: Props): void {
       const newArray = [plan.nombre, plan.precio];
-      console.log(newArray);
       // this.planes.push(newArray);
-      console.log(this.planes);
     },
   },
 });
