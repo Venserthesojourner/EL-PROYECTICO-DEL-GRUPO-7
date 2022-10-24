@@ -1,18 +1,16 @@
-<!-- eslint-disable linebreak-style -->
 <!-- eslint-disable max-len -->
 <template>
   <q-page class="row items-center justify-evenly">
     <q-card class="col-12 q-pa-md rounded-borders" style="max-width: 400px">
 
-      <q-card-section>
-        <p class="text-h4 text-center">Ingresar al panel</p>
-        <pre>{{store.login}}</pre>
+      <q-card-section class="text-center">
+        <p class="text-h4">Ingresar al panel</p>
       </q-card-section>
 
       <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
         <!-- Nombre de Usuario -->
         <q-input filled v-model="username" type="text" hint="Ingrese su nombre de usuario" lazy-rules
-          :rules="[ val => val && val.length > 0 || 'Por favor, ingrese su nombre de usuario']" />
+          :rules="[val => val && val.length > 0 || 'Por favor, ingrese su nombre de usuario']" />
         <!-- Password -->
         <q-input filled v-model="password" :type="isPwd ? 'password' : 'text'" hint="Ingrese su contraseña" :rules="[
         val => val !== null && val !== '' || 'Por favor, ingrese su contraseña']">
@@ -34,7 +32,7 @@
     </q-card>
   </q-page>
 </template>
-<!-- eslint-disable linebreak-style -->
+
 <script>
 import { useQuasar } from 'quasar';
 import { ref } from 'vue';
@@ -44,7 +42,7 @@ export default {
   setup() {
     const $q = useQuasar();
     const store = useSessionStatus();
-    const data = ref(null);
+    // const data = ref(null);
     const username = ref(null);
     const password = ref(null);
 
@@ -76,7 +74,6 @@ export default {
             message: 'Sesion iniciada',
           });
           store.changeStatus();
-          alert(store.login);
         } else {
           $q.notify({
             color: 'red-4',

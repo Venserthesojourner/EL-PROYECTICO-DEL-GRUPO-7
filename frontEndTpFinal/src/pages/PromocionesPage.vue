@@ -3,7 +3,7 @@
   <q-page padding class="row q-col-gutter-sm justify-center">
     <!-- Formulario -->
     <div class="col-12 col-md-6">
-      <q-card flat class="q-pa-md" style="max-width: 500px">
+      <q-card flat class="q-pa-md">
 
         <q-card-section class="q-pt-none">
           <p class="text-h4 text-center">Agregar Promoción</p>
@@ -162,4 +162,6 @@ export default {
       & .card-precio
         font-size: 2rem
         padding: 2px
+  &__container
+    padding-top: 4px
 </style>
