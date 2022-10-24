@@ -1,4 +1,3 @@
-import { TimestampProvider } from "rxjs";
 import { Usuario } from "./../../usuario/entities/usuario.entity";
 import { BaseEntity, Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
@@ -38,7 +37,7 @@ export class Propietario extends BaseEntity {
   cbu: string | null;
 
   @CreateDateColumn({ name: 'create_time', nullable: false })
-  createdAt: TimestampProvider;
+  createdAt: Date;
   @UpdateDateColumn({ name: 'update_time', nullable: false, default: null })
   updatedAt: Date;
   @DeleteDateColumn({ name: 'delete_time', nullable: false, default: null })
