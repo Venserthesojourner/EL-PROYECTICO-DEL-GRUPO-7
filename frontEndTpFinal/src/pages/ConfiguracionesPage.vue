@@ -1,4 +1,3 @@
-<!-- eslint-disable linebreak-style -->
 <!-- eslint-disable max-len -->
 <template>
   <q-page padding class="row justify-center">
@@ -12,13 +11,13 @@
       <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
         <!-- DNI -->
         <q-input filled v-model="document" type="number" label="DNI" hint="Ingresa tu DNI" lazy-rules
-          :rules="[ val => val && val > 0 && val <= 8 || 'Debes ingresar tu DNI, solo se permiten 8 dígitos']" />
+          :rules="[val => val && val > 0 && val <= 8 || 'Debes ingresar tu DNI, solo se permiten 8 dígitos']" />
         <!-- Razon Social -->
         <q-input filled v-model="razonSocial" type="text" label="Razon Social" hint="Ingresa tu razon social" lazy-rules
-          :rules="[ val => val && val.length > 0 || 'Debes ingresar tu razon social']" />
+          :rules="[val => val && val.length > 0 || 'Debes ingresar tu razon social']" />
         <!-- Cantidad de Plazas -->
         <q-select filled v-model="cantPlazas" :options="optionsPlazas" label="Cantidad de plazas" lazy-rules
-          :rules="[ val => val || 'Debes seleccionar la cantidad de plazas']" hint="Ingrese la cantidad de plazas" />
+          :rules="[val => val || 'Debes seleccionar la cantidad de plazas']" hint="Ingrese la cantidad de plazas" />
         <!-- Hora de Apertura -->
         <q-input filled v-model="timeOpen" mask="time" :rules="['time']" label="Ingrese la hora de apertura">
           <template v-slot:append>
@@ -49,7 +48,7 @@
         </q-input>
         <!-- Seleccionar Días -->
         <q-field filled ref="inputDias" hint="Seleccione los días en los que el estacionamiento estará abierto"
-          lazy-rules :rules="[ val => val && val.length > 0 || 'Debes seleccionar como mínimo un día']"
+          lazy-rules :rules="[val => val && val.length > 0 || 'Debes seleccionar como mínimo un día']"
           :model-value="dias">
           <template v-slot:control>
             <q-option-group name="selection_day" v-model="dias" :options="optionsDays" color="green" type="checkbox"
@@ -59,7 +58,7 @@
         <!-- Precio Base -->
         <q-input filled v-model="precio" type="number" label="Tarifa base (por hora)"
           hint="Ingresa la tarifa (por hora) en ARS" lazy-rules
-          :rules="[ val => val && val.length > 0 || 'Debes ingresar una tarifa base']" />
+          :rules="[val => val && val.length > 0 || 'Debes ingresar una tarifa base']" />
         <!-- Botones -->
         <div class="row justify-end">
           <q-btn label="Limpiar" type="reset" color="primary" flat class="q-mr-sm" />

@@ -3,7 +3,7 @@
   <q-page padding class="row q-col-gutter-sm justify-center">
     <!-- Formulario -->
     <div class="col-12 col-md-6">
-      <q-card flat class="q-pa-md" style="max-width: 500px">
+      <q-card flat class="q-pa-md">
 
         <q-card-section class="q-pt-none">
           <p class="text-h4 text-center">Modificar Precios</p>
@@ -32,14 +32,27 @@
 
       </q-card>
     </div>
+    <!-- Precios -->
     <div class="col-12 col-md-6">
-      <q-table dense title="Precios por Hora" :rows="rows" :columns="columns" row-key="name" />
+      <q-table flat title="Precios por Hora" :rows="rows" :columns="columns" row-key="name" selection="single"
+        v-model:selected="selected" :filter="filter" v-model:pagination="pagination"
+        :rows-per-page-options="rowsPerPageOptions">
+        <!-- Filtro -->
+        <template v-slot:top-right>
+          <q-input borderless dense debounce="300" v-model="filter" placeholder="Buscar">
+            <template v-slot:append>
+              <q-icon name="search" />
+            </template>
+          </q-input>
+        </template>
+      </q-table>
     </div>
   </q-page>
 </template>
-<!-- eslint-disable linebreak-style -->
+
 <script>
-import { ref } from 'vue';
+import { useQuasar } from 'quasar';
+import { ref, computed, watch } from 'vue';
 
 const columns = [
   {
@@ -102,6 +115,7 @@ const rows = [
 
 export default {
   setup() {
+    const $q = useQuasar();
     const hora = ref(null);
     const precioNew = ref(null);
 
@@ -117,6 +131,20 @@ export default {
       precioNew.value = null;
     };
 
+    function getItemsPerPage() {
+      return 5;
+    }
+
+    const filter = ref('');
+    const pagination = ref({
+      page: 1,
+      rowsPerPage: getItemsPerPage(),
+    });
+
+    watch(() => $q.screen.name, () => {
+      pagination.value.rowsPerPage = getItemsPerPage();
+    });
+
     return {
       hora,
       precioNew,
@@ -124,6 +152,11 @@ export default {
       onReset,
       columns,
       rows,
+      filter,
+      pagination,
+      rowsPerPageOptions: computed(() => ($q.screen.gt.xs
+        ? [5, 10]
+        : [5])),
       options: [
         1, 2, 3, 4, 5,
       ],
@@ -131,7 +164,14 @@ export default {
         (val) => (val && val.length > 0) || 'Por favor, ingrese un precio',
         (val) => (val > 0) || 'Por favor, ingrese un valor válido',
       ],
+      selected: ref([]),
     };
   },
 };
 </script>
+
+<style lang="sass" scoped>
+.q-table
+  &__container
+    padding-top: 4px
+</style>

@@ -1,10 +1,9 @@
-<!-- eslint-disable linebreak-style -->
 <!-- eslint-disable max-len -->
 <template>
   <q-page padding class="row q-col-gutter-sm justify-center">
     <!-- Formulario -->
     <div class="col-12 col-md-6">
-      <q-card flat class="q-pa-md" style="max-width: 500px">
+      <q-card flat class="q-pa-md">
         <q-card-section class="q-pt-none">
           <p class="text-h4 text-center">Modificar Horarios</p>
         </q-card-section>
@@ -38,6 +37,14 @@
               </q-icon>
             </template>
           </q-input>
+          <!-- Seleccionar Días -->
+          <q-field filled ref="inputDias" hint="Seleccione los días en los que el estacionamiento estará abierto"
+            lazy-rules :model-value="dias">
+            <template v-slot:control>
+              <q-option-group name="selection_day" v-model="dias" :options="optionsDays" color="green" type="checkbox"
+                inline />
+            </template>
+          </q-field>
           <!-- Botones -->
           <div class="row justify-end">
             <q-btn label="Limpiar" type="reset" color="primary" flat class="q-mr-sm" />
@@ -57,7 +64,7 @@
           </q-card-section>
           <q-separator />
           <q-card-section class="card-precio flex flex-center">
-            {{timeEntrada}}
+            {{ timeEntrada }}
           </q-card-section>
         </q-card>
       </div>
@@ -69,15 +76,14 @@
           </q-card-section>
           <q-separator />
           <q-card-section class="card-precio flex flex-center">
-            {{timeSalida}}
+            {{ timeSalida }}
           </q-card-section>
         </q-card>
       </div>
     </div>
   </q-page>
 </template>
-<!-- eslint-disable linebreak-style -->
-<!-- eslint-disable max-len -->
+
 <script>
 import { useQuasar } from 'quasar';
 import { ref } from 'vue';
@@ -88,12 +94,46 @@ export default {
 
     const age = ref(null);
     const accept = ref(false);
+    const inputDias = ref([]);
+    const dias = ref([]);
 
     return {
       age,
       accept,
       timeEntrada: ref('07:00'),
       timeSalida: ref('18:00'),
+      inputDias,
+      dias,
+      optionsDays: [
+        {
+          label: 'Lunes',
+          value: 'lunes',
+        },
+        {
+          label: 'Martes',
+          value: 'martes',
+        },
+        {
+          label: 'Miercoles',
+          value: 'miercoles',
+        },
+        {
+          label: 'Jueves',
+          value: 'jueves',
+        },
+        {
+          label: 'Viernes',
+          value: 'viernes',
+        },
+        {
+          label: 'Sabado',
+          value: 'sabado',
+        },
+        {
+          label: 'Domingo',
+          value: 'domingo',
+        },
+      ],
 
       onSubmit() {
         if (accept.value !== true) {
@@ -116,13 +156,13 @@ export default {
       onReset() {
         age.value = null;
         accept.value = false;
+        dias.value = [];
       },
     };
   },
 };
 </script>
-<!-- eslint-disable linebreak-style -->
-<!-- eslint-disable max-len -->
+
 <style lang="sass" scoped>
 .q-card
   border-radius: 1rem

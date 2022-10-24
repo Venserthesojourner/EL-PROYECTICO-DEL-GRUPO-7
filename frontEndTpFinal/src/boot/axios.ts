@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style */
 import { boot } from 'quasar/wrappers';
 import axios, { AxiosInstance } from 'axios';
 

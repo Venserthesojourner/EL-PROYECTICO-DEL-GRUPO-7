@@ -1,4 +1,3 @@
-<!-- eslint-disable linebreak-style -->
 <!-- eslint-disable max-len -->
 <template>
   <q-layout view="hHh Lpr lff">
@@ -101,7 +100,7 @@
     </q-page-container>
   </q-layout>
 </template>
-<!-- eslint-disable linebreak-style -->
+
 <script>
 import { ref } from 'vue';
 import BtnScrollerTop from '../components/BtnScrollerTop.vue';
@@ -123,7 +122,6 @@ export default {
 
       logoutSession() {
         store.changeStatus();
-        alert(store.login);
       },
       drawerClick(e) {
         // if in "mini" state and user

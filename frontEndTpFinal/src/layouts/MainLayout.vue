@@ -1,4 +1,3 @@
-<!-- eslint-disable linebreak-style -->
 <!-- eslint-disable max-len -->
 <template>
   <q-layout view="hHh Lpr lff">

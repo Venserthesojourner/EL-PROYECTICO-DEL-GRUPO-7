@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style */
 import { route } from 'quasar/wrappers';
 import { useSessionStatus } from 'src/stores/session-store';
 import {
@@ -38,7 +37,6 @@ export default route(() => {
       || (to.path === '/home' && (store.login === 'logout'))
       || (to.path === '/home' && (store.login === 'logout'))
     ) {
-      console.log('entre 1', to, from);
       return { path: '/login', replace: true };
     }
     return { path: to.fullPath };
@@ -47,32 +45,23 @@ export default route(() => {
   Router.beforeEach((to, from, next) => {
     const store = useSessionStatus();
     if (to.matched.some((record) => record.meta.auth)) { // <-- check for requiresAuth here
-      console.log('primer if');
-      console.log(to.matched.some((record) => record.meta.auth));
-      console.log('esta es la ruta: ', to.fullPath);
       if (store.login === 'logout') {
         next('/login');
-        console.log('No esta logeado y me redirige a Login');
       } else {
         next();
       }
     } else if (!to.matched.some((record) => record.meta.auth)) {
-      console.log('else if');
       // <-- check for requiresAuth here
       if (store.login === 'login') {
-        console.log('entro, porque esta logueado');
         if (to.fullPath === '/login' || to.fullPath === '/register') {
           next('/dashboard');
-          console.log('Esta logeado y me redirige a Home');
         } else {
           next();
         }
       } else {
-        console.log('todo pelota, siga siga');
         next();
       }
     } else {
-      console.log('no entro al if');
       next();
     }
   });
