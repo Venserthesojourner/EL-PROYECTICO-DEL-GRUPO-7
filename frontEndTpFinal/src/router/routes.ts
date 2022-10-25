@@ -22,6 +22,7 @@ const routes: RouteRecordRaw[] = [
       { path: 'promociones', component: () => import('pages/PromocionesPage.vue'), meta: { auth: true } },
       { path: 'planes', component: () => import('pages/PlanesPage.vue'), meta: { auth: true } },
       { path: 'horarios', component: () => import('pages/HorariosPage.vue'), meta: { auth: true } },
+      { path: 'nuevoEmpleado', component: () => import('pages/nuevoEmpleado.vue'), meta: { auth: true } },
       { path: 'configuraciones', component: () => import('pages/ConfiguracionesPage.vue'), meta: { auth: true } },
     ],
   },
