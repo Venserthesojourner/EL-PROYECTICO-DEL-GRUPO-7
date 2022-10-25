@@ -1,4 +1,7 @@
 export class CreateEmpleadoDto {
-    idUsuario: number;
+    usuario: number;
     estacionamiento: number
+    legajoEmpleado: string
+    horarioSalida: string
+    horarioEntrada:string
 }
