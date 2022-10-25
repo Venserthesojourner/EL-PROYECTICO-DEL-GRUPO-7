@@ -86,9 +86,9 @@
       <q-img class="absolute-top" src="../assets/background-l2.png" style="height: 150px">
         <div class="absolute-bottom bg-transparent">
           <q-avatar size="56px" class="q-mb-sm">
-            <img src="../assets/manuContact.jpg">
+            <img src="../assets/marcosContact.jpg">
           </q-avatar>
-          <div class="text-weight-bold">Manuel Ortiz</div>
+          <div class="text-weight-bold">Homero Simpson</div>
           <div>Admin</div>
         </div>
       </q-img>

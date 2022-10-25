@@ -10,7 +10,7 @@
 
         <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
           <!-- Horario Entrada -->
-          <q-input filled v-model="timeEntrada" mask="time" :rules="['time']">
+          <q-input filled v-model="timeEntrada" placeholder="07:00" :rules="aperturaRules" hint="Horario de apertura">
             <template v-slot:append>
               <q-icon name="access_time" class="cursor-pointer">
                 <q-popup-proxy cover transition-show="scale" transition-hide="scale">
@@ -24,7 +24,7 @@
             </template>
           </q-input>
           <!-- Horario Salida -->
-          <q-input filled v-model="timeSalida" mask="time" :rules="['time']">
+          <q-input filled v-model="timeSalida" placeholder="18:30" :rules="cierreRules" hint="Horario de cierre">
             <template v-slot:append>
               <q-icon name="access_time" class="cursor-pointer">
                 <q-popup-proxy cover transition-show="scale" transition-hide="scale">
@@ -96,12 +96,14 @@ export default {
     const accept = ref(false);
     const inputDias = ref([]);
     const dias = ref([]);
+    const timeEntrada = ref(null);
+    const timeSalida = ref(null);
 
     return {
       age,
       accept,
-      timeEntrada: ref('07:00'),
-      timeSalida: ref('18:00'),
+      timeEntrada,
+      timeSalida,
       inputDias,
       dias,
       optionsDays: [
@@ -133,6 +135,13 @@ export default {
           label: 'Domingo',
           value: 'domingo',
         },
+      ],
+      aperturaRules: [
+        (val) => (val && val.length > 0) || 'Por favor, ingrese un horario',
+      ],
+      cierreRules: [
+        (val) => (val && val.length > 0) || 'Por favor, ingrese un horario',
+        (val) => (val && val !== timeEntrada.value) || 'Por favor, ingrese un horario válido',
       ],
 
       onSubmit() {

@@ -36,17 +36,20 @@
 <script>
 import { useQuasar } from 'quasar';
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+import axios from 'axios';
 import { useSessionStatus } from '../stores/session-store';
 
 export default {
   setup() {
     const $q = useQuasar();
+    const router = useRouter();
     const store = useSessionStatus();
-    // const data = ref(null);
     const username = ref(null);
     const password = ref(null);
+    /* const data = ref(null);
 
-    /* function loadData() {
+    function loadData() {
       api.get('/api/backend')
         .then((response) => {
           data.value = response.data;
@@ -60,6 +63,7 @@ export default {
           });
         });
     } */
+
     return {
       store,
       username,
@@ -73,6 +77,7 @@ export default {
             icon: 'cloud_done',
             message: 'Sesion iniciada',
           });
+          router.push('/dashboard/');
           store.changeStatus();
         } else {
           $q.notify({
