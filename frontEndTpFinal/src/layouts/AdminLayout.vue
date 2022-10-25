@@ -57,6 +57,16 @@
               </q-item-section>
             </q-item>
 
+            <q-item to="nuevoEmpleado" clickable v-ripple>
+              <q-item-section avatar>
+                <q-icon name="settings" />
+              </q-item-section>
+
+              <q-item-section>
+                Nuevo Empleado
+              </q-item-section>
+            </q-item>
+
             <q-item to="configuraciones" clickable v-ripple>
               <q-item-section avatar>
                 <q-icon name="settings" />
