@@ -15,8 +15,8 @@ export class UsuarioService {
   ) {}
 
   async createNewUser(payload: CreateUsuarioDto): Promise<Usuario> {
-    //const password = await hash(payload.password, 10);
-    //payload.password = password;
+    const password = await hash(payload.password, 10);
+    payload.password = password;
     const newUser = await this.usuarioRepo.save(payload);
     /* 
     let response = {

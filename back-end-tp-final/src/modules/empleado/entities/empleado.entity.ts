@@ -14,7 +14,6 @@ CREATE TABLE `operador` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
  */
 
-import { TimestampProvider } from "rxjs";
 import { Estacionamiento } from "src/modules/estacionamiento/entitites/estacionamiento.entity";
 import { Usuario } from "src/modules/usuario/entities/usuario.entity";
 import { BaseEntity, Column, CreateDateColumn, DeleteDateColumn, Entity, OneToOne, UpdateDateColumn } from "typeorm";
@@ -35,10 +34,9 @@ export class Empleado extends BaseEntity {
   horarioSalida: string
 
   @CreateDateColumn({ name: 'create_time', nullable: false })
-  createdAt: TimestampProvider;
+  createdAt: Date;
   @UpdateDateColumn({ name: 'update_time', nullable: false, default: null })
   updatedAt: Date;
   @DeleteDateColumn({ name: 'delete_time', nullable: false, default: null })
   deletedAt: Date;
-
 }
