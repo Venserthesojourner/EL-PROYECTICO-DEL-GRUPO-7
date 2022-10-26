@@ -11,17 +11,18 @@
       <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
         <!-- Nombre -->
         <q-input filled v-model="username" type="text" label="Nombre de usuario " hint="Ingrese su nombre de usuario"
-          lazy-rules :rules="[val => val && val.length > 0 || 'Please type something']" />
+          lazy-rules :rules="[val => val && val.length > 0 || 'Por favor, ingrese un nombre de usuario']" />
         <!-- Email -->
-        <q-input filled v-model="mail" type="email" label="Email *" hint="Ingrese su email" lazy-rules
-          :rules="[val => val && val.length > 0 || 'Please type something', isValidEmail]" />
+        <q-input filled v-model="mail" type="Email" label="Email *" hint="Ingrese su email" lazy-rules
+          :rules="[val => val && val.length > 0 || 'Por favor, ingrese un mail', isValidEmail]" />
+        <!-- Comentarios -->
         <q-input v-model="comentario" filled type="textarea" label="Déjanos un mensaje (máximo 200 caracteres)"
           lazy-rules maxlength="200" />
         <!-- Términos y Condiciones -->
         <div class="row items-center">
           <q-toggle v-model="accept" checked-icon="check" color="green" unchecked-icon="clear" lazy-rules
             @click="accept = false" :rules="[val => val && val === false || 'Debe ver los términos y condiciones']" />
-          <span class="text-primary cursor-pointer" @click="basic = true">Ver términos y condiciones</span>
+          <span class="text-primary cursor-pointer" @click="basic = true">Ver términos y condiciones *</span>
         </div>
         <!-- Botones -->
         <div class="row justify-between">
@@ -91,7 +92,6 @@ export default {
       comentario,
       accept,
       basic: ref(false),
-
       isValidEmail(val) {
         const emailRegex = /^(?=[a-zA-Z0-9@._%+-]{6,254}$)[a-zA-Z0-9._%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\.){1,8}[a-zA-Z]{2,63}$/;
         return emailRegex.test(val) || 'Ingrese un email válido';
