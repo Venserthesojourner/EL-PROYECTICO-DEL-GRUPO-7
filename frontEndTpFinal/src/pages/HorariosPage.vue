@@ -96,8 +96,8 @@ export default {
     const accept = ref(false);
     const inputDias = ref([]);
     const dias = ref([]);
-    const timeEntrada = ref(null);
-    const timeSalida = ref(null);
+    const timeEntrada = ref('07:00');
+    const timeSalida = ref('18:00');
 
     return {
       age,

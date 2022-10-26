@@ -59,7 +59,7 @@
 
             <q-item to="nuevoEmpleado" clickable v-ripple>
               <q-item-section avatar>
-                <q-icon name="settings" />
+                <q-icon name="person_add" />
               </q-item-section>
 
               <q-item-section>
