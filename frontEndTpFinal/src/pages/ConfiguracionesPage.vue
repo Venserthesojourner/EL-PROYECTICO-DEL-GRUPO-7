@@ -11,10 +11,17 @@
       <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
         <!-- DNI -->
         <q-input filled v-model="document" type="number" label="DNI" hint="Ingresa tu DNI" lazy-rules
-          :rules="[val => val && val > 0 && val <= 8 || 'Debes ingresar tu DNI, solo se permiten 8 dígitos']" />
+          :rules="dniRules" />
         <!-- Razon Social -->
         <q-input filled v-model="razonSocial" type="text" label="Razon Social" hint="Ingresa tu razon social" lazy-rules
           :rules="[val => val && val.length > 0 || 'Debes ingresar tu razon social']" />
+        <!-- Añadir Colaborador -->
+        <q-field filled ref="inputDias" hint="Indique si desea añadir un colaborador" lazy-rules :model-value="dias">
+          <template v-slot:control>
+            <q-option-group name="preferred_genre" v-model="preferred" :options="optionsColaborador" color="primary"
+              inline />
+          </template>
+        </q-field>
         <!-- Cantidad de Plazas -->
         <q-select filled v-model="cantPlazas" :options="optionsPlazas" label="Cantidad de plazas" lazy-rules
           :rules="[val => val || 'Debes seleccionar la cantidad de plazas']" hint="Ingrese la cantidad de plazas" />
@@ -89,12 +96,27 @@ export default {
 
     return {
       document,
+      dniRules: [
+        (val) => (val !== null && val !== '') || 'Por favor, ingrese su DNI',
+        (val) => (val && val.length >= 7 && val.length <= 8) || 'Solo se permiten de 7 a 8 dígitos',
+      ],
       razonSocial,
+      optionsColaborador: [
+        {
+          label: 'No',
+          value: 'no',
+        },
+        {
+          label: 'Si',
+          value: 'si',
+        },
+      ],
       cantPlazas,
       timeOpen,
       timeClose,
       inputDias,
       dias,
+      preferred: ref('no'),
       optionsPlazas: [
         4, 5, 6, 7, 8, 9, 10,
       ],

@@ -78,7 +78,7 @@ export default {
         content: ''
         position: absolute
         inset: 4px
-        background: $dark
+        // background: $dark
     &:hover
         background-color: $primary
         box-shadow: 0 0 20px $primary
