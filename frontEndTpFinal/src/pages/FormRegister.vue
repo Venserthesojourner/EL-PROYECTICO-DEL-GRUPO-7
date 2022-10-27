@@ -1,3 +1,4 @@
+<!-- eslint-disable linebreak-style -->
 <!-- eslint-disable max-len -->
 <template>
   <q-page padding class="row items-center justify-evenly q-mb-lg">
@@ -51,7 +52,7 @@
     </q-dialog>
   </q-page>
 </template>
-
+<!-- eslint-disable linebreak-style -->
 <script>
 import { useQuasar } from 'quasar';
 import { ref } from 'vue';
@@ -120,7 +121,7 @@ export default {
               textColor: 'white',
             });
             setTimeout(() => {
-              axios.post(route, { body })
+              axios.post(route, body)
                 .then(() => {
                   $q.notify({
                     color: 'green-4',

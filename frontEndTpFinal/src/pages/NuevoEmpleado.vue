@@ -1,3 +1,4 @@
+<!-- eslint-disable linebreak-style -->
 <!-- eslint-disable max-len -->
 <template>
   <q-page padding class="row justify-center">
@@ -31,19 +32,31 @@
     </q-card>
   </q-page>
 </template>
-
+<!-- eslint-disable linebreak-style -->
 <script>
 import { useQuasar } from 'quasar';
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+import axios from 'axios';
 
 export default {
   setup() {
     const $q = useQuasar();
-
+    const router = useRouter();
     const document = ref(null);
     const nombre = ref(null);
     const apellido = ref(null);
     const mail = ref(null);
+
+    function alert() {
+      $q.dialog({
+        title: 'Nuevo empleado añadido!',
+        message: 'Se ha añadido un nuevo empleado, lo podra ver en la seccion "lista de Empleados"',
+        persistent: true,
+      }).onDismiss(() => {
+        router.push('/listaEmpleado');
+      });
+    }
 
     return {
       document,
@@ -65,12 +78,44 @@ export default {
         return emailRegex.test(val) || 'Ingrese un email válido';
       },
       onSubmit() {
-        $q.notify({
-          color: 'green-4',
-          textColor: 'white',
-          icon: 'cloud_done',
-          message: 'Muy bien, continuemos',
-        });
+        /*
+          const body = {
+            username: username.value,
+            email: mail.value,
+            password: 'b7159b31a2fdf4ef8394df2234acca8fdbbc438f',
+            // TODO: cambiar el rol al de empleado
+            role: 'owner',
+          };
+          const route = 'http://localhost:3000/usuario';
+          setTimeout(() => {
+            $q.notify({
+              progress: true,
+              message: 'Registrando nuevo empleado...',
+              color: 'secondary',
+              textColor: 'white',
+            });
+            setTimeout(() => {
+              axios.post(route, body)
+                .then(() => {
+                  $q.notify({
+                    color: 'green-4',
+                    textColor: 'white',
+                    icon: 'cloud_done',
+                    message: '¡Registro exitoso!',
+                  });
+                  alert();
+                })
+                .catch(() => {
+                  $q.notify({
+                    message: 'Error en el registro de empleado, contactar con soporte.',
+                    icon: 'warning',
+                    color: 'red-5',
+                    textColor: 'white',
+                  });
+                });
+            }, 3000);
+          }, 2000);
+          */
       },
 
       onReset() {

@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 import { RouteRecordRaw } from 'vue-router';
 
 const routes: RouteRecordRaw[] = [
@@ -8,7 +9,8 @@ const routes: RouteRecordRaw[] = [
       { path: '', component: () => import('pages/IndexPage.vue') },
       { path: 'login', component: () => import('pages/FormLogin.vue'), meta: { auth: false } },
       { path: 'register', component: () => import('pages/FormRegister.vue'), meta: { auth: false } },
-      { path: 'datos', component: () => import('pages/FormData.vue'), meta: { auth: true } },
+      { path: 'datos-persona', component: () => import('src/pages/FormDataPersona.vue'), meta: { auth: true } },
+      { path: 'datos-estacionamiento', component: () => import('src/pages/FormDataEstacionamiento.vue'), meta: { auth: true } },
     ],
   },
 

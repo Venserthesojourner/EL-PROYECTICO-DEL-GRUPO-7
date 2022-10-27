@@ -1,19 +1,16 @@
+<!-- eslint-disable linebreak-style -->
 <!-- eslint-disable max-len -->
 <template>
   <q-page padding class="row justify-center">
     <q-card flat class="col-12 q-pa-md" style="max-width: 800px">
 
       <q-card-section>
-        <p class="col-12 text-h4 text-center">Completar información</p>
-        <p class="text-body text-center">Estos datos son requeridos por única vez para completar tu perfil
-          como estacionamiento</p>
+        <p class="col-12 text-h4 text-center">Completar información (estacionamiento)</p>
+        <p class="text-body text-center">Estos son requeridos por única vez para completar los datos del estacionamiento</p>
       </q-card-section>
 
       <!-- Formulario -->
       <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
-        <!-- DNI -->
-        <q-input filled v-model="document" type="number" label="DNI" hint="Ingresa tu DNI" lazy-rules
-          :rules="[val => val && val > 0 && val <= 8 && val > 6 || 'Debes ingresar tu DNI, solo se permiten 8 dígitos']" />
         <!-- Razon Social -->
         <q-input filled v-model="razonSocial" type="text" label="Razon Social" hint="Ingresa tu razon social" lazy-rules
           :rules="[val => val && val.length > 0 || 'Debes ingresar tu razon social']" />
@@ -71,7 +68,7 @@
     </q-card>
   </q-page>
 </template>
-
+<!-- eslint-disable linebreak-style -->
 <script>
 import { useQuasar } from 'quasar';
 import { ref } from 'vue';
@@ -80,7 +77,6 @@ export default {
   setup() {
     const $q = useQuasar();
 
-    const document = ref(null);
     const razonSocial = ref(null);
     const cantPlazas = ref(null);
     const timeOpen = ref(null);
@@ -90,7 +86,6 @@ export default {
     const precio = ref(null);
 
     return {
-      document,
       razonSocial,
       cantPlazas,
       timeOpen,
@@ -169,7 +164,6 @@ export default {
       },
 
       onReset() {
-        document.value = null;
         razonSocial.value = null;
         cantPlazas.value = null;
         timeOpen.value = null;
