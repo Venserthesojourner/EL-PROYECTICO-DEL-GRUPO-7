@@ -4,9 +4,9 @@
     <q-header reveal class="bg-white text-primary q-py-lg q-px-lg">
       <q-toolbar>
         <!-- Logo -->
-        <q-img src="../assets/logoNQNPark.png" height="40px" width="40px" alt="logo" />
+        <q-img src="../assets/logo.png" height="40px" width="40px" alt="logo" />
         <!-- Nombre del sitio -->
-        <q-toolbar-title class="text-weight-bold text-uppercase">NQNPark</q-toolbar-title>
+        <q-toolbar-title class="text-weight-bold text-uppercase">Park-Our</q-toolbar-title>
 
         <q-space />
         <!-- Menú -->

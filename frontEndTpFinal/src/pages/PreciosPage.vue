@@ -11,11 +11,12 @@
 
         <q-form @submit.prevent="onSubmit" @reset="onReset" class="q-gutter-md">
           <!-- Seleccionar Hora -->
-          <q-select filled v-model="hora" :options="options" label="Seleccionar Hora">
+          <q-input filled v-model="hora" type="number" label="Hora" hint="Seleccionar Hora" lazy-rules
+            :rules="horaRules">
             <template v-slot:prepend>
               <q-icon name="schedule" />
             </template>
-          </q-select>
+          </q-input>
           <!-- Nuevo Precio -->
           <q-input filled v-model="precioNew" type="number" label="Nuevo Precio" hint="En pesos" lazy-rules
             :rules="precioRules">
@@ -157,8 +158,9 @@ export default {
       rowsPerPageOptions: computed(() => ($q.screen.gt.xs
         ? [5, 10]
         : [5])),
-      options: [
-        1, 2, 3, 4, 5,
+      horaRules: [
+        (val) => (val && val.length > 0) || 'Por favor, seleccione una hora',
+        (val) => (val > 0) || 'Por favor, ingrese un valor válido',
       ],
       precioRules: [
         (val) => (val && val.length > 0) || 'Por favor, ingrese un precio',

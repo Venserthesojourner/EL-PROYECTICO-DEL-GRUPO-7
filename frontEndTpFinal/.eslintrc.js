@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 module.exports = {
   // https://eslint.org/docs/user-guide/configuring#configuration-cascading-and-hierarchy
   // This option interrupts the configuration hierarchy at this file
@@ -103,4 +102,10 @@ module.exports = {
       'windows',
     ],
   },
+  overrides: {
+    files: ["*.vue"],
+    rules: {
+      'max-len': 'off' // disables line length check
+    }
+  }
 };
