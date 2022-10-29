@@ -5,7 +5,7 @@
         <div class="row justify-center items-center">
             <div class="col-12 col-md-5">
                 <div class="row justify-center">
-                    <img src="../assets/car-reserva4.png" alt="car reserva"
+                    <img src="../assets/car-reserva2.png" alt="car reserva"
                         style="height: auto; min-width: 200px; max-width: 500px;">
                 </div>
             </div>

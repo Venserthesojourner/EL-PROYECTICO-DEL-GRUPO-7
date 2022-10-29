@@ -1,4 +1,3 @@
-<!-- eslint-disable max-len -->
 <template>
   <q-page padding class="row justify-center">
     <q-card flat class="col-12 q-pa-md" style="max-width: 800px">
