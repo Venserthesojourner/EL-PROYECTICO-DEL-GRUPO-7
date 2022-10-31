@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
 import { CreateEmpleadoDto } from './dto/create-empleado.dto';
-import { UpdateEmpleadoDto } from './dto/update.empleado.dto';
+import { UpdateEmpleadoDto } from './dto/update-empleado.dto';
 import { EmpleadoService } from './empleado.service';
 
 @Controller('empleado')
