@@ -1,23 +1,20 @@
-<!-- eslint-disable linebreak-style -->
 <!-- eslint-disable max-len -->
 <template>
   <q-layout view="hHh Lpr lff">
     <q-header reveal class="bg-white text-primary q-py-lg q-px-lg">
       <q-toolbar>
         <!-- Logo -->
-        <q-avatar>
-          <img src="../assets/logo2.png">
-        </q-avatar>
+        <q-img src="../assets/logo.png" height="40px" width="40px" alt="logo" />
         <!-- Nombre del sitio -->
-        <q-toolbar-title class="chichilo text-weight-bold text-uppercase">Chichilo</q-toolbar-title>
+        <q-toolbar-title class="text-weight-bold text-uppercase">Park-Our</q-toolbar-title>
 
         <q-space />
         <!-- Menú -->
         <q-tabs class="gt-sm" v-model="tab" shrink>
           <q-route-tab to="/" name="home" label="Home" exact />
-          <q-route-tab to="/#about" name="about" label="About" exact />
-          <q-route-tab to="/#contact" name="contact" label="Contact" exact />
-          <q-route-tab to="login" name="login" label="Login" exact />
+          <q-route-tab href="/#about" name="about" label="About" exact />
+          <q-route-tab href="/#contact" name="contact" label="Contact" exact />
+          <q-route-tab href="login" name="login" label="Login" exact />
         </q-tabs>
         <!-- Boton Menú -->
         <div class="lt-md">
@@ -44,19 +41,17 @@
         </q-scroll-area>
       </q-drawer>
     </div>
-
+    <!-- Page Container -->
     <q-page-container>
       <router-view />
-      <!-- place QPageScroller at end of page -->
-      <q-page-scroller position="bottom-right" :scroll-offset="150" :offset="[18, 18]">
-        <q-btn fab icon="fa-solid fa-chevron-up" color="positive" />
-      </q-page-scroller>
+      <BtnScrollerTop></BtnScrollerTop>
     </q-page-container>
   </q-layout>
 </template>
 
 <script>
 import { ref } from 'vue';
+import BtnScrollerTop from '../components/BtnScrollerTop.vue';
 
 const menuList = [
   {
@@ -74,6 +69,10 @@ const menuList = [
 ];
 
 export default {
+  components: {
+    BtnScrollerTop,
+  },
+
   setup() {
     return {
       tab: ref(''),

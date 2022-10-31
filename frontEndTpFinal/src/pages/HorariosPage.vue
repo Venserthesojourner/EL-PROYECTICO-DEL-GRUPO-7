@@ -3,18 +3,18 @@
   <q-page padding class="row q-col-gutter-sm justify-center">
     <!-- Formulario -->
     <div class="col-12 col-md-6">
-      <q-card flat class="q-pa-md" style="max-width: 500px">
-        <q-card-section>
+      <q-card flat class="q-pa-md">
+        <q-card-section class="q-pt-none">
           <p class="text-h4 text-center">Modificar Horarios</p>
         </q-card-section>
 
         <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
-          <!-- Input Horario Entrada -->
-          <q-input filled v-model="time" mask="time" :rules="['time']">
+          <!-- Horario Entrada -->
+          <q-input filled v-model="timeEntrada" placeholder="07:00" :rules="aperturaRules" hint="Horario de apertura">
             <template v-slot:append>
               <q-icon name="access_time" class="cursor-pointer">
                 <q-popup-proxy cover transition-show="scale" transition-hide="scale">
-                  <q-time v-model="time">
+                  <q-time v-model="timeEntrada">
                     <div class="row items-center justify-end">
                       <q-btn v-close-popup label="Close" color="primary" flat />
                     </div>
@@ -23,12 +23,12 @@
               </q-icon>
             </template>
           </q-input>
-          <!-- Input Horario Salida -->
-          <q-input filled v-model="time" mask="time" :rules="['time']">
+          <!-- Horario Salida -->
+          <q-input filled v-model="timeSalida" placeholder="18:30" :rules="cierreRules" hint="Horario de cierre">
             <template v-slot:append>
               <q-icon name="access_time" class="cursor-pointer">
                 <q-popup-proxy cover transition-show="scale" transition-hide="scale">
-                  <q-time v-model="time">
+                  <q-time v-model="timeSalida">
                     <div class="row items-center justify-end">
                       <q-btn v-close-popup label="Close" color="primary" flat />
                     </div>
@@ -37,10 +37,18 @@
               </q-icon>
             </template>
           </q-input>
-
+          <!-- Seleccionar Días -->
+          <q-field filled ref="inputDias" hint="Seleccione los días en los que el estacionamiento estará abierto"
+            lazy-rules :model-value="dias">
+            <template v-slot:control>
+              <q-option-group name="selection_day" v-model="dias" :options="optionsDays" color="green" type="checkbox"
+                inline />
+            </template>
+          </q-field>
+          <!-- Botones -->
           <div class="row justify-end">
-            <q-btn label="Limpiar" type="reset" color="primary" flat class="q-ml-sm" />
-            <q-btn label="Actualizar horario" type="submit" color="primary" />
+            <q-btn label="Limpiar" type="reset" color="primary" flat class="q-mr-sm" />
+            <q-btn label="Actualizar" type="submit" color="primary" />
           </div>
         </q-form>
       </q-card>
@@ -56,7 +64,7 @@
           </q-card-section>
           <q-separator />
           <q-card-section class="card-precio flex flex-center">
-            00:00
+            {{ timeEntrada }}
           </q-card-section>
         </q-card>
       </div>
@@ -68,7 +76,7 @@
           </q-card-section>
           <q-separator />
           <q-card-section class="card-precio flex flex-center">
-            00:00
+            {{ timeSalida }}
           </q-card-section>
         </q-card>
       </div>
@@ -84,15 +92,57 @@ export default {
   setup() {
     const $q = useQuasar();
 
-    const name = ref(null);
     const age = ref(null);
     const accept = ref(false);
+    const inputDias = ref([]);
+    const dias = ref([]);
+    const timeEntrada = ref('07:00');
+    const timeSalida = ref('18:00');
 
     return {
-      name,
       age,
       accept,
-      time: ref('10:56'),
+      timeEntrada,
+      timeSalida,
+      inputDias,
+      dias,
+      optionsDays: [
+        {
+          label: 'Lunes',
+          value: 'lunes',
+        },
+        {
+          label: 'Martes',
+          value: 'martes',
+        },
+        {
+          label: 'Miercoles',
+          value: 'miercoles',
+        },
+        {
+          label: 'Jueves',
+          value: 'jueves',
+        },
+        {
+          label: 'Viernes',
+          value: 'viernes',
+        },
+        {
+          label: 'Sabado',
+          value: 'sabado',
+        },
+        {
+          label: 'Domingo',
+          value: 'domingo',
+        },
+      ],
+      aperturaRules: [
+        (val) => (val && val.length > 0) || 'Por favor, ingrese un horario',
+      ],
+      cierreRules: [
+        (val) => (val && val.length > 0) || 'Por favor, ingrese un horario',
+        (val) => (val && val !== timeEntrada.value) || 'Por favor, ingrese un horario válido',
+      ],
 
       onSubmit() {
         if (accept.value !== true) {
@@ -113,9 +163,9 @@ export default {
       },
 
       onReset() {
-        name.value = null;
         age.value = null;
         accept.value = false;
+        dias.value = [];
       },
     };
   },

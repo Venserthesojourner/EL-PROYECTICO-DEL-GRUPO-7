@@ -1,4 +1,3 @@
-<!-- eslint-disable max-len -->
 <template>
   <div class="fullscreen bg-indigo text-white text-center q-pa-md flex flex-center">
     <div>

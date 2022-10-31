@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style */
 /* eslint-env node */
 
 /*
@@ -111,7 +110,7 @@ module.exports = configure((/* ctx */) => ({
     // directives: [],
 
     // Quasar plugins
-    plugins: ['Notify'],
+    plugins: ['Notify', 'Dialog'],
     config: {
       notify: {
         /* look at QuasarConfOptions from the API card */

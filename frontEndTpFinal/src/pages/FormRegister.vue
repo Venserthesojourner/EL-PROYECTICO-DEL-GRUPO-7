@@ -5,31 +5,33 @@
     <q-card class="col-12 col-md-6 q-pa-md rounded-borders" style="max-width: 500px">
 
       <q-card-section class="text-center">
-        <p class="text-h4">Solicitar el servicio</p>
+        <p class="text-h4">Solicitar Servicio</p>
         <span class="text-subtitle2">Los datos marcados con (*) son obligatorios</span>
       </q-card-section>
 
       <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
-        <q-input filled v-model="nombre" type="text" label="Nombre *" hint="Ingrese su/s nombre" lazy-rules
-          :rules="[ val => val && val.length > 0 || 'Please type something']" />
-        <q-input filled v-model="apellido" type="text" label="Apellido *" hint="Ingrese su/s apellido" lazy-rules
-          :rules="[ val => val && val.length > 0 || 'Please type something']" />
-        <q-input filled v-model="mail" type="email" label="Email *" hint="Ingrese su email" lazy-rules
-          :rules="[ val => val && val.length > 0 || 'Please type something', isValidEmail]" />
-        <q-input v-model="comentario" filled type="textarea" label="Dejanos un mensaje (max 200 caracteres)" lazy-rules
-          maxlength="200" />
+        <!-- Nombre -->
+        <q-input filled v-model="username" type="text" label="Nombre de usuario " hint="Ingrese su nombre de usuario"
+          lazy-rules :rules="[val => val && val.length > 0 || 'Por favor, ingrese un nombre de usuario']" />
+        <!-- Email -->
+        <q-input filled v-model="mail" type="Email" label="Email *" hint="Ingrese su email" lazy-rules
+          :rules="[val => val && val.length > 0 || 'Por favor, ingrese un mail', isValidEmail]" />
+        <!-- Comentarios -->
+        <q-input v-model="comentario" filled type="textarea" label="Déjanos un mensaje (máximo 200 caracteres)"
+          lazy-rules maxlength="200" />
+        <!-- Términos y Condiciones -->
         <div class="row items-center">
           <q-toggle v-model="accept" checked-icon="check" color="green" unchecked-icon="clear" lazy-rules
-            @click="accept = false" :rules="[val => val && val === false || 'Debe ver los terminos y condiciones']" />
-          <span class="text-primary cursor-pointer" @click="toolbar = true">Ver terminos y condiciones</span>
+            @click="accept = false" :rules="[val => val && val === false || 'Debe ver los términos y condiciones']" />
+          <span class="text-primary cursor-pointer" @click="basic = true">Ver términos y condiciones *</span>
         </div>
-
+        <!-- Botones -->
         <div class="row justify-between">
           <div>
             <q-btn to="/" color="accent" label="Volver"></q-btn>
           </div>
           <div>
-            <q-btn label="Limpiar" type="reset" color="primary" flat class="q-ml-sm" />
+            <q-btn label="Limpiar" type="reset" color="primary" flat class="q-mr-sm" />
             <q-btn label="Registrarse" type="submit" color="primary" />
           </div>
         </div>
@@ -37,28 +39,14 @@
 
     </q-card>
 
-    <!-- Modal / Dialog de Terminos y Condiciones -->
-    <q-dialog v-model="toolbar">
+    <!-- Modal / Dialog de Términos y Condiciones -->
+    <q-dialog v-model="basic">
       <q-card>
-        <q-toolbar>
-          <q-avatar>
-            <img src="../assets/logo2.png">
-          </q-avatar>
 
-          <q-toolbar-title>
-            <div class="text-h6">Terms of Agreement</div>
-          </q-toolbar-title>
+        <TerminosDeUso></TerminosDeUso>
 
-          <q-btn flat round dense icon="close" v-close-popup />
-        </q-toolbar>
-        <q-separator />
-        <q-card-section style="max-height: 50vh" class="scroll">
-          <p v-for="n in 15" :key="n">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum repellendus sit
-            voluptate voluptas eveniet porro. Rerum blanditiis perferendis totam, ea at omnis vel numquam
-            exercitationem aut, natus minima, porro labore.</p>
-        </q-card-section>
         <q-card-actions align="right">
-          <q-btn flat label="Acepto los terminos y condiciones" color="primary" v-close-popup @click="accept = true" />
+          <q-btn flat label="Aceptar" color="primary" v-close-popup @click="accept = true" />
         </q-card-actions>
       </q-card>
     </q-dialog>
@@ -68,66 +56,95 @@
 <script>
 import { useQuasar } from 'quasar';
 import { ref } from 'vue';
-import data from '../data/userRegister.json';
+import { useRouter } from 'vue-router';
+import axios from 'axios';
+import { useSessionStatus } from '../stores/session-store';
+import TerminosDeUso from '../components/TerminosDeUso.vue';
 
 export default {
 
+  components: {
+    TerminosDeUso,
+  },
+
   setup() {
     const $q = useQuasar();
-
-    const nombre = ref(null);
-    const apellido = ref(null);
+    const store = useSessionStatus();
+    const router = useRouter();
+    const username = ref(null);
     const mail = ref(null);
     const comentario = ref(null);
     const accept = ref(false);
 
+    function alert() {
+      $q.dialog({
+        title: 'Importante!',
+        message: 'En breve recibirá un email donde se indicarán los pasos a seguir, este atento a su bandeja de entrada.',
+        persistent: true,
+      }).onDismiss(() => {
+        router.push('/login');
+      });
+    }
+
     return {
-      nombre,
-      apellido,
+      store,
+      username,
       mail,
       comentario,
       accept,
-      toolbar: ref(false),
-
+      basic: ref(false),
       isValidEmail(val) {
         const emailRegex = /^(?=[a-zA-Z0-9@._%+-]{6,254}$)[a-zA-Z0-9._%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\.){1,8}[a-zA-Z]{2,63}$/;
-        return emailRegex.test(val) || 'Ingrese un email valido';
+        return emailRegex.test(val) || 'Ingrese un email válido';
       },
-
       onSubmit() {
         if (accept.value !== true) {
           $q.notify({
             color: 'red-5',
             textColor: 'white',
             icon: 'warning',
-            message: 'Tienes que ver y aceptar los terminos y condiciones',
+            message: 'Tienes que aceptar los términos y condiciones',
           });
-        }
-        if (accept.value) {
-          const newUser = {
-            name: nombre.value,
-            username: apellido.value,
+        } else {
+          const body = {
+            username: username.value,
             email: mail.value,
-            comment: comentario.value,
+            password: 'b7159b31a2fdf4ef8394df2234acca8fdbbc438f',
+            role: 'owner',
           };
-
-          data.users = data.users.concat(newUser);
-          alert(JSON.stringify(data.users));
-
+          const route = 'http://localhost:3000/usuario';
           setTimeout(() => {
             $q.notify({
-              color: 'green-4',
+              progress: true,
+              message: 'Registrando usuario...',
+              color: 'secondary',
               textColor: 'white',
-              icon: 'cloud_done',
-              message: 'Registro exitoso!',
             });
-          }, 3000);
+            setTimeout(() => {
+              axios.post(route, body)
+                .then(() => {
+                  $q.notify({
+                    color: 'green-4',
+                    textColor: 'white',
+                    icon: 'cloud_done',
+                    message: '¡Registro exitoso!',
+                  });
+                  alert();
+                })
+                .catch(() => {
+                  $q.notify({
+                    message: 'Error en el registro de usuario, contactar con soporte.',
+                    icon: 'warning',
+                    color: 'red-5',
+                    textColor: 'white',
+                  });
+                });
+            }, 3000);
+          }, 2000);
         }
       },
-
       onReset() {
-        nombre.value = null;
-        apellido.value = null;
+        username.value = null;
         mail.value = null;
         comentario.value = null;
         accept.value = false;

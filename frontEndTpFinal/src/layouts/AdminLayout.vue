@@ -1,21 +1,23 @@
 <!-- eslint-disable max-len -->
 <template>
   <q-layout view="hHh Lpr lff">
+    <!-- Header -->
     <q-header class="bg-secondary">
       <q-toolbar>
         <q-btn flat @click="drawer = !drawer" round dense icon="menu" />
         <q-toolbar-title>Panel de Admin</q-toolbar-title>
       </q-toolbar>
     </q-header>
-
-    <q-drawer v-model="drawer" show-if-above :mini="!drawer || miniState" @click.capture="drawerClick" :width="200"
-      :breakpoint="500" bordered class="bg-grey-3">
-      <q-scroll-area class="fit">
-        <div class="column justify-between" style="min-height: calc(100vh - 50px);">
+    <!-- Barra Lateral -->
+    <q-drawer v-model="drawer" show-if-above :width="200" :breakpoint="500" class="bg-grey-3">
+      <!-- Opciones Dashboard -->
+      <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px;">
+        <div class="column justify-between" style="min-height: calc(100vh - 200px);">
+          <!-- Opciones -->
           <q-list padding>
             <q-item to="plazas" clickable v-ripple>
               <q-item-section avatar>
-                <q-icon name="fa-solid fa-grip" />
+                <q-icon name="apps" />
               </q-item-section>
 
               <q-item-section>
@@ -23,7 +25,7 @@
               </q-item-section>
             </q-item>
 
-            <q-expansion-item expand-separator icon="fa-solid fa-dollar-sign" label="Montos">
+            <q-expansion-item expand-separator icon="attach_money" label="Montos">
 
               <q-list>
                 <q-item to="precios" clickable v-ripple>
@@ -47,7 +49,7 @@
 
             <q-item to="horarios" clickable v-ripple>
               <q-item-section avatar>
-                <q-icon name="fa-regular fa-clock" />
+                <q-icon name="schedule" />
               </q-item-section>
 
               <q-item-section>
@@ -55,9 +57,19 @@
               </q-item-section>
             </q-item>
 
+            <q-item to="nuevoEmpleado" clickable v-ripple>
+              <q-item-section avatar>
+                <q-icon name="person_add" />
+              </q-item-section>
+
+              <q-item-section>
+                Nuevo Empleado
+              </q-item-section>
+            </q-item>
+
             <q-item to="configuraciones" clickable v-ripple>
               <q-item-section avatar>
-                <q-icon name="fa-solid fa-gear" />
+                <q-icon name="settings" />
               </q-item-section>
 
               <q-item-section>
@@ -66,11 +78,11 @@
             </q-item>
 
           </q-list>
-
+          <!-- Cerrar Sesión -->
           <q-list padding>
-            <q-item clickable v-ripple to="/">
+            <q-item clickable @click=logoutSession() v-ripple to="/login">
               <q-item-section avatar>
-                <q-icon name="fa-solid fa-right-from-bracket" />
+                <q-icon name="logout" />
               </q-item-section>
 
               <q-item-section>
@@ -80,33 +92,47 @@
           </q-list>
         </div>
       </q-scroll-area>
-
-      <div class="q-mini-drawer-hide absolute" style="top: 15px; right: -17px">
-        <q-btn dense round unelevated color="secondary" icon="keyboard_arrow_left" @click="miniState = true" />
-      </div>
+      <!-- Perfil Usuario -->
+      <q-img class="absolute-top" src="../assets/background-admin.jpg" style="height: 150px">
+        <div class="absolute-bottom bg-transparent">
+          <q-avatar size="56px" class="q-mb-sm">
+            <img src="../assets/marcosContact.jpg">
+          </q-avatar>
+          <div class="text-weight-bold">Homero Simpson</div>
+          <div>Admin</div>
+        </div>
+      </q-img>
     </q-drawer>
-
+    <!-- Page Container -->
     <q-page-container>
       <router-view />
-      <!-- place QPageScroller at end of page -->
-      <q-page-scroller position="bottom-right" :scroll-offset="150" :offset="[18, 18]">
-        <q-btn fab icon="fa-solid fa-chevron-up" color="positive" />
-      </q-page-scroller>
+      <BtnScrollerTop></BtnScrollerTop>
     </q-page-container>
   </q-layout>
 </template>
 
 <script>
 import { ref } from 'vue';
+import BtnScrollerTop from '../components/BtnScrollerTop.vue';
+import { useSessionStatus } from '../stores/session-store';
 
 export default {
+  components: {
+    BtnScrollerTop,
+  },
+
   setup() {
     const miniState = ref(false);
+    const store = useSessionStatus();
 
     return {
       drawer: ref(false),
       miniState,
+      store,
 
+      logoutSession() {
+        store.changeStatus();
+      },
       drawerClick(e) {
         // if in "mini" state and user
         // click on drawer, we switch it to "normal" mode
@@ -121,5 +147,6 @@ export default {
       },
     };
   },
+
 };
 </script>

@@ -1,45 +1,59 @@
-<!-- eslint-disable linebreak-style -->
 <!-- eslint-disable max-len -->
-<!-- eslint-disable comma-dangle -->
 <template>
-  <q-page class="q-pa-md row q-col-gutter-sm">
-    <div class="col-12 col-md-6 justify-center">
-      <q-card class="q-pa-md rounded-borders" style="max-width: 400px">
+  <q-page padding class="row q-col-gutter-sm justify-center">
+    <!-- Formulario -->
+    <div class="col-12 col-md-6">
+      <q-card flat class="q-pa-md">
 
-        <q-card-section>
+        <q-card-section class="q-pt-none">
           <p class="text-h4 text-center">Modificar Precios</p>
         </q-card-section>
-        <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
-          <q-input filled v-model="precioActual" type="number" label="Precio Actual" readonly=""
-            hint="Este es el precio actual por hora" lazy-rules
-            :rules="[ val => val && val.length > 0 || 'Por favor, ingrese un precio']">
-            <template v-slot:prepend>
-              <q-icon name="attach_money" />
-            </template>
-          </q-input>
 
-          <q-input filled v-model="precioNew" type="number" label="Nuevo precio por hora" hint="En pesos" lazy-rules
-            :rules="[ val => val && val.length > 0 || 'Por favor, ingrese un precio']">
+        <q-form @submit.prevent="onSubmit" @reset="onReset" class="q-gutter-md">
+          <!-- Seleccionar Hora -->
+          <q-input filled v-model="hora" type="number" label="Hora" hint="Seleccionar Hora" lazy-rules
+            :rules="horaRules">
+            <template v-slot:prepend>
+              <q-icon name="schedule" />
+            </template>
+          </q-input>
+          <!-- Nuevo Precio -->
+          <q-input filled v-model="precioNew" type="number" label="Nuevo Precio" hint="En pesos" lazy-rules
+            :rules="precioRules">
             <template v-slot:prepend>
               <q-icon name="attach_money" />
             </template>
           </q-input>
+          <!-- Botones -->
           <div class="row justify-end">
-            <q-btn label="Limpiar" type="reset" color="primary" flat class="q-ml-sm" />
-            <q-btn label="Actualizar precio" type="submit" color="primary" />
+            <q-btn label="Limpiar" type="reset" color="primary" flat class="q-mr-sm" />
+            <q-btn label="Actualizar" type="submit" color="primary" />
           </div>
         </q-form>
 
       </q-card>
     </div>
+    <!-- Precios -->
     <div class="col-12 col-md-6">
-      <q-table dense title="Precios por Hora" :rows="rows" :columns="columns" row-key="name" />
+      <q-table flat title="Precios por Hora" :rows="rows" :columns="columns" row-key="name" selection="single"
+        v-model:selected="selected" :filter="filter" v-model:pagination="pagination"
+        :rows-per-page-options="rowsPerPageOptions">
+        <!-- Filtro -->
+        <template v-slot:top-right>
+          <q-input borderless dense debounce="300" v-model="filter" placeholder="Buscar">
+            <template v-slot:append>
+              <q-icon name="search" />
+            </template>
+          </q-input>
+        </template>
+      </q-table>
     </div>
   </q-page>
 </template>
-<!-- eslint-disable linebreak-style -->
+
 <script>
-import { ref } from 'vue';
+import { useQuasar } from 'quasar';
+import { ref, computed, watch } from 'vue';
 
 const columns = [
   {
@@ -102,15 +116,64 @@ const rows = [
 
 export default {
   setup() {
-    const precioActual = ref(100);
+    const $q = useQuasar();
+    const hora = ref(null);
     const precioNew = ref(null);
 
+    const onSubmit = () => {
+      rows.value = [...rows.value, {
+        hoar: hora.value,
+        precio: precioNew.value,
+      }];
+    };
+
+    const onReset = () => {
+      hora.value = null;
+      precioNew.value = null;
+    };
+
+    function getItemsPerPage() {
+      return 5;
+    }
+
+    const filter = ref('');
+    const pagination = ref({
+      page: 1,
+      rowsPerPage: getItemsPerPage(),
+    });
+
+    watch(() => $q.screen.name, () => {
+      pagination.value.rowsPerPage = getItemsPerPage();
+    });
+
     return {
-      precioActual,
+      hora,
       precioNew,
+      onSubmit,
+      onReset,
       columns,
       rows,
+      filter,
+      pagination,
+      rowsPerPageOptions: computed(() => ($q.screen.gt.xs
+        ? [5, 10]
+        : [5])),
+      horaRules: [
+        (val) => (val && val.length > 0) || 'Por favor, seleccione una hora',
+        (val) => (val > 0) || 'Por favor, ingrese un valor válido',
+      ],
+      precioRules: [
+        (val) => (val && val.length > 0) || 'Por favor, ingrese un precio',
+        (val) => (val > 0) || 'Por favor, ingrese un valor válido',
+      ],
+      selected: ref([]),
     };
   },
 };
 </script>
+
+<style lang="sass" scoped>
+.q-table
+  &__container
+    padding-top: 4px
+</style>
