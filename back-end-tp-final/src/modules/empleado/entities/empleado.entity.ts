@@ -30,12 +30,15 @@ export class Empleado extends BaseEntity {
   @OneToOne(() => Estacionamiento, (estacionamiento) => estacionamiento.id)
   estacionamiento: Estacionamiento
 
+  @Column('time', { name: 'horario_entrada' })
   horarioEntrada: string
+
+  @Column('time', { name: 'horario_salida' })
   horarioSalida: string
 
   @CreateDateColumn({ name: 'create_time', nullable: false })
   createdAt: Date;
-  @UpdateDateColumn({ name: 'update_time', nullable: false, default: null })
+  @UpdateDateColumn({ name: 'update_time', nullable: false, default: null, onUpdate: 'CURRENT_TIMESTAMP' })
   updatedAt: Date;
   @DeleteDateColumn({ name: 'delete_time', nullable: false, default: null })
   deletedAt: Date;

@@ -13,8 +13,8 @@ CREATE TABLE `promocion` (
 import { Column, Entity, PrimaryColumn } from "typeorm";
 
 @Entity('promocion')
-export class Promocion{
-    @PrimaryColumn('varchar',{
+export class Promocion {
+    @PrimaryColumn('varchar', {
         name: 'codigo_promocion',
         nullable: false,
         length: 45
@@ -28,10 +28,14 @@ export class Promocion{
     })
     descuento: number
 
+    @Column('int', { name: 'precio_base' })
     precioBase: number
 
+    @Column('varchar', { name: 'tipo_descuento' })
     tipoDescuento: string
 
+    @Column('date', { name: 'validez_inicio' })
     validezInicio: Date
+    @Column('date', { name: 'validez_fin' })
     validezFin: Date
 }

@@ -38,7 +38,7 @@ export class Propietario extends BaseEntity {
 
   @CreateDateColumn({ name: 'create_time', nullable: false })
   createdAt: Date;
-  @UpdateDateColumn({ name: 'update_time', nullable: false, default: null })
+  @UpdateDateColumn({ name: 'update_time', nullable: false, default: null, onUpdate: 'CURRENT_TIMESTAMP' })
   updatedAt: Date;
   @DeleteDateColumn({ name: 'delete_time', nullable: false, default: null })
   deletedAt: Date;
