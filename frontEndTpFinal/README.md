@@ -7,7 +7,7 @@ Node 12+ for Quasar CLI with Webpack, Node 14+ for Quasar CLI with Vite.
 Yarn v1 (strongly recommended), PNPM, or NPM.
 ```
 
-## Instalación
+## Instalación Quasar
 
 - Debemos estar parados en la carpeta del frontend: `cd frontEndTpFinal`
 
@@ -60,8 +60,27 @@ Please only submit bug reports when using the officially supported version.
 
 Solución: Pasarse a una versión anterior que tenga soporte. De todas formas, esta advertencia no afecta en el proyecto en general, solo es un mensaje molesto al momento de levantar el servidor.
 
+## Instalación Capacitor
+
+- Deberá instalar Android Studio y el SDK de la plataforma Android en su máquina. Puede [descargar Android Studio aquí](https://developer.android.com/studio) y seguir estos [pasos de instalación](https://developer.android.com/studio/install.html) después.
+
+- Asegúrese de que después de instalar el SDK de Android acepte sus licencias. Abra la terminal y vaya a la carpeta donde se instaló el SDK, en tools/bin y llame a sdkmanager --licenses.
+
+- Continuar con la instalación según sistema operativo: [Guía para integrar Capacitor a Quasar](https://quasar.dev/quasar-cli-vite/developing-capacitor-apps/introduction)
+
+## Add Capacitor Quasar Mode
+
+- Para desarrollar/construir una aplicación móvil, necesitamos agregar el modo Capacitor a nuestro proyecto Quasar. Esto usará Capacitor CLI para generar un proyecto Capacitor en la carpeta /src-capacitor: `quasar mode add capacitor`
+
+## Start Developing
+
+- Para iniciar un servidor de desarrollo con HMR, ejecute el siguiente comando:: `quasar dev -m capacitor -T [android|ios]`
+
+- Una vez que el servidor de desarrollo esté listo, su IDE se abrirá (Android Studio o Xcode) y desde allí puede seleccionar manualmente el emulador (¡o varios simultáneamente!) e instalar la aplicación de desarrollo en él/ellos. También puede ejecutar la aplicación de desarrollo en un dispositivo móvil o tablet.
+
 ## Bibliografía
 
 - [Documentación de Quasar](https://quasar.dev)
 - [Foro de Quasar](https://github.com/quasarframework/quasar/discussions/)
 - [Comunidad de Quasar en Discord](https://discord.com/invite/5TDhbDg)
+- [Descargar Android Studio](https://developer.android.com/studio)
