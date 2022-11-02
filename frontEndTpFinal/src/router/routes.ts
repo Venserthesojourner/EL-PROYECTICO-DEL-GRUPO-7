@@ -24,8 +24,24 @@ const routes: RouteRecordRaw[] = [
       { path: 'promociones', component: () => import('pages/PromocionesPage.vue'), meta: { auth: true } },
       { path: 'planes', component: () => import('pages/PlanesPage.vue'), meta: { auth: true } },
       { path: 'horarios', component: () => import('pages/HorariosPage.vue'), meta: { auth: true } },
-      { path: 'nuevoEmpleado', component: () => import('pages/nuevoEmpleado.vue'), meta: { auth: true } },
+      { path: 'nuevoEmpleado', component: () => import('pages/NuevoEmpleado.vue'), meta: { auth: true } },
       { path: 'configuraciones', component: () => import('pages/ConfiguracionesPage.vue'), meta: { auth: true } },
+    ],
+  },
+
+  {
+    path: '/mobile',
+    component: () => import('layouts/MobileLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/IndexMobile.vue') },
+      { path: 'login', component: () => import('pages/FormLogin.vue'), meta: { auth: false } },
+      { path: 'register', component: () => import('pages/RegisterMobile.vue'), meta: { auth: false } },
+      { path: 'index', component: () => import('pages/IndexMobileLogin.vue'), meta: { auth: false } },
+      { path: 'buscar', component: () => import('pages/BusquedaMobile.vue'), meta: { auth: false } },
+      { path: 'reserva', component: () => import('pages/ReservaMobile.vue'), meta: { auth: false } },
+      { path: 'cronometro', component: () => import('pages/CronometroMobile.vue'), meta: { auth: false } },
+      { path: 'tipo-reserva', component: () => import('pages/TipoReservaMobile.vue'), meta: { auth: false } },
+      { path: 'confirmacion', component: () => import('pages/ConfirmacionMobile.vue'), meta: { auth: false } },
     ],
   },
 
