@@ -1,24 +1,22 @@
-<!-- eslint-disable linebreak-style -->
-<!-- eslint-disable max-len -->
 <template>
   <q-page padding class="row items-center justify-evenly q-mb-lg">
     <q-card flat class="col-12 col-md-6 q-pa-md rounded-borders" style="max-width: 500px">
 
       <q-card-section class="text-center">
-        <p class="text-h4">Solicitar Servicio</p>
+        <p class="text-h4">Registrarse</p>
         <span class="text-subtitle2">Los datos marcados con (*) son obligatorios</span>
       </q-card-section>
 
       <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
         <!-- Nombre -->
-        <q-input filled v-model="username" type="text" label="Nombre de usuario " hint="Ingrese su nombre de usuario"
-          lazy-rules :rules="[val => val && val.length > 0 || 'Por favor, ingrese un nombre de usuario']" />
+        <q-input filled v-model="username" type="text" label="Nombre *" hint="Pepe" lazy-rules
+          :rules="[val => val && val.length > 0 || 'Por favor, ingrese un nombre']" />
         <!-- Email -->
-        <q-input filled v-model="mail" type="Email" label="Email *" hint="Ingrese su email" lazy-rules
+        <q-input filled v-model="mail" type="Email" label="Email *" hint="unmail@gmail.com" lazy-rules
           :rules="[val => val && val.length > 0 || 'Por favor, ingrese un mail', isValidEmail]" />
-        <!-- Comentarios -->
-        <q-input v-model="comentario" filled type="textarea" label="Déjanos un mensaje (máximo 200 caracteres)"
-          lazy-rules maxlength="200" />
+        <!-- Patente -->
+        <q-input filled v-model="patente" type="text" label="Patente *" mask="AA - ### - AA" hint="AA - 000 - BB"
+          lazy-rules :rules="[val => val && val.length > 0 || 'Por favor, ingrese una patente']" />
         <!-- Términos y Condiciones -->
         <div class="row items-center">
           <q-toggle v-model="accept" checked-icon="check" color="green" unchecked-icon="clear" lazy-rules
@@ -47,7 +45,7 @@
     </q-dialog>
   </q-page>
 </template>
-<!-- eslint-disable linebreak-style -->
+
 <script>
 import { useQuasar } from 'quasar';
 import { ref } from 'vue';
@@ -68,7 +66,7 @@ export default {
     const router = useRouter();
     const username = ref(null);
     const mail = ref(null);
-    const comentario = ref(null);
+    const patente = ref(null);
     const accept = ref(false);
 
     function alert() {
@@ -85,7 +83,7 @@ export default {
       store,
       username,
       mail,
-      comentario,
+      patente,
       accept,
       basic: ref(false),
       isValidEmail(val) {
@@ -141,7 +139,7 @@ export default {
       onReset() {
         username.value = null;
         mail.value = null;
-        comentario.value = null;
+        patente.value = null;
         accept.value = false;
       },
     };

@@ -2,7 +2,7 @@
 <!-- eslint-disable max-len -->
 <template>
   <q-page class="row items-center justify-evenly">
-    <q-card class="col-12 q-pa-md rounded-borders" style="max-width: 400px">
+    <q-card flat class="col-12 q-pa-md" style="max-width: 400px">
 
       <q-card-section class="text-center">
         <p class="text-h4">Ingresar al panel</p>
