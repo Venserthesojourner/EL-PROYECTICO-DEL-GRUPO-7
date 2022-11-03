@@ -1,13 +1,13 @@
 <template>
   <q-page padding class="row items-center justify-evenly q-mb-lg">
-    <q-card flat class="col-12 col-md-6 q-pa-md rounded-borders" style="max-width: 500px">
+    <q-card flat class="col-12 col-md-6" style="max-width: 500px">
 
       <q-card-section class="text-center">
         <p class="text-h4">Registrarse</p>
         <span class="text-subtitle2">Los datos marcados con (*) son obligatorios</span>
       </q-card-section>
 
-      <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
+      <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-y-md">
         <!-- Nombre -->
         <q-input filled v-model="username" type="text" label="Nombre *" hint="Pepe" lazy-rules
           :rules="[val => val && val.length > 0 || 'Por favor, ingrese un nombre']" />
