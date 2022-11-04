@@ -3,7 +3,7 @@
   <section id="bienvenida" class="q-mt-sm q-mb-xl">
     <div class="row justify-center items-center">
       <div class="col-12 col-md-5">
-        <p class="text-h3">Benvenuti a Chihilo</p>
+        <p class="text-h3">Bienvenidos</p>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>
           Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         <q-btn to="register" push color="accent" size="lg" class="q-px-lg q-py-xs q-mr-md q-mb-md border-radius-inherit"
