@@ -1,6 +1,61 @@
 <template>
   <q-page class="window-height row justify-center items-center">
     <div class="column justify-center items-center" style="min-width: 300px">
+      <q-toolbar class="text-primary row justify-end no-padding">
+        <q-btn-dropdown flat round dense dropdown-icon="settings">
+          <q-list style="min-width: 150px">
+            <q-item clickable v-close-popup to="/mis-patentes">
+              <q-item-section>
+                <q-item-label>Mis Patentes</q-item-label>
+              </q-item-section>
+
+              <q-item-section avatar>
+                <q-icon name="directions_car" />
+              </q-item-section>
+            </q-item>
+
+            <q-item clickable v-close-popup to="/mis-reservas">
+              <q-item-section>
+                <q-item-label>Mis Reservas</q-item-label>
+              </q-item-section>
+
+              <q-item-section avatar>
+                <q-icon name="qr_code" />
+              </q-item-section>
+            </q-item>
+
+            <q-item clickable v-close-popup to="/mis-favoritos">
+              <q-item-section>
+                <q-item-label>Favoritos</q-item-label>
+              </q-item-section>
+
+              <q-item-section avatar>
+                <q-icon name="favorite" />
+              </q-item-section>
+            </q-item>
+
+            <q-item clickable v-close-popup to="/historial">
+              <q-item-section>
+                <q-item-label>Historial</q-item-label>
+              </q-item-section>
+
+              <q-item-section avatar>
+                <q-icon name="history" />
+              </q-item-section>
+            </q-item>
+
+            <q-item clickable @click=logoutSession() v-ripple to="/">
+              <q-item-section>
+                <q-item-label>Cerrar Sesión</q-item-label>
+              </q-item-section>
+
+              <q-item-section avatar>
+                <q-icon name="logout" />
+              </q-item-section>
+            </q-item>
+          </q-list>
+        </q-btn-dropdown>
+      </q-toolbar>
       <img src="../assets/logo.png" alt="logo" style="width: 100px;">
       <p class="title text-weight-bold text-uppercase text-primary">Park-Our</p>
       <div class="q-mt-md q-gutter-y-md" style="min-width: 300px">

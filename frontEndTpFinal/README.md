@@ -74,7 +74,7 @@ Solución: Pasarse a una versión anterior que tenga soporte. De todas formas, e
 
 ## Start Developing
 
-- Para iniciar un servidor de desarrollo con HMR, ejecute el siguiente comando:: `quasar dev -m capacitor -T [android|ios]`
+- Para iniciar un servidor de desarrollo con HMR, ejecute el siguiente comando:: `quasar dev -m capacitor -T android`
 
 - Una vez que el servidor de desarrollo esté listo, su IDE se abrirá (Android Studio o Xcode) y desde allí puede seleccionar manualmente el emulador (¡o varios simultáneamente!) e instalar la aplicación de desarrollo en él/ellos. También puede ejecutar la aplicación de desarrollo en un dispositivo móvil o tablet.
 
