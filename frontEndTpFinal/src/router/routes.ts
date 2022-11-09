@@ -40,8 +40,11 @@ const routes: RouteRecordRaw[] = [
       { path: 'buscar', component: () => import('pages/BusquedaMobile.vue'), meta: { auth: false } },
       { path: 'reserva', component: () => import('pages/ReservaMobile.vue'), meta: { auth: false } },
       { path: 'cronometro', component: () => import('pages/CronometroMobile.vue'), meta: { auth: false } },
-      { path: 'tipo-reserva', component: () => import('pages/TipoReservaMobile.vue'), meta: { auth: false } },
-      { path: 'confirmacion', component: () => import('pages/ConfirmacionMobile.vue'), meta: { auth: false } },
+      { path: 'confirmacion', component: () => import('pages/CheckMobile.vue'), meta: { auth: false } },
+      { path: 'tipo-reserva', component: () => import('src/pages/TipoReservaMobile.vue'), meta: { auth: false } },
+      { path: 'mis-patentes', component: () => import('pages/MisPatentesMobile.vue'), meta: { auth: false } },
+      { path: 'mis-reservas', component: () => import('pages/MisReservasMobile.vue'), meta: { auth: false } },
+      { path: 'mis-favoritos', component: () => import('src/pages/MisFavoritosMobile.vue'), meta: { auth: false } },
     ],
   },
 

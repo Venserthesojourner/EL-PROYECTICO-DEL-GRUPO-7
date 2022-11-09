@@ -3,12 +3,12 @@
   <section id="bienvenida" class="q-mt-sm q-mb-xl">
     <div class="row justify-center items-center">
       <div class="col-12 col-md-5">
-        <p class="text-h3">Benvenuti a Chihilo</p>
+        <p class="text-h3">Bienvenidos</p>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>
           Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
         <q-btn to="register" push color="accent" size="lg" class="q-px-lg q-py-xs q-mr-md q-mb-md border-radius-inherit"
           label="Registrarse" no-caps />
-        <q-btn href="https://play.google.com/store/apps" push color="primary" size="lg" target="blank"
+        <q-btn to="mobile" push color="primary" size="lg" target="blank"
           class="q-px-lg q-py-xs q-mb-md border-radius-inherit" no-caps>
           <q-icon left size="1.3em" name="fa-brands fa-google-play" />
           <div>Google Play</div>
