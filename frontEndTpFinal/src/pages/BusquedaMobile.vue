@@ -7,23 +7,15 @@
 
 <script>
 import { GoogleMap } from "@capacitor/google-maps";
+import { Geolocation } from '@capacitor/geolocation';
 import { ref, onMounted, onUnmounted, computed } from "vue";
 export default {
   setup() {
     let map = ref(null);
     let coords = ref({ latitude: 0, longitude: 0 });
-    const isSuported = "navigator" in window && "geolocation" in navigator;
     let watcher = null;
-    const currPos = computed(() => ({
-      lat: coords.value.latitude,
-      lng: coords.value.longitude,
-    }));
 
-    console.log(currPos.value);
-    const createMap = async () => {
-      const mapRef = document.getElementById("map");
-
-      const locations = [
+    const locations = [
           {
             lat: -25.361,
             lng: 131.041,
@@ -38,6 +30,18 @@ export default {
           },
         ]
 
+
+    const printCurrentPosition = async () => {
+    const coordinates = await Geolocation.getCurrentPosition();
+    coords.value.latitude = coordinates.coords.latitude
+    coords.value.longitude = coordinates.coords.longitude
+      console.log(coords.value)
+  console.log('Current position:', coordinates);
+};
+
+    const createMap = async () => {
+      const mapRef = document.getElementById("map");
+
       const newMap = await GoogleMap.create({
         id: "my-map", // Unique identifier for this map instance
         element: mapRef, // reference to the capacitor-google-map element
@@ -45,10 +49,10 @@ export default {
         config: {
           center: {
             // The initial position to be rendered by the map
-            lat: -25.363,
-            lng: 131.044,
+            lat: coords.value.latitude,
+            lng: coords.value.longitude,
           },
-          zoom: 15, // The initial zoom level to be rendered by the map
+          zoom: 3, // The initial zoom level to be rendered by the map
         },
       });
 
@@ -69,19 +73,15 @@ export default {
 
       await newMap.addMarker({
         coordinate: {
-          lat: -25.363,
-          lng: 131.044,
+          lat: coords.value.latitude,
+            lng: coords.value.longitude,
         },
         tittle: "you are here bitch!",
       });
     };
     onMounted(() => {
-      if (isSuported) {
-        watcher = navigator.geolocation.getCurrentPosition(
-          (position) => (currPos.value = position.coords)
-        );
-        console.log(watcher);
-        console.log(currPos.value);
+      printCurrentPosition();
+      if(!(coords.value.latitude === undefined) || !(coords.value.longitude === undefined)){
         createMap();
       }
     });
