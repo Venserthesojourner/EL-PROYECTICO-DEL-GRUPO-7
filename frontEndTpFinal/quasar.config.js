@@ -93,6 +93,20 @@ module.exports = configure((/* ctx */) => ({
   devServer: {
     // https: true
     open: true, // opens browser window automatically
+    before(app) {
+      const cors = require('cors')
+      app.use(cors())
+    },
+    proxy: {
+      // proxy all requests starting with /api to jsonplaceholder
+      '/api': {
+        target: 'http://www.dneonline.com/calculator.asmx',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        }
+      }
+    }
   },
 
   // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#framework

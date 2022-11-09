@@ -90,6 +90,28 @@
 <script>
 import { useQuasar } from 'quasar';
 import { ref, computed, watch } from 'vue';
+import axios from 'axios';
+
+let xmls = '<soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"\
+                           xmlns:xsd="http://www.w3.org/2001/XMLSchema"\
+                           xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">\
+            <soap12:Body>\
+              <Multiply xmlns="http://tempuri.org/">\
+                <intA>5</intA>\
+                <intB>5</intB>\
+              </Multiply>\
+            </soap12:Body>\
+          </soap12:Envelope>';
+
+axios.post('http://www.dneonline.com/calculator.asmx',
+  xmls,
+  {
+    headers:
+    {
+      'Content-Type': 'text/xml',
+      SOAPAction: 'http://tempuri.org/Multiply'
+    }
+  }).then(res => { console.log(res) }).catch(err => { console.log(err) })
 
 export default {
   setup() {
