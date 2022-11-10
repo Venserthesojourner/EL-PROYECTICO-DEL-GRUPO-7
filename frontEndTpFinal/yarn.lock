@@ -7,12 +7,17 @@
   "resolved" "https://registry.npmjs.org/@babel/parser/-/parser-7.18.13.tgz"
   "version" "7.18.13"
 
-"@capacitor/core@^4.0.1":
+"@capacitor/core@^4.0.0", "@capacitor/core@^4.0.1":
   "integrity" "sha512-9k6EJTCMlHhr6g2oGo2FJM2byRyX5GEfB24Bv2e4fnemiiHrQEeAKdg++6Hj7jNNZtI1q+5EImTrcpXzPkiX7Q=="
   "resolved" "https://registry.npmjs.org/@capacitor/core/-/core-4.4.0.tgz"
   "version" "4.4.0"
   dependencies:
     "tslib" "^2.1.0"
+
+"@capacitor/geolocation@^4.0.1":
+  "integrity" "sha512-5dxXfDU1rCkn8xrXk6cQwUr+F2ZRycZoU5zi8MFVnH7JvHruV3B152Uz+urRkF/GtKQrgvxEW78GbejOW+nfYw=="
+  "resolved" "https://registry.npmjs.org/@capacitor/geolocation/-/geolocation-4.0.1.tgz"
+  "version" "4.0.1"
 
 "@capacitor/google-maps@^4.3.0":
   "integrity" "sha512-1VuSfncnJmyHjibIH9FIQDDtZHIh3WaGpKWogHf6GzeUI3YHIySXl/awMT+o9lt5dX2il3pMCQX6Zd4nNLvmrQ=="
