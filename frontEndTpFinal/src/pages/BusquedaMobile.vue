@@ -14,34 +14,29 @@ export default {
     let map = ref(null);
     let coords = ref({ latitude: 0, longitude: 0 });
     let watcher = null;
-
     const locations = [
-          {
-            lat: -25.361,
-            lng: 131.041,
-          },
-          {
-            lat: -25.367,
-            lng: 131.046,
-          },
-          {
-            lat: -25.363,
-            lng: 131.036,
-          },
-        ]
-
-
+      {
+        lat: -38.95301138636936,
+        lng: -68.0215979364961,
+      },
+      {
+        lat: -38.96196458229248,
+        lng: -68.02457523815261,
+      },
+      {
+        lat: -38.959461832522436,
+        lng: -68.01440430156816,
+      },
+    ]
     const printCurrentPosition = async () => {
-    const coordinates = await Geolocation.getCurrentPosition();
-    coords.value.latitude = coordinates.coords.latitude
-    coords.value.longitude = coordinates.coords.longitude
+      const coordinates = await Geolocation.getCurrentPosition();
+      coords.value.latitude = coordinates.coords.latitude
+      coords.value.longitude = coordinates.coords.longitude
       console.log(coords.value)
-  console.log('Current position:', coordinates);
-};
-
+      console.log('Current position:', coordinates);
+    };
     const createMap = async () => {
       const mapRef = document.getElementById("map");
-
       const newMap = await GoogleMap.create({
         id: "my-map", // Unique identifier for this map instance
         element: mapRef, // reference to the capacitor-google-map element
@@ -55,37 +50,32 @@ export default {
           zoom: 3, // The initial zoom level to be rendered by the map
         },
       });
-
       for (let index = 0; index < locations.length; index++) {
         await newMap.addMarker({
-        coordinate: {
-          lat: locations[index].lat,
-          lng: locations[index].lng,
-        },
-        tittle: "you are here bitch!",
-      });
-
+          coordinate: {
+            lat: locations[index].lat,
+            lng: locations[index].lng,
+          },
+          tittle: "you are here bitch!",
+        });
       }
-
       await newMap.setOnMarkerClickListener(() => {
         alert("hi bitch");
       });
-
       await newMap.addMarker({
         coordinate: {
           lat: coords.value.latitude,
-            lng: coords.value.longitude,
+          lng: coords.value.longitude,
         },
         tittle: "you are here bitch!",
       });
     };
     onMounted(() => {
       printCurrentPosition();
-      if(!(coords.value.latitude === undefined) || !(coords.value.longitude === undefined)){
+      if (!(coords.value.latitude === undefined) || !(coords.value.longitude === undefined)) {
         createMap();
       }
     });
-
     onUnmounted(() => {
       if (watcher) navigator.geolocation.clearWatch(watcher);
     });
