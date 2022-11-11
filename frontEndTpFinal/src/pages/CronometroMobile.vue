@@ -27,11 +27,11 @@ export default {
     const acumulado = ref(0);
 
     function formatearMS(tiempoMS) {
-      const MS = tiempoMS % 1000;
-      const S = Math.floor(((tiempoMS - MS) / 1000) % 60);
-      const M = Math.floor((S / 60) % 60);
-      const H = Math.floor(M / 60);
-      const data = `${H.toString().padStart(2, 0)}:${M.toString().padStart(2, 0)}:${S.toString().padStart(2, 0)}`;
+      const minisconds = tiempoMS % 1000;
+      const seconds = Math.floor(((tiempoMS - minisconds) / 1000) % 60);
+      const minutos = Math.floor(((tiempoMS - minisconds) / (1000 * 60)) % 60);
+      const horas = Math.floor(((tiempoMS - minisconds) / (1000 * 60 * 60)) % 60);
+      const data = `${horas.toString().padStart(2, 0)}:${minutos.toString().padStart(2, 0)}:${seconds.toString().padStart(2, 0)}`;
       return data;
     }
 
