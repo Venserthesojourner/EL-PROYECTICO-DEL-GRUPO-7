@@ -61,7 +61,12 @@
       <div class="q-mt-md q-gutter-y-md" style="min-width: 300px">
         <q-form @submit="onSubmit" @reset="onReset">
           <q-select disable filled v-model="patente" :options="options" />
+          <!-- Añadir Patente -->
+          <div class="q-mt-sm row justify-center">
+            <span><a href="mis-patentes">Añadir Patente</a></span>
+          </div>
         </q-form>
+
         <q-btn to="buscar" push color="primary" size="lg" class="full-width border-radius-inherit" label="Buscar"
           no-caps />
         <q-btn to="reserva" push color="positive" size="lg" class="full-width border-radius-inherit" label="Reserva"
