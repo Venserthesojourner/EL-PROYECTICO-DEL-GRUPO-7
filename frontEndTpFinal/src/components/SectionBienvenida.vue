@@ -10,6 +10,7 @@
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
           Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        <!-- Botones para display mayores que xs -->
         <div class="q-mt-lg gt-xs">
           <q-btn to="register" push color="accent" size="lg"
             class="q-px-lg q-py-xs q-mr-md q-mb-md border-radius-inherit" label="Registrarse" no-caps />
@@ -19,6 +20,7 @@
             <div>Google Play</div>
           </q-btn>
         </div>
+        <!-- Botones para display menores que sm -->
         <div class="q-mt-lg lt-sm">
           <q-btn to="register" push color="accent" size="lg" class="q-mb-md full-width border-radius-inherit"
             label="Registrarse" no-caps />
@@ -29,11 +31,6 @@
           </q-btn>
         </div>
       </div>
-      <!-- <div class="col-12 col-md-5">
-        <div class="row justify-center">
-          <img src="../assets/car-reserva1.png" alt="car reserva" style="height: auto; min-width: 200px;">
-        </div>
-      </div> -->
     </div>
   </section>
 </template>

@@ -95,4 +95,9 @@ export default {
   flex-direction: column
   justify-content: space-evenly
   align-items: center
+
+@media(max-width: 375px)
+  header.q-header
+    padding-left: 0
+    padding-right: 0
 </style>

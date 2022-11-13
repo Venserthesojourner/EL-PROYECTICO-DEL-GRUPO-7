@@ -9,17 +9,30 @@
                         style="height: auto; min-width: 200px; max-width: 500px;">
                 </div>
             </div>
-            <div class="col-12 col-md-5 text-white">
+            <div class="col-12 col-md-5 text-white q-px-md">
                 <p class="text-h3">About</p>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                <q-btn to="register" push color="positive" size="lg"
-                    class="q-px-lg q-py-xs q-mr-md q-mb-md border-radius-inherit" label="Registrarse" no-caps />
-                <q-btn href="https://play.google.com/store/apps" push color="secondary" size="lg"
-                    class="q-px-lg q-py-xs q-mb-md border-radius-inherit" no-caps>
-                    <q-icon left size="1.3em" name="fa-brands fa-google-play" />
-                    <div>Google Play</div>
-                </q-btn>
+                <!-- Botones para display mayores que xs -->
+                <div class="q-mt-lg gt-xs">
+                    <q-btn to="register" push color="positive" size="lg"
+                        class="q-px-lg q-py-xs q-mr-md q-mb-md border-radius-inherit" label="Registrarse" no-caps />
+                    <q-btn to="mobile" push color="secondary" size="lg" target="blank"
+                        class="q-px-lg q-py-xs q-mb-md border-radius-inherit" no-caps>
+                        <q-icon left size="1.3em" name="fa-brands fa-google-play" />
+                        <div>Google Play</div>
+                    </q-btn>
+                </div>
+                <!-- Botones para display menores que sm -->
+                <div class="q-mt-lg q-mb-lg lt-sm">
+                    <q-btn to="register" push color="positive" size="lg"
+                        class="q-mb-md full-width border-radius-inherit" label="Registrarse" no-caps />
+                    <q-btn to="mobile" push color="secondary" size="lg" target="blank"
+                        class="full-width border-radius-inherit" no-caps>
+                        <q-icon left size="1.3em" name="fa-brands fa-google-play" />
+                        <div>Google Play</div>
+                    </q-btn>
+                </div>
             </div>
         </div>
     </section>
