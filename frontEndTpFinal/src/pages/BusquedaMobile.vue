@@ -32,10 +32,9 @@ export default {
       const coordinates = await Geolocation.getCurrentPosition();
       coords.value.latitude = coordinates.coords.latitude
       coords.value.longitude = coordinates.coords.longitude
-      console.log(coords.value)
-      console.log('Current position:', coordinates);
     };
     const createMap = async () => {
+      const coordinates = await Geolocation.getCurrentPosition();
       const mapRef = document.getElementById("map");
       const newMap = await GoogleMap.create({
         id: "my-map", // Unique identifier for this map instance
@@ -44,10 +43,10 @@ export default {
         config: {
           center: {
             // The initial position to be rendered by the map
-            lat: coords.value.latitude,
-            lng: coords.value.longitude,
+            lat: coordinates.coords.latitude,
+            lng: coordinates.coords.longitude,
           },
-          zoom: 3, // The initial zoom level to be rendered by the map
+          zoom: 10, // The initial zoom level to be rendered by the map
         },
       });
       for (let index = 0; index < locations.length; index++) {
@@ -88,7 +87,7 @@ export default {
 
 <style>
 capacitor-google-map {
-  width: 100%;
-  height: 80vh;
+  width: 320px;
+  height: 50vh;
 }
 </style>
