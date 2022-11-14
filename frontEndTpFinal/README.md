@@ -84,3 +84,4 @@ Solución: Pasarse a una versión anterior que tenga soporte. De todas formas, e
 - [Foro de Quasar](https://github.com/quasarframework/quasar/discussions/)
 - [Comunidad de Quasar en Discord](https://discord.com/invite/5TDhbDg)
 - [Descargar Android Studio](https://developer.android.com/studio)
+- [Documentación de Vue](https://vuejs.org/guide/introduction.html)

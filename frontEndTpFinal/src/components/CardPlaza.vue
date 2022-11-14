@@ -1,6 +1,7 @@
 <!-- eslint-disable max-len -->
 <template>
-  <q-card dark class="q-ma-sm column justify-between" style="height: 250px; width: 200px">
+  <q-card dark :class="[iniciado ? 'iniciar-theme' : pausado ? 'pausar-theme' : 'reiniciar-theme']"
+    class="q-ma-sm column justify-between" style="height: 250px; width: 200px">
     <q-card-section>
       <div class="text-h6">
         Plaza #{{ numPlaza }}
@@ -32,13 +33,15 @@ export default {
     const time = ref(Date.now());
     const cronometro = ref(false);
     const acumulado = ref(0);
+    const iniciado = ref(false);
+    const pausado = ref(false);
 
     function formatearMS(tiempoMS) {
-      const MS = tiempoMS % 1000;
-      const S = Math.floor(((tiempoMS - MS) / 1000) % 60);
-      const M = Math.floor((S / 60) % 60);
-      const H = Math.floor(M / 60);
-      const data = `${H.toString().padStart(2, 0)}:${M.toString().padStart(2, 0)}:${S.toString().padStart(2, 0)}`;
+      const minisconds = tiempoMS % 1000;
+      const seconds = Math.floor(((tiempoMS - minisconds) / 1000) % 60);
+      const minutos = Math.floor(((tiempoMS - minisconds) / (1000 * 60)) % 60);
+      const horas = Math.floor(((tiempoMS - minisconds) / (1000 * 60 * 60)) % 60);
+      const data = `${horas.toString().padStart(2, 0)}:${minutos.toString().padStart(2, 0)}:${seconds.toString().padStart(2, 0)}`;
       return data;
     }
 
@@ -55,15 +58,24 @@ export default {
       time,
       cronometro,
       acumulado,
+      iniciado,
+      pausado,
 
       iniciar() {
         cronometro.value = true;
+        iniciado.value = true;
+        pausado.value = false;
       },
       pausar() {
         cronometro.value = false;
+        iniciado.value = false;
+        pausado.value = true;
       },
       reiniciar() {
         acumulado.value = 0;
+        cronometro.value = false;
+        iniciado.value = false;
+        pausado.value = false;
       },
 
     };
@@ -73,13 +85,16 @@ export default {
 
 <style lang="sass" scoped>
 .q-card
-    transition: 0.5s
-    &::before
-        content: ''
-        position: absolute
-        inset: 4px
-        // background: $dark
-    &:hover
-        background-color: $primary
-        box-shadow: 0 0 20px $primary
+  border-style: solid
+  border-width: 3px
+  box-shadow: 0 0 10px $primary
+.iniciar-theme
+  border-color: $positive
+  box-shadow: 0 0 10px $positive
+.pausar-theme
+  border-color: $negative
+  box-shadow: 0 0 10px $negative
+.reiniciar-theme
+  border-color: $primary
+  box-shadow: 0 0 10px $primary
 </style>
