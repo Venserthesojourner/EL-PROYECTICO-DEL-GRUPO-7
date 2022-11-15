@@ -7,49 +7,69 @@
           <!-- Primer Patente -->
           <q-item clickable v-ripple :active="active === 'primera'" @click="active = 'primera'"
             active-class="bg-grey-2">
-            <q-item-section class="text-h5">AA-000-BB</q-item-section>
+            <q-item-section class="text-h5">AA - 000 - BB</q-item-section>
 
             <q-item-section side>
               <q-btn size="12px" round dense flat unelevated icon="delete" color="negative" />
             </q-item-section>
           </q-item>
+
           <!-- Aca hay que meter todas las patentes -->
           <q-intersection v-for="index in cantidadPatentes" v-bind:key="index">
 
             <q-item clickable v-ripple v-bind:index='index' :active="active === 'segunda'" @click="active = 'segunda'"
               active-class="bg-grey-2">
-              <q-item-section class="text-h5">BB-111-CC</q-item-section>
+              <q-item-section class="text-h5">{{ patente }}</q-item-section>
 
               <q-item-section side>
                 <q-btn size="12px" round dense flat unelevated icon="delete" color="negative" />
               </q-item-section>
             </q-item>
           </q-intersection>
+
+          <q-separator spaced />
+
+          <!-- Formulario -->
+          <q-form @submit="onSubmit" class="q-gutter-y-md q-mt-xs">
+            <!-- Patente -->
+            <q-input filled v-model="patente" type="text" label="Patente *" mask="AA - ### - AA" hint="AA - 000 - BB"
+              lazy-rules :rules="[val => val && val.length > 0 || 'Por favor, ingrese una patente']" />
+            <!-- Botones -->
+            <div class="row justify-end">
+              <q-btn type="submit" push color="primary" label="Añadir Patente"
+                class="full-width border-radius-inherit q-mt-md" />
+            </div>
+          </q-form>
         </q-list>
-
-        <q-separator spaced />
-
-        <q-btn push color="primary" label="Añadir Patente" class="full-width border-radius-inherit q-mt-md"
-          @click="agregarPatente()" />
       </div>
     </div>
   </q-page>
 </template>
 
 <script>
-import { ref } from 'vue'
+import { useQuasar } from 'quasar';
+import { ref } from 'vue';
 
 export default {
   props: { agregarPatente: Function },
 
   setup() {
-    const cantidadPatentes = ref(1);
+    const $q = useQuasar();
+    const cantidadPatentes = ref(0);
+    const patente = ref(null);
     return {
       active: ref('primera'),
-      cantidadPatentes,
-      agregarPatente() {
+      patente,
+      onSubmit() {
+        $q.notify({
+          color: 'green-4',
+          textColor: 'white',
+          icon: 'cloud_done',
+          message: 'Patente Agregada',
+        });
         cantidadPatentes.value += 1;
       },
+      cantidadPatentes,
     }
   }
 }
