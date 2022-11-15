@@ -34,7 +34,7 @@
               </q-item-section>
             </q-item>
 
-            <q-item clickable v-close-popup to="historial">
+            <q-item clickable v-close-popup to="mi-historial">
               <q-item-section>
                 <q-item-label>Historial</q-item-label>
               </q-item-section>

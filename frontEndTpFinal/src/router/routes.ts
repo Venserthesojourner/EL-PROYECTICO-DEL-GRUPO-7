@@ -45,6 +45,7 @@ const routes: RouteRecordRaw[] = [
       { path: 'mis-patentes', component: () => import('pages/MisPatentesMobile.vue'), meta: { auth: false } },
       { path: 'mis-reservas', component: () => import('pages/MisReservasMobile.vue'), meta: { auth: false } },
       { path: 'mis-favoritos', component: () => import('src/pages/MisFavoritosMobile.vue'), meta: { auth: false } },
+      { path: 'mi-historial', component: () => import('src/pages/MiHistorialMobile.vue'), meta: { auth: false } },
     ],
   },
 
