@@ -8,7 +8,7 @@ CREATE TABLE `plan_mensual` (
   PRIMARY KEY (`codigo_plan_especial`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
  */
-import { Estacionamiento } from "src/modules/estacionamiento/entitites/estacionamiento.entity";
+import { Estacionamiento } from "../../estacionamiento/entitites/estacionamiento.entity";
 import { Column, Entity, ManyToOne, PrimaryColumn } from "typeorm";
 
 @Entity('plan_mensual')
