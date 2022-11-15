@@ -1,54 +1,33 @@
 <template>
-  <q-page class="window-height row justify-center items-start">
-    <capacitor-google-map id="map" ref="map"></capacitor-google-map>
-    <q-list style="min-width: 300px">
-          <!-- Primer Patente -->
-          <q-item clickable v-ripple :active="active === 'primera'" @click="active = 'primera'"
-            active-class="bg-grey-2">
-            <q-item-section class="text-h5">Estacionamiento numero 0 </q-item-section>
+  <q-page class="window-height row justify-center items-center">
+    <div class="column justify-center items-center" style="min-width: 300px">
+      <capacitor-google-map id="map" ref="map"></capacitor-google-map>
+      <q-list style="min-width: 320px">
+        <!-- Primer Patente -->
+        <q-item clickable v-ripple :active="active === 'primera'" @click="active = 'primera'" active-class="bg-grey-2">
+          <q-item-section>Estacionamiento numero 0 </q-item-section>
 
-            <q-item-section side>
-              <q-btn size="12px" round dense flat unelevated icon="local_parking" color="negative" />
-            </q-item-section>
-          </q-item>
-          <!-- Aca hay que meter todas las patentes -->
-          <q-intersection v-for="index in cantidadPatentes" v-bind:key="index">
+          <q-item-section side>
+            <q-btn size="12px" round dense flat unelevated icon="local_parking" color="negative" />
+          </q-item-section>
+        </q-item>
+        <!-- Aca hay que meter todos los estacionamientos cercanos -->
+        <q-item clickable v-ripple :active="active === 'segunda'" @click="active = 'segunda'" active-class="bg-grey-2">
+          <q-item-section>Estacionamiento numero 1</q-item-section>
 
-            <q-item clickable v-ripple v-bind:index='index' :active="active === 'segunda'" @click="active = 'segunda'"
-              active-class="bg-grey-2">
-              <q-item-section class="text-h5">Estacionamiento numero {{index}}</q-item-section>
+          <q-item-section side>
+            <q-btn size="12px" round dense flat unelevated icon="local_parking" color="negative" />
+          </q-item-section>
+        </q-item>
+        <q-item clickable v-ripple :active="active === 'tercera'" @click="active = 'tercera'" active-class="bg-grey-2">
+          <q-item-section>Estacionamiento numero 2</q-item-section>
 
-              <q-item-section side>
-                <q-btn size="12px" round dense flat unelevated icon="local_parking" color="negative" />
-              </q-item-section>
-            </q-item>
-            <q-item clickable v-ripple v-bind:index='index' :active="active === 'segunda'" @click="active = 'segunda'"
-              active-class="bg-grey-2">
-              <q-item-section class="text-h5">Estacionamiento numero {{index}}</q-item-section>
-
-              <q-item-section side>
-                <q-btn size="12px" round dense flat unelevated icon="local_parking" color="negative" />
-              </q-item-section>
-            </q-item>
-            <q-item clickable v-ripple v-bind:index='index' :active="active === 'segunda'" @click="active = 'segunda'"
-              active-class="bg-grey-2">
-              <q-item-section class="text-h5">Estacionamiento numero {{index}}</q-item-section>
-
-              <q-item-section side>
-                <q-btn size="12px" round dense flat unelevated icon="local_parking" color="negative" />
-              </q-item-section>
-            </q-item>
-            <q-item clickable v-ripple v-bind:index='index' :active="active === 'segunda'" @click="active = 'segunda'"
-              active-class="bg-grey-2">
-              <q-item-section class="text-h5">Estacionamiento numero {{index}}</q-item-section>
-
-              <q-item-section side>
-                <q-btn size="12px" round dense flat unelevated icon="local_parking" color="negative" />
-              </q-item-section>
-            </q-item>
-          </q-intersection>
-        </q-list>
-
+          <q-item-section side>
+            <q-btn size="12px" round dense flat unelevated icon="local_parking" color="negative" />
+          </q-item-section>
+        </q-item>
+      </q-list>
+    </div>
   </q-page>
 </template>
 
@@ -122,9 +101,9 @@ export default {
 
     const cargarEstacionamientos = () => {
       axios.get('')
-    .then(res => console.log(res.data))
-    .catch(err => console.log(err))
-  };
+        .then(res => console.log(res.data))
+        .catch(err => console.log(err))
+    };
 
     onMounted(() => {
       printCurrentPosition();
@@ -146,7 +125,6 @@ export default {
 </script>
 
 <style>
-
 .my-card {
   width: 100%;
 }
@@ -156,7 +134,7 @@ export default {
 }
 
 capacitor-google-map {
-  width: 100%;
-  height: 80vh;
+  width: 320px;
+  height: 50vh;
 }
 </style>
