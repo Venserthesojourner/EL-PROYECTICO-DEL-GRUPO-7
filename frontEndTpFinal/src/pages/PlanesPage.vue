@@ -70,14 +70,15 @@
         <template v-slot:item="props">
           <div class="q-pa-md col-12 col-lg-6">
             <q-card class="text-center">
-              <q-card-section class="card-precio text-white text-h3">
-                <div>${{ props.row.precioFinal }}</div>
+              <q-card-section class="card-precio text-white q-py-md">
+                <div class="text-overline">{{ props.row.codigo }}</div>
               </q-card-section>
               <q-separator />
               <q-card-section class="card-datos column justify-center items-center">
-                <div>Precio base: <span class="strikethrough">${{ props.row.precio }}</span></div>
-                <div>Caduca: <span class="fechaCaducidad">{{ props.row.date }}</span></div>
-                <div>Código: <span class="text-overline">{{ props.row.codigo }}</span></div>
+                <div><span class="fechaCaducidad">${{ props.row.precioFinal }} </span><span
+                    class="strikethrough q-ml-sm">${{ props.row.precio }}</span>
+                </div>
+                <div><span class="fechaCaducidad">{{ props.row.date }}</span></div>
               </q-card-section>
             </q-card>
           </div>
@@ -137,12 +138,21 @@ export default {
       pagination.value.rowsPerPage = getItemsPerPage();
     });
 
+    function currentDate() {
+      const current = new Date();
+      const dateCurrent = `${current.getFullYear()}/${current.getMonth() + 1}/${current.getDate()}`;
+      return dateCurrent;
+    };
+
+    const fechaActual = currentDate();
+
     return {
       codigo,
       precioFinal,
       precio,
       porcentaje,
       date,
+      fechaActual,
       onSubmit,
       onReset,
       filter,
@@ -162,6 +172,7 @@ export default {
       ],
       dateRules: [
         (val) => (val && val.length > 0) || 'Por favor, ingrese una fecha',
+        (val) => (val && val > fechaActual) || 'Por favor, ingrese una fecha válida',
       ],
     };
   },
@@ -177,7 +188,6 @@ export default {
         background-color: #ffffff
         background-image: url("../assets/background-c2.png")
         text-shadow: 0 0 5px #dfd2ff
-        padding: 10px
       & .card-datos
         font-size: 1rem
         padding: 10px
@@ -185,7 +195,7 @@ export default {
           font-size: 1.5rem
         & .strikethrough
           position: relative
-          font-size: 1.5rem
+          color: $grey-6
           &:before
             position: absolute
             content: ""
@@ -195,8 +205,8 @@ export default {
             border-top: 1px solid
             border-color: inherit
             transform: rotate(-5deg)
-        & .text-overline
-          font-size: 1.5rem
   &__container
     padding-top: 4px
+.text-overline
+  font-size: 3rem
 </style>
