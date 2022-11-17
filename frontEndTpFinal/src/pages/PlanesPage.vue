@@ -108,7 +108,7 @@ export default {
         codigo: codigo.value,
         precio: precio.value,
         date: date.value,
-        precioFinal: (precio.value * porcentaje.value) / 100,
+        precioFinal: precio.value - ((precio.value * porcentaje.value) / 100),
       }];
     };
 
