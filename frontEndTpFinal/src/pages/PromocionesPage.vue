@@ -126,7 +126,7 @@ export default {
         precio: precio.value,
         dateIni: dateIni.value,
         dateFin: dateFin.value,
-        precioFinal: (precio.value * porcentaje.value) / 100,
+        precioFinal: precio.value - ((precio.value * porcentaje.value) / 100),
       }];
     };
 

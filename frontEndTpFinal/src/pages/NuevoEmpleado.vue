@@ -32,7 +32,7 @@
     </q-card>
   </q-page>
 </template>
-<!-- eslint-disable linebreak-style -->
+
 <script>
 import { useQuasar } from 'quasar';
 import { ref } from 'vue';
