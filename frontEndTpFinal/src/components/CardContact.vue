@@ -1,7 +1,7 @@
 <!-- eslint-disable max-len -->
 <template>
     <!-- Luis -->
-    <q-card class="my-card q-my-xl">
+    <q-card class="q-my-xl">
         <q-img class="img-contact" src="../assets/luisContact.jpg"></q-img>
 
         <div class="content column justify-end items-center">
@@ -17,7 +17,7 @@
         </div>
     </q-card>
     <!-- Manuel -->
-    <q-card class="my-card q-my-xl">
+    <q-card class="q-my-xl">
         <q-img class="img-contact" src="../assets/manuContact.jpg"></q-img>
 
         <div class="content column justify-end items-center">
@@ -33,7 +33,7 @@
         </div>
     </q-card>
     <!-- Marcos -->
-    <q-card class="my-card q-my-xl">
+    <q-card class="q-my-xl">
         <q-img class="img-contact" src="../assets/marcosContact.jpg"></q-img>
 
         <div class="content column justify-end items-center">
