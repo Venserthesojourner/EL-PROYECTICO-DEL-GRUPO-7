@@ -11,8 +11,9 @@
             </div>
             <div class="col-12 col-md-5 text-white q-px-md">
                 <p class="text-h3">About</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <p>Nuestra plataforma esta diseñada para que le sirva particularmente a cada uno de los establecimientos
+                    a administrar los servicios de estacionamiento que proveen así como una herramienta
+                    para que los usuarios que deseen estacionar puedan hacerlo de manera más fácil y rápida.</p>
                 <!-- Botones para display mayores que xs -->
                 <div class="q-mt-lg gt-xs">
                     <q-btn to="register" push color="positive" size="lg"
