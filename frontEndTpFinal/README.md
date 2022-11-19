@@ -1,4 +1,6 @@
-# TP FINAL - FRONTEND
+<p align="center">
+  <a href="https://quasar.dev" target="blank"><img src="https://cdn.quasar.dev/logo-v2/svg/logo.svg" width="200" alt="Quasar Logo" /></a>
+</p>
 
 ## Requisitos
 
