@@ -9,6 +9,7 @@ const routes: RouteRecordRaw[] = [
       { path: '', component: () => import('pages/IndexPage.vue') },
       { path: 'login', component: () => import('pages/FormLogin.vue'), meta: { auth: false } },
       { path: 'register', component: () => import('pages/FormRegister.vue'), meta: { auth: false } },
+      { path: 'mp', component: () => import('pages/MercadoPago.vue'), meta: { auth: false } },
       { path: 'datos-persona', component: () => import('src/pages/FormDataPersona.vue'), meta: { auth: true } },
       { path: 'datos-estacionamiento', component: () => import('src/pages/FormDataEstacionamiento.vue'), meta: { auth: true } },
     ],
