@@ -1,7 +1,10 @@
 import { Inject, Injectable } from '@nestjs/common';
+export * from '../../commons/enums/'
 import { hash } from 'bcrypt';
 import { Repository } from 'typeorm';
-//import { PropietarioService } from '../propietario/propietario.service';
+import { CreateEmpleadoDto } from '../empleado/dto/create-empleado.dto';
+import { CreatePropietarioDto } from '../propietario/dto/create-propietario.dto';
+import { PropietarioService } from '../propietario/propietario.service';
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
 import { UpdateUsuarioDto } from './dto/update-usuario.dto';
 import { Usuario } from './entities/usuario.entity';
@@ -10,20 +13,21 @@ import { Usuario } from './entities/usuario.entity';
 export class UsuarioService {
   constructor(
     @Inject('USUARIO_REPOSITORY')
-    private readonly usuarioRepo: Repository<Usuario> /* private readonly propietarioService: PropietarioService,
-    private readonly empleadoService: PropietarioService, */,
-  ) {}
+    private readonly usuarioRepo: Repository<Usuario>,
+    private readonly propietarioService: PropietarioService,
+    private readonly empleadoService: PropietarioService,
+  ) { }
 
-  async createNewUser(payload: CreateUsuarioDto): Promise<Usuario> {
+  async createNewUser(payload: CreateUsuarioDto, extraData?: []): Promise<Usuario> {
     const password = await hash(payload.password, 10);
     payload.password = password;
     const newUser = await this.usuarioRepo.save(payload);
-    /* 
+
     let response = {
       data: {
-        user: CreateUsuarioDto || null,
-        owner: CreateUsuarioDto || null,
-        employee: CreateEmpleadoDto || null
+        user: newUser || null,
+        owner: null,
+        employee: null
       },
       message: 'msg',
       sucess: true
@@ -39,9 +43,10 @@ export class UsuarioService {
       response = {
         data: {
           user: newUser,
-          owner: newOwner
+          owner: newOwner,
+          employee: null
         },
-        message: 'msg',
+        message: successMsg.SCS001,
         sucess: true
       }
     }
