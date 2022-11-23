@@ -1,5 +1,12 @@
-import { Propietario } from "src/modules/propietario/entities/propietario.entity";
-import { BaseEntity, Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Propietario } from '../../propietario/entities/propietario.entity';
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  JoinColumn,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 /*
 CREATE TABLE `estacionamiento` (
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -22,33 +29,32 @@ CREATE TABLE `estacionamiento` (
 
 @Entity('estacionamiento')
 export class Estacionamiento extends BaseEntity {
-    @PrimaryGeneratedColumn('increment')
-    id: number
+  @PrimaryGeneratedColumn('increment')
+  id: number;
 
-    @Column('varchar', {
-      name: 'razon_social',
-      length: 45,
-      nullable: true,
-      default: null
-    })
-    razonSocial: string
+  @Column('varchar', {
+    name: 'razon_social',
+    length: 45,
+    nullable: true,
+    default: null,
+  })
+  razonSocial: string;
 
-    @Column('int',
-    { name: 'capacidad_maxima', nullable: false})
-    capacidadMaxima: number
+  @Column('int', { name: 'capacidad_maxima', nullable: false })
+  capacidadMaxima: number;
 
-    @OneToOne(()=> Propietario, propietario=>propietario.idUsuario)
-    @JoinColumn({name: 'propietario_id'})
-    propietario: Propietario
+  @OneToOne(() => Propietario, (propietario) => propietario.idUsuario)
+  @JoinColumn({ name: 'propietario_id' })
+  propietario: Propietario;
 
-    @Column('float', {
-      name: 'precio_base',
-      default: 0.0,
-      nullable: false
-    })
-    precioBase: number
+  @Column('float', {
+    name: 'precio_base',
+    default: 0.0,
+    nullable: false,
+  })
+  precioBase: number;
 
-    createdAt: Date
-    updatedAt: Date
-    deletedAt: Date
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt: Date;
 }

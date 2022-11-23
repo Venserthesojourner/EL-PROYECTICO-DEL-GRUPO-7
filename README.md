@@ -1,4 +1,4 @@
-<h1 align="center">TP FINAL - GRUPO 7</h1>
+<h1 align="center">TP FINAL - Park-Our</h1>
 
 <div align="center">
    <h3>
@@ -17,10 +17,11 @@
 </div>
 <br>
 <div align="center">
-    <img src="frontEndTpFinal/src/assets/car-reserva4.png"></img>
+    <img src="frontEndTpFinal/src/assets/car-reserva2.png"></img>
 </div>
 
 - **Nombre del grupo:** Grupo 7
+- **Nombre del proyecto:** Park-Our
 - **Integrantes:** [Luis Miguel Cañete](https://github.com/Venserthesojourner), [Manuel Ortiz](https://github.com/hctmanuelortiz), [Marcos Andrés Travaglini](https://github.com/Blackpachamame)
 - **Profesores:** Daniel Dolz y Mauro Sagripanti
 - **Proyecto:** Gestión de Playas de Estacionamiento
@@ -38,4 +39,4 @@ La aplicación está destinada por un lado a los dueños de establecimientos de 
 - Frontend: [Quasar + Capacitor](https://github.com/Venserthesojourner/EL-PROYECTICO-DEL-GRUPO-7/blob/master/frontEndTpFinal/README.md)
 - Backend: [Nest JS](https://github.com/Venserthesojourner/EL-PROYECTICO-DEL-GRUPO-7/blob/master/back-end-tp-final/README.md)
 
-<h6 align="center"> Grupo 7 ❤️</h6>
+<h6 align="center"> Grupo 7 ❤️ 2022</h6>

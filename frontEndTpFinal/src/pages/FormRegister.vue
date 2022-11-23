@@ -1,7 +1,8 @@
+<!-- eslint-disable linebreak-style -->
 <!-- eslint-disable max-len -->
 <template>
   <q-page padding class="row items-center justify-evenly q-mb-lg">
-    <q-card class="col-12 col-md-6 q-pa-md rounded-borders" style="max-width: 500px">
+    <q-card flat class="col-12 col-md-6 q-pa-md rounded-borders" style="max-width: 500px">
 
       <q-card-section class="text-center">
         <p class="text-h4">Solicitar Servicio</p>
@@ -11,27 +12,23 @@
       <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
         <!-- Nombre -->
         <q-input filled v-model="username" type="text" label="Nombre de usuario " hint="Ingrese su nombre de usuario"
-          lazy-rules :rules="[val => val && val.length > 0 || 'Please type something']" />
+          lazy-rules :rules="[val => val && val.length > 0 || 'Por favor, ingrese un nombre de usuario']" />
         <!-- Email -->
-        <q-input filled v-model="mail" type="email" label="Email *" hint="Ingrese su email" lazy-rules
-          :rules="[val => val && val.length > 0 || 'Please type something', isValidEmail]" />
+        <q-input filled v-model="mail" type="Email" label="Email *" hint="Ingrese su email" lazy-rules
+          :rules="[val => val && val.length > 0 || 'Por favor, ingrese un mail', isValidEmail]" />
+        <!-- Comentarios -->
         <q-input v-model="comentario" filled type="textarea" label="Déjanos un mensaje (máximo 200 caracteres)"
           lazy-rules maxlength="200" />
         <!-- Términos y Condiciones -->
         <div class="row items-center">
           <q-toggle v-model="accept" checked-icon="check" color="green" unchecked-icon="clear" lazy-rules
             @click="accept = false" :rules="[val => val && val === false || 'Debe ver los términos y condiciones']" />
-          <span class="text-primary cursor-pointer" @click="basic = true">Ver términos y condiciones</span>
+          <span class="text-primary cursor-pointer" @click="basic = true">Ver términos y condiciones *</span>
         </div>
         <!-- Botones -->
-        <div class="row justify-between">
-          <div>
-            <q-btn to="/" color="accent" label="Volver"></q-btn>
-          </div>
-          <div>
-            <q-btn label="Limpiar" type="reset" color="primary" flat class="q-mr-sm" />
-            <q-btn label="Registrarse" type="submit" color="primary" />
-          </div>
+        <div class="row justify-end">
+          <q-btn label="Limpiar" type="reset" color="primary" flat class="q-mr-sm" />
+          <q-btn label="Registrarse" type="submit" color="primary" />
         </div>
       </q-form>
 
@@ -50,7 +47,7 @@
     </q-dialog>
   </q-page>
 </template>
-
+<!-- eslint-disable linebreak-style -->
 <script>
 import { useQuasar } from 'quasar';
 import { ref } from 'vue';
@@ -91,7 +88,6 @@ export default {
       comentario,
       accept,
       basic: ref(false),
-
       isValidEmail(val) {
         const emailRegex = /^(?=[a-zA-Z0-9@._%+-]{6,254}$)[a-zA-Z0-9._%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\.){1,8}[a-zA-Z]{2,63}$/;
         return emailRegex.test(val) || 'Ingrese un email válido';
@@ -120,7 +116,7 @@ export default {
               textColor: 'white',
             });
             setTimeout(() => {
-              axios.post(route, { body })
+              axios.post(route, body)
                 .then(() => {
                   $q.notify({
                     color: 'green-4',

@@ -59,7 +59,7 @@
 
             <q-item to="nuevoEmpleado" clickable v-ripple>
               <q-item-section avatar>
-                <q-icon name="settings" />
+                <q-icon name="person_add" />
               </q-item-section>
 
               <q-item-section>
@@ -93,7 +93,7 @@
         </div>
       </q-scroll-area>
       <!-- Perfil Usuario -->
-      <q-img class="absolute-top" src="../assets/background-l2.png" style="height: 150px">
+      <q-img class="absolute-top" src="../assets/background-admin.jpg" style="height: 150px">
         <div class="absolute-bottom bg-transparent">
           <q-avatar size="56px" class="q-mb-sm">
             <img src="../assets/marcosContact.jpg">

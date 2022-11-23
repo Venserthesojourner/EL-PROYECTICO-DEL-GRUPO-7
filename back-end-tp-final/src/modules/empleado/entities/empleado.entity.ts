@@ -14,28 +14,44 @@ CREATE TABLE `operador` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
  */
 
-import { Estacionamiento } from "src/modules/estacionamiento/entitites/estacionamiento.entity";
-import { Usuario } from "src/modules/usuario/entities/usuario.entity";
-import { BaseEntity, Column, CreateDateColumn, DeleteDateColumn, Entity, OneToOne, UpdateDateColumn } from "typeorm";
+
+import { Estacionamiento } from '../../estacionamiento/entitites/estacionamiento.entity';
+import { Usuario } from '../../usuario/entities/usuario.entity';
+import {
+  BaseEntity,
+  Column,
+  CreateDateColumn,
+  DeleteDateColumn,
+  Entity,
+  OneToOne,
+  UpdateDateColumn,
+} from 'typeorm';
 
 @Entity({ name: 'operador' })
 export class Empleado extends BaseEntity {
-
   @OneToOne(() => Usuario, (usuario) => usuario.id)
-  usuario: Usuario
+  usuario: Usuario;
 
   @Column('varchar', { name: 'legajo_empleado', length: 10, nullable: false })
-  legajoEmpleado: string
+  legajoEmpleado: string;
 
   @OneToOne(() => Estacionamiento, (estacionamiento) => estacionamiento.id)
-  estacionamiento: Estacionamiento
+  estacionamiento: Estacionamiento;
 
-  horarioEntrada: string
-  horarioSalida: string
+  @Column('time', { name: 'horario_entrada' })
+  horarioEntrada: string;
+
+  @Column('time', { name: 'horario_salida' })
+  horarioSalida: string;
 
   @CreateDateColumn({ name: 'create_time', nullable: false })
   createdAt: Date;
-  @UpdateDateColumn({ name: 'update_time', nullable: false, default: null })
+  @UpdateDateColumn({
+    name: 'update_time',
+    nullable: false,
+    default: null,
+    onUpdate: 'CURRENT_TIMESTAMP',
+  })
   updatedAt: Date;
   @DeleteDateColumn({ name: 'delete_time', nullable: false, default: null })
   deletedAt: Date;

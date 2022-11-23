@@ -4,11 +4,9 @@
     <q-header reveal class="bg-white text-primary q-py-lg q-px-lg">
       <q-toolbar>
         <!-- Logo -->
-        <q-avatar>
-          <img src="../assets/logo2.png">
-        </q-avatar>
+        <q-img src="../assets/logo.png" height="40px" width="40px" alt="logo" />
         <!-- Nombre del sitio -->
-        <q-toolbar-title class="text-weight-bold text-uppercase">Chichilo</q-toolbar-title>
+        <q-toolbar-title class="text-weight-bold text-uppercase">Park-Our</q-toolbar-title>
 
         <q-space />
         <!-- Menú -->
@@ -97,4 +95,9 @@ export default {
   flex-direction: column
   justify-content: space-evenly
   align-items: center
+
+@media(max-width: 375px)
+  header.q-header
+    padding-left: 0
+    padding-right: 0
 </style>

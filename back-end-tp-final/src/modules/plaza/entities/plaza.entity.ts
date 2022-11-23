@@ -1,5 +1,5 @@
-import { Estacionamiento } from "src/modules/estacionamiento/entitites/estacionamiento.entity";
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Estacionamiento } from "../../estacionamiento/entitites/estacionamiento.entity";
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 /* CREATE TABLE `plaza` (
     `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -43,4 +43,11 @@ export class Plaza {
         length: 45
     })
     plazaColumna: string
+
+    @CreateDateColumn({ name: 'create_time', nullable: false })
+    createdAt: Date;
+    @UpdateDateColumn({ name: 'update_time', nullable: false, default: null, onUpdate: 'CURRENT_TIMESTAMP' })
+    updatedAt: Date;
+    @DeleteDateColumn({ name: 'delete_time', nullable: false, default: null })
+    deletedAt: Date;
 }

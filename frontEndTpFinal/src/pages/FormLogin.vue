@@ -1,7 +1,8 @@
+<!-- eslint-disable linebreak-style -->
 <!-- eslint-disable max-len -->
 <template>
   <q-page class="row items-center justify-evenly">
-    <q-card class="col-12 q-pa-md rounded-borders" style="max-width: 400px">
+    <q-card flat class="col-12 q-pa-md" style="max-width: 400px">
 
       <q-card-section class="text-center">
         <p class="text-h4">Ingresar al panel</p>
@@ -32,7 +33,7 @@
     </q-card>
   </q-page>
 </template>
-
+<!-- eslint-disable linebreak-style -->
 <script>
 import { useQuasar } from 'quasar';
 import { ref } from 'vue';
@@ -47,22 +48,7 @@ export default {
     const store = useSessionStatus();
     const username = ref(null);
     const password = ref(null);
-    /* const data = ref(null);
-
-    function loadData() {
-      api.get('/api/backend')
-        .then((response) => {
-          data.value = response.data;
-        })
-        .catch(() => {
-          $q.notify({
-            color: 'negative',
-            position: 'top',
-            message: 'Loading failed',
-            icon: 'report_problem',
-          });
-        });
-    } */
+    const data = ref(null);
 
     return {
       store,
@@ -70,23 +56,41 @@ export default {
       password,
       isPwd: ref(true),
       onSubmit() {
-        if (username.value) {
+        setTimeout(() => {
           $q.notify({
-            color: 'green-4',
+            progress: true,
+            message: 'Iniciando sesion...',
+            color: 'secondary',
             textColor: 'white',
-            icon: 'cloud_done',
-            message: 'Sesion iniciada',
           });
-          router.push('/dashboard/');
-          store.changeStatus();
-        } else {
-          $q.notify({
-            color: 'red-4',
-            textColor: 'white',
-            icon: 'error',
-            message: 'Usuario y/o contraseña incorrecto',
-          });
-        }
+          setTimeout(() => {
+            axios.get(`http://localhost:3000/usuario/username/${username.value}`)
+              .then((response) => {
+                console.log(response);
+                // TODO: seguir aca.
+                $q.notify({
+                  color: 'green-4',
+                  textColor: 'white',
+                  icon: 'cloud_done',
+                  message: '¡Bienvenido!',
+                });
+                // agregar los datos a la variable data.
+                if ('') {
+                  router.push('/datos-persona');
+                } else {
+                  router.push('/dashboard/plazas');
+                }
+              })
+              .catch(() => {
+                $q.notify({
+                  message: 'Error en el registro de usuario, contactar con soporte.',
+                  icon: 'warning',
+                  color: 'red-5',
+                  textColor: 'white',
+                });
+              });
+          }, 3000);
+        }, 2000);
       },
 
       onReset() {

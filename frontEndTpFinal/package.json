@@ -2,7 +2,7 @@
   "name": "frontendtpfinal",
   "version": "0.0.1",
   "description": "Trabajo Final de la carrera",
-  "productName": "trabajoFinal",
+  "productName": "Park-Our",
   "author": "Grupo 7",
   "private": true,
   "scripts": {
@@ -10,6 +10,8 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
+    "@capacitor/geolocation": "^4.0.1",
+    "@capacitor/google-maps": "^4.3.0",
     "@quasar/extras": "^1.0.0",
     "@vueuse/core": "^9.3.0",
     "axios": "^0.21.1",

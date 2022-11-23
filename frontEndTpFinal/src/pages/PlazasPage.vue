@@ -1,3 +1,4 @@
+<!-- eslint-disable linebreak-style -->
 <template>
   <div class="q-pa-md">
     <div class="container-plaza row justify-start">
@@ -8,7 +9,7 @@
     </div>
   </div>
 </template>
-
+<!-- eslint-disable linebreak-style -->
 <script>
 import { ref } from 'vue';
 import CardPlaza from '../components/CardPlaza.vue';
@@ -30,11 +31,9 @@ export default {
       },
     };
   },
-  methods: {
-  },
 };
 </script>
-
+<!-- eslint-disable linebreak-style -->
 <style lang="sass" scoped>
 @media(max-width: 600px)
   .container-plaza

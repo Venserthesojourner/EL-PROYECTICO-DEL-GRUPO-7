@@ -1,4 +1,3 @@
-<!-- eslint-disable max-len -->
 <template>
   <q-page padding class="row justify-center">
     <q-card flat class="col-12 q-pa-md" style="max-width: 800px">
@@ -15,13 +14,6 @@
         <!-- Razon Social -->
         <q-input filled v-model="razonSocial" type="text" label="Razon Social" hint="Ingresa tu razon social" lazy-rules
           :rules="[val => val && val.length > 0 || 'Debes ingresar tu razon social']" />
-        <!-- Añadir Colaborador -->
-        <q-field filled ref="inputDias" hint="Indique si desea añadir un colaborador" lazy-rules :model-value="dias">
-          <template v-slot:control>
-            <q-option-group name="preferred_genre" v-model="preferred" :options="optionsColaborador" color="primary"
-              inline />
-          </template>
-        </q-field>
         <!-- Cantidad de Plazas -->
         <q-select filled v-model="cantPlazas" :options="optionsPlazas" label="Cantidad de plazas" lazy-rules
           :rules="[val => val || 'Debes seleccionar la cantidad de plazas']" hint="Ingrese la cantidad de plazas" />
@@ -101,22 +93,11 @@ export default {
         (val) => (val && val.length >= 7 && val.length <= 8) || 'Solo se permiten de 7 a 8 dígitos',
       ],
       razonSocial,
-      optionsColaborador: [
-        {
-          label: 'No',
-          value: 'no',
-        },
-        {
-          label: 'Si',
-          value: 'si',
-        },
-      ],
       cantPlazas,
       timeOpen,
       timeClose,
       inputDias,
       dias,
-      preferred: ref('no'),
       optionsPlazas: [
         4, 5, 6, 7, 8, 9, 10,
       ],
