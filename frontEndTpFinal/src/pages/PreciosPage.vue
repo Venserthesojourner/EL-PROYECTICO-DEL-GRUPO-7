@@ -53,7 +53,7 @@
 
 <script>
 import { useQuasar } from 'quasar';
-import { ref, computed, watch } from 'vue';
+import { ref, computed, watch, onMounted } from 'vue';
 
 const columns = [
   {
@@ -120,11 +120,81 @@ export default {
     const hora = ref(null);
     const precioNew = ref(null);
 
+    onMounted(() => {
+      //TODO: en teoria esto se carga primero
+       // setTimeout(() => {
+          //   axios.get(`http://localhost:3000/usuario/username/${username.value}`)
+          //     .then((response) => {
+          //       console.log(response);
+          //       // TODO: seguir aca.
+          //       $q.notify({
+          //         color: 'green-4',
+          //         textColor: 'white',
+          //         icon: 'cloud_done',
+          //         message: '¡Bienvenido!',
+          //       });
+          //       // agregar los datos a la variable data.
+          //       if ('') {
+          //         router.push('/datos-persona');
+          //       } else {
+          //         router.push('/dashboard/plazas');
+          //       }
+          //     })
+          //     .catch(() => {
+          //       $q.notify({
+          //         message: 'Error en el registro de usuario, contactar con soporte.',
+          //         icon: 'warning',
+          //         color: 'red-5',
+          //         textColor: 'white',
+          //       });
+          //     });
+          // }, 3000);
+        //}, 2000);
+    });
+
     const onSubmit = () => {
       rows.value = [...rows.value, {
         hoar: hora.value,
         precio: precioNew.value,
       }];
+
+      //TODO: hay que hacer que cuando hace el submit, cargue de nuevo la pagina para traer los datos actualizados de la BD
+     /*  const body = {
+            username: username.value,
+            email: mail.value,
+            password: 'b7159b31a2fdf4ef8394df2234acca8fdbbc438f',
+            role: 'owner',
+          };
+          const route = 'http://localhost:3000/api/web/NOMBRE_TABLA';
+
+          setTimeout(() => {
+            $q.notify({
+              progress: true,
+              message: 'actualizando precio...',
+              color: 'secondary',
+              textColor: 'white',
+            });
+            setTimeout(() => {
+              axios.post(route, body)
+                .then(() => {
+                  $q.notify({
+                    color: 'green-4',
+                    textColor: 'white',
+                    icon: 'cloud_done',
+                    message: '¡precio actualizado!',
+                  });
+                  alert();
+                })
+                .catch(() => {
+                  $q.notify({
+                    message: 'Error en la actualizacion del precio, contactar con soporte.',
+                    icon: 'warning',
+                    color: 'red-5',
+                    textColor: 'white',
+                  });
+                });
+            }, 3000);
+          }, 2000); */
     };
 
     const onReset = () => {
@@ -159,7 +229,7 @@ export default {
         ? [5, 10]
         : [5])),
       horaRules: [
-        (val) => (val && val.length > 0) || 'Por favor, seleccione una hora',
+        (val) => (val && val.length > 0 || val && val.length < 24) || 'Por favor, seleccione una hora',
         (val) => (val > 0) || 'Por favor, ingrese un valor válido',
       ],
       precioRules: [

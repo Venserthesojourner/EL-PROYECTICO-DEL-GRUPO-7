@@ -19,7 +19,7 @@
               {{ col.value }}
             </q-td>
             <q-td auto-width>
-              <q-btn size="12px" round dense flat unelevated icon="delete" color="negative" />
+              <q-btn size="12px" round dense flat unelevated icon="delete" color="negative" onclick="eliminarUsuario()"/>
             </q-td>
           </q-tr>
         </template>
@@ -57,9 +57,74 @@ const rows = [
     name: 'Firulais',
   },
 ]
+import { ref, onMounted } from 'vue';
 
 export default {
   setup() {
+
+    onMounted(() => {
+      //TODO: en teoria esto se carga primero
+       // setTimeout(() => {
+          //   axios.get(`http://localhost:3000/usuario/username/${username.value}`)
+          //     .then((response) => {
+          //       console.log(response);
+          //       // TODO: seguir aca.
+          //       $q.notify({
+          //         color: 'green-4',
+          //         textColor: 'white',
+          //         icon: 'cloud_done',
+          //         message: '¡Bienvenido!',
+          //       });
+          //       // agregar los datos a la variable data.
+          //       if ('') {
+          //         router.push('/datos-persona');
+          //       } else {
+          //         router.push('/dashboard/plazas');
+          //       }
+          //     })
+          //     .catch(() => {
+          //       $q.notify({
+          //         message: 'Error en el registro de usuario, contactar con soporte.',
+          //         icon: 'warning',
+          //         color: 'red-5',
+          //         textColor: 'white',
+          //       });
+          //     });
+          // }, 3000);
+        //}, 2000);
+    });
+
+    const eliminarUsuario = () => {
+      //TODO: ESTO TIENE QUE SER UN PUT PARA ELIMINAR, ni idea como se hace
+       // setTimeout(() => {
+          //   axios.get(`http://localhost:3000/usuario/username/${username.value}`)
+          //     .then((response) => {
+          //       console.log(response);
+          //       // TODO: seguir aca.
+          //       $q.notify({
+          //         color: 'green-4',
+          //         textColor: 'white',
+          //         icon: 'cloud_done',
+          //         message: '¡Bienvenido!',
+          //       });
+          //       // agregar los datos a la variable data.
+          //       if ('') {
+          //         router.push('/datos-persona');
+          //       } else {
+          //         router.push('/dashboard/plazas');
+          //       }
+          //     })
+          //     .catch(() => {
+          //       $q.notify({
+          //         message: 'Error en el registro de usuario, contactar con soporte.',
+          //         icon: 'warning',
+          //         color: 'red-5',
+          //         textColor: 'white',
+          //       });
+          //     });
+          // }, 3000);
+        //}, 2000);
+    }
     return {
       columns,
       rows
