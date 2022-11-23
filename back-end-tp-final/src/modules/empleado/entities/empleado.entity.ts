@@ -14,8 +14,9 @@ CREATE TABLE `operador` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
  */
 
-import { Estacionamiento } from 'src/modules/estacionamiento/entitites/estacionamiento.entity';
-import { Usuario } from 'src/modules/usuario/entities/usuario.entity';
+
+import { Estacionamiento } from '../../estacionamiento/entitites/estacionamiento.entity';
+import { Usuario } from '../../usuario/entities/usuario.entity';
 import {
   BaseEntity,
   Column,

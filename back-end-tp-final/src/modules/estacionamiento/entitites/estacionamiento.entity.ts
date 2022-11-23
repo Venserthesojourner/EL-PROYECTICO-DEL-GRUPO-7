@@ -1,4 +1,4 @@
-import { Propietario } from 'src/modules/propietario/entities/propietario.entity';
+import { Propietario } from '../../propietario/entities/propietario.entity';
 import {
   BaseEntity,
   Column,

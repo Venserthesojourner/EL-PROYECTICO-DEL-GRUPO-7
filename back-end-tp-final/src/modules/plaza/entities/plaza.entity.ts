@@ -1,4 +1,4 @@
-import { Estacionamiento } from "src/modules/estacionamiento/entitites/estacionamiento.entity";
+import { Estacionamiento } from "../../estacionamiento/entitites/estacionamiento.entity";
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 /* CREATE TABLE `plaza` (
