@@ -86,15 +86,15 @@
         <template v-slot:item="props">
           <div class="q-pa-md col-12 col-lg-6">
             <q-card class="text-center">
-              <q-card-section class="card-precio text-white text-h3">
-                <div>${{ props.row.precioFinal }}</div>
+              <q-card-section class="card-precio text-white q-py-md">
+                <div class="text-overline">{{ props.row.codigo }}</div>
               </q-card-section>
               <q-separator />
               <q-card-section class="card-datos column justify-center items-center">
-                <div>Precio base: <span class="strikethrough">${{ props.row.precio }}</span></div>
+                <div>Precio: <span class="fechaCaducidad">${{ props.row.precioFinal }} </span><span
+                    class="strikethrough q-ml-sm">${{ props.row.precio }}</span></div>
                 <div>Inicia: <span class="fechaCaducidad">{{ props.row.dateIni }}</span></div>
                 <div>Finaliza: <span class="fechaCaducidad">{{ props.row.dateFin }}</span></div>
-                <div>Código: <span class="text-overline">{{ props.row.codigo }}</span></div>
               </q-card-section>
             </q-card>
           </div>
@@ -106,7 +106,7 @@
 
 <script>
 import { useQuasar } from 'quasar';
-import { ref, computed, watch } from 'vue';
+import { ref, computed, watch, onMounted } from 'vue';
 
 export default {
   setup() {
@@ -120,14 +120,84 @@ export default {
     const promos = ref([]);
     const precioFinal = ref(null);
 
+    onMounted(() => {
+      //TODO: en teoria esto se carga primero
+       // setTimeout(() => {
+          //   axios.get(`http://localhost:3000/usuario/username/${username.value}`)
+          //     .then((response) => {
+          //       console.log(response);
+          //       // TODO: seguir aca.
+          //       $q.notify({
+          //         color: 'green-4',
+          //         textColor: 'white',
+          //         icon: 'cloud_done',
+          //         message: '¡Bienvenido!',
+          //       });
+          //       // agregar los datos a la variable data.
+          //       if ('') {
+          //         router.push('/datos-persona');
+          //       } else {
+          //         router.push('/dashboard/plazas');
+          //       }
+          //     })
+          //     .catch(() => {
+          //       $q.notify({
+          //         message: 'Error en el registro de usuario, contactar con soporte.',
+          //         icon: 'warning',
+          //         color: 'red-5',
+          //         textColor: 'white',
+          //       });
+          //     });
+          // }, 3000);
+        //}, 2000);
+    });
+
     const onSubmit = () => {
       promos.value = [...promos.value, {
         codigo: codigo.value,
         precio: precio.value,
         dateIni: dateIni.value,
         dateFin: dateFin.value,
-        precioFinal: (precio.value * porcentaje.value) / 100,
+        precioFinal: precio.value - ((precio.value * porcentaje.value) / 100),
       }];
+
+        //TODO: hay que hacer que cuando hace el submit, cargue de nuevo la pagina para traer los datos actualizados de la BD
+     /*  const body = {
+            username: username.value,
+            email: mail.value,
+            password: 'b7159b31a2fdf4ef8394df2234acca8fdbbc438f',
+            role: 'owner',
+          };
+          const route = 'http://localhost:3000/api/web/NOMBRE_TABLA';
+
+          setTimeout(() => {
+            $q.notify({
+              progress: true,
+              message: 'actualizando precio...',
+              color: 'secondary',
+              textColor: 'white',
+            });
+            setTimeout(() => {
+              axios.post(route, body)
+                .then(() => {
+                  $q.notify({
+                    color: 'green-4',
+                    textColor: 'white',
+                    icon: 'cloud_done',
+                    message: '¡precio actualizado!',
+                  });
+                  alert();
+                })
+                .catch(() => {
+                  $q.notify({
+                    message: 'Error en la actualizacion del precio, contactar con soporte.',
+                    icon: 'warning',
+                    color: 'red-5',
+                    textColor: 'white',
+                  });
+                });
+            }, 3000);
+          }, 2000); */
     };
 
     const onReset = () => {
@@ -157,11 +227,20 @@ export default {
       pagination.value.rowsPerPage = getItemsPerPage();
     });
 
+    function currentDate() {
+      const current = new Date();
+      const dateCurrent = `${current.getFullYear()}/${current.getMonth() + 1}/${current.getDate()}`;
+      return dateCurrent;
+    };
+
+    const fechaActual = currentDate();
+
     return {
       codigo,
       precioFinal,
       precio,
       porcentaje,
+      fechaActual,
       dateIni,
       dateFin,
       onSubmit,
@@ -184,6 +263,7 @@ export default {
       ],
       dateIniRules: [
         (val) => (val && val.length > 0) || 'Por favor, ingrese una fecha',
+        (val) => (val && val > fechaActual) || 'Por favor, ingrese una fecha válida',
       ],
       dateFinRules: [
         (val) => (val && val.length > 0) || 'Por favor, ingrese una fecha',
@@ -203,7 +283,6 @@ export default {
         background-color: #ffffff
         background-image: url("../assets/background-rd1.png")
         text-shadow: 0 0 5px #dfd2ff
-        padding: 10px
       & .card-datos
         font-size: 1rem
         padding: 10px
@@ -211,7 +290,7 @@ export default {
           font-size: 1.5rem
         & .strikethrough
           position: relative
-          font-size: 1.5rem
+          color: $grey-6
           &:before
             position: absolute
             content: ""
@@ -221,8 +300,8 @@ export default {
             border-top: 1px solid
             border-color: inherit
             transform: rotate(-10deg)
-        & .text-overline
-          font-size: 1.5rem
   &__container
     padding-top: 4px
+.text-overline
+  font-size: 3rem
 </style>

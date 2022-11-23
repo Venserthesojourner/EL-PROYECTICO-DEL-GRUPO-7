@@ -1,6 +1,6 @@
-import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post } from '@nestjs/common';
+import { UpdateUsuarioDto } from '../usuario/dto/update-usuario.dto';
 import { CreateEmpleadoDto } from './dto/create-empleado.dto';
-import { UpdateEmpleadoDto } from './dto/update-empleado.dto';
 import { EmpleadoService } from './empleado.service';
 
 @Controller('empleado')
@@ -8,27 +8,27 @@ export class EmpleadoController {
   constructor(private readonly empleadoService: EmpleadoService) { }
 
   @Post()
-  async create(
-    @Body() payload: CreateEmpleadoDto
-  ) {
-    return await this.empleadoService.createNewEmpleado(payload)
+  create(@Body() createEmpleadoDto: CreateEmpleadoDto) {
+    return this.empleadoService.createNewEmployee(createEmpleadoDto);
   }
 
   @Get()
-  async findAll() {
-    return await this.empleadoService.findAllEmployees();
+  findAll() {
+    return this.empleadoService.findAllEmployees();
   }
 
   @Get(':id')
-  async findOneById(@Param('legajo') legajo: string) {
-    return await this.empleadoService.findEmployeeByLegajo(legajo);
+  findOneById(@Param('id', ParseIntPipe) id: number) {
+    return this.empleadoService.findEmployeeByLegajo(+id);
   }
 
   @Patch(':id')
-  async updateById(
-    @Param('legajo') legajo: string,
-    @Body() updatedEmployee: UpdateEmpleadoDto
-  ) {
-    return await this.empleadoService.updateEmployeeByLegajo(updatedEmployee, legajo)
+  update(@Param('id') id: number, @Body() updateUsuarioDto: UpdateUsuarioDto) {
+    return this.empleadoService.updateEmployeeByLegajo(+id, updateUsuarioDto);
+  }
+
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.empleadoService.deleteEmployeeByLegajo(+id);
   }
 }

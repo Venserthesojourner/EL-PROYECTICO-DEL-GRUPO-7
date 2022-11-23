@@ -1,6 +1,7 @@
 <template>
   <q-page class="window-height row justify-center items-center">
     <div class="column justify-center items-center" style="min-width: 300px">
+      <!-- Configuraciones Usuario -->
       <q-toolbar class="text-primary row justify-end no-padding">
         <q-btn-dropdown flat round dense dropdown-icon="settings">
           <q-list style="min-width: 150px">

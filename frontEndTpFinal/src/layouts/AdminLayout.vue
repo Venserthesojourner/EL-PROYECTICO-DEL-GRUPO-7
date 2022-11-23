@@ -15,18 +15,19 @@
         <div class="column justify-between" style="min-height: calc(100vh - 200px);">
           <!-- Opciones -->
           <q-list padding>
+
+            <!-- Plazas -->
             <q-item to="plazas" clickable v-ripple>
               <q-item-section avatar>
                 <q-icon name="apps" />
               </q-item-section>
-
               <q-item-section>
                 Plazas
               </q-item-section>
             </q-item>
 
+            <!-- Montos -->
             <q-expansion-item expand-separator icon="attach_money" label="Montos">
-
               <q-list>
                 <q-item to="precios" clickable v-ripple>
                   <q-item-section>
@@ -44,40 +45,46 @@
                   </q-item-section>
                 </q-item>
               </q-list>
-
             </q-expansion-item>
 
+            <!-- Horarios -->
             <q-item to="horarios" clickable v-ripple>
               <q-item-section avatar>
                 <q-icon name="schedule" />
               </q-item-section>
-
               <q-item-section>
                 Horarios
               </q-item-section>
             </q-item>
 
-            <q-item to="nuevoEmpleado" clickable v-ripple>
-              <q-item-section avatar>
-                <q-icon name="person_add" />
-              </q-item-section>
+            <!-- Empleados -->
+            <q-expansion-item expand-separator icon="group" label="Empleados">
+              <q-list>
+                <q-item to="listaEmpleados" clickable v-ripple>
+                  <q-item-section>
+                    Lista de Empleados
+                  </q-item-section>
+                </q-item>
+                <q-item to="nuevoEmpleado" clickable v-ripple>
+                  <q-item-section>
+                    Nuevo Empleado
+                  </q-item-section>
+                </q-item>
+              </q-list>
+            </q-expansion-item>
 
-              <q-item-section>
-                Nuevo Empleado
-              </q-item-section>
-            </q-item>
-
+            <!-- Configuraciones -->
             <q-item to="configuraciones" clickable v-ripple>
               <q-item-section avatar>
                 <q-icon name="settings" />
               </q-item-section>
-
               <q-item-section>
                 Configuraciones
               </q-item-section>
             </q-item>
 
           </q-list>
+
           <!-- Cerrar Sesión -->
           <q-list padding>
             <q-item clickable @click=logoutSession() v-ripple to="/login">
@@ -92,6 +99,7 @@
           </q-list>
         </div>
       </q-scroll-area>
+
       <!-- Perfil Usuario -->
       <q-img class="absolute-top" src="../assets/background-admin.jpg" style="height: 150px">
         <div class="absolute-bottom bg-transparent">
@@ -103,6 +111,7 @@
         </div>
       </q-img>
     </q-drawer>
+
     <!-- Page Container -->
     <q-page-container>
       <router-view />
