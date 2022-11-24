@@ -26,17 +26,23 @@
     <div class="lt-md">
       <q-drawer v-model="drawer" :width="250" :breakpoint="500" overlay class="text-primary text-h5 text-center">
         <q-scroll-area class="fit">
+
           <q-list>
+            <q-item style="width: 100%;" clickable v-ripple to="/">
+              <q-item-section>Home</q-item-section>
+            </q-item>
 
-            <template v-for="(menuItem, index) in menuList" :key="index">
-              <q-item clickable :active="menuItem.label === 'Outbox'" v-ripple>
-                <q-item-section>
-                  {{ menuItem.label }}
-                </q-item-section>
-              </q-item>
-              <q-separator :key="'sep' + index" v-if="menuItem.separator" />
-            </template>
+            <q-item style="width: 100%;" clickable v-ripple href="/#about">
+              <q-item-section>About</q-item-section>
+            </q-item>
 
+            <q-item style="width: 100%;" clickable v-ripple href="/#contact">
+              <q-item-section>Contact</q-item-section>
+            </q-item>
+
+            <q-item style="width: 100%;" clickable v-ripple href="login">
+              <q-item-section>Login</q-item-section>
+            </q-item>
           </q-list>
         </q-scroll-area>
       </q-drawer>
@@ -53,21 +59,6 @@
 import { ref } from 'vue';
 import BtnScrollerTop from '../components/BtnScrollerTop.vue';
 
-const menuList = [
-  {
-    label: 'Home',
-  },
-  {
-    label: 'About',
-  },
-  {
-    label: 'Contact',
-  },
-  {
-    label: 'Login',
-  },
-];
-
 export default {
   components: {
     BtnScrollerTop,
@@ -77,7 +68,6 @@ export default {
     return {
       tab: ref(''),
       drawer: ref(false),
-      menuList,
     };
   },
 };
