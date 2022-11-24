@@ -64,6 +64,7 @@ export default {
             textColor: 'white',
           });
           store.changeStatus();
+          router.push('/dashboard/plazas');
           // setTimeout(() => {
           //   axios.get(`http://localhost:3000/usuario/username/${username.value}`)
           //     .then((response) => {

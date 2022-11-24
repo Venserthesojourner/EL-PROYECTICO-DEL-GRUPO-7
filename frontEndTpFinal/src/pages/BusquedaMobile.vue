@@ -28,6 +28,7 @@
         </q-item>
       </q-list>
     </div>
+    <q-btn icon="arrow_back" color="primary" to="index" class="q-mt-md" label="volver" />
   </q-page>
 </template>
 

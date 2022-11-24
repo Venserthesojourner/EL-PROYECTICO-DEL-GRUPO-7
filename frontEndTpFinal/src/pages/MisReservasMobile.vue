@@ -1,5 +1,5 @@
 <template>
-  <q-page class="window-height row justify-center items-center">
+  <q-page class="window-height column justify-center items-center">
     <div class="column justify-center items-center" style="min-width: 300px">
       <!-- Configuraciones Usuario -->
       <q-toolbar class="text-primary row justify-end no-padding">
@@ -87,6 +87,7 @@
         </q-list>
       </div>
     </div>
+    <q-btn icon="arrow_back" color="primary" to="index" class="q-mt-md" label="volver" />
   </q-page>
 </template>
 

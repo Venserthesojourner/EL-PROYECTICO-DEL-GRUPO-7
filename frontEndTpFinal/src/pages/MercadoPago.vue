@@ -7,7 +7,6 @@
 <script>
 
 import { ref, onMounted } from "vue";
-import require from "vue"
 
 export default {
   setup() {
