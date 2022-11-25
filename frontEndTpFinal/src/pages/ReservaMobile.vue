@@ -9,10 +9,12 @@
             :rules="[val => val && val.length > 0 || 'Por favor, ingrese una código']" />
           <q-btn type="submit" push color="positive" size="lg" class="full-width border-radius-inherit" label="Enviar"
             no-caps />
+          <!-- Volver -->
+          <q-btn to="index" push color="accent" size="lg" class="full-width border-radius-inherit" label="Volver"
+            no-caps />
         </q-form>
       </div>
     </div>
-    <q-btn icon="arrow_back" color="primary" to="index" class="q-mt-md" label="volver" />
   </q-page>
 </template>
 
@@ -49,42 +51,42 @@ export default {
         }
 
         //TODO: hay que hacer que cuando hace el submit, cargue de nuevo la pagina para traer los datos actualizados de la BD
-     /*  const body = {
-            username: username.value,
-            email: mail.value,
-            password: 'b7159b31a2fdf4ef8394df2234acca8fdbbc438f',
-            role: 'owner',
-          };
-          const route = 'http://localhost:3000/api/web/NOMBRE_TABLA';
-
-          setTimeout(() => {
-            $q.notify({
-              progress: true,
-              message: 'actualizando precio...',
-              color: 'secondary',
-              textColor: 'white',
-            });
-            setTimeout(() => {
-              axios.post(route, body)
-                .then(() => {
-                  $q.notify({
-                    color: 'green-4',
-                    textColor: 'white',
-                    icon: 'cloud_done',
-                    message: '¡precio actualizado!',
-                  });
-                  alert();
-                })
-                .catch(() => {
-                  $q.notify({
-                    message: 'Error en la actualizacion del precio, contactar con soporte.',
-                    icon: 'warning',
-                    color: 'red-5',
-                    textColor: 'white',
-                  });
-                });
-            }, 3000);
-          }, 2000); */
+        /*  const body = {
+               username: username.value,
+               email: mail.value,
+               password: 'b7159b31a2fdf4ef8394df2234acca8fdbbc438f',
+               role: 'owner',
+             };
+             const route = 'http://localhost:3000/api/web/NOMBRE_TABLA';
+   
+             setTimeout(() => {
+               $q.notify({
+                 progress: true,
+                 message: 'actualizando precio...',
+                 color: 'secondary',
+                 textColor: 'white',
+               });
+               setTimeout(() => {
+                 axios.post(route, body)
+                   .then(() => {
+                     $q.notify({
+                       color: 'green-4',
+                       textColor: 'white',
+                       icon: 'cloud_done',
+                       message: '¡precio actualizado!',
+                     });
+                     alert();
+                   })
+                   .catch(() => {
+                     $q.notify({
+                       message: 'Error en la actualizacion del precio, contactar con soporte.',
+                       icon: 'warning',
+                       color: 'red-5',
+                       textColor: 'white',
+                     });
+                   });
+               }, 3000);
+             }, 2000); */
       },
 
       onReset() {

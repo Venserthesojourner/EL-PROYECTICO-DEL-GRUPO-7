@@ -42,7 +42,7 @@
           <!-- Botones -->
           <q-btn to="confirmacion" type="submit" push color="positive" size="lg"
             class="full-width border-radius-inherit" label="Continuar" no-caps />
-          <q-btn to="datos" push color="accent" size="lg" class="full-width border-radius-inherit" label="Volver"
+          <q-btn to="buscar" push color="accent" size="lg" class="full-width border-radius-inherit" label="Volver"
             no-caps />
         </q-form>
       </div>

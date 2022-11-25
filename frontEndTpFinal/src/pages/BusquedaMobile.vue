@@ -27,8 +27,9 @@
           </q-item-section>
         </q-item>
       </q-list>
+      <!-- Volver -->
+      <q-btn to="index" push color="accent" size="lg" class="full-width border-radius-inherit" label="Volver" no-caps />
     </div>
-    <q-btn icon="arrow_back" color="primary" to="index" class="q-mt-md" label="volver" />
   </q-page>
 </template>
 
@@ -109,34 +110,34 @@ export default {
     onMounted(() => {
 
       //TODO: en teoria esto se carga primero
-       // setTimeout(() => {
-          //   axios.get(`http://localhost:3000/usuario/username/${username.value}`)
-          //     .then((response) => {
-          //       console.log(response);
-          //       // TODO: seguir aca.
-          //       $q.notify({
-          //         color: 'green-4',
-          //         textColor: 'white',
-          //         icon: 'cloud_done',
-          //         message: '¡Bienvenido!',
-          //       });
-          //       // agregar los datos a la variable data.
-          //       if ('') {
-          //         router.push('/datos-persona');
-          //       } else {
-          //         router.push('/dashboard/plazas');
-          //       }
-          //     })
-          //     .catch(() => {
-          //       $q.notify({
-          //         message: 'Error en el registro de usuario, contactar con soporte.',
-          //         icon: 'warning',
-          //         color: 'red-5',
-          //         textColor: 'white',
-          //       });
-          //     });
-          // }, 3000);
-        //}, 2000);
+      // setTimeout(() => {
+      //   axios.get(`http://localhost:3000/usuario/username/${username.value}`)
+      //     .then((response) => {
+      //       console.log(response);
+      //       // TODO: seguir aca.
+      //       $q.notify({
+      //         color: 'green-4',
+      //         textColor: 'white',
+      //         icon: 'cloud_done',
+      //         message: '¡Bienvenido!',
+      //       });
+      //       // agregar los datos a la variable data.
+      //       if ('') {
+      //         router.push('/datos-persona');
+      //       } else {
+      //         router.push('/dashboard/plazas');
+      //       }
+      //     })
+      //     .catch(() => {
+      //       $q.notify({
+      //         message: 'Error en el registro de usuario, contactar con soporte.',
+      //         icon: 'warning',
+      //         color: 'red-5',
+      //         textColor: 'white',
+      //       });
+      //     });
+      // }, 3000);
+      //}, 2000);
 
       printCurrentPosition();
       if (!(coords.value.latitude === undefined) || !(coords.value.longitude === undefined)) {

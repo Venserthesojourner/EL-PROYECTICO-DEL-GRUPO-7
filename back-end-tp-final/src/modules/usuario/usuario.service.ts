@@ -2,7 +2,9 @@ import { Inject, Injectable } from '@nestjs/common';
 export * from '../../commons/enums/'
 import { hash } from 'bcrypt';
 import { Repository } from 'typeorm';
+import { successMsg } from '../../commons/enums/';
 import { CreateEmpleadoDto } from '../empleado/dto/create-empleado.dto';
+import { EmpleadoService } from '../empleado/empleado.service';
 import { CreatePropietarioDto } from '../propietario/dto/create-propietario.dto';
 import { PropietarioService } from '../propietario/propietario.service';
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
@@ -15,17 +17,17 @@ export class UsuarioService {
     @Inject('USUARIO_REPOSITORY')
     private readonly usuarioRepo: Repository<Usuario>,
     private readonly propietarioService: PropietarioService,
-    private readonly empleadoService: PropietarioService,
+    private readonly empleadoService: EmpleadoService,
   ) { }
 
-  async createNewUser(payload: CreateUsuarioDto, extraData?: []): Promise<Usuario> {
-    const password = await hash(payload.password, 10);
+  async createNewUser(payload: CreateUsuarioDto, extraData?: { estacionamiento }): Promise<Usuario> {
+    const password = await hash(payload.username + payload.role, 10);
     payload.password = password;
     const newUser = await this.usuarioRepo.save(payload);
 
     let response = {
       data: {
-        user: newUser || null,
+        user: newUser,
         owner: null,
         employee: null
       },
@@ -37,8 +39,8 @@ export class UsuarioService {
     if (newUser.role === 'owner') {
       // Se crearia una instancia de usuario propietario y si le asigna la id de user al mismo
       console.table(newUser)
-      let newOwner: CreatePropietarioDto;
-      newOwner.idUsuario == newUser.id
+      let newOwner: CreatePropietarioDto = { idUsuario: newUser.id }
+      console.table(newOwner)
       newOwner = await this.propietarioService.createNewOwner(newOwner)
       response = {
         data: {
@@ -54,9 +56,18 @@ export class UsuarioService {
       // Se crea una instancia de operador (Necesito hacer una busqueda del Id del estacionamiento al que sera asociado)
       console.table(newUser)
       let newEmployee: CreateEmpleadoDto;
-      newEmployee.idUsuario == newUser.id
+      newEmployee.usuario == newUser.id
       newEmployee.estacionamiento == extraData.estacionamiento
-      response = await this.empleadoService.save(newEmployee)
+      let createdEmployee = await this.empleadoService.createNewEmployee(newEmployee)
+      response = {
+        data: {
+          user: newUser,
+          owner: createdEmployee,
+          employee: null
+        },
+        message: successMsg.SCS001,
+        sucess: true
+      }
     }
 
     /*

@@ -23,7 +23,10 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  JoinColumn,
+  ManyToOne,
   OneToOne,
+  PrimaryColumn,
   UpdateDateColumn,
 } from 'typeorm';
 
@@ -32,10 +35,11 @@ export class Empleado extends BaseEntity {
   @OneToOne(() => Usuario, (usuario) => usuario.id)
   usuario: Usuario;
 
-  @Column('varchar', { name: 'legajo_empleado', length: 10, nullable: false })
+  @PrimaryColumn('varchar', { name: 'legajo_empleado', length: 10, nullable: false })
   legajoEmpleado: string;
 
-  @OneToOne(() => Estacionamiento, (estacionamiento) => estacionamiento.id)
+  @ManyToOne(() => Estacionamiento, (estacionamiento) => estacionamiento.id)
+  @JoinColumn({ name: 'estacionamiento_id' })
   estacionamiento: Estacionamiento;
 
   @Column('time', { name: 'horario_entrada' })

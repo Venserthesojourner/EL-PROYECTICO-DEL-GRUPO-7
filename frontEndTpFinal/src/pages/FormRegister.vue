@@ -101,13 +101,13 @@ export default {
             message: 'Tienes que aceptar los términos y condiciones',
           });
         } else {
+          // Este es el form del registro del propietario: role: 'owner'
           const body = {
             username: username.value,
             email: mail.value,
-            password: 'b7159b31a2fdf4ef8394df2234acca8fdbbc438f',
             role: 'owner',
           };
-          const route = 'http://localhost:3000/usuario';
+          const route = 'http://localhost:3005/usuario';
           setTimeout(() => {
             $q.notify({
               progress: true,
