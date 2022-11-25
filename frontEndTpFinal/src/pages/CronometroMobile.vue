@@ -11,8 +11,10 @@
           <q-btn size="18px" color="secondary" push icon="replay" @click="reiniciar()" />
         </q-btn-group>
       </div>
+      <!-- Volver -->
+      <q-btn to="reserva" push color="accent" size="lg" class="q-mt-lg full-width border-radius-inherit" label="Volver"
+        no-caps />
     </div>
-    <q-btn icon="arrow_back" color="primary" to="index" class="q-mt-md" label="volver" />
   </q-page>
 
 </template>

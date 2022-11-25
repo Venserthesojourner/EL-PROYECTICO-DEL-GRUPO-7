@@ -48,6 +48,8 @@ const routes: RouteRecordRaw[] = [
       { path: 'mis-reservas', component: () => import('pages/MisReservasMobile.vue'), meta: { auth: false } },
       { path: 'mis-favoritos', component: () => import('src/pages/MisFavoritosMobile.vue'), meta: { auth: false } },
       { path: 'mi-historial', component: () => import('src/pages/MiHistorialMobile.vue'), meta: { auth: false } },
+      { path: 'codigo-reserva', component: () => import('src/pages/CodigoReservaMobile.vue'), meta: { auth: false } },
+      { path: 'forma-pago', component: () => import('src/pages/FormaPagoMobile.vue'), meta: { auth: false } },
     ],
   },
 
