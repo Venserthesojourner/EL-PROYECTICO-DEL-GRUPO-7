@@ -1,6 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
-import { CreateEmpleadoDto } from './dto/create-empleado.dto';
 import { Empleado } from './entities/empleado.entity';
 
 @Injectable()
@@ -10,14 +9,18 @@ export class EmpleadoService {
         private readonly empleadoRepo: Repository<Empleado>
     ) { }
 
-    async createNewEmployee(payload: CreateEmpleadoDto): Promise<Empleado> {
-        const newEmployee = await this.empleadoRepo.save(payload);
-        return newEmployee;
+    async createNewEmployee(payload): Promise<Empleado> {
+        let newEmployee = await this.empleadoRepo.save(payload);
+        return newEmployee
     }
 
-    async findAllEmployees( ) {
+    async findAllEmployees() {
         const listofEmpleados = await this.empleadoRepo.find(
-            { relations: [] }
+            {
+                relations: {
+                    estacionamiento: true
+                }
+            }
         )
         return listofEmpleados;
     }
@@ -28,7 +31,9 @@ export class EmpleadoService {
         await this.empleadoRepo.update(id, payload);
         const updatedUser = await this.empleadoRepo.find({
             where: { legajoEmpleado: id },
-            relations: [],
+            relations: {
+                estacionamiento: true
+            },
         });
         return updatedUser;
     }

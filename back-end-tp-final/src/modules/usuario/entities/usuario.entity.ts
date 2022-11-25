@@ -49,7 +49,7 @@ export class Usuario extends BaseEntity {
   })
   username: string;
 
-  @Column('varchar', { name: 'password', length: 15, nullable: false })
+  @Column('varchar', { name: 'password', length: 250, nullable: false })
   password: string;
 
   @Column('varchar', {
