@@ -3,6 +3,8 @@ import { ConfigType } from '@nestjs/config';
 import config from './../config/database.config'
 import { Usuario } from './../modules/usuario/entities/usuario.entity';
 import { Propietario } from './../modules/propietario/entities/propietario.entity';
+import { Empleado } from './../modules/empleado/entities/empleado.entity';
+import { Estacionamiento } from './../modules/estacionamiento/entitites/estacionamiento.entity';
 
 export const databaseProviders = [
     {
@@ -16,7 +18,7 @@ export const databaseProviders = [
                 username,
                 password,
                 database,
-                entities: [Usuario, Propietario],
+                entities: [Usuario, Propietario, Empleado, Estacionamiento],
                 synchronize: false,
                 logging: false,
             });

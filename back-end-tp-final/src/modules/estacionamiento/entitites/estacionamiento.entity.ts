@@ -4,9 +4,11 @@ import {
   Column,
   Entity,
   JoinColumn,
+  OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { Empleado } from '../../empleado/entities/empleado.entity';
 /*
 CREATE TABLE `estacionamiento` (
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -53,6 +55,9 @@ export class Estacionamiento extends BaseEntity {
     nullable: false,
   })
   precioBase: number;
+
+  @OneToMany(() => Empleado, (empleado) => empleado.legajoEmpleado)
+  empleados: Empleado[]
 
   createdAt: Date;
   updatedAt: Date;

@@ -4,10 +4,12 @@ import { EmpleadoService } from './empleado.service';
 import { EmpleadoController } from './empleado.controller';
 import { EmpleadoProviders } from './providers/empleado.providers';
 import { EstacionamientoController } from '../estacionamiento/estacionamiento.controller';
+import { EstacionamientoProviders } from '../estacionamiento/providers/estacionamiento.providers';
+import { EstacionamientoService } from '../estacionamiento/estacionamiento.service';
 
 @Module({
   controllers: [EmpleadoController, EstacionamientoController],
-  providers: [EmpleadoService, ...EmpleadoProviders],
+  providers: [EmpleadoService, EstacionamientoService, ...EmpleadoProviders, ...EstacionamientoProviders],
   exports: [EmpleadoService],
 })
 export class EmpleadoModule { }
