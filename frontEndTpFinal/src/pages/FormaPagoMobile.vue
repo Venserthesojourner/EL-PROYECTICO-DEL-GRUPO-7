@@ -5,13 +5,32 @@
         <p class="text-h4 text-weight-bold text-primary text-center">Opción de Pago</p>
         <q-form @submit="onSubmit" @reset="onReset" class="column items-center justify-center q-gutter-y-md">
           <div class="full-width row justify-center text-uppercase">
-            <q-option-group name="tipo_reserva" v-model="tipoReserva" :options="options" size="lg" color="primary"
+            <q-option-group name="opcion_pago" v-model="opcionPago" :options="options" size="lg" color="primary"
               inline />
           </div>
-          <!-- Código Promoción -->
-          <q-input class="full-width" filled v-model="codigo" type="text" label="Código Promoción"
-            hint="Ingresar código de promoción" />
-
+          <!-- Datos -->
+          <div class="q-mt-md">
+            <q-list style="min-width: 300px">
+              <q-item>
+                <q-item-section>
+                  <q-item-label caption lines="1">Estacionamiento</q-item-label>
+                  <q-item-label>Parking NQN</q-item-label>
+                </q-item-section>
+              </q-item>
+              <q-item>
+                <q-item-section>
+                  <q-item-label caption lines="1">Precio</q-item-label>
+                  <q-item-label>$250</q-item-label>
+                </q-item-section>
+              </q-item>
+              <q-item>
+                <q-item-section>
+                  <q-item-label caption lines="1">Tipo de reserva</q-item-label>
+                  <q-item-label>Fija</q-item-label>
+                </q-item-section>
+              </q-item>
+            </q-list>
+          </div>
           <!-- Botones -->
           <q-btn to="codigo-reserva" type="submit" push color="positive" size="lg"
             class="full-width border-radius-inherit" label="Continuar" no-caps />
@@ -31,11 +50,11 @@ export default {
   setup() {
     const $q = useQuasar()
 
-    const tipoReserva = ref('mercado pago')
+    const opcionPago = ref('mercado pago')
     const codigo = ref(null)
 
     return {
-      tipoReserva,
+      opcionPago,
       options: [
         {
           label: 'Mercado Pago',
@@ -68,7 +87,7 @@ export default {
       },
 
       onReset() {
-        tipoReserva.value = "mercado pago"
+        opcionPago.value = "mercado pago"
         codigo.value = null
       }
     }
