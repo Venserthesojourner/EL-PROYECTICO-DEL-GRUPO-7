@@ -67,46 +67,22 @@
             <q-item-section class="text-overline">Cf30g</q-item-section>
 
             <q-item-section side>
-              <q-btn
-                size="12px"
-                round
-                dense
-                flat
-                unelevated
-                icon="content_copy"
-                color="grey-7"
-              />
+              <q-btn size="12px" round dense flat unelevated icon="content_copy" color="grey-7" />
             </q-item-section>
           </q-item>
 
           <q-separator spaced />
 
           <!-- Aca hay que meter todos los codigos de reserva activos -->
-          <q-intersection
-            v-for="codigo in listaCodigoReserva"
-            v-bind:key="codigo"
-          >
-            <q-item
-              clickable
-              v-ripple
-              v-bind:index="index"
-              active-class="bg-grey-2"
-            >
+          <q-intersection v-for="codigo in listaCodigoReserva" v-bind:key="codigo">
+            <q-item clickable v-ripple v-bind:index="index" active-class="bg-grey-2">
               <q-item-section v-bind:id="codigo" class="text-overline">{{
-                codigo
+                  codigo
               }}</q-item-section>
 
               <q-item-section side>
-                <q-btn
-                  size="12px"
-                  round
-                  dense
-                  flat
-                  unelevated
-                  icon="content_copy"
-                  color="grey-7"
-                  @click="copyToClipBoard({codigo})"
-                />
+                <q-btn size="12px" round dense flat unelevated icon="content_copy" color="grey-7"
+                  @click="copyToClipBoard({ codigo })" />
               </q-item-section>
             </q-item>
 
@@ -114,14 +90,8 @@
           </q-intersection>
         </q-list>
       </div>
+      <q-btn icon="arrow_back" color="primary" to="index" class="q-mt-md" label="volver" />
     </div>
-    <q-btn
-      icon="arrow_back"
-      color="primary"
-      to="index"
-      class="q-mt-md"
-      label="volver"
-    />
   </q-page>
 </template>
 
@@ -157,7 +127,7 @@ export default {
         cantidadCodigosReserva.value += 1;
       },
       copyToClipBoard(id) {
-       const content = document.getElementById(id.codigo).innerHTML;
+        const content = document.getElementById(id.codigo).innerHTML;
 
         navigator.clipboard
           .writeText(content)
