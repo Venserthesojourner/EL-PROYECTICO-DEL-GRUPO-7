@@ -105,20 +105,6 @@ export default {
 
   setup() {
     const cantidadCodigosReserva = ref(1);
-
-    /* const copyToClipBoard = (id) => {
-      alert(id);
-      const content = document.getElementById(id).innerHTML;
-
-    navigator.clipboard.writeText(content)
-        .then(() => {
-        console.log("Text copied to clipboard...")
-    })
-        .catch(err => {
-        console.log('Something went wrong', err);
-    })
-    } */
-
     return {
       active: ref("primera"),
       cantidadCodigosReserva,
