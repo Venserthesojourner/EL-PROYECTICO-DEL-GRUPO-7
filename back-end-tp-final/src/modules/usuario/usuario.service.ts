@@ -5,6 +5,7 @@ import { Repository } from 'typeorm';
 import { successMsg } from '../../commons/enums/';
 import { CreateEmpleadoDto } from '../empleado/dto/create-empleado.dto';
 import { EmpleadoService } from '../empleado/empleado.service';
+import { ProfileService } from '../profile/profile.service';
 import { CreatePropietarioDto } from '../propietario/dto/create-propietario.dto';
 import { PropietarioService } from '../propietario/propietario.service';
 import { CreateUsuarioDto } from './dto/create-usuario.dto';
@@ -18,6 +19,7 @@ export class UsuarioService {
     private readonly usuarioRepo: Repository<Usuario>,
     private readonly propietarioService: PropietarioService,
     private readonly empleadoService: EmpleadoService,
+    private readonly profileService: ProfileService
   ) { }
 
   async createNewUser(payload: CreateUsuarioDto, extraData?: { estacionamiento }): Promise<Usuario> {
@@ -39,7 +41,7 @@ export class UsuarioService {
     if (newUser.role === 'owner') {
       // Se crearia una instancia de usuario propietario y si le asigna la id de user al mismo
       console.table(newUser)
-      let newOwner: CreatePropietarioDto = { idUsuario: newUser.id }
+      let newOwner: CreatePropietarioDto = { idUsuario: newUser }
       console.table(newOwner)
       newOwner = await this.propietarioService.createNewOwner(newOwner)
       response = {
@@ -83,17 +85,16 @@ export class UsuarioService {
   async updateUserbyID(id: number, payload: UpdateUsuarioDto) {
     await this.usuarioRepo.update(id, payload);
     const updatedUser = await this.usuarioRepo.find({
-      where: { id },
-      relations: [],
+      where: { id }
     });
     return updatedUser;
   }
 
   async updateUserbyUsername(username: string, payload: UpdateUsuarioDto) {
-    await this.usuarioRepo.update(username, payload);
+    let profile = await this.profileService.findOneProfileByUsername({ where: { username } })
+    await this.usuarioRepo.update(profile.usuario.id, payload);
     const updatedUser = await this.usuarioRepo.find({
-      where: { username },
-      relations: [],
+      where: { id: profile.usuario.id }
     });
     return updatedUser;
   }
@@ -108,8 +109,9 @@ export class UsuarioService {
   }
 
   async findUserbyUsername(username: string): Promise<Usuario | undefined> {
+    let profile = await this.profileService.findOneProfileByUsername({ where: { username } })
     const usuario = this.usuarioRepo.findOne({
-      where: { username: username },
+      where: { id: profile.usuario.id },
       relations: [],
     });
     return usuario;
