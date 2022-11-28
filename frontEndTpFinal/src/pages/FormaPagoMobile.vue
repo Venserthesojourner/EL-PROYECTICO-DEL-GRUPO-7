@@ -10,7 +10,7 @@
           </div>
           <!-- Datos -->
           <div class="q-mt-md">
-            <q-list style="min-width: 300px">
+            <q-list dark style="min-width: 300px">
               <q-item>
                 <q-item-section>
                   <q-item-label caption lines="1">Estacionamiento</q-item-label>
@@ -32,10 +32,10 @@
             </q-list>
           </div>
           <!-- Botones -->
-          <q-btn to="codigo-reserva" type="submit" push color="positive" size="lg"
+          <q-btn to="codigo-reserva" type="submit" push color="positive" text-color="black" size="lg"
             class="full-width border-radius-inherit" label="Continuar" no-caps />
-          <q-btn to="confirmacion" push color="accent" size="lg" class="full-width border-radius-inherit" label="Volver"
-            no-caps />
+          <q-btn to="confirmacion" push color="primary" text-color="black" size="lg"
+            class="full-width border-radius-inherit" label="Volver" no-caps />
         </q-form>
       </div>
     </div>

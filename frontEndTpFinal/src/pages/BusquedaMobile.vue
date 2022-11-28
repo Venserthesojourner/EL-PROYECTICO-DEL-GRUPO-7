@@ -4,31 +4,35 @@
       <capacitor-google-map id="map" ref="map"></capacitor-google-map>
       <q-list style="min-width: 320px">
         <!-- Primer Patente -->
-        <q-item clickable v-ripple :active="active === 'primera'" @click="active = 'primera'" active-class="bg-grey-2">
+        <q-item clickable v-ripple :active="active === 'primera'" @click="active = 'primera'"
+          active-class="bg-deep-purple-10 text-positive">
           <q-item-section>Estacionamiento numero 0 </q-item-section>
 
           <q-item-section side>
-            <q-btn size="12px" round dense flat unelevated icon="local_parking" color="negative" />
+            <q-btn size="12px" round dense flat unelevated icon="local_parking" color="deep-purple-2" />
           </q-item-section>
         </q-item>
         <!-- Aca hay que meter todos los estacionamientos cercanos -->
-        <q-item clickable v-ripple :active="active === 'segunda'" @click="active = 'segunda'" active-class="bg-grey-2">
+        <q-item clickable v-ripple :active="active === 'segunda'" @click="active = 'segunda'"
+          active-class="bg-deep-purple-10 text-positive">
           <q-item-section>Estacionamiento numero 1</q-item-section>
 
           <q-item-section side>
-            <q-btn size="12px" round dense flat unelevated icon="local_parking" color="negative" />
+            <q-btn size="12px" round dense flat unelevated icon="local_parking" color="deep-purple-2" />
           </q-item-section>
         </q-item>
-        <q-item clickable v-ripple :active="active === 'tercera'" @click="active = 'tercera'" active-class="bg-grey-2">
+        <q-item clickable v-ripple :active="active === 'tercera'" @click="active = 'tercera'"
+          active-class="bg-deep-purple-10 text-positive">
           <q-item-section>Estacionamiento numero 2</q-item-section>
 
           <q-item-section side>
-            <q-btn size="12px" round dense flat unelevated icon="local_parking" color="negative" />
+            <q-btn size="12px" round dense flat unelevated icon="local_parking" color="deep-purple-2" />
           </q-item-section>
         </q-item>
       </q-list>
       <!-- Volver -->
-      <q-btn to="index" push color="accent" size="lg" class="full-width border-radius-inherit" label="Volver" no-caps />
+      <q-btn to="index" push color="primary" text-color="black" size="lg"
+        class="full-width border-radius-inherit q-mt-md" label="Volver" no-caps />
     </div>
   </q-page>
 </template>

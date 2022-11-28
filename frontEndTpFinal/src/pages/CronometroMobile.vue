@@ -6,14 +6,14 @@
         <p class="text-h4 text-weight-bold text-primary">Cronómetro</p>
         <div class="text-h3 q-mb-md">{{ timeShow }}</div>
         <q-btn-group push>
-          <q-btn size="18px" color="positive" push icon="play_arrow" @click="iniciar()" />
-          <q-btn size="18px" color="negative" push icon="stop" @click="pausar()" />
-          <q-btn size="18px" color="secondary" push icon="replay" @click="reiniciar()" />
+          <q-btn size="18px" color="light-green-3" text-color="black" push icon="play_arrow" @click="iniciar()" split />
+          <q-btn size="18px" color="light-green-4" text-color="black" push icon="stop" @click="pausar()" />
+          <q-btn size="18px" color="light-green-5" text-color="black" push icon="replay" @click="reiniciar()" />
         </q-btn-group>
       </div>
       <!-- Volver -->
-      <q-btn to="index" push color="accent" size="lg" class="q-mt-lg full-width border-radius-inherit" label="Volver"
-        no-caps />
+      <q-btn to="index" push color="primary" text-color="black" size="lg"
+        class="q-mt-lg full-width border-radius-inherit" label="Volver" no-caps style="max-width: 200px" />
     </div>
   </q-page>
 
