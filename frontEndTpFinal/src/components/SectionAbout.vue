@@ -48,7 +48,7 @@
         font-size: 2.5rem
 #about
     background: $dark
-    background-image: url(../assets/separator-bottom.svg), linear-gradient($secondary, $accent)
+    background-image: url(../assets/separator-bottom.svg), linear-gradient(rgb(28, 37, 100), rgb(129, 56, 202))
     background-repeat: no-repeat
     background-size: 100% 100px, 100%
     background-position: bottom center, 50%

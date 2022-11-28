@@ -49,10 +49,10 @@ export default {
 
       onSubmit() {
         $q.notify({
-          color: 'green-4',
-          textColor: 'white',
-          icon: 'cloud_done',
-          message: 'Muy bien, continuemos',
+          color: 'positive',
+          textColor: 'dark',
+          icon: 'mood',
+          message: 'Mensaje enviado',
         });
       },
     };
