@@ -1,28 +1,29 @@
 import { Usuario } from "./../../usuario/entities/usuario.entity";
-import { BaseEntity, Column, CreateDateColumn, DeleteDateColumn, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, Entity, JoinColumn, OneToOne, PrimaryColumn } from "typeorm";
 
 /*
 CREATE TABLE `propietario` (
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,/
-  `update_time` timestamp NULL DEFAULT NULL,/
-  `delete_time` timestamp NULL DEFAULT NULL,/
-  `id_usuario` int DEFAULT NULL,/
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_time` timestamp NULL DEFAULT NULL,
+  `delete_time` timestamp NULL DEFAULT NULL,
+  'id' int NOT NULL AUTO_INCREMENT,
+  `id_usuario` int NOT NULL,
   `cuil` int DEFAULT NULL,
   `cuit` int DEFAULT NULL,
   `ingresos_brutos` int DEFAULT NULL,
   `cbu` varchar(45) DEFAULT NULL,
+  PRIMARY KEY ('id'),
   KEY `index1` (`id_usuario`),
-  CONSTRAINT `id_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci*/
+  CONSTRAINT `id_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`) 
+  ON DELETE cascade ON UPDATE cascade
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;*/
 
 @Entity({ name: 'propietario' })
-export class Propietario extends BaseEntity {
-  @PrimaryGeneratedColumn('increment')
-  id: number;
-
+export class Propietario extends Usuario {
+  @PrimaryColumn()
   @OneToOne(() => Usuario, (Usuario) => Usuario.id)
   @JoinColumn({ name: 'id_usuario' })
-  idUsuario: number | null;
+  idUsuario: Usuario;
 
   @Column('int', { name: 'cuil', nullable: true, default: null })
   cuil: number | null;
@@ -35,11 +36,4 @@ export class Propietario extends BaseEntity {
 
   @Column('varchar', { name: 'cbu', length: 45, nullable: true, default: null })
   cbu: string | null;
-
-  @CreateDateColumn({ name: 'create_time', nullable: false })
-  createdAt: Date;
-  @UpdateDateColumn({ name: 'update_time', nullable: false, default: null, onUpdate: 'CURRENT_TIMESTAMP' })
-  updatedAt: Date;
-  @DeleteDateColumn({ name: 'delete_time', nullable: false, default: null })
-  deletedAt: Date;
 }
