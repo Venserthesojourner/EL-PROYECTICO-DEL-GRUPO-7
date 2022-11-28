@@ -17,7 +17,7 @@
         <div class="q-mt-lg gt-xs">
           <q-btn to="register" push color="accent" size="lg"
             class="q-px-lg q-py-xs q-mr-md q-mb-md border-radius-inherit" label="Registrarse" no-caps />
-          <q-btn to="mobile" push color="primary" size="lg" target="blank"
+          <q-btn to="mobile" push color="secondary" size="lg" target="blank"
             class="q-px-lg q-py-xs q-mb-md border-radius-inherit" no-caps>
             <q-icon left size="1.3em" name="fa-brands fa-google-play" />
             <div>Google Play</div>
@@ -27,7 +27,7 @@
         <div class="q-mt-lg lt-sm">
           <q-btn to="register" push color="accent" size="lg" class="q-mb-md full-width border-radius-inherit"
             label="Registrarse" no-caps />
-          <q-btn to="mobile" push color="primary" size="lg" target="blank" class="full-width border-radius-inherit"
+          <q-btn to="mobile" push color="secondary" size="lg" target="blank" class="full-width border-radius-inherit"
             no-caps>
             <q-icon left size="1.3em" name="fa-brands fa-google-play" />
             <div>Google Play</div>

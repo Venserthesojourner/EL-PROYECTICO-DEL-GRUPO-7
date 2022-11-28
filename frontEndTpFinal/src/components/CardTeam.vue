@@ -1,13 +1,13 @@
 <!-- eslint-disable max-len -->
 <template>
     <!-- Luis -->
-    <q-card class="q-my-xl">
+    <q-card dark class="q-my-xl bg-card">
         <q-img class="img-contact" src="../assets/luisContact.jpg"></q-img>
 
         <div class="content column justify-end items-center">
             <q-card-section class="text-center">
                 <span class="text-h6">Luis Cañete</span><br>
-                <span class="contact-cite text-subtitle1">Odio a Mario Bros</span>
+                <span class="contact-cite text-subtitle1 text-positive">Odio a Mario Bros</span>
 
                 <q-card-actions class="justify-center">
                     <q-btn round dense unelevated href="https://github.com/Venserthesojourner" target="_blank"
@@ -17,13 +17,13 @@
         </div>
     </q-card>
     <!-- Manuel -->
-    <q-card class="q-my-xl">
+    <q-card dark class="q-my-xl bg-card">
         <q-img class="img-contact" src="../assets/manuContact.jpg"></q-img>
 
         <div class="content column justify-end items-center">
             <q-card-section class="text-center">
                 <span class="text-h6">Manuel Ortiz</span><br>
-                <span class="contact-cite text-subtitle1">Wakandaaaaaa</span>
+                <span class="contact-cite text-subtitle1 text-positive">Wakandaaaaaa</span>
 
                 <q-card-actions class="justify-center">
                     <q-btn round dense unelevated href="https://github.com/hctmanuelortiz" target="_blank"
@@ -33,13 +33,13 @@
         </div>
     </q-card>
     <!-- Marcos -->
-    <q-card class="q-my-xl">
+    <q-card class="q-my-xl bg-card">
         <q-img class="img-contact" src="../assets/marcosContact.jpg"></q-img>
 
         <div class="content column justify-end items-center">
             <q-card-section class="text-center">
                 <span class="text-h6">Marcos Travaglini</span><br>
-                <span class="contact-cite text-subtitle1">Que interesante Marge</span>
+                <span class="contact-cite text-subtitle1 text-positive">Que interesante Marge</span>
 
                 <q-card-actions class="justify-center">
                     <q-btn round dense unelevated href="https://github.com/Blackpachamame" target="_blank"
@@ -56,6 +56,8 @@
     height: 150px
     border-radius: 20px
     transition: 0.5s
+    &.bg-card
+        background-color: rgb(108 0 0 / 10%)
     & .img-contact
         position: absolute
         left: 50%
@@ -63,7 +65,7 @@
         transform: translateX(-50%)
         width: 100px
         height: 100px
-        background: #fff
+        background: rgb(108 0 0 / 10%)
         border-radius: 20px
         box-shadow: 0 15px 50px rgba(0,0,0,0.35)
         transition: 0.5s

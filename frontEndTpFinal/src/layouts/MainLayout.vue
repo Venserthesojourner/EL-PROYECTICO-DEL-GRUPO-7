@@ -1,7 +1,7 @@
 <!-- eslint-disable max-len -->
 <template>
   <q-layout view="hHh Lpr lff">
-    <q-header reveal class="bg-white text-primary q-py-lg q-px-lg">
+    <q-header reveal class="bg-dark text-primary q-py-lg q-px-lg">
       <q-toolbar>
         <!-- Logo -->
         <q-img src="../assets/logo.png" height="40px" width="40px" alt="logo" />
@@ -11,9 +11,10 @@
         <q-space />
         <!-- Menú -->
         <q-tabs class="gt-sm" v-model="tab" shrink>
-          <q-route-tab to="/" name="home" label="Home" exact />
-          <q-route-tab href="/#about" name="about" label="About" exact />
-          <q-route-tab href="/#contact" name="contact" label="Contact" exact />
+          <q-route-tab to="/" name="home" label="Inicio" exact />
+          <q-route-tab href="/#about" name="about" label="Nosotros" exact />
+          <q-route-tab href="/#team" name="team" label="Equipo" exact />
+          <q-route-tab href="/#contact" name="contact" label="Contacto" exact />
           <q-route-tab href="login" name="login" label="Login" exact />
         </q-tabs>
         <!-- Boton Menú -->
@@ -24,20 +25,21 @@
     </q-header>
     <!-- Menú responsive -->
     <div class="lt-md">
-      <q-drawer v-model="drawer" :width="250" :breakpoint="500" overlay class="text-primary text-h5 text-center">
+      <q-drawer v-model="drawer" :width="250" :breakpoint="500" overlay
+        class="bg-dark text-primary text-h5 text-center">
         <q-scroll-area class="fit">
 
           <q-list>
             <q-item style="width: 100%;" clickable v-ripple to="/">
-              <q-item-section>Home</q-item-section>
+              <q-item-section>Inicio</q-item-section>
             </q-item>
 
             <q-item style="width: 100%;" clickable v-ripple href="/#about">
-              <q-item-section>About</q-item-section>
+              <q-item-section>Nosotros</q-item-section>
             </q-item>
 
             <q-item style="width: 100%;" clickable v-ripple href="/#contact">
-              <q-item-section>Contact</q-item-section>
+              <q-item-section>Contacto</q-item-section>
             </q-item>
 
             <q-item style="width: 100%;" clickable v-ripple href="login">
@@ -52,6 +54,12 @@
       <router-view />
       <BtnScrollerTop></BtnScrollerTop>
     </q-page-container>
+
+    <q-footer class="bg-dark text-center">
+      <q-toolbar>
+        <q-toolbar-title>Grupo 7 💜 2022</q-toolbar-title>
+      </q-toolbar>
+    </q-footer>
   </q-layout>
 </template>
 
@@ -80,6 +88,11 @@ export default {
     font-size: 26px
 :deep(.q-tab__label)
   font-size: 16px
+  font-weight: bold
+.q-footer
+  & :deep(.q-toolbar__title)
+    font-size: 14px
+    color: rgba(255, 255, 255, 0.7)
 .q-list
   display: flex
   flex-direction: column

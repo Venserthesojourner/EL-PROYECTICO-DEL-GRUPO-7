@@ -10,15 +10,15 @@
                 </div>
             </div>
             <div class="col-12 col-md-5 text-white q-px-md">
-                <h3 class="text-h3">About</h3>
+                <h3 class="text-h3">Nosotros</h3>
                 <p>Nuestra plataforma esta diseñada para que le sirva particularmente a cada uno de los establecimientos
                     a administrar los servicios de estacionamiento que proveen así como una herramienta
                     para que los usuarios que deseen estacionar puedan hacerlo de manera más fácil y rápida.</p>
                 <!-- Botones para display mayores que xs -->
                 <div class="q-mt-lg gt-xs">
-                    <q-btn to="register" push color="positive" size="lg"
+                    <q-btn to="register" push color="warning" size="lg" text-color="black"
                         class="q-px-lg q-py-xs q-mr-md q-mb-md border-radius-inherit" label="Registrarse" no-caps />
-                    <q-btn to="mobile" push color="secondary" size="lg" target="blank"
+                    <q-btn to="mobile" push color="info" size="lg" text-color="black" target="blank"
                         class="q-px-lg q-py-xs q-mb-md border-radius-inherit" no-caps>
                         <q-icon left size="1.3em" name="fa-brands fa-google-play" />
                         <div>Google Play</div>
@@ -26,9 +26,9 @@
                 </div>
                 <!-- Botones para display menores que sm -->
                 <div class="q-mt-lg q-mb-lg lt-sm">
-                    <q-btn to="register" push color="positive" size="lg"
+                    <q-btn to="register" push color="warning" size="lg" text-color="black"
                         class="q-mb-md full-width border-radius-inherit" label="Registrarse" no-caps />
-                    <q-btn to="mobile" push color="secondary" size="lg" target="blank"
+                    <q-btn to="mobile" push color="info" size="lg" text-color="black" target="blank"
                         class="full-width border-radius-inherit" no-caps>
                         <q-icon left size="1.3em" name="fa-brands fa-google-play" />
                         <div>Google Play</div>
@@ -47,8 +47,8 @@
     .text-h3
         font-size: 2.5rem
 #about
-    background: $primary
-    background-image: url(../assets/separator-bottom.svg), linear-gradient($primary, $primary)
+    background: $dark
+    background-image: url(../assets/separator-bottom.svg), linear-gradient($secondary, $accent)
     background-repeat: no-repeat
     background-size: 100% 100px, 100%
     background-position: bottom center, 50%
@@ -65,4 +65,7 @@
     -ms-transform: rotate(180deg)
     -o-transform: rotate(180deg)
     transform: rotate(180deg)
+.text-h3
+  margin-top: 0px
+  margin-bottom: 16px
 </style>
