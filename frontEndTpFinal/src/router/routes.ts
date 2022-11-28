@@ -36,8 +36,8 @@ const routes: RouteRecordRaw[] = [
     component: () => import('layouts/MobileLayout.vue'),
     children: [
       { path: '', component: () => import('pages/IndexMobile.vue') },
-      { path: 'login', component: () => import('pages/FormLogin.vue'), meta: { auth: false } },
-      { path: 'register', component: () => import('pages/RegisterMobile.vue'), meta: { auth: false } },
+      { path: 'login', component: () => import('pages/FormLoginMobile.vue'), meta: { auth: false } },
+      { path: 'register', component: () => import('pages/FormRegisterMobile.vue'), meta: { auth: false } },
       { path: 'index', component: () => import('pages/IndexMobileLogin.vue'), meta: { auth: false } },
       { path: 'buscar', component: () => import('pages/BusquedaMobile.vue'), meta: { auth: false } },
       { path: 'reserva', component: () => import('pages/ReservaMobile.vue'), meta: { auth: false } },

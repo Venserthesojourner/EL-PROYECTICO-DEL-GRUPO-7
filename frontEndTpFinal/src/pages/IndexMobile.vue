@@ -4,9 +4,9 @@
       <img src="../assets/logo.png" alt="logo" style="width: 100px;">
       <p class="title text-weight-bold text-uppercase text-primary">Park-Our</p>
       <div class="q-mt-md q-gutter-y-md" style="min-width: 300px">
-        <q-btn to="mobile/index" push color="primary" size="lg" class="full-width border-radius-inherit" label="Login"
+        <q-btn to="mobile/login" push color="primary" size="lg" class="full-width border-radius-inherit" label="Login"
           no-caps />
-        <q-btn to="register" push color="accent" size="lg" class="full-width border-radius-inherit" label="Registrarse"
+        <q-btn to="mobile/register" push color="accent" size="lg" class="full-width border-radius-inherit" label="Registrarse"
           no-caps />
       </div>
     </div>
