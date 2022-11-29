@@ -71,8 +71,8 @@ export default {
             console.log(response);
             // TODO: seguir aca.
             $q.notify({
-              color: 'green-4',
-              textColor: 'white',
+              color: 'positive',
+              textColor: 'dark',
               icon: 'cloud_done',
               message: '¡Bienvenido!',
             });
@@ -87,7 +87,7 @@ export default {
             $q.notify({
               message: 'Error en el registro de usuario, contactar con soporte.',
               icon: 'warning',
-              color: 'red-5',
+              color: 'red-10',
               textColor: 'white',
             });
           });
@@ -103,8 +103,8 @@ export default {
             console.log(response);
             // TODO: seguir aca.
             $q.notify({
-              color: 'green-4',
-              textColor: 'white',
+              color: 'positive',
+              textColor: 'dark',
               icon: 'cloud_done',
               message: '¡Bienvenido!',
             });
@@ -119,7 +119,7 @@ export default {
             $q.notify({
               message: 'Error en el registro de usuario, contactar con soporte.',
               icon: 'warning',
-              color: 'red-5',
+              color: 'red-10',
               textColor: 'white',
             });
           });

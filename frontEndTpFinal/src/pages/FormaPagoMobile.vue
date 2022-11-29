@@ -70,7 +70,7 @@ export default {
       onSubmit() {
         if (accept.value !== true) {
           $q.notify({
-            color: 'red-5',
+            color: 'red-10',
             textColor: 'white',
             icon: 'warning',
             message: 'You need to accept the license and terms first'
@@ -78,8 +78,8 @@ export default {
         }
         else {
           $q.notify({
-            color: 'green-4',
-            textColor: 'white',
+            color: 'positive',
+            textColor: 'dark',
             icon: 'cloud_done',
             message: 'Submitted'
           })

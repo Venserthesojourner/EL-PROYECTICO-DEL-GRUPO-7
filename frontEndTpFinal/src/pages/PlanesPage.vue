@@ -39,7 +39,7 @@
                 <q-popup-proxy cover transition-show="scale" transition-hide="scale">
                   <q-date color="secondary" class="bg-dark" v-model="date">
                     <div class="row items-center justify-end">
-                      <q-btn v-close-popup label="Close" color="positive" flat />
+                      <q-btn v-close-popup label="Cerrar" color="positive" flat />
                     </div>
                   </q-date>
                 </q-popup-proxy>
@@ -112,8 +112,8 @@ export default {
             console.log(response);
             // TODO: seguir aca.
             $q.notify({
-              color: 'green-4',
-              textColor: 'white',
+              color: 'positive',
+              textColor: 'dark',
               icon: 'cloud_done',
               message: '¡Bienvenido!',
             });
@@ -128,7 +128,7 @@ export default {
             $q.notify({
               message: 'Error en el registro de usuario, contactar con soporte.',
               icon: 'warning',
-              color: 'red-5',
+              color: 'red-10',
               textColor: 'white',
             });
           });
@@ -145,42 +145,42 @@ export default {
       }];
 
       //TODO: hay que hacer que cuando hace el submit, cargue de nuevo la pagina para traer los datos actualizados de la BD
-       const body = {
-             username: username.value,
-             email: mail.value,
-             password: 'b7159b31a2fdf4ef8394df2234acca8fdbbc438f',
-             role: 'owner',
-           };
-           const route = 'http://localhost:3000/api/web/NOMBRE_TABLA';
+      const body = {
+        username: username.value,
+        email: mail.value,
+        password: 'b7159b31a2fdf4ef8394df2234acca8fdbbc438f',
+        role: 'owner',
+      };
+      const route = 'http://localhost:3000/api/web/NOMBRE_TABLA';
 
-           setTimeout(() => {
-             $q.notify({
-               progress: true,
-               message: 'actualizando precio...',
-               color: 'secondary',
-               textColor: 'white',
-             });
-             setTimeout(() => {
-               axios.post(route, body)
-                 .then(() => {
-                   $q.notify({
-                     color: 'green-4',
-                     textColor: 'white',
-                     icon: 'cloud_done',
-                     message: '¡precio actualizado!',
-                   });
-                   alert();
-                 })
-                 .catch(() => {
-                   $q.notify({
-                     message: 'Error en la actualizacion del precio, contactar con soporte.',
-                     icon: 'warning',
-                     color: 'red-5',
-                     textColor: 'white',
-                   });
-                 });
-             }, 3000);
-           }, 2000);
+      setTimeout(() => {
+        $q.notify({
+          progress: true,
+          message: 'actualizando precio...',
+          color: 'secondary',
+          textColor: 'white',
+        });
+        setTimeout(() => {
+          axios.post(route, body)
+            .then(() => {
+              $q.notify({
+                color: 'positive',
+                textColor: 'dark',
+                icon: 'cloud_done',
+                message: '¡precio actualizado!',
+              });
+              alert();
+            })
+            .catch(() => {
+              $q.notify({
+                message: 'Error en la actualizacion del precio, contactar con soporte.',
+                icon: 'warning',
+                color: 'red-10',
+                textColor: 'white',
+              });
+            });
+        }, 3000);
+      }, 2000);
 
     };
 

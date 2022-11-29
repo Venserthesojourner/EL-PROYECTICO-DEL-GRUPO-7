@@ -61,11 +61,11 @@ export default {
           .then(() => {
             console.log("Text copied to clipboard...");
             $q.notify({
-                  color: 'green-4',
-                  textColor: 'white',
-                  icon: 'cloud_done',
-                  message: 'Copiado!',
-                });
+              color: 'positive',
+              textColor: 'dark',
+              icon: 'cloud_done',
+              message: 'Copiado!',
+            });
           })
           .catch((err) => {
             console.log("Something went wrong");

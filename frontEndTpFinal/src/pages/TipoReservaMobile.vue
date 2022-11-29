@@ -5,7 +5,7 @@
         <p class="text-h4 text-weight-bold text-primary text-center">Tipo de Reserva</p>
         <q-form @submit="onSubmit" @reset="onReset" class="column items-center justify-center q-gutter-y-md">
           <div class="full-width row justify-center text-uppercase text-h5">
-            <q-option-group name="tipo_reserva" v-model="tipoReserva" :options="options" size="xl" color="primary"
+            <q-option-group name="tipo_reserva" v-model="tipoReserva" :options="optio    ns" size="xl" color="primary"
               inline lazy-rules />
           </div>
           <!-- Código Promoción -->
@@ -19,7 +19,7 @@
                 <q-popup-proxy cover transition-show="scale" transition-hide="scale">
                   <q-date color="secondary" class="bg-dark" v-model="date" mask="YYYY-MM-DD HH:mm">
                     <div class="row items-center justify-end">
-                      <q-btn v-close-popup label="Close" color="positive" flat />
+                      <q-btn v-close-popup label="Cerrar" color="positive" flat />
                     </div>
                   </q-date>
                 </q-popup-proxy>
@@ -31,7 +31,7 @@
                 <q-popup-proxy cover transition-show="scale" transition-hide="scale">
                   <q-time color="secondary" class="bg-dark" v-model="date" mask="YYYY-MM-DD HH:mm" format24h>
                     <div class="row items-center justify-end">
-                      <q-btn v-close-popup label="Close" color="positive" flat />
+                      <q-btn v-close-popup label="Cerrar" color="positive" flat />
                     </div>
                   </q-time>
                 </q-popup-proxy>
@@ -99,7 +99,7 @@ export default {
             date: date.value,
           }];
           $q.notify({
-            color: 'red-5',
+            color: 'red-10',
             textColor: 'white',
             icon: 'warning',
             message: 'You need to accept the license and terms first'
@@ -107,8 +107,8 @@ export default {
         }
         else {
           $q.notify({
-            color: 'green-4',
-            textColor: 'white',
+            color: 'positive',
+            textColor: 'dark',
             icon: 'cloud_done',
             message: 'Submitted'
           })

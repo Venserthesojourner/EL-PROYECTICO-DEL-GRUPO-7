@@ -96,7 +96,7 @@ export default {
       onSubmit() {
         if (accept.value !== true) {
           $q.notify({
-            color: 'red-5',
+            color: 'red-10',
             textColor: 'white',
             icon: 'warning',
             message: 'Tienes que aceptar los términos y condiciones',
@@ -120,8 +120,8 @@ export default {
               axios.post(route, body)
                 .then(() => {
                   $q.notify({
-                    color: 'green-4',
-                    textColor: 'white',
+                    color: 'positive',
+                    textColor: 'dark',
                     icon: 'cloud_done',
                     message: '¡Registro exitoso!',
                   });
@@ -131,7 +131,7 @@ export default {
                   $q.notify({
                     message: 'Error en el registro de usuario, contactar con soporte.',
                     icon: 'warning',
-                    color: 'red-5',
+                    color: 'red-10',
                     textColor: 'white',
                   });
                 });
