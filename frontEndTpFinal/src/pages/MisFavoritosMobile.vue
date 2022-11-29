@@ -43,7 +43,40 @@ export default {
   props: { agregarPatente: Function },
 
   setup() {
-    const cantidadPatentes = ref(1);
+
+    onMounted(() => {
+
+      //TODO: en teoria esto se carga primero
+      setTimeout(() => {
+        axios.get(`http://localhost:3000/usuario/username/${username.value}`)
+          .then((response) => {
+            console.log(response);
+            // TODO: seguir aca.
+            $q.notify({
+              color: 'positive',
+              textColor: 'dark',
+              icon: 'cloud_done',
+              message: '¡Bienvenido!',
+            });
+            // agregar los datos a la variable data.
+            if ('') {
+              router.push('/datos-persona');
+            } else {
+              router.push('/dashboard/plazas');
+            }
+          })
+          .catch(() => {
+            $q.notify({
+              message: 'Error en el registro de usuario, contactar con soporte.',
+              icon: 'warning',
+              color: 'red-10',
+              textColor: 'white',
+            });
+          });
+      }, 3000);
+      //}, 2000);
+    })
+
     return {
       active: ref('primera'),
       cantidadPatentes,

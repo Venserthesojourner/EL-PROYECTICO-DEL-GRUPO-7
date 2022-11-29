@@ -50,7 +50,30 @@ export default {
       agregarPatente() {
         cantidadPatentes.value += 1;
       },
-    }
-  }
-}
+      copyToClipBoard(id) {
+        const content = document.getElementById(id.codigo).innerHTML;
+
+        navigator.clipboard
+          .writeText(content)
+          .then(() => {
+            console.log("Text copied to clipboard...");
+            $q.notify({
+              color: 'positive',
+              textColor: 'dark',
+              icon: 'cloud_done',
+              message: 'Copiado!',
+            });
+          })
+          .catch((err) => {
+            console.log("Something went wrong");
+          });
+      },
+    };
+  },
+};
 </script>
+
+<style lang="sass" scoped>
+.text-overline
+  font-size: 1.5rem
+</style>
