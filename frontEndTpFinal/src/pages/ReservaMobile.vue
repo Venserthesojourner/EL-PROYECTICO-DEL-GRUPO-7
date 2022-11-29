@@ -51,14 +51,14 @@ export default {
         }
 
         //TODO: hay que hacer que cuando hace el submit, cargue de nuevo la pagina para traer los datos actualizados de la BD
-        /*  const body = {
+         const body = {
                username: username.value,
                email: mail.value,
                password: 'b7159b31a2fdf4ef8394df2234acca8fdbbc438f',
                role: 'owner',
              };
              const route = 'http://localhost:3000/api/web/NOMBRE_TABLA';
-   
+
              setTimeout(() => {
                $q.notify({
                  progress: true,
@@ -86,7 +86,7 @@ export default {
                      });
                    });
                }, 3000);
-             }, 2000); */
+             }, 2000);
       },
 
       onReset() {
