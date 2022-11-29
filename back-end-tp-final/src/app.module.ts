@@ -15,6 +15,7 @@ import { EstacionamientoModule } from './modules/estacionamiento/estacionamiento
 import endpointConfig from './config/endpoint.config';
 import databaseConfig from './config/database.config';
 import mailerConfig from './config/mailer.config';
+import { ProfileModule } from './modules/profile/profile.module';
 
 
 @Module({
@@ -31,6 +32,7 @@ import mailerConfig from './config/mailer.config';
     EmpleadoModule,
     MailModule,
     EstacionamientoModule,
+    ProfileModule
   ],
   controllers: [AppController],
   providers: [AppService],

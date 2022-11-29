@@ -12,6 +12,7 @@ export class PropietarioService {
     ) { }
 
     async createNewOwner(payload: CreatePropietarioDto): Promise<Propietario> {
+
         const newOwner = await this.propietarioRepo.save(payload)
         return newOwner
     }
@@ -19,7 +20,7 @@ export class PropietarioService {
         await this.propietarioRepo.update(id, payload)
         const updatedOwner = await this.propietarioRepo.find({
             where: { id },
-            relations: []
+            relations: { idUsuario: true }
         })
         return updatedOwner
     }

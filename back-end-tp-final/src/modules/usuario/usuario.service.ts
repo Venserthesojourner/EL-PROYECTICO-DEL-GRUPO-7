@@ -1,3 +1,4 @@
+
 import { Inject, Injectable } from '@nestjs/common';
 export * from '../../commons/enums/'
 import { hash } from 'bcrypt';
@@ -41,9 +42,8 @@ export class UsuarioService {
     if (newUser.role === 'owner') {
       // Se crearia una instancia de usuario propietario y si le asigna la id de user al mismo
       console.table(newUser)
-      let newOwner: CreatePropietarioDto = { idUsuario: newUser }
-      console.table(newOwner)
-      newOwner = await this.propietarioService.createNewOwner(newOwner)
+      let owner: CreatePropietarioDto
+      let newOwner = await this.propietarioService.createNewOwner(owner)
       response = {
         data: {
           user: newUser,
