@@ -10,11 +10,14 @@ import { PropietarioService } from '../propietario/propietario.service';
 import { EmpleadoService } from '../empleado/empleado.service';
 import { PropietarioProviders } from '../propietario/providers/propietario.providers';
 import { EmpleadoProviders } from '../empleado/providers/empleado.providers';
+import { ProfileService } from '../profile/profile.service';
+import { ProfileProviders } from '../profile/providers/profile.providers';
 
 @Module({
   imports: [HttpModule, DatabaseModule],
   controllers: [UsuarioController],
-  providers: [UsuarioService, PropietarioService, EmpleadoService, ...UsuarioProviders, ...PropietarioProviders, ...EmpleadoProviders],
+  providers: [UsuarioService, PropietarioService, EmpleadoService, ProfileService,
+    ...UsuarioProviders, ...PropietarioProviders, ...EmpleadoProviders, ...ProfileProviders],
   exports: [UsuarioService],
 })
 export class UsuarioModule { }

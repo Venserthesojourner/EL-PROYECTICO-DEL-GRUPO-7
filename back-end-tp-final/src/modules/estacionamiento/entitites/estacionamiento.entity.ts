@@ -12,7 +12,7 @@ import {
 } from 'typeorm';
 import { Empleado } from '../../empleado/entities/empleado.entity';
 
-@Entity('estacionamiento')
+@Entity('estacionamientos')
 export class Estacionamiento extends BaseEntity {
   @PrimaryGeneratedColumn('increment')
   id: number;
