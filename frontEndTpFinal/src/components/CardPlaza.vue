@@ -10,9 +10,9 @@
     <q-card-section class="column items-center">
       <div class="text-h4 q-mb-md">{{ timeShow }}</div>
       <q-btn-group push>
-        <q-btn color="positive" push icon="play_arrow" @click="iniciar()" />
-        <q-btn color="negative" push icon="stop" @click="pausar()" />
-        <q-btn color="secondary" push icon="replay" @click="reiniciar()" />
+        <q-btn color="light-green-3" text-color="black" push icon="play_arrow" @click="iniciar()" />
+        <q-btn color="light-green-4" text-color="black" push icon="stop" @click="pausar()" />
+        <q-btn color="light-green-5" text-color="black" push icon="replay" @click="reiniciar()" />
       </q-btn-group>
     </q-card-section>
   </q-card>

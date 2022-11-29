@@ -3,7 +3,7 @@
   <q-page padding class="row q-col-gutter-sm justify-center">
     <!-- Formulario -->
     <div class="col-12 col-md-6">
-      <q-card flat class="q-pa-md">
+      <q-card dark flat class="q-pa-md">
 
         <q-card-section class="q-pt-none">
           <p class="text-h4 text-center">Modificar Precios</p>
@@ -11,23 +11,23 @@
 
         <q-form @submit.prevent="onSubmit" @reset="onReset" class="q-gutter-md">
           <!-- Seleccionar Hora -->
-          <q-input filled v-model="hora" type="number" label="Hora" hint="Seleccionar Hora" lazy-rules
+          <q-input filled dark v-model="hora" type="number" label="Hora" hint="Seleccionar Hora" lazy-rules
             :rules="horaRules">
             <template v-slot:prepend>
               <q-icon name="schedule" />
             </template>
           </q-input>
           <!-- Nuevo Precio -->
-          <q-input filled v-model="precioNew" type="number" label="Nuevo Precio" hint="En pesos" lazy-rules
-            :rules="precioRules">
+          <q-input filled dark v-model="precioNew" type="number" label="Nuevo Precio" hint="En pesos" lazy-rules
+            :rules="precioRules" class="q-mb-lg">
             <template v-slot:prepend>
               <q-icon name="attach_money" />
             </template>
           </q-input>
           <!-- Botones -->
           <div class="row justify-end">
-            <q-btn label="Limpiar" type="reset" color="primary" flat class="q-mr-sm" />
-            <q-btn label="Actualizar" type="submit" color="primary" />
+            <q-btn label="Limpiar" type="reset" color="positive" flat class="q-mr-sm" />
+            <q-btn label="Actualizar" type="submit" color="positive" text-color="dark" />
           </div>
         </q-form>
 
@@ -35,14 +35,14 @@
     </div>
     <!-- Precios -->
     <div class="col-12 col-md-6">
-      <q-table flat title="Precios por Hora" :rows="rows" :columns="columns" row-key="name" selection="single"
+      <q-table dark flat title="Precios por Hora" :rows="rows" :columns="columns" row-key="name" selection="single"
         v-model:selected="selected" :filter="filter" v-model:pagination="pagination"
         :rows-per-page-options="rowsPerPageOptions">
         <!-- Filtro -->
         <template v-slot:top-right>
           <q-input borderless dense debounce="300" v-model="filter" placeholder="Buscar">
             <template v-slot:append>
-              <q-icon name="search" />
+              <q-icon name="search" color="white" />
             </template>
           </q-input>
         </template>
@@ -122,34 +122,34 @@ export default {
 
     onMounted(() => {
       //TODO: en teoria esto se carga primero
-       // setTimeout(() => {
-          //   axios.get(`http://localhost:3000/usuario/username/${username.value}`)
-          //     .then((response) => {
-          //       console.log(response);
-          //       // TODO: seguir aca.
-          //       $q.notify({
-          //         color: 'green-4',
-          //         textColor: 'white',
-          //         icon: 'cloud_done',
-          //         message: '¡Bienvenido!',
-          //       });
-          //       // agregar los datos a la variable data.
-          //       if ('') {
-          //         router.push('/datos-persona');
-          //       } else {
-          //         router.push('/dashboard/plazas');
-          //       }
-          //     })
-          //     .catch(() => {
-          //       $q.notify({
-          //         message: 'Error en el registro de usuario, contactar con soporte.',
-          //         icon: 'warning',
-          //         color: 'red-5',
-          //         textColor: 'white',
-          //       });
-          //     });
-          // }, 3000);
-        //}, 2000);
+      // setTimeout(() => {
+      //   axios.get(`http://localhost:3000/usuario/username/${username.value}`)
+      //     .then((response) => {
+      //       console.log(response);
+      //       // TODO: seguir aca.
+      //       $q.notify({
+      //         color: 'green-4',
+      //         textColor: 'white',
+      //         icon: 'cloud_done',
+      //         message: '¡Bienvenido!',
+      //       });
+      //       // agregar los datos a la variable data.
+      //       if ('') {
+      //         router.push('/datos-persona');
+      //       } else {
+      //         router.push('/dashboard/plazas');
+      //       }
+      //     })
+      //     .catch(() => {
+      //       $q.notify({
+      //         message: 'Error en el registro de usuario, contactar con soporte.',
+      //         icon: 'warning',
+      //         color: 'red-5',
+      //         textColor: 'white',
+      //       });
+      //     });
+      // }, 3000);
+      //}, 2000);
     });
 
     const onSubmit = () => {
@@ -159,42 +159,42 @@ export default {
       }];
 
       //TODO: hay que hacer que cuando hace el submit, cargue de nuevo la pagina para traer los datos actualizados de la BD
-     /*  const body = {
-            username: username.value,
-            email: mail.value,
-            password: 'b7159b31a2fdf4ef8394df2234acca8fdbbc438f',
-            role: 'owner',
-          };
-          const route = 'http://localhost:3000/api/web/NOMBRE_TABLA';
-
-          setTimeout(() => {
-            $q.notify({
-              progress: true,
-              message: 'actualizando precio...',
-              color: 'secondary',
-              textColor: 'white',
-            });
-            setTimeout(() => {
-              axios.post(route, body)
-                .then(() => {
-                  $q.notify({
-                    color: 'green-4',
-                    textColor: 'white',
-                    icon: 'cloud_done',
-                    message: '¡precio actualizado!',
-                  });
-                  alert();
-                })
-                .catch(() => {
-                  $q.notify({
-                    message: 'Error en la actualizacion del precio, contactar con soporte.',
-                    icon: 'warning',
-                    color: 'red-5',
-                    textColor: 'white',
-                  });
-                });
-            }, 3000);
-          }, 2000); */
+      /*  const body = {
+             username: username.value,
+             email: mail.value,
+             password: 'b7159b31a2fdf4ef8394df2234acca8fdbbc438f',
+             role: 'owner',
+           };
+           const route = 'http://localhost:3000/api/web/NOMBRE_TABLA';
+ 
+           setTimeout(() => {
+             $q.notify({
+               progress: true,
+               message: 'actualizando precio...',
+               color: 'secondary',
+               textColor: 'white',
+             });
+             setTimeout(() => {
+               axios.post(route, body)
+                 .then(() => {
+                   $q.notify({
+                     color: 'green-4',
+                     textColor: 'white',
+                     icon: 'cloud_done',
+                     message: '¡precio actualizado!',
+                   });
+                   alert();
+                 })
+                 .catch(() => {
+                   $q.notify({
+                     message: 'Error en la actualizacion del precio, contactar con soporte.',
+                     icon: 'warning',
+                     color: 'red-5',
+                     textColor: 'white',
+                   });
+                 });
+             }, 3000);
+           }, 2000); */
     };
 
     const onReset = () => {
@@ -246,4 +246,6 @@ export default {
 .q-table
   &__container
     padding-top: 4px
+:deep(.q-field__native)
+  color: #fff
 </style>

@@ -1,6 +1,6 @@
 <template>
   <q-page padding class="row justify-center">
-    <q-card flat class="col-12 q-pa-md" style="max-width: 800px">
+    <q-card dark flat class="col-12 q-pa-md" style="max-width: 800px">
 
       <q-card-section>
         <p class="text-h4 text-center">Editar información</p>
@@ -9,22 +9,22 @@
       <!-- Formulario -->
       <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
         <!-- DNI -->
-        <q-input filled v-model="document" type="number" label="DNI" hint="Ingresa tu DNI" lazy-rules
+        <q-input filled dark v-model="document" type="number" label="DNI" hint="Ingresa tu DNI" lazy-rules
           :rules="dniRules" />
         <!-- Razon Social -->
-        <q-input filled v-model="razonSocial" type="text" label="Razon Social" hint="Ingresa tu razon social" lazy-rules
-          :rules="[val => val && val.length > 0 || 'Debes ingresar tu razon social']" />
+        <q-input filled dark v-model="razonSocial" type="text" label="Razon Social" hint="Ingresa tu razon social"
+          lazy-rules :rules="[val => val && val.length > 0 || 'Debes ingresar tu razon social']" />
         <!-- Cantidad de Plazas -->
-        <q-select filled v-model="cantPlazas" :options="optionsPlazas" label="Cantidad de plazas" lazy-rules
+        <q-select filled dark v-model="cantPlazas" :options="optionsPlazas" label="Cantidad de plazas" lazy-rules
           :rules="[val => val || 'Debes seleccionar la cantidad de plazas']" hint="Ingrese la cantidad de plazas" />
         <!-- Hora de Apertura -->
-        <q-input filled v-model="timeOpen" mask="time" :rules="['time']" label="Ingrese la hora de apertura">
+        <q-input filled dark v-model="timeOpen" mask="time" :rules="['time']" label="Ingrese la hora de apertura">
           <template v-slot:append>
             <q-icon name="access_time" class="cursor-pointer">
               <q-popup-proxy cover transition-show="scale" transition-hide="scale">
-                <q-time v-model="timeOpen">
+                <q-time color="secondary" class="bg-dark" v-model="timeOpen">
                   <div class="row items-center justify-end">
-                    <q-btn v-close-popup label="Close" color="primary" flat />
+                    <q-btn v-close-popup label="Close" color="positive" flat />
                   </div>
                 </q-time>
               </q-popup-proxy>
@@ -32,13 +32,13 @@
           </template>
         </q-input>
         <!-- Hora de Cierre -->
-        <q-input filled v-model="timeClose" mask="time" :rules="['time']" label="Ingrese la hora de clausura">
+        <q-input filled dark v-model="timeClose" mask="time" :rules="['time']" label="Ingrese la hora de clausura">
           <template v-slot:append>
             <q-icon name="access_time" class="cursor-pointer">
               <q-popup-proxy cover transition-show="scale" transition-hide="scale">
-                <q-time v-model="timeClose">
+                <q-time color="secondary" class="bg-dark" v-model="timeClose">
                   <div class="row items-center justify-end">
-                    <q-btn v-close-popup label="Close" color="primary" flat />
+                    <q-btn v-close-popup label="Close" color="positive" flat />
                   </div>
                 </q-time>
               </q-popup-proxy>
@@ -46,7 +46,7 @@
           </template>
         </q-input>
         <!-- Seleccionar Días -->
-        <q-field filled ref="inputDias" hint="Seleccione los días en los que el estacionamiento estará abierto"
+        <q-field filled dark ref="inputDias" hint="Seleccione los días en los que el estacionamiento estará abierto"
           lazy-rules :rules="[val => val && val.length > 0 || 'Debes seleccionar como mínimo un día']"
           :model-value="dias">
           <template v-slot:control>
@@ -55,13 +55,13 @@
           </template>
         </q-field>
         <!-- Precio Base -->
-        <q-input filled v-model="precio" type="number" label="Tarifa base (por hora)"
+        <q-input filled dark v-model="precio" type="number" label="Tarifa base (por hora)"
           hint="Ingresa la tarifa (por hora) en ARS" lazy-rules
           :rules="[val => val && val.length > 0 || 'Debes ingresar una tarifa base']" />
         <!-- Botones -->
         <div class="row justify-end">
-          <q-btn label="Limpiar" type="reset" color="primary" flat class="q-mr-sm" />
-          <q-btn label="Continuar" type="submit" color="primary" />
+          <q-btn label="Limpiar" type="reset" color="positive" flat class="q-mr-sm" />
+          <q-btn label="Continuar" type="submit" color="positive" text-color="dark" />
         </div>
       </q-form>
 
@@ -143,42 +143,42 @@ export default {
 
 
         //TODO: hay que hacer que cuando hace el submit, cargue de nuevo la pagina para traer los datos actualizados de la BD
-     /*  const body = {
-            username: username.value,
-            email: mail.value,
-            password: 'b7159b31a2fdf4ef8394df2234acca8fdbbc438f',
-            role: 'owner',
-          };
-          const route = 'http://localhost:3000/api/web/NOMBRE_TABLA';
-
-          setTimeout(() => {
-            $q.notify({
-              progress: true,
-              message: 'actualizando precio...',
-              color: 'secondary',
-              textColor: 'white',
-            });
-            setTimeout(() => {
-              axios.post(route, body)
-                .then(() => {
-                  $q.notify({
-                    color: 'green-4',
-                    textColor: 'white',
-                    icon: 'cloud_done',
-                    message: '¡precio actualizado!',
-                  });
-                  alert();
-                })
-                .catch(() => {
-                  $q.notify({
-                    message: 'Error en la actualizacion del precio, contactar con soporte.',
-                    icon: 'warning',
-                    color: 'red-5',
-                    textColor: 'white',
-                  });
-                });
-            }, 3000);
-          }, 2000); */
+        /*  const body = {
+               username: username.value,
+               email: mail.value,
+               password: 'b7159b31a2fdf4ef8394df2234acca8fdbbc438f',
+               role: 'owner',
+             };
+             const route = 'http://localhost:3000/api/web/NOMBRE_TABLA';
+   
+             setTimeout(() => {
+               $q.notify({
+                 progress: true,
+                 message: 'actualizando precio...',
+                 color: 'secondary',
+                 textColor: 'white',
+               });
+               setTimeout(() => {
+                 axios.post(route, body)
+                   .then(() => {
+                     $q.notify({
+                       color: 'green-4',
+                       textColor: 'white',
+                       icon: 'cloud_done',
+                       message: '¡precio actualizado!',
+                     });
+                     alert();
+                   })
+                   .catch(() => {
+                     $q.notify({
+                       message: 'Error en la actualizacion del precio, contactar con soporte.',
+                       icon: 'warning',
+                       color: 'red-5',
+                       textColor: 'white',
+                     });
+                   });
+               }, 3000);
+             }, 2000); */
       },
 
       onReset() {

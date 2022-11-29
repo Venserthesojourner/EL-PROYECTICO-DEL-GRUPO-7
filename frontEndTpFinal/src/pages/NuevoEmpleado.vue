@@ -2,7 +2,7 @@
 <!-- eslint-disable max-len -->
 <template>
   <q-page padding class="row justify-center">
-    <q-card flat class="col-12 q-pa-md" style="max-width: 800px">
+    <q-card dark flat class="col-12 q-pa-md" style="max-width: 800px">
 
       <q-card-section>
         <p class="text-h4 text-center">Nuevo Empleado</p>
@@ -11,21 +11,21 @@
       <!-- Formulario -->
       <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
         <!-- DNI -->
-        <q-input filled v-model="document" type="number" label="DNI" hint="Ingresa tu DNI" lazy-rules
+        <q-input filled dark v-model="document" type="number" label="DNI" hint="Ingresa tu DNI" lazy-rules
           :rules="dniRules" />
         <!-- Nombre -->
-        <q-input filled v-model="nombre" type="text" label="Nombre" hint="Ingresa tu nombre" lazy-rules
+        <q-input filled dark v-model="nombre" type="text" label="Nombre" hint="Ingresa tu nombre" lazy-rules
           :rules="nombreRules" />
         <!-- Apellido -->
-        <q-input filled v-model="apellido" type="text" label="Apellido" hint="Ingresa tu apellido" lazy-rules
+        <q-input filled dark v-model="apellido" type="text" label="Apellido" hint="Ingresa tu apellido" lazy-rules
           :rules="apellidoRules" />
         <!-- Email -->
-        <q-input filled v-model="mail" type="email" label="Email" hint="Ingrese su email" lazy-rules
+        <q-input filled dark v-model="mail" type="email" label="Email" hint="Ingrese su email" lazy-rules
           :rules="[val => val && val.length > 0 || 'Por favor, ingrese un mail', isValidEmail]" />
         <!-- Botones -->
         <div class="row justify-end">
-          <q-btn label="Limpiar" type="reset" color="primary" flat class="q-mr-sm" />
-          <q-btn label="Continuar" type="submit" color="primary" />
+          <q-btn label="Limpiar" type="reset" color="positive" flat class="q-mr-sm" />
+          <q-btn label="Continuar" type="submit" color="positive" text-color="dark" />
         </div>
       </q-form>
 
