@@ -2,7 +2,7 @@
   <q-page padding class="row justify-center">
     <div class="q-pa-md col-12 col-md-6">
       <p class="q-pa-md text-h4 text-center">Lista de Empleados</p>
-      <q-table :rows="rows" :columns="columns" row-key="name" flat>
+      <q-table dark :rows="rows" :columns="columns" row-key="name" flat>
 
         <template v-slot:header="props">
           <q-tr :props="props">
@@ -19,7 +19,8 @@
               {{ col.value }}
             </q-td>
             <q-td auto-width>
-              <q-btn size="12px" round dense flat unelevated icon="delete" color="negative" onclick="eliminarUsuario()"/>
+              <q-btn size="12px" round dense flat unelevated icon="delete" color="deep-purple-2"
+                onclick="eliminarUsuario()" />
             </q-td>
           </q-tr>
         </template>
@@ -64,66 +65,66 @@ export default {
 
     onMounted(() => {
       //TODO: en teoria esto se carga primero
-       // setTimeout(() => {
-          //   axios.get(`http://localhost:3000/usuario/username/${username.value}`)
-          //     .then((response) => {
-          //       console.log(response);
-          //       // TODO: seguir aca.
-          //       $q.notify({
-          //         color: 'green-4',
-          //         textColor: 'white',
-          //         icon: 'cloud_done',
-          //         message: '¡Bienvenido!',
-          //       });
-          //       // agregar los datos a la variable data.
-          //       if ('') {
-          //         router.push('/datos-persona');
-          //       } else {
-          //         router.push('/dashboard/plazas');
-          //       }
-          //     })
-          //     .catch(() => {
-          //       $q.notify({
-          //         message: 'Error en el registro de usuario, contactar con soporte.',
-          //         icon: 'warning',
-          //         color: 'red-5',
-          //         textColor: 'white',
-          //       });
-          //     });
-          // }, 3000);
-        //}, 2000);
+      // setTimeout(() => {
+      //   axios.get(`http://localhost:3000/usuario/username/${username.value}`)
+      //     .then((response) => {
+      //       console.log(response);
+      //       // TODO: seguir aca.
+      //       $q.notify({
+      //         color: 'green-4',
+      //         textColor: 'white',
+      //         icon: 'cloud_done',
+      //         message: '¡Bienvenido!',
+      //       });
+      //       // agregar los datos a la variable data.
+      //       if ('') {
+      //         router.push('/datos-persona');
+      //       } else {
+      //         router.push('/dashboard/plazas');
+      //       }
+      //     })
+      //     .catch(() => {
+      //       $q.notify({
+      //         message: 'Error en el registro de usuario, contactar con soporte.',
+      //         icon: 'warning',
+      //         color: 'red-5',
+      //         textColor: 'white',
+      //       });
+      //     });
+      // }, 3000);
+      //}, 2000);
     });
 
     const eliminarUsuario = () => {
       //TODO: ESTO TIENE QUE SER UN PUT PARA ELIMINAR, ni idea como se hace
-       // setTimeout(() => {
-          //   axios.get(`http://localhost:3000/usuario/username/${username.value}`)
-          //     .then((response) => {
-          //       console.log(response);
-          //       // TODO: seguir aca.
-          //       $q.notify({
-          //         color: 'green-4',
-          //         textColor: 'white',
-          //         icon: 'cloud_done',
-          //         message: '¡Bienvenido!',
-          //       });
-          //       // agregar los datos a la variable data.
-          //       if ('') {
-          //         router.push('/datos-persona');
-          //       } else {
-          //         router.push('/dashboard/plazas');
-          //       }
-          //     })
-          //     .catch(() => {
-          //       $q.notify({
-          //         message: 'Error en el registro de usuario, contactar con soporte.',
-          //         icon: 'warning',
-          //         color: 'red-5',
-          //         textColor: 'white',
-          //       });
-          //     });
-          // }, 3000);
-        //}, 2000);
+      // setTimeout(() => {
+      //   axios.get(`http://localhost:3000/usuario/username/${username.value}`)
+      //     .then((response) => {
+      //       console.log(response);
+      //       // TODO: seguir aca.
+      //       $q.notify({
+      //         color: 'green-4',
+      //         textColor: 'white',
+      //         icon: 'cloud_done',
+      //         message: '¡Bienvenido!',
+      //       });
+      //       // agregar los datos a la variable data.
+      //       if ('') {
+      //         router.push('/datos-persona');
+      //       } else {
+      //         router.push('/dashboard/plazas');
+      //       }
+      //     })
+      //     .catch(() => {
+      //       $q.notify({
+      //         message: 'Error en el registro de usuario, contactar con soporte.',
+      //         icon: 'warning',
+      //         color: 'red-5',
+      //         textColor: 'white',
+      //       });
+      //     });
+      // }, 3000);
+      //}, 2000);
     }
     return {
       columns,

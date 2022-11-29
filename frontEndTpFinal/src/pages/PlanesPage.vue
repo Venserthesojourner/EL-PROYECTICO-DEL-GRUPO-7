@@ -3,7 +3,7 @@
   <q-page padding class="row q-col-gutter-sm justify-center">
     <!-- Formulario -->
     <div class="col-12 col-md-6">
-      <q-card flat class="q-pa-md">
+      <q-card dark flat class="q-pa-md">
 
         <q-card-section class="q-pt-none">
           <p class="text-h4 text-center">Agregar Plan</p>
@@ -11,34 +11,35 @@
 
         <q-form @submit.prevent="onSubmit" @reset="onReset" class="q-gutter-md">
           <!-- Código Plan -->
-          <q-input filled v-model="codigo" type="text" label="Código" hint="Código del plan" lazy-rules
+          <q-input filled dark v-model="codigo" type="text" label="Código" hint="Código del plan" lazy-rules
             :rules="codigoRules">
             <template v-slot:prepend>
               <q-icon name="edit" />
             </template>
           </q-input>
           <!-- Precio Base -->
-          <q-input filled v-model="precio" type="number" label="Precio Base" hint="En pesos" lazy-rules
+          <q-input filled dark v-model="precio" type="number" label="Precio Base" hint="En pesos" lazy-rules
             :rules="precioRules">
             <template v-slot:prepend>
               <q-icon name="attach_money" />
             </template>
           </q-input>
           <!-- Modificador / Porcentaje -->
-          <q-input filled v-model="porcentaje" type="number" label="Porcentaje" hint="Porcentaje de descuento"
+          <q-input filled dark v-model="porcentaje" type="number" label="Porcentaje" hint="Porcentaje de descuento"
             lazy-rules :rules="porcentajeRules">
             <template v-slot:prepend>
               <q-icon name="percent" />
             </template>
           </q-input>
           <!-- Fecha de Caducidad -->
-          <q-input filled v-model="date" placeholder="2022/12/21" :rules="dateRules" hint="Fecha de caducidad">
+          <q-input filled dark v-model="date" placeholder="2022/12/21" :rules="dateRules" hint="Fecha de caducidad"
+            class="q-mb-lg">
             <template v-slot:prepend>
               <q-icon name="event" class="cursor-pointer">
                 <q-popup-proxy cover transition-show="scale" transition-hide="scale">
-                  <q-date v-model="date">
+                  <q-date color="secondary" class="bg-dark" v-model="date">
                     <div class="row items-center justify-end">
-                      <q-btn v-close-popup label="Close" color="primary" flat />
+                      <q-btn v-close-popup label="Close" color="positive" flat />
                     </div>
                   </q-date>
                 </q-popup-proxy>
@@ -47,8 +48,8 @@
           </q-input>
           <!-- Botones -->
           <div class="row justify-end">
-            <q-btn label="Limpiar" type="reset" color="primary" flat class="q-mr-sm" />
-            <q-btn label="Agregar" type="submit" color="primary" />
+            <q-btn label="Limpiar" type="reset" color="positive" flat class="q-mr-sm" />
+            <q-btn label="Agregar" type="submit" color="positive" text-color="dark" />
           </div>
         </q-form>
 
@@ -56,20 +57,20 @@
     </div>
     <!-- Planes -->
     <div class="col-12 col-md-6">
-      <q-table grid title="Mis Planes" :rows="planes" :columns="columns" :planes="planes" row-key="name"
+      <q-table dark grid title="Mis Planes" :rows="planes" :columns="columns" :planes="planes" row-key="name"
         :filter="filter" hide-header v-model:pagination="pagination" :rows-per-page-options="rowsPerPageOptions">
         <!-- Filtro -->
         <template v-slot:top-right>
           <q-input borderless dense debounce="300" v-model="filter" placeholder="Buscar">
             <template v-slot:append>
-              <q-icon name="search" />
+              <q-icon name="search" color="white" />
             </template>
           </q-input>
         </template>
         <!-- Tabla Planes -->
         <template v-slot:item="props">
           <div class="q-pa-md col-12 col-lg-6">
-            <q-card class="text-center">
+            <q-card dark class="text-center bg-tablitas">
               <q-card-section class="card-precio text-white q-py-md">
                 <div class="text-overline">{{ props.row.codigo }}</div>
               </q-card-section>
@@ -105,34 +106,34 @@ export default {
 
     onMounted(() => {
       //TODO: en teoria esto se carga primero
-       // setTimeout(() => {
-          //   axios.get(`http://localhost:3000/usuario/username/${username.value}`)
-          //     .then((response) => {
-          //       console.log(response);
-          //       // TODO: seguir aca.
-          //       $q.notify({
-          //         color: 'green-4',
-          //         textColor: 'white',
-          //         icon: 'cloud_done',
-          //         message: '¡Bienvenido!',
-          //       });
-          //       // agregar los datos a la variable data.
-          //       if ('') {
-          //         router.push('/datos-persona');
-          //       } else {
-          //         router.push('/dashboard/plazas');
-          //       }
-          //     })
-          //     .catch(() => {
-          //       $q.notify({
-          //         message: 'Error en el registro de usuario, contactar con soporte.',
-          //         icon: 'warning',
-          //         color: 'red-5',
-          //         textColor: 'white',
-          //       });
-          //     });
-          // }, 3000);
-        //}, 2000);
+      // setTimeout(() => {
+      //   axios.get(`http://localhost:3000/usuario/username/${username.value}`)
+      //     .then((response) => {
+      //       console.log(response);
+      //       // TODO: seguir aca.
+      //       $q.notify({
+      //         color: 'green-4',
+      //         textColor: 'white',
+      //         icon: 'cloud_done',
+      //         message: '¡Bienvenido!',
+      //       });
+      //       // agregar los datos a la variable data.
+      //       if ('') {
+      //         router.push('/datos-persona');
+      //       } else {
+      //         router.push('/dashboard/plazas');
+      //       }
+      //     })
+      //     .catch(() => {
+      //       $q.notify({
+      //         message: 'Error en el registro de usuario, contactar con soporte.',
+      //         icon: 'warning',
+      //         color: 'red-5',
+      //         textColor: 'white',
+      //       });
+      //     });
+      // }, 3000);
+      //}, 2000);
     });
 
     const onSubmit = () => {
@@ -143,43 +144,43 @@ export default {
         precioFinal: precio.value - ((precio.value * porcentaje.value) / 100),
       }];
 
-        //TODO: hay que hacer que cuando hace el submit, cargue de nuevo la pagina para traer los datos actualizados de la BD
-     /*  const body = {
-            username: username.value,
-            email: mail.value,
-            password: 'b7159b31a2fdf4ef8394df2234acca8fdbbc438f',
-            role: 'owner',
-          };
-          const route = 'http://localhost:3000/api/web/NOMBRE_TABLA';
-
-          setTimeout(() => {
-            $q.notify({
-              progress: true,
-              message: 'actualizando precio...',
-              color: 'secondary',
-              textColor: 'white',
-            });
-            setTimeout(() => {
-              axios.post(route, body)
-                .then(() => {
-                  $q.notify({
-                    color: 'green-4',
-                    textColor: 'white',
-                    icon: 'cloud_done',
-                    message: '¡precio actualizado!',
-                  });
-                  alert();
-                })
-                .catch(() => {
-                  $q.notify({
-                    message: 'Error en la actualizacion del precio, contactar con soporte.',
-                    icon: 'warning',
-                    color: 'red-5',
-                    textColor: 'white',
-                  });
-                });
-            }, 3000);
-          }, 2000); */
+      //TODO: hay que hacer que cuando hace el submit, cargue de nuevo la pagina para traer los datos actualizados de la BD
+      /*  const body = {
+             username: username.value,
+             email: mail.value,
+             password: 'b7159b31a2fdf4ef8394df2234acca8fdbbc438f',
+             role: 'owner',
+           };
+           const route = 'http://localhost:3000/api/web/NOMBRE_TABLA';
+ 
+           setTimeout(() => {
+             $q.notify({
+               progress: true,
+               message: 'actualizando precio...',
+               color: 'secondary',
+               textColor: 'white',
+             });
+             setTimeout(() => {
+               axios.post(route, body)
+                 .then(() => {
+                   $q.notify({
+                     color: 'green-4',
+                     textColor: 'white',
+                     icon: 'cloud_done',
+                     message: '¡precio actualizado!',
+                   });
+                   alert();
+                 })
+                 .catch(() => {
+                   $q.notify({
+                     message: 'Error en la actualizacion del precio, contactar con soporte.',
+                     icon: 'warning',
+                     color: 'red-5',
+                     textColor: 'white',
+                   });
+                 });
+             }, 3000);
+           }, 2000); */
 
     };
 
@@ -256,7 +257,7 @@ export default {
     & .q-card
       border-radius: 1rem
       & .card-precio
-        background-color: #ffffff
+        background-color: #0000007a
         background-image: url("../assets/background-c2.png")
         text-shadow: 0 0 5px #dfd2ff
       & .card-datos
@@ -266,7 +267,7 @@ export default {
           font-size: 1.5rem
         & .strikethrough
           position: relative
-          color: $grey-6
+          color: $grey-5
           &:before
             position: absolute
             content: ""
@@ -280,4 +281,8 @@ export default {
     padding-top: 4px
 .text-overline
   font-size: 3rem
+.bg-tablitas
+  background-color: #0000007a
+:deep(.q-field__native)
+  color: #fff
 </style>
