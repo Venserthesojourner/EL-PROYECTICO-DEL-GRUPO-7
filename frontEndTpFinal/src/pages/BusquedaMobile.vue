@@ -2,34 +2,25 @@
   <q-page class="window-height row justify-center items-center">
     <div class="column justify-center items-center" style="min-width: 300px">
       <capacitor-google-map id="map" ref="map"></capacitor-google-map>
-      <q-list style="min-width: 320px">
-        <!-- Primer Patente -->
-        <q-item clickable v-ripple :active="active === 'primera'" @click="idEstacionamiento()"
-          active-class="bg-deep-purple-10 text-positive">
-          <q-item-section>Estacionamiento numero 0 </q-item-section>
+      <div>
+        <q-list style="min-width: 320px">
 
-          <q-item-section side>
-            <q-btn size="12px" round dense flat unelevated icon="local_parking" color="deep-purple-2" />
-          </q-item-section>
-        </q-item>
-        <!-- Aca hay que meter todos los estacionamientos cercanos -->
-        <q-item clickable v-ripple :active="active === 'segunda'" @click="idEstacionamiento()"
-          active-class="bg-deep-purple-10 text-positive">
-          <q-item-section>Estacionamiento numero 1</q-item-section>
+<q-intersection v-for="estacionamiento in listaEstacionamientos" v-bind:key="estacionamiento.id">
+  <q-item clickable v-ripple @click="idEstacionamiento({ estacionamiento })"
+  active-class="bg-deep-purple-10 text-positive">
+  <q-item-section>Nombre: {{estacionamiento.name}} </q-item-section>
+  <q-item-section>Precio: {{estacionamiento.price}}  </q-item-section>
+  <q-item-section side>
+    <q-btn size="12px" round dense flat unelevated icon="local_parking" color="deep-purple-2" />
+  </q-item-section>
+</q-item>
 
-          <q-item-section side>
-            <q-btn size="12px" round dense flat unelevated icon="local_parking" color="deep-purple-2" />
-          </q-item-section>
-        </q-item>
-        <q-item clickable v-ripple :active="active === 'tercera'" @click="idEstacionamiento()"
-          active-class="bg-deep-purple-10 text-positive">
-          <q-item-section>Estacionamiento numero 2</q-item-section>
+    <q-separator spaced />
+  </q-intersection>
 
-          <q-item-section side>
-            <q-btn size="12px" round dense flat unelevated icon="local_parking" color="deep-purple-2" />
-          </q-item-section>
-        </q-item>
-      </q-list>
+
+</q-list>
+      </div>
       <!-- Volver -->
       <q-btn to="index" push color="primary" text-color="black" size="lg"
         class="full-width border-radius-inherit q-mt-md" label="Volver" no-caps />
@@ -44,6 +35,10 @@ import { ref, onMounted, onUnmounted, computed } from "vue";
 import axios from 'axios';
 import datosTest from "./tests.json"
 import { useRouter } from 'vue-router';
+import { json } from "body-parser";
+
+const listaEstacionamientos = [{id: 1, name: "Estacionamiento Senegal", price: "300.00"}, {id: 2,name: "Estacionamiento pirulin", price: "400.00"}, {id: 3,name: "Estacionamiento MESSSSSI", price: "1000.00"}];
+
 
 export default {
   props: { idEstacionamiento: Function },
@@ -163,12 +158,13 @@ export default {
       coords,
       active: ref('primera'),
       cantidadPatentes,
-      idEstacionamiento() {
+      listaEstacionamientos,
+      idEstacionamiento(est) {
+      console.table(est.estacionamiento.id);
         router.push({
-          props: true,
           name: "forma-pago",
           params: {
-            id: 1
+            id: est.estacionamiento.id
           }
         })
       },

@@ -14,13 +14,13 @@
               <q-item>
                 <q-item-section>
                   <q-item-label caption lines="1">Estacionamiento</q-item-label>
-                  <q-item-label>Parking NQN - estacionamiento {{estacionamiento}} </q-item-label>
+                  <q-item-label>Parking NQN - {{estData[0].name}} </q-item-label>
                 </q-item-section>
               </q-item>
               <q-item>
                 <q-item-section>
                   <q-item-label caption lines="1">Precio</q-item-label>
-                  <q-item-label>$250</q-item-label>
+                  <q-item-label>{{estData[0].price}}</q-item-label>
                 </q-item-section>
               </q-item>
               <q-item>
@@ -32,11 +32,12 @@
             </q-list>
           </div>
           <!-- Botones -->
-          <q-btn to="codigo-reserva" type="submit" push color="positive" text-color="black" size="lg"
+          <q-btn type="submit" push color="positive" text-color="black" size="lg"
             class="full-width border-radius-inherit" label="Continuar" no-caps />
-          <q-btn to="confirmacion" push color="primary" text-color="black" size="lg"
+            <q-btn push color="primary" text-color="black" size="lg"
             class="full-width border-radius-inherit" label="Volver" no-caps />
         </q-form>
+
       </div>
     </div>
   </q-page>
@@ -46,23 +47,24 @@
 import { useQuasar } from 'quasar'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router';
+import { useRoute } from 'vue-router'
+
+const listaEstacionamientos = [{id: "1", name: "Estacionamiento Senegal", price: "300.00"}, {id: "2",name: "Estacionamiento pirulin", price: "400.00"}, {id: "3",name: "Estacionamiento MESSSSSI", price: "1000.00"}];
 
 
 export default {
-  props: {
-    id: {
-      type: Number,
-      default: 9
-    } },
+
+
+
   setup() {
     const $q = useQuasar()
-    const route = useRouter();
+    const route = useRoute()
+    const router = useRouter();
 
-    let estacionamiento1 = props.id;
-    console.log(estacionamiento1)
-    let estacionamiento = route.params.id;
-    console.log(estacionamiento)
-
+    let data = route.params.id;
+    console.log("ESTO RECIBO:", data)
+    let estData = listaEstacionamientos.filter( element => element.id === data)
+    console.log("ESTO ARMO", estData.name)
     const opcionPago = ref('mercado pago')
     const codigo = ref(null)
 
@@ -79,24 +81,14 @@ export default {
         },
       ],
       codigo,
-      estacionamiento,
+      estData,
 
       onSubmit() {
-        if (accept.value !== true) {
-          $q.notify({
-            color: 'red-10',
-            textColor: 'white',
-            icon: 'warning',
-            message: 'You need to accept the license and terms first'
-          })
+        if (opcionPago.value === "mercado pago") {
+          router.push('/mobile/codigo-reserva');
         }
         else {
-          $q.notify({
-            color: 'positive',
-            textColor: 'dark',
-            icon: 'cloud_done',
-            message: 'Submitted'
-          })
+          router.push('/mobile/confirmacion');
         }
       },
 

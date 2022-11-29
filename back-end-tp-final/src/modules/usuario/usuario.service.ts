@@ -37,7 +37,7 @@ export class UsuarioService {
       message: 'msg',
       sucess: true
     };
-
+/* 
     response.data.user = newUser
     if (newUser.role === 'owner') {
       // Se crearia una instancia de usuario propietario y si le asigna la id de user al mismo
@@ -70,7 +70,7 @@ export class UsuarioService {
         message: successMsg.SCS001,
         sucess: true
       }
-    }
+    } */
 
     /*
     {

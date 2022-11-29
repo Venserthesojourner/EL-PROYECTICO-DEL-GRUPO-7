@@ -19,7 +19,7 @@
         </div>
         <q-btn to="cronometro" push color="positive" text-color="black" size="lg"
           class="full-width border-radius-inherit" label="Continuar" no-caps />
-        <q-btn to="forma-pago" push color="primary" text-color="black" size="lg"
+        <q-btn to="index" push color="primary" text-color="black" size="lg"
           class="full-width border-radius-inherit" label="Volver" no-caps />
       </div>
     </div>
