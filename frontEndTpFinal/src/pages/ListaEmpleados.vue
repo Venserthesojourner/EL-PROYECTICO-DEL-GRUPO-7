@@ -66,7 +66,7 @@ export default {
     onMounted(() => {
       //TODO: en teoria esto se carga primero
       setTimeout(() => {
-        axios.get(`http://localhost:3000/usuario/username/${username.value}`)
+        axios.get(`http://localhost:3000/usuario/`)
           .then((response) => {
             console.log(response);
             // TODO: seguir aca.

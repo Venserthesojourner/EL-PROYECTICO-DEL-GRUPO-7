@@ -14,7 +14,7 @@
               <q-item>
                 <q-item-section>
                   <q-item-label caption lines="1">Estacionamiento</q-item-label>
-                  <q-item-label>Parking NQN</q-item-label>
+                  <q-item-label>Parking NQN - estacionamiento {{estacionamiento}} </q-item-label>
                 </q-item-section>
               </q-item>
               <q-item>
@@ -45,10 +45,23 @@
 <script>
 import { useQuasar } from 'quasar'
 import { ref } from 'vue'
+import { useRouter } from 'vue-router';
+
 
 export default {
+  props: {
+    id: {
+      type: Number,
+      default: 9
+    } },
   setup() {
     const $q = useQuasar()
+    const route = useRouter();
+
+    let estacionamiento1 = props.id;
+    console.log(estacionamiento1)
+    let estacionamiento = route.params.id;
+    console.log(estacionamiento)
 
     const opcionPago = ref('mercado pago')
     const codigo = ref(null)
@@ -66,6 +79,7 @@ export default {
         },
       ],
       codigo,
+      estacionamiento,
 
       onSubmit() {
         if (accept.value !== true) {

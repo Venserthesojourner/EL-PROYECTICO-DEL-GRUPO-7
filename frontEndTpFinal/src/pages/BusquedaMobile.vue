@@ -4,7 +4,7 @@
       <capacitor-google-map id="map" ref="map"></capacitor-google-map>
       <q-list style="min-width: 320px">
         <!-- Primer Patente -->
-        <q-item clickable v-ripple :active="active === 'primera'" @click="active = 'primera'"
+        <q-item clickable v-ripple :active="active === 'primera'" @click="idEstacionamiento()"
           active-class="bg-deep-purple-10 text-positive">
           <q-item-section>Estacionamiento numero 0 </q-item-section>
 
@@ -13,7 +13,7 @@
           </q-item-section>
         </q-item>
         <!-- Aca hay que meter todos los estacionamientos cercanos -->
-        <q-item clickable v-ripple :active="active === 'segunda'" @click="active = 'segunda'"
+        <q-item clickable v-ripple :active="active === 'segunda'" @click="idEstacionamiento()"
           active-class="bg-deep-purple-10 text-positive">
           <q-item-section>Estacionamiento numero 1</q-item-section>
 
@@ -21,7 +21,7 @@
             <q-btn size="12px" round dense flat unelevated icon="local_parking" color="deep-purple-2" />
           </q-item-section>
         </q-item>
-        <q-item clickable v-ripple :active="active === 'tercera'" @click="active = 'tercera'"
+        <q-item clickable v-ripple :active="active === 'tercera'" @click="idEstacionamiento()"
           active-class="bg-deep-purple-10 text-positive">
           <q-item-section>Estacionamiento numero 2</q-item-section>
 
@@ -43,9 +43,16 @@ import { Geolocation } from '@capacitor/geolocation';
 import { ref, onMounted, onUnmounted, computed } from "vue";
 import axios from 'axios';
 import datosTest from "./tests.json"
+import { useRouter } from 'vue-router';
+
 export default {
+  props: { idEstacionamiento: Function },
   setup() {
     const cantidadPatentes = ref(1);
+    const router = useRouter();
+
+
+
     let map = ref(null);
     let coords = ref({ latitude: 0, longitude: 0 });
     let watcher = null;
@@ -156,6 +163,15 @@ export default {
       coords,
       active: ref('primera'),
       cantidadPatentes,
+      idEstacionamiento() {
+        router.push({
+          props: true,
+          name: "forma-pago",
+          params: {
+            id: 1
+          }
+        })
+      },
     };
   },
 };

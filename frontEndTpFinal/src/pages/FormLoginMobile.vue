@@ -64,7 +64,7 @@ export default {
             textColor: 'white',
           });
           store.changeStatus();
-          router.push('/index');
+          router.push('/mobile/index');
           setTimeout(() => {
             axios.get(`http://localhost:3000/usuario/username/${username.value}`)
               .then((response) => {
