@@ -78,7 +78,7 @@ export default {
         return emailRegex.test(val) || 'Ingrese un email válido';
       },
       onSubmit() {
-        /*
+
           const body = {
             username: username.value,
             email: mail.value,
@@ -115,7 +115,7 @@ export default {
                 });
             }, 3000);
           }, 2000);
-          */
+
       },
 
       onReset() {
