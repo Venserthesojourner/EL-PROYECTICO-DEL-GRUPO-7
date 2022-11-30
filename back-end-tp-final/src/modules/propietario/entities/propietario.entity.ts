@@ -21,8 +21,10 @@ CREATE TABLE `propietario` (
 @Entity({ name: 'propietario' })
 export class Propietario extends BaseEntity {
   @PrimaryColumn()
-  /* @OneToOne(() => Usuario, (Usuario) => Usuario.id)
-  @JoinColumn({ name: 'id_usuario' }) */
+
+  @OneToOne(() => Usuario, (Usuario) => Usuario.id)
+  @JoinColumn({ name: 'id_usuario' })
+
   idUsuario: number;
 
   @Column('int', { name: 'cuil', nullable: true, default: null })
