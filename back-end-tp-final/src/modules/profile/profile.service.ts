@@ -1,13 +1,12 @@
 import { TypeOrmCrudService } from '@nestjsx/crud-typeorm';
-import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
+import { Inject, Injectable } from '@nestjs/common';
 import { Profile } from './profile.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()
 export class ProfileService extends TypeOrmCrudService<Profile>{
 
-    constructor(@InjectRepository(Profile) private readonly profileRepo: Repository<Profile>) {
+    constructor(@Inject('PROFILE_REPOSITORY') private readonly profileRepo: Repository<Profile>) {
         super(profileRepo);
     }
 

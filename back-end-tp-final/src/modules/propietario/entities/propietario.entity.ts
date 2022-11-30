@@ -23,7 +23,7 @@ export class Propietario extends Usuario {
   @PrimaryColumn()
   @OneToOne(() => Usuario, (Usuario) => Usuario.id)
   @JoinColumn({ name: 'id_usuario' })
-  idUsuario: Usuario;
+  idUsuario: number
 
   @Column('int', { name: 'cuil', nullable: true, default: null })
   cuil: number | null;

@@ -1,12 +1,13 @@
+import { HttpModule } from '@nestjs/axios';
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { DatabaseModule } from 'src/database/database.module';
 import { ProfileController } from './profile.controller';
-import { Profile } from './profile.entity';
 import { ProfileService } from './profile.service';
+import { ProfileProviders } from './providers/profile.providers';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Profile])],
-  providers: [ProfileService],
+  imports: [HttpModule, DatabaseModule],
+  providers: [ProfileService, ...ProfileProviders],
   controllers: [ProfileController]
 })
 export class ProfileModule { }
