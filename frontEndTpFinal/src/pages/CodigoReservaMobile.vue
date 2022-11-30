@@ -19,7 +19,7 @@
         </div>
         <q-btn to="cronometro" push color="positive" text-color="black" size="lg"
           class="full-width border-radius-inherit" label="Continuar" no-caps />
-        <q-btn to="forma-pago" push color="primary" text-color="black" size="lg"
+        <q-btn to="index" push color="primary" text-color="black" size="lg"
           class="full-width border-radius-inherit" label="Volver" no-caps />
       </div>
     </div>
@@ -28,6 +28,7 @@
 
 <script>
 import { ref, onMounted } from "vue";
+import { useQuasar } from 'quasar';
 import QrcodeVue from 'qrcode.vue';
 
 
@@ -37,6 +38,7 @@ export default {
     QrcodeVue,
   },
   setup() {
+    const $q = useQuasar();
     const codigoRandom = ref("abc123");
 
     onMounted(() => {
@@ -71,6 +73,12 @@ export default {
           .writeText(content)
           .then(() => {
             console.log("Text copied to clipboard...");
+            $q.notify({
+              color: 'positive',
+              textColor: 'dark',
+              icon: 'cloud_done',
+              message: 'Copiado!',
+            });
           })
           .catch((err) => {
             console.log("Something went wrong");

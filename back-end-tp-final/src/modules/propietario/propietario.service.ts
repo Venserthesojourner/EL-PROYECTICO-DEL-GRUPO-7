@@ -19,7 +19,7 @@ export class PropietarioService {
     async updateOwner(payload: UpdatePropietarioDto, id: number) {
         await this.propietarioRepo.update(id, payload)
         const updatedOwner = await this.propietarioRepo.find({
-            where: { id },
+            where: { idUsuario: id },
             relations: { idUsuario: true }
         })
         return updatedOwner

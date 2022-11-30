@@ -2,7 +2,7 @@
 <!-- eslint-disable max-len -->
 <template>
   <q-page padding class="row justify-center">
-    <q-card flat class="col-12 q-pa-md" style="max-width: 800px">
+    <q-card dark flat class="col-12 q-pa-md" style="max-width: 800px">
 
       <q-card-section>
         <p class="col-12 text-h4 text-center">Completar información (Persona)</p>
@@ -12,18 +12,18 @@
       <!-- Formulario -->
       <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
         <!-- DNI -->
-        <q-input filled v-model="document" type="number" label="DNI" hint="Ingresa tu DNI" lazy-rules
-          :rules="[val => val && val > 0 && val <= 8 && val > 6 || 'Debes ingresar tu DNI, solo se permiten 8 dígitos']" />
+        <q-input filled dark v-model="document" type="number" label="DNI" hint="Ingresa tu DNI" lazy-rules
+          :rules="dniRules" />
         <!-- Nombre -->
-        <q-input filled v-model="nombre" type="text" label="Nombre/s" hint="Ingresa tu/s nombre/s" lazy-rules
-          :rules="[val => val && val.length > 0 || 'Debes ingresar tu/s nombre/s']" />
-          <!-- Apellido -->
-        <q-input filled v-model="apellido" type="text" label="Apellido/s" hint="Ingresa tu/s apellido/s" lazy-rules
-          :rules="[val => val && val.length > 0 || 'Debes ingresar tu/s apellido/s']" />
-          <!-- Botones -->
-        <div class="row justify-end">
-          <q-btn label="Limpiar" type="reset" color="primary" flat class="q-mr-sm" />
-          <q-btn label="Continuar" type="submit" color="primary" />
+        <q-input filled dark v-model="nombre" type="text" label="Nombre/s" hint="Ingresa tu/s nombre/s" lazy-rules
+          :rules="[val => val && val.length > 0 || 'Debes ingresar tu/s nombre/s', isValidNombre]" />
+        <!-- Apellido -->
+        <q-input filled dark v-model="apellido" type="text" label="Apellido/s" hint="Ingresa tu/s apellido/s" lazy-rules
+          :rules="[val => val && val.length > 0 || 'Debes ingresar tu/s apellidos/s', isValidApellido]" />
+        <!-- Botones -->
+        <div class="row justify-center">
+          <q-btn label="Limpiar" type="reset" color="positive" flat class="q-mr-sm" />
+          <q-btn label="Continuar" type="submit" color="positive" text-color="dark" />
         </div>
       </q-form>
 
@@ -47,11 +47,23 @@ export default {
       document,
       nombre,
       apellido,
+      dniRules: [
+        (val) => (val !== null && val !== '' && val > 0) || 'Por favor, ingrese un DNI',
+        (val) => (val && val.length >= 7 && val.length <= 8) || 'Solo se permiten de 7 a 8 dígitos',
+      ],
+      isValidNombre(val) {
+        const nombreRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ]+(?: [a-zA-ZáéíóúÁÉÍÓÚñÑ]+)*$/;
+        return nombreRegex.test(val) || 'Ingrese un nombre válido';
+      },
+      isValidApellido(val) {
+        const apellidoRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ]+(?: [a-zA-ZáéíóúÁÉÍÓÚñÑ]+)*$/;
+        return apellidoRegex.test(val) || 'Ingrese un apellido válido';
+      },
 
       onSubmit() {
         $q.notify({
-          color: 'green-4',
-          textColor: 'white',
+          color: 'positive',
+          textColor: 'dark',
           icon: 'cloud_done',
           message: 'Muy bien, continuemos',
         });

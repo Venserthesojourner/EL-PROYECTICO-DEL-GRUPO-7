@@ -10,14 +10,14 @@
 
         <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
           <!-- Horario Entrada -->
-          <q-input filled dark v-model="timeEntrada" placeholder="07:00" :rules="aperturaRules"
+          <q-input filled dark v-model="timeEntrada" mask="time" placeholder="07:00" :rules="aperturaRules"
             hint="Horario de apertura">
             <template v-slot:append>
               <q-icon name="access_time" class="cursor-pointer">
                 <q-popup-proxy cover transition-show="scale" transition-hide="scale">
                   <q-time color="secondary" class="bg-dark" v-model="timeEntrada">
                     <div class="row items-center justify-end">
-                      <q-btn v-close-popup label="Close" color="positive" flat />
+                      <q-btn v-close-popup label="Cerrar" color="positive" flat />
                     </div>
                   </q-time>
                 </q-popup-proxy>
@@ -25,13 +25,14 @@
             </template>
           </q-input>
           <!-- Horario Salida -->
-          <q-input filled dark v-model="timeSalida" placeholder="18:30" :rules="cierreRules" hint="Horario de cierre">
+          <q-input filled dark v-model="timeSalida" mask="time" placeholder="18:30" :rules="cierreRules"
+            hint="Horario de cierre">
             <template v-slot:append>
               <q-icon name="access_time" class="cursor-pointer">
                 <q-popup-proxy cover transition-show="scale" transition-hide="scale">
                   <q-time color="secondary" class="bg-dark" v-model="timeSalida">
                     <div class="row items-center justify-end">
-                      <q-btn v-close-popup label="Close" color="positive" flat />
+                      <q-btn v-close-popup label="Cerrar" color="positive" flat />
                     </div>
                   </q-time>
                 </q-popup-proxy>
@@ -102,33 +103,33 @@ export default {
 
     onMounted(() => {
       //TODO: en teoria esto se carga primero
-      // setTimeout(() => {
-      //   axios.get(`http://localhost:3000/usuario/username/${username.value}`)
-      //     .then((response) => {
-      //       console.log(response);
-      //       // TODO: seguir aca.
-      //       $q.notify({
-      //         color: 'green-4',
-      //         textColor: 'white',
-      //         icon: 'cloud_done',
-      //         message: '¡Bienvenido!',
-      //       });
-      //       // agregar los datos a la variable data.
-      //       if ('') {
-      //         router.push('/datos-persona');
-      //       } else {
-      //         router.push('/dashboard/plazas');
-      //       }
-      //     })
-      //     .catch(() => {
-      //       $q.notify({
-      //         message: 'Error en el registro de usuario, contactar con soporte.',
-      //         icon: 'warning',
-      //         color: 'red-5',
-      //         textColor: 'white',
-      //       });
-      //     });
-      // }, 3000);
+      setTimeout(() => {
+        axios.get(`http://localhost:3000/usuario/username/${username.value}`)
+          .then((response) => {
+            console.log(response);
+            // TODO: seguir aca.
+            $q.notify({
+              color: 'postive',
+              textColor: 'dark',
+              icon: 'cloud_done',
+              message: '¡Bienvenido!',
+            });
+            // agregar los datos a la variable data.
+            if ('') {
+              router.push('/datos-persona');
+            } else {
+              router.push('/dashboard/plazas');
+            }
+          })
+          .catch(() => {
+            $q.notify({
+              message: 'Error en el registro de usuario, contactar con soporte.',
+              icon: 'warning',
+              color: 'red-10',
+              textColor: 'white',
+            });
+          });
+      }, 3000);
       //}, 2000);
     });
 
@@ -182,42 +183,42 @@ export default {
       onSubmit() {
 
         //TODO: hay que hacer que cuando hace el submit, cargue de nuevo la pagina para traer los datos actualizados de la BD
-        /*  const body = {
-               username: username.value,
-               email: mail.value,
-               password: 'b7159b31a2fdf4ef8394df2234acca8fdbbc438f',
-               role: 'owner',
-             };
-             const route = 'http://localhost:3000/api/web/NOMBRE_TABLA';
-   
-             setTimeout(() => {
-               $q.notify({
-                 progress: true,
-                 message: 'actualizando precio...',
-                 color: 'secondary',
-                 textColor: 'white',
-               });
-               setTimeout(() => {
-                 axios.post(route, body)
-                   .then(() => {
-                     $q.notify({
-                       color: 'green-4',
-                       textColor: 'white',
-                       icon: 'cloud_done',
-                       message: '¡precio actualizado!',
-                     });
-                     alert();
-                   })
-                   .catch(() => {
-                     $q.notify({
-                       message: 'Error en la actualizacion del precio, contactar con soporte.',
-                       icon: 'warning',
-                       color: 'red-5',
-                       textColor: 'white',
-                     });
-                   });
-               }, 3000);
-             }, 2000); */
+        const body = {
+          username: username.value,
+          email: mail.value,
+          password: 'b7159b31a2fdf4ef8394df2234acca8fdbbc438f',
+          role: 'owner',
+        };
+        const route = 'http://localhost:3000/api/web/NOMBRE_TABLA';
+
+        setTimeout(() => {
+          $q.notify({
+            progress: true,
+            message: 'actualizando precio...',
+            color: 'secondary',
+            textColor: 'white',
+          });
+          setTimeout(() => {
+            axios.post(route, body)
+              .then(() => {
+                $q.notify({
+                  color: 'postive',
+                  textColor: 'dark',
+                  icon: 'cloud_done',
+                  message: '¡precio actualizado!',
+                });
+                alert();
+              })
+              .catch(() => {
+                $q.notify({
+                  message: 'Error en la actualizacion del precio, contactar con soporte.',
+                  icon: 'warning',
+                  color: 'red-10',
+                  textColor: 'white',
+                });
+              });
+          }, 3000);
+        }, 2000);
       },
 
       onReset() {

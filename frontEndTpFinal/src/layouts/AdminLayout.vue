@@ -27,7 +27,7 @@
             </q-item>
 
             <!-- Montos -->
-            <q-expansion-item expand-separator icon="attach_money" label="Montos">
+            <q-expansion-item  expand-separator icon="attach_money" label="Montos">
               <q-list>
                 <q-item to="precios" clickable v-ripple>
                   <q-item-section>
@@ -48,7 +48,7 @@
             </q-expansion-item>
 
             <!-- Horarios -->
-            <q-item to="horarios" clickable v-ripple>
+            <q-item  to="horarios" clickable v-ripple>
               <q-item-section avatar>
                 <q-icon name="schedule" />
               </q-item-section>
@@ -58,7 +58,7 @@
             </q-item>
 
             <!-- Empleados -->
-            <q-expansion-item expand-separator icon="group" label="Empleados">
+            <q-expansion-item  expand-separator icon="group" label="Empleados">
               <q-list>
                 <q-item to="listaEmpleados" clickable v-ripple>
                   <q-item-section>
@@ -97,6 +97,7 @@
               </q-item-section>
             </q-item>
           </q-list>
+
         </div>
       </q-scroll-area>
 
@@ -124,6 +125,8 @@
 import { ref } from 'vue';
 import BtnScrollerTop from '../components/BtnScrollerTop.vue';
 import { useSessionStatus } from '../stores/session-store';
+import { useSessionLuis  } from '../stores/userLuis';
+import { useSessionMarcos } from '../stores/userMarcos';
 
 export default {
   components: {
@@ -133,14 +136,24 @@ export default {
   setup() {
     const miniState = ref(false);
     const store = useSessionStatus();
+    const luis = useSessionLuis();
+    const marcos = useSessionMarcos();
 
     return {
       drawer: ref(false),
       miniState,
       store,
+      marcos,
+      luis,
 
       logoutSession() {
         store.changeStatus();
+
+      },
+      logoutSession2() {
+        luis.changeStatus();
+        alert(luis.estado)
+
       },
       drawerClick(e) {
         // if in "mini" state and user

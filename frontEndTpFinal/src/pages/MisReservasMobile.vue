@@ -33,6 +33,7 @@
 
 <script>
 import { ref } from "vue";
+import { useQuasar } from 'quasar';
 import ConfiguracionesUser from '../components/ConfiguracionesUser.vue';
 
 const listaCodigoReserva = ["5Fq23", "Abc234", "6gN1m"];
@@ -43,6 +44,7 @@ export default {
     ConfiguracionesUser,
   },
   setup() {
+    const $q = useQuasar();
     const cantidadCodigosReserva = ref(1);
     return {
       active: ref("primera"),
@@ -58,6 +60,12 @@ export default {
           .writeText(content)
           .then(() => {
             console.log("Text copied to clipboard...");
+            $q.notify({
+              color: 'positive',
+              textColor: 'dark',
+              icon: 'cloud_done',
+              message: 'Copiado!',
+            });
           })
           .catch((err) => {
             console.log("Something went wrong");
