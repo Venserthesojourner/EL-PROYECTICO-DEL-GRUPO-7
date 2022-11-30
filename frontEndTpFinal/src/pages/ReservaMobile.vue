@@ -5,13 +5,13 @@
       <div class="q-mt-md q-gutter-y-md">
         <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-y-md" style="min-width: 300px">
           <p class="text-h4 text-weight-bold text-primary text-center">Ingresar Código</p>
-          <q-input filled v-model="codigo" type="text" label="Código de reserva" lazy-rules
+          <q-input filled dark v-model="codigo" type="text" label="Código de reserva" lazy-rules
             :rules="[val => val && val.length > 0 || 'Por favor, ingrese una código']" />
-          <q-btn type="submit" push color="positive" size="lg" class="full-width border-radius-inherit" label="Enviar"
-            no-caps />
+          <q-btn type="submit" push color="positive" text-color="black" size="lg"
+            class="full-width border-radius-inherit" label="Enviar" no-caps />
           <!-- Volver -->
-          <q-btn to="index" push color="accent" size="lg" class="full-width border-radius-inherit" label="Volver"
-            no-caps />
+          <q-btn to="index" push color="primary" text-color="black" size="lg" class="full-width border-radius-inherit"
+            label="Volver" no-caps />
         </q-form>
       </div>
     </div>
@@ -42,8 +42,8 @@ export default {
         }
         else {
           $q.notify({
-            color: 'green-4',
-            textColor: 'white',
+            color: 'positive',
+            textColor: 'dark',
             icon: 'cloud_done',
             message: 'Código válido',
           });

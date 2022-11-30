@@ -2,7 +2,7 @@
 <!-- eslint-disable max-len -->
 <template>
   <q-page padding class="row items-center justify-evenly q-mb-lg">
-    <q-card flat class="col-12 col-md-6 q-pa-md rounded-borders" style="max-width: 500px">
+    <q-card dark flat class="col-12 col-md-6 q-pa-md rounded-borders" style="max-width: 500px">
 
       <q-card-section class="text-center">
         <p class="text-h4">Bienvenido a PARK-OUR</p>
@@ -11,18 +11,19 @@
 
       <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
         <!-- Nombre -->
-        <q-input filled v-model="username" type="text" label="Nombre de usuario " hint="Ingrese su nombre de usuario"
-          lazy-rules :rules="[val => val && val.length > 0 || 'Por favor, ingrese un nombre de usuario']" />
+        <q-input filled dark v-model="username" type="text" label="Nombre de usuario *"
+          hint="Ingrese su nombre de usuario" lazy-rules
+          :rules="[val => val && val.length > 0 || 'Por favor, ingrese un nombre de usuario']" />
         <!-- Email -->
-        <q-input filled v-model="mail" type="Email" label="Email *" hint="Ingrese su email" lazy-rules
+        <q-input filled dark v-model="mail" type="Email" label="Email *" hint="Ingrese su email" lazy-rules
           :rules="[val => val && val.length > 0 || 'Por favor, ingrese un mail', isValidEmail]" />
         <!-- Comentarios -->
-        <q-input v-model="comentario" filled type="textarea" label="Déjanos un mensaje (máximo 200 caracteres)"
+        <q-input v-model="comentario" filled dark type="textarea" label="Déjanos un mensaje (máximo 200 caracteres)"
           lazy-rules maxlength="200" />
         <!-- Términos y Condiciones -->
         <div class="row items-center">
-          <q-toggle v-model="accept" checked-icon="check" color="green" unchecked-icon="clear" lazy-rules
-            @click="accept = false" :rules="[val => val && val === false || 'Debe ver los términos y condiciones']" />
+          <q-toggle v-model="accept" checked-icon="check" color="green" lazy-rules @click="accept = false"
+            :rules="[val => val && val === false || 'Debe ver los términos y condiciones']" />
           <span class="text-primary cursor-pointer" @click="basic = true">Ver términos y condiciones *</span>
         </div>
         <!-- Registrate -->
@@ -31,8 +32,8 @@
         </div>
         <!-- Botones -->
         <div class="row justify-end">
-          <q-btn label="Limpiar" type="reset" color="primary" flat class="q-mr-sm" />
-          <q-btn label="Registrarse" type="submit" color="primary" />
+          <q-btn label="Limpiar" type="reset" color="positive" flat class="q-mr-sm" />
+          <q-btn label="Registrarse" type="submit" color="positive" text-color="dark" />
         </div>
       </q-form>
 
@@ -40,12 +41,12 @@
 
     <!-- Modal / Dialog de Términos y Condiciones -->
     <q-dialog v-model="basic">
-      <q-card>
+      <q-card dark>
 
         <TerminosDeUso></TerminosDeUso>
 
         <q-card-actions align="right">
-          <q-btn flat label="Aceptar" color="primary" v-close-popup @click="accept = true" />
+          <q-btn flat label="Aceptar" color="positive" v-close-popup @click="accept = true" />
         </q-card-actions>
       </q-card>
     </q-dialog>

@@ -1,6 +1,6 @@
 import { MailerService } from '@nestjs-modules/mailer';
 import { Injectable } from '@nestjs/common';
-import { Profile } from 'src/modules/profile/profile.entity';
+import { Profile } from '../modules/profile/entities/profile.entity';
 import { Usuario } from './../modules/usuario/entities/usuario.entity';
 
 @Injectable()

@@ -2,14 +2,14 @@
 <template>
   <q-layout view="hHh Lpr lff">
     <!-- Header -->
-    <q-header class="bg-secondary">
+    <q-header class="bg-indigo-7">
       <q-toolbar>
         <q-btn flat @click="drawer = !drawer" round dense icon="menu" />
         <q-toolbar-title>Panel de Admin</q-toolbar-title>
       </q-toolbar>
     </q-header>
     <!-- Barra Lateral -->
-    <q-drawer v-model="drawer" show-if-above :width="200" :breakpoint="500" class="bg-grey-3">
+    <q-drawer v-model="drawer" show-if-above :width="200" :breakpoint="500" class="bg-grey-10">
       <!-- Opciones Dashboard -->
       <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px;">
         <div class="column justify-between" style="min-height: calc(100vh - 200px);">
@@ -101,7 +101,7 @@
       </q-scroll-area>
 
       <!-- Perfil Usuario -->
-      <q-img class="absolute-top" src="../assets/background-admin.jpg" style="height: 150px">
+      <q-img class="absolute-top bg-dark" src="../assets/background-admin.jpg" style="height: 150px">
         <div class="absolute-bottom bg-transparent">
           <q-avatar size="56px" class="q-mb-sm">
             <img src="../assets/marcosContact.jpg">
@@ -159,3 +159,7 @@ export default {
 
 };
 </script>
+<style lang="sass" scoped>
+:deep(.q-item__section--side)
+  color: #e6e6e6
+</style>
