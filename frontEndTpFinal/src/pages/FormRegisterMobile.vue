@@ -28,7 +28,7 @@
         </div>
         <!-- Registrate -->
         <div class="row items-center">
-          <span>¿Ya tenes cuenta? <a href="login">Ingresa</a></span>
+          <span>¿Ya tenes cuenta? <a href="loginMobile">Ingresa</a></span>
         </div>
         <!-- Botones -->
         <div class="row justify-end">
@@ -79,10 +79,12 @@ export default {
     function alert() {
       $q.dialog({
         title: 'Importante!',
+        dark: true,
+        textColor: 'white',
         message: 'En breve recibirá un email donde se indicarán los pasos a seguir, este atento a su bandeja de entrada.',
         persistent: true,
       }).onDismiss(() => {
-        router.push('/login');
+        router.push('loginMobile');
       });
     }
 
@@ -107,12 +109,12 @@ export default {
           });
         } else {
           // Este es el form del registro del propietario: role: 'owner'
-          const body = {
+     /*      const body = {
             username: username.value,
             email: mail.value,
             role: 'owner', //TODO: cambiar al usuario que corresponda
           };
-          const route = 'http://localhost:3005/usuario';
+          const route = 'http://localhost:3005/usuario'; */
           setTimeout(() => {
             $q.notify({
               progress: true,
@@ -121,8 +123,8 @@ export default {
               textColor: 'white',
             });
             setTimeout(() => {
-              axios.post(route, body)
-                .then(() => {
+             /*  axios.post(route, body)
+                .then(() => { */
                   $q.notify({
                     color: 'positive',
                     textColor: 'dark',
@@ -130,15 +132,15 @@ export default {
                     message: '¡Registro exitoso!',
                   });
                   alert();
-                })
-                .catch(() => {
-                  $q.notify({
+              /*   })
+                .catch(() => { */
+                 /*  $q.notify({
                     message: 'Error en el registro de usuario, contactar con soporte.',
                     icon: 'warning',
                     color: 'red-10',
                     textColor: 'white',
-                  });
-                });
+                  }); */
+               /*  }); */
             }, 3000);
           }, 2000);
         }

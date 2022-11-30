@@ -1,5 +1,5 @@
 import { Usuario } from "./../../usuario/entities/usuario.entity";
-import { Column, Entity, JoinColumn, OneToOne, PrimaryColumn } from "typeorm";
+import { BaseEntity, Column, Entity, JoinColumn, OneToOne, PrimaryColumn } from "typeorm";
 
 /*
 CREATE TABLE `propietario` (
@@ -19,11 +19,11 @@ CREATE TABLE `propietario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;*/
 
 @Entity({ name: 'propietario' })
-export class Propietario extends Usuario {
+export class Propietario extends BaseEntity {
   @PrimaryColumn()
   /* @OneToOne(() => Usuario, (Usuario) => Usuario.id)
   @JoinColumn({ name: 'id_usuario' }) */
-  idUsuario: Usuario | number;
+  idUsuario: number;
 
   @Column('int', { name: 'cuil', nullable: true, default: null })
   cuil: number | null;

@@ -34,10 +34,9 @@
           <!-- Botones -->
           <q-btn type="submit" push color="positive" text-color="black" size="lg"
             class="full-width border-radius-inherit" label="Continuar" no-caps />
-            <q-btn push color="primary" text-color="black" size="lg"
-            class="full-width border-radius-inherit" label="Volver" no-caps />
         </q-form>
-
+        <q-btn href="http://localhost:9000/mobile/buscar" push color="primary" text-color="black" size="lg"
+            class="full-width border-radius-inherit" label="Volver" no-caps />
       </div>
     </div>
   </q-page>

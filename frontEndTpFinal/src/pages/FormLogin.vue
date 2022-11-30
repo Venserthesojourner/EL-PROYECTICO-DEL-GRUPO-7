@@ -40,18 +40,24 @@ import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import axios from 'axios';
 import { useSessionStatus } from '../stores/session-store';
+import { useSessionLuis } from '../stores/userLuis';
+import { useSessionMarcos } from '../stores/userMarcos';
+
 
 export default {
   setup() {
     const $q = useQuasar();
     const router = useRouter();
     const store = useSessionStatus();
+    const luis = useSessionLuis();
+
     const username = ref(null);
     const password = ref(null);
     const data = ref(null);
 
     return {
       store,
+      luis,
       username,
       password,
       isPwd: ref(true),
@@ -64,34 +70,45 @@ export default {
             textColor: 'white',
           });
           store.changeStatus();
-          router.push('/dashboard/plazas');
           setTimeout(() => {
-            axios.get(`http://localhost:3000/usuario/username/${username.value}`)
+            if(username.value !== null ){
+           /*  axios.get(`http://localhost:3000/usuario/username/${username.value}`)
               .then((response) => {
                 console.log(response);
-                // TODO: seguir aca.
+                // TODO: seguir aca. */
+
                 $q.notify({
                   color: 'positive',
                   textColor: 'dark',
                   icon: 'cloud_done',
                   message: '¡Bienvenido!',
                 });
-                // agregar los datos a la variable data.
-                if ('') {
-                  router.push('/datos-persona');
-                } else {
+                if(username.value === "luis"){
+                  alert(luis.estado)
+                  luis.changeStatus();
+                  alert(luis.estado)
                   router.push('/dashboard/plazas');
-                }
-              })
-              .catch(() => {
-                $q.notify({
+                }else{                router.push('/dashboard/plazas');
+}
+            } else {
+              $q.notify({
                   message: 'Error en el registro de usuario, contactar con soporte.',
                   icon: 'warning',
                   color: 'red-10',
                   textColor: 'white',
                 });
-              });
-          }, 3000);
+            // }
+            //    /*  // agregar los datos a la variable data.
+            //     if ('') {
+            //       router.push('/datos-persona');
+            //     } else {
+            //       router.push('/dashboard/plazas');
+            //     } */
+            //   })
+/*               .catch(() => {
+ */
+/*               });
+ */          }},3000);
         }, 2000);
       },
 

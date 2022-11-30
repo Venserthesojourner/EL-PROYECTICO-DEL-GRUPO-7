@@ -6,7 +6,7 @@
         <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-y-md" style="min-width: 300px">
           <p class="text-h4 text-weight-bold text-primary text-center">Ingresar Código</p>
           <q-input filled dark v-model="codigo" type="text" label="Código de reserva" lazy-rules
-            :rules="[val =>   val && val.length > 0 || 'Por favor, ingrese una código']" />
+            :rules="codigoRules" />
           <q-btn type="submit" push color="positive" text-color="black" size="lg"
             class="full-width border-radius-inherit" label="Enviar" no-caps />
           <!-- Volver -->
@@ -31,6 +31,10 @@ export default {
 
     return {
       codigo,
+      codigoRules: [
+        (val) => (val !== null) || 'Por favor, ingrese un codigo de reserva',
+        (val) => (val && val.length == 6) || 'Codigo incorrecto',
+      ],
       onSubmit() {
         if (codigo.value == null) {
           $q.notify({
