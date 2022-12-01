@@ -3,6 +3,7 @@ import {
   BaseEntity,
   Column,
   CreateDateColumn,
+  DeleteDateColumn,
   Entity,
   JoinColumn,
   OneToMany,
@@ -11,6 +12,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { Empleado } from '../../empleado/entities/empleado.entity';
+import { TimestampProvider } from 'rxjs';
 
 @Entity('estacionamientos')
 export class Estacionamiento extends BaseEntity {
@@ -36,9 +38,9 @@ export class Estacionamiento extends BaseEntity {
   empleados: Empleado[]
 
   @CreateDateColumn({ name: 'created_at', default: 'TIMESTAMP' })
-  createdAt: Date;
+  createdAt: TimestampProvider;
   @UpdateDateColumn({ name: 'updated_at', onUpdate: 'TIMESTAMP' })
   updatedAt: Date;
-
+  @DeleteDateColumn()
   deletedAt: Date;
 }

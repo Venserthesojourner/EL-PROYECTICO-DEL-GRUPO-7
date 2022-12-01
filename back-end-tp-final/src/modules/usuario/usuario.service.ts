@@ -28,7 +28,7 @@ export class UsuarioService {
     payload.password = password;
     const newUser = await this.usuarioRepo.save(payload);
 
-    let response = {
+ /*    let response = {
       data: {
         user: newUser,
         owner: null,
@@ -70,7 +70,7 @@ export class UsuarioService {
         message: successMsg.SCS001,
         sucess: true
       }
-    }
+    } */
 
     /*
     {
