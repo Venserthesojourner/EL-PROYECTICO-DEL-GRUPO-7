@@ -104,11 +104,16 @@
       <!-- Perfil Usuario -->
       <q-img class="absolute-top bg-dark" src="../assets/background-admin.jpg" style="height: 150px">
         <div class="absolute-bottom bg-transparent">
-          <q-avatar size="56px" class="q-mb-sm">
+          <q-avatar  v-if="luis.estado === false" size="56px" class="q-mb-sm">
             <img src="../assets/marcosContact.jpg">
           </q-avatar>
-          <div class="text-weight-bold">Homero Simpson</div>
-          <div>Admin</div>
+          <q-avatar  v-if="luis.estado === true" size="56px" class="q-mb-sm">
+            <img src="../assets/peter-griffin-empleado.jpg">
+          </q-avatar>
+          <div v-if="luis.estado === false" class="text-weight-bold">Usuario: Marcos</div>
+          <div v-if="luis.estado === false">Puesto: Admin</div>
+          <div v-if="luis.estado === true"  class="text-weight-bold">Usuario: Luis</div>
+          <div v-if="luis.estado === true"  >Puesto: Empleado</div>
         </div>
       </q-img>
     </q-drawer>
