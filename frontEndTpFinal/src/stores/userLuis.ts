@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { useStorage } from '@vueuse/core';
 
-export const useSessionLuis = defineStore('sessionStatus', {
+export const useSessionLuis = defineStore('useSessionLuis', {
   state: () => ({
     status: useStorage('luis', false),
   }),

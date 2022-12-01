@@ -27,7 +27,7 @@
             </q-item>
 
             <!-- Montos -->
-            <q-expansion-item  expand-separator icon="attach_money" label="Montos">
+            <q-expansion-item v-show="luis.estado === false"  expand-separator icon="attach_money" label="Montos">
               <q-list>
                 <q-item to="precios" clickable v-ripple>
                   <q-item-section>
@@ -48,7 +48,7 @@
             </q-expansion-item>
 
             <!-- Horarios -->
-            <q-item  to="horarios" clickable v-ripple>
+            <q-item v-show="luis.estado === false"  to="horarios" clickable v-ripple>
               <q-item-section avatar>
                 <q-icon name="schedule" />
               </q-item-section>
@@ -58,7 +58,7 @@
             </q-item>
 
             <!-- Empleados -->
-            <q-expansion-item  expand-separator icon="group" label="Empleados">
+            <q-expansion-item v-show="luis.estado === false"  expand-separator icon="group" label="Empleados">
               <q-list>
                 <q-item to="listaEmpleados" clickable v-ripple>
                   <q-item-section>
@@ -74,7 +74,7 @@
             </q-expansion-item>
 
             <!-- Configuraciones -->
-            <q-item to="configuraciones" clickable v-ripple>
+            <q-item v-show="luis.estado === false" to="configuraciones" clickable v-ripple>
               <q-item-section avatar>
                 <q-icon name="settings" />
               </q-item-section>
@@ -148,7 +148,9 @@ export default {
 
       logoutSession() {
         store.changeStatus();
-
+        if(luis.estado) {
+          luis.changeStatus();
+        }
       },
       logoutSession2() {
         luis.changeStatus();
