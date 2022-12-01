@@ -45,6 +45,6 @@ export default {
 
 <style lang="sass" scoped>
 p.title
-    font-family: $ff-chichilo
+    font-family: $ff-brand
     font-size: 36px
 </style>

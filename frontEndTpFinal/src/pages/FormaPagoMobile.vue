@@ -14,13 +14,13 @@
               <q-item>
                 <q-item-section>
                   <q-item-label caption lines="1">Estacionamiento</q-item-label>
-                  <q-item-label>Parking NQN - {{estData[0].name}} </q-item-label>
+                  <q-item-label>Parking NQN - {{ estData[0].name }} </q-item-label>
                 </q-item-section>
               </q-item>
               <q-item>
                 <q-item-section>
                   <q-item-label caption lines="1">Precio</q-item-label>
-                  <q-item-label>{{estData[0].price}}</q-item-label>
+                  <q-item-label>{{ estData[0].price }}</q-item-label>
                 </q-item-section>
               </q-item>
               <q-item>
@@ -36,7 +36,7 @@
             class="full-width border-radius-inherit" label="Continuar" no-caps />
         </q-form>
         <q-btn href="http://localhost:9000/mobile/buscar" push color="primary" text-color="black" size="lg"
-            class="full-width border-radius-inherit" label="Volver" no-caps />
+          class="full-width border-radius-inherit q-mt-md" label="Volver" no-caps />
       </div>
     </div>
   </q-page>
@@ -48,7 +48,7 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router';
 import { useRoute } from 'vue-router'
 
-const listaEstacionamientos = [{id: "1", name: "Estacionamiento Senegal", price: "300.00"}, {id: "2",name: "Estacionamiento pirulin", price: "400.00"}, {id: "3",name: "Estacionamiento MESSSSSI", price: "1000.00"}];
+const listaEstacionamientos = [{ id: "1", name: "Estacionamiento Senegal", price: "300.00" }, { id: "2", name: "Estacionamiento pirulin", price: "400.00" }, { id: "3", name: "Estacionamiento MESSSSSI", price: "1000.00" }];
 
 
 export default {
@@ -62,7 +62,7 @@ export default {
 
     let data = route.params.id;
     console.log("ESTO RECIBO:", data)
-    let estData = listaEstacionamientos.filter( element => element.id === data)
+    let estData = listaEstacionamientos.filter(element => element.id === data)
     console.log("ESTO ARMO", estData.name)
     const opcionPago = ref('mercado pago')
     const codigo = ref(null)

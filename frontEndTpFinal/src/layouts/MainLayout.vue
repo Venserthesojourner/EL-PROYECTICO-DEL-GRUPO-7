@@ -12,10 +12,10 @@
         <!-- Menú -->
         <q-tabs class="gt-sm" v-model="tab" shrink>
           <q-route-tab to="/" name="home" label="Inicio" exact />
-          <q-route-tab href="/#about" name="about" label="Nosotros" exact />
-          <q-route-tab href="/#team" name="team" label="Equipo" exact />
-          <q-route-tab href="/#contact" name="contact" label="Contacto" exact />
-          <q-route-tab href="login" name="login" label="Login" exact />
+          <q-route-tab href="http://localhost:9000/#about" name="about" label="Nosotros" />
+          <q-route-tab href="/#team" name="team" label="Equipo" />
+          <q-route-tab href="/#contact" name="contact" label="Contacto" />
+          <q-route-tab to="login" name="login" label="Login" exact />
         </q-tabs>
         <!-- Boton Menú -->
         <div class="lt-md">
@@ -84,7 +84,7 @@ export default {
 <style lang="sass" scoped>
 .q-toolbar
   &__title
-    font-family: $ff-chichilo
+    font-family: $ff-brand
     font-size: 26px
 :deep(.q-tab__label)
   font-size: 16px

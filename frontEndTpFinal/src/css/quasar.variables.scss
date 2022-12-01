@@ -12,8 +12,10 @@
 // to match your app's branding.
 // Tip: Use the "Theme Builder" on Quasar's documentation website.
 @import url("https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap");
 
-$ff-chichilo: "Saira Condensed", sans-serif;
+$ff-brand: "Saira Condensed", sans-serif;
+$ff-titles: "Ubuntu", sans-serif;
 
 $primary: #d3baf2;
 $secondary: #66418b;

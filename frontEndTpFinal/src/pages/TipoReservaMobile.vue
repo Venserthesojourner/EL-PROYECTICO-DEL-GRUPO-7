@@ -5,7 +5,7 @@
         <p class="text-h4 text-weight-bold text-primary text-center">Tipo de Reserva</p>
         <q-form @submit="onSubmit" @reset="onReset" class="column items-center justify-center q-gutter-y-md">
           <div class="full-width row justify-center text-uppercase text-h5">
-            <q-option-group name="tipo_reserva" v-model="tipoReserva" :options="optio    ns" size="xl" color="primary"
+            <q-option-group name="tipo_reserva" v-model="tipoReserva" :options="options" size="xl" color="primary"
               inline lazy-rules />
           </div>
           <!-- Código Promoción -->

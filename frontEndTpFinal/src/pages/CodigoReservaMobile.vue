@@ -17,10 +17,8 @@
             </q-item>
           </q-list>
         </div>
-        <q-btn to="cronometro" push color="positive" text-color="black" size="lg"
-          class="full-width border-radius-inherit" label="Continuar" no-caps />
-        <q-btn to="index" push color="primary" text-color="black" size="lg"
-          class="full-width border-radius-inherit" label="Volver" no-caps />
+        <q-btn to="index" push color="primary" text-color="black" size="lg" class="full-width border-radius-inherit"
+          label="Continuar" no-caps />
       </div>
     </div>
   </q-page>
