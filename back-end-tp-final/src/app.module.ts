@@ -19,6 +19,7 @@ import { ProfileModule } from './modules/profile/profile.module';
 import { PromocionesModule } from './modules/promocion/promocion.module';
 
 
+
 @Module({
   imports: [
     ConfigModule.forRoot({

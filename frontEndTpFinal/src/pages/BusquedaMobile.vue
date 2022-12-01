@@ -2,34 +2,25 @@
   <q-page class="window-height row justify-center items-center">
     <div class="column justify-center items-center" style="min-width: 300px">
       <capacitor-google-map id="map" ref="map"></capacitor-google-map>
-      <q-list style="min-width: 320px">
-        <!-- Primer Patente -->
-        <q-item clickable v-ripple :active="active === 'primera'" @click="active = 'primera'"
-          active-class="bg-deep-purple-10 text-positive">
-          <q-item-section>Estacionamiento numero 0 </q-item-section>
+      <div>
+        <q-list style="min-width: 320px">
 
-          <q-item-section side>
-            <q-btn size="12px" round dense flat unelevated icon="local_parking" color="deep-purple-2" />
-          </q-item-section>
-        </q-item>
-        <!-- Aca hay que meter todos los estacionamientos cercanos -->
-        <q-item clickable v-ripple :active="active === 'segunda'" @click="active = 'segunda'"
-          active-class="bg-deep-purple-10 text-positive">
-          <q-item-section>Estacionamiento numero 1</q-item-section>
+<q-intersection v-for="estacionamiento in listaEstacionamientos" v-bind:key="estacionamiento.id">
+  <q-item clickable v-ripple @click="idEstacionamiento({ estacionamiento })"
+  active-class="bg-deep-purple-10 text-positive">
+  <q-item-section>Nombre: {{estacionamiento.name}} </q-item-section>
+  <q-item-section>Precio: {{estacionamiento.price}}  </q-item-section>
+  <q-item-section side>
+    <q-btn size="12px" round dense flat unelevated icon="local_parking" color="deep-purple-2" />
+  </q-item-section>
+</q-item>
 
-          <q-item-section side>
-            <q-btn size="12px" round dense flat unelevated icon="local_parking" color="deep-purple-2" />
-          </q-item-section>
-        </q-item>
-        <q-item clickable v-ripple :active="active === 'tercera'" @click="active = 'tercera'"
-          active-class="bg-deep-purple-10 text-positive">
-          <q-item-section>Estacionamiento numero 2</q-item-section>
+    <q-separator spaced />
+  </q-intersection>
 
-          <q-item-section side>
-            <q-btn size="12px" round dense flat unelevated icon="local_parking" color="deep-purple-2" />
-          </q-item-section>
-        </q-item>
-      </q-list>
+
+</q-list>
+      </div>
       <!-- Volver -->
       <q-btn to="index" push color="primary" text-color="black" size="lg"
         class="full-width border-radius-inherit q-mt-md" label="Volver" no-caps />
@@ -43,9 +34,20 @@ import { Geolocation } from '@capacitor/geolocation';
 import { ref, onMounted, onUnmounted, computed } from "vue";
 import axios from 'axios';
 import datosTest from "./tests.json"
+import { useRouter } from 'vue-router';
+import { json } from "body-parser";
+
+const listaEstacionamientos = [{id: 1, name: "Estacionamiento Senegal", price: "300.00"}, {id: 2,name: "Estacionamiento pirulin", price: "400.00"}, {id: 3,name: "Estacionamiento MESSSSSI", price: "1000.00"}];
+
+
 export default {
+  props: { idEstacionamiento: Function },
   setup() {
     const cantidadPatentes = ref(1);
+    const router = useRouter();
+
+
+
     let map = ref(null);
     let coords = ref({ latitude: 0, longitude: 0 });
     let watcher = null;
@@ -114,33 +116,33 @@ export default {
     onMounted(() => {
 
       //TODO: en teoria esto se carga primero
-      // setTimeout(() => {
-      //   axios.get(`http://localhost:3000/usuario/username/${username.value}`)
-      //     .then((response) => {
-      //       console.log(response);
-      //       // TODO: seguir aca.
-      //       $q.notify({
-      //         color: 'green-4',
-      //         textColor: 'white',
-      //         icon: 'cloud_done',
-      //         message: '¡Bienvenido!',
-      //       });
-      //       // agregar los datos a la variable data.
-      //       if ('') {
-      //         router.push('/datos-persona');
-      //       } else {
-      //         router.push('/dashboard/plazas');
-      //       }
-      //     })
-      //     .catch(() => {
-      //       $q.notify({
-      //         message: 'Error en el registro de usuario, contactar con soporte.',
-      //         icon: 'warning',
-      //         color: 'red-5',
-      //         textColor: 'white',
-      //       });
-      //     });
-      // }, 3000);
+      setTimeout(() => {
+        axios.get(`http://localhost:3000/usuario/username/${username.value}`)
+          .then((response) => {
+            console.log(response);
+            // TODO: seguir aca.
+            $q.notify({
+              color: 'positive',
+              textColor: 'dark',
+              icon: 'cloud_done',
+              message: '¡Bienvenido!',
+            });
+            // agregar los datos a la variable data.
+            if ('') {
+              router.push('/datos-persona');
+            } else {
+              router.push('/dashboard/plazas');
+            }
+          })
+          .catch(() => {
+            $q.notify({
+              message: 'Error en el registro de usuario, contactar con soporte.',
+              icon: 'warning',
+              color: 'red-10',
+              textColor: 'white',
+            });
+          });
+      }, 3000);
       //}, 2000);
 
       printCurrentPosition();
@@ -156,6 +158,16 @@ export default {
       coords,
       active: ref('primera'),
       cantidadPatentes,
+      listaEstacionamientos,
+      idEstacionamiento(est) {
+      console.table(est.estacionamiento.id);
+        router.push({
+          name: "forma-pago",
+          params: {
+            id: est.estacionamiento.id
+          }
+        })
+      },
     };
   },
 };

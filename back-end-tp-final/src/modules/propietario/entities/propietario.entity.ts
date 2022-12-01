@@ -1,5 +1,5 @@
 import { Usuario } from "./../../usuario/entities/usuario.entity";
-import { BaseEntity, Column, Entity, JoinColumn, OneToOne, PrimaryColumn } from "typeorm";
+import { BaseEntity, BaseEntity, Column, Entity, JoinColumn, OneToOne, PrimaryColumn } from "typeorm";
 
 /*
 CREATE TABLE `propietario` (
@@ -21,8 +21,10 @@ CREATE TABLE `propietario` (
 @Entity({ name: 'propietario' })
 export class Propietario extends BaseEntity {
   @PrimaryColumn()
-  @OneToOne(() => Usuario, (usuario) => usuario.id)
+
+  @OneToOne(() => Usuario, (Usuario) => Usuario.id)
   @JoinColumn({ name: 'id_usuario' })
+
   idUsuario: number;
 
   @Column('int', { name: 'cuil', nullable: true, default: null })

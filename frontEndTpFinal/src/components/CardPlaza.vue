@@ -92,8 +92,8 @@ export default {
   border-color: $positive
   box-shadow: 0 0 10px $positive
 .pausar-theme
-  border-color: $negative
-  box-shadow: 0 0 10px $negative
+  border-color: #ff9800
+  box-shadow: 0 0 10px #ff9800
 .reiniciar-theme
   border-color: $primary
   box-shadow: 0 0 10px $primary

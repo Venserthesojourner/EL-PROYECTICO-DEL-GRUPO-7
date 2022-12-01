@@ -37,6 +37,40 @@ export class UsuarioService {
       message: 'msg',
       sucess: true
     };
+    /* 
+        response.data.user = newUser
+        if (newUser.role === 'owner') {
+          // Se crearia una instancia de usuario propietario y si le asigna la id de user al mismo
+          console.table(newUser)
+          let owner: CreatePropietarioDto
+          let newOwner = await this.propietarioService.createNewOwner(owner)
+          response = {
+            data: {
+              user: newUser,
+              owner: newOwner,
+              employee: null
+            },
+            message: successMsg.SCS001,
+            sucess: true
+          }
+        }
+        if (newUser.role === 'employee') {
+          // Se crea una instancia de operador (Necesito hacer una busqueda del Id del estacionamiento al que sera asociado)
+          console.table(newUser)
+          let newEmployee: CreateEmpleadoDto;
+          newEmployee.usuario == newUser.id
+          newEmployee.estacionamiento == extraData.estacionamiento
+          let createdEmployee = await this.empleadoService.createNewEmployee(newEmployee)
+          response = {
+            data: {
+              user: newUser,
+              owner: createdEmployee,
+              employee: null
+            },
+            message: successMsg.SCS001,
+            sucess: true
+          }
+        } */
 
     response.data.user = newUser
     if (newUser.role === 'owner') {
@@ -100,7 +134,7 @@ export class UsuarioService {
   }
 
   async findAllUsers() {
-    return await this.usuarioRepo.find();
+    return await this.usuarioRepo.find()
   }
 
   async findAllUsersByRole(role: string): Promise<Usuario[]> {
