@@ -6,6 +6,7 @@ import { Propietario } from './../modules/propietario/entities/propietario.entit
 import { Empleado } from './../modules/empleado/entities/empleado.entity';
 import { Estacionamiento } from './../modules/estacionamiento/entitites/estacionamiento.entity';
 import { Profile } from '../modules/profile/entities/profile.entity';
+import { Promocion } from '../modules/promocion/entitites/promocion.entity';
 
 export const databaseProviders = [
     {
@@ -19,8 +20,8 @@ export const databaseProviders = [
                 username,
                 password,
                 database,
-                entities: [Usuario, Propietario, Empleado, Estacionamiento, Profile],
-                synchronize: true,
+                entities: [Usuario, Propietario, Empleado, Estacionamiento, Profile, Promocion],
+                synchronize: false,
                 logging: false,
             });
             return dataSource.initialize();

@@ -1,5 +1,5 @@
 import { Usuario } from "./../../usuario/entities/usuario.entity";
-import { BaseEntity, Column, Entity, JoinColumn, OneToOne, PrimaryColumn } from "typeorm";
+import { BaseEntity, BaseEntity, Column, Entity, JoinColumn, OneToOne, PrimaryColumn } from "typeorm";
 
 /*
 CREATE TABLE `propietario` (
