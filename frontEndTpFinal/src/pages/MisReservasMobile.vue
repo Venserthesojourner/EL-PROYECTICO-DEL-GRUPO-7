@@ -3,27 +3,40 @@
     <div class="column justify-center items-center" style="min-width: 300px">
       <!-- Configuraciones Usuario -->
       <ConfiguracionesUser></ConfiguracionesUser>
-      <p class="text-h4 text-weight-bold text-primary text-center">
-        Mis Reservas
-      </p>
+      <p class="text-h4 text-weight-bold text-primary text-center">Mis Reservas</p>
       <div class="q-mt-md">
-        <q-list dark style="min-width: 300px">
-          <!-- Aca hay que meter todos los codigos de reserva activos -->
-          <q-intersection v-for="codigo in listaCodigoReserva" v-bind:key="codigo">
-            <q-item clickable v-ripple v-bind:index="index" active-class="bg-grey-2">
-              <q-item-section v-bind:id="codigo" class="text-overline">{{
-                  codigo
-              }}</q-item-section>
+        <q-table :rows="rows" :columns="columns" row-key="name" :filter="filter" style="min-width: 300px"
+          hide-pagination flat dark>
+          <!-- Filtro -->
+          <template v-slot:top-left>
+            <q-input dark borderless dense debounce="300" v-model="filter" placeholder="Buscar">
+              <template v-slot:append>
+                <q-icon name="search" />
+              </template>
+            </q-input>
+          </template>
+          <!-- Datos -->
+          <template v-slot:header="props">
+            <q-tr :props="props">
+              <q-th v-for="col in props.cols" :key="col.name" :props="props">
+                {{ col.label }}
+              </q-th>
+              <q-th auto-width>Recibo</q-th>
+            </q-tr>
+          </template>
 
-              <q-item-section side>
+          <template v-slot:body="props">
+            <q-tr :props="props">
+              <q-td v-for="col in props.cols" :key="col.name" :props="props">
+                {{ col.value }}
+              </q-td>
+              <q-td auto-width>
                 <q-btn size="12px" round dense flat unelevated icon="content_copy" color="grey-4"
-                  @click="copyToClipBoard({ codigo })" />
-              </q-item-section>
-            </q-item>
-
-            <q-separator spaced />
-          </q-intersection>
-        </q-list>
+                  @click="copyToClipBoard({ codigo })" class="text-overline" />
+              </q-td>
+            </q-tr>
+          </template>
+        </q-table>
       </div>
       <q-btn to="index" push color="primary" text-color="black" size="lg"
         class="full-width border-radius-inherit q-mt-md" label="Volver" no-caps />
@@ -36,7 +49,32 @@ import { ref } from "vue";
 import { useQuasar } from 'quasar';
 import ConfiguracionesUser from '../components/ConfiguracionesUser.vue';
 
-const listaCodigoReserva = ["5Fq23", "Abc234", "6gN1m"];
+const columns = [
+  {
+    name: 'codigo',
+    required: true,
+    label: 'Código',
+    align: 'left',
+    field: row => row.name,
+    sortable: true
+  },
+  { name: 'fecha', align: 'left', label: 'Fecha', field: 'fecha', sortable: true },
+]
+
+const rows = [
+  {
+    name: '5Fq23',
+    fecha: '2022-12-13',
+  },
+  {
+    name: 'Abc234',
+    fecha: '2022-12-12',
+  },
+  {
+    name: '6gN1m',
+    fecha: '2022-12-06',
+  },
+]
 
 export default {
   props: { agregarPatente: Function, copyToClipBoard: Function },
@@ -47,12 +85,9 @@ export default {
     const $q = useQuasar();
     const cantidadCodigosReserva = ref(1);
     return {
-      active: ref("primera"),
-      cantidadCodigosReserva,
-      listaCodigoReserva,
-      agregarPatente() {
-        cantidadCodigosReserva.value += 1;
-      },
+      filter: ref(''),
+      columns,
+      rows,
       copyToClipBoard(id) {
         const content = document.getElementById(id.codigo).innerHTML;
 

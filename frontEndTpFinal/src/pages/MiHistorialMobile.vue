@@ -45,6 +45,7 @@
 
 <script>
 import ConfiguracionesUser from '../components/ConfiguracionesUser.vue';
+import { ref, onMounted } from "vue";
 
 const columns = [
   {
@@ -72,9 +73,6 @@ const rows = [
     fecha: '2022-11-17',
   },
 ]
-
-import { ref, onMounted } from "vue";
-
 
 export default {
   components: {
@@ -126,6 +124,4 @@ export default {
 <style lang="sass" scoped>
 .text-overline
   font-size: 1.5rem
-:deep(.q-table__grid-content row)
-  width: 100%
 </style>
