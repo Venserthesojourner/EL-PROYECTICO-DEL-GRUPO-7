@@ -77,13 +77,12 @@ const rows = [
 ]
 
 export default {
-  props: { agregarPatente: Function, copyToClipBoard: Function },
+  props: { copyToClipBoard: Function },
   components: {
     ConfiguracionesUser,
   },
   setup() {
     const $q = useQuasar();
-    const cantidadCodigosReserva = ref(1);
     return {
       filter: ref(''),
       columns,
@@ -99,7 +98,7 @@ export default {
               color: 'positive',
               textColor: 'dark',
               icon: 'cloud_done',
-              message: 'Copiado!',
+              message: '¡Copiado!',
             });
           })
           .catch((err) => {
