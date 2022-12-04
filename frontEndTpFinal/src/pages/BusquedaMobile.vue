@@ -3,23 +3,26 @@
     <div class="column justify-center items-center" style="min-width: 300px">
       <capacitor-google-map id="map" ref="map"></capacitor-google-map>
       <div>
-        <q-list style="min-width: 320px">
+        <q-list style="min-width: 320px" class="q-mt-md">
 
-<q-intersection v-for="estacionamiento in listaEstacionamientos" v-bind:key="estacionamiento.id">
-  <q-item clickable v-ripple @click="idEstacionamiento({ estacionamiento })"
-  active-class="bg-deep-purple-10 text-positive">
-  <q-item-section>Nombre: {{estacionamiento.name}} </q-item-section>
-  <q-item-section>Precio: {{estacionamiento.price}}  </q-item-section>
-  <q-item-section side>
-    <q-btn size="12px" round dense flat unelevated icon="local_parking" color="deep-purple-2" />
-  </q-item-section>
-</q-item>
+          <q-separator spaced />
+          <q-intersection v-for="estacionamiento in listaEstacionamientos" v-bind:key="estacionamiento.id">
+            <q-item dense clickable v-ripple @click="idEstacionamiento({ estacionamiento })">
+              <q-item-section>
+                <q-item-label>{{ estacionamiento.name }}</q-item-label>
+                <q-item-label class="text-primary" caption lines="1">Precio x hora ${{ estacionamiento.price
+                }}</q-item-label>
+              </q-item-section>
+              <q-item-section side>
+                <q-btn size="12px" round dense flat unelevated icon="local_parking" color="positive" />
+              </q-item-section>
+            </q-item>
 
-    <q-separator spaced />
-  </q-intersection>
+            <q-separator spaced />
+          </q-intersection>
 
 
-</q-list>
+        </q-list>
       </div>
       <!-- Volver -->
       <q-btn to="index" push color="primary" text-color="black" size="lg"
@@ -37,7 +40,7 @@ import datosTest from "./tests.json"
 import { useRouter } from 'vue-router';
 import { json } from "body-parser";
 
-const listaEstacionamientos = [{id: 1, name: "Estacionamiento Senegal", price: "300.00"}, {id: 2,name: "Estacionamiento pirulin", price: "400.00"}, {id: 3,name: "Estacionamiento MESSSSSI", price: "1000.00"}];
+const listaEstacionamientos = [{ id: 1, name: "Buenos Aires Parking", price: "300.00" }, { id: 2, name: "Estacionamiento rioja 456", price: "400.00" }, { id: 3, name: "Paco Parking", price: "450.00" }];
 
 
 export default {
@@ -53,16 +56,24 @@ export default {
     let watcher = null;
     const locations = [
       {
-        lat: -38.95301138636936,
-        lng: -68.0215979364961,
+        lat: -38.946947149674074,
+        lng: -68.05760492266015,
       },
       {
-        lat: -38.96196458229248,
-        lng: -68.02457523815261,
+        lat: -38.948842034836076,
+        lng: -68.06348920040442,
       },
       {
-        lat: -38.959461832522436,
-        lng: -68.01440430156816,
+        lat: -38.95059423145028,
+        lng: -68.05144608164939,
+      },
+      {
+        lat: -38.957669327968766,
+        lng: -68.06680977393381,
+      },
+      {
+        lat: -38.965477812334896,
+        lng: -68.05951416576093,
       },
     ]
     const printCurrentPosition = async () => {
@@ -92,18 +103,18 @@ export default {
             lat: locations[index].lat,
             lng: locations[index].lng,
           },
-          tittle: "you are here bitch!",
+          title: "Buenos Parking",
         });
       }
       await newMap.setOnMarkerClickListener(() => {
-        alert("hi bitch");
+        alert("Buenos Aires Parking");
       });
       await newMap.addMarker({
         coordinate: {
           lat: coords.value.latitude,
           lng: coords.value.longitude,
         },
-        tittle: "you are here bitch!",
+        tittle: "estacionamiento",
       });
     };
 
@@ -160,7 +171,7 @@ export default {
       cantidadPatentes,
       listaEstacionamientos,
       idEstacionamiento(est) {
-      console.table(est.estacionamiento.id);
+        console.table(est.estacionamiento.id);
         router.push({
           name: "forma-pago",
           params: {
