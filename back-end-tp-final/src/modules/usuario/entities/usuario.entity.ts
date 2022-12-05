@@ -44,11 +44,11 @@ export class Usuario extends BaseEntity {
   @Column('varchar', { name: 'password', length: 250, nullable: false })
   password: string;
 
-  @Column('varchar', { name: 'first_name', length: 45, nullable: false, default: '' })
+  /* @Column('varchar', { name: 'first_name', length: 45, nullable: false, default: '' })
   firstName: string;
 
   @Column("varchar", { name: 'last_name', length: 45, nullable: false, default: '' })
-  lastName: string;
+  lastName: string; */
 
   @Column('varchar', {
     name: 'token',
@@ -58,8 +58,8 @@ export class Usuario extends BaseEntity {
   })
   token: string;
 
-  @Column('int', { name: 'dni', nullable: false })
-  dni: number;
+  /* @Column('int', { name: 'dni', nullable: false })
+  dni: number; */
 
   @Column('varchar', { name: 'email', length: 45, nullable: false })
   email: string

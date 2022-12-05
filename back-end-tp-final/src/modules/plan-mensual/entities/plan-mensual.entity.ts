@@ -9,7 +9,8 @@ CREATE TABLE `plan_mensual` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
  */
 import { Estacionamiento } from "../../estacionamiento/entitites/estacionamiento.entity";
-import { Column, Entity, ManyToOne, PrimaryColumn } from "typeorm";
+import { Column, Entity, ManyToMany, ManyToOne, PrimaryColumn } from "typeorm";
+import { Vehiculo } from "../../vehiculo/entities/vehiculo.entity";
 
 @Entity('plan_mensual')
 export class PlanMensual {
@@ -20,11 +21,12 @@ export class PlanMensual {
     })
     codigo: string
 
-
     @Column('int', {
         name: 'duracion'
     })
     duracion: number
+
+    estado: string
 
     precioBase: number
 
@@ -32,4 +34,7 @@ export class PlanMensual {
 
     @ManyToOne(() => Estacionamiento, estacionamiento => estacionamiento.id)
     estacionamiento: Estacionamiento
+
+    @ManyToMany(() => Vehiculo, vehiculo => vehiculo.id)
+    vehiculo: Vehiculo[]
 }
