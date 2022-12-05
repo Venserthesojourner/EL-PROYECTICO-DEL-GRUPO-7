@@ -116,13 +116,10 @@ export default {
                 message: "¡Bienvenido!",
               });
               if (username.value === "luis") {
-                alert("inicial status luis empleado:", luis.estado);
                 luis.changeStatus();
-                alert("cambio status luis empleado:", luis.estado);
                 store.changeStatus();
                 router.push("/dashboard/plazas");
               } else {
-                alert(luis.estado);
                 store.changeStatus();
                 router.push("/dashboard/plazas");
               }

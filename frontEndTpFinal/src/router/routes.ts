@@ -50,6 +50,7 @@ const routes: RouteRecordRaw[] = [
       { path: 'mi-historial', component: () => import('src/pages/MiHistorialMobile.vue'), meta: { auth: false } },
       { path: 'codigo-reserva', component: () => import('src/pages/CodigoReservaMobile.vue'), meta: { auth: false } },
       { path: 'forma-pago/:id', name: 'forma-pago', component: () => import('src/pages/FormaPagoMobile.vue'), meta: { auth: false }, props:true },
+      { path: 'elegir-fecha/:id', name: 'elegir-fecha', component: () => import('src/pages/SelectDateMobile.vue'), meta: { auth: false }, props:true },
     ],
   },
 

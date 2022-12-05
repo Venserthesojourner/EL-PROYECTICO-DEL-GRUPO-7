@@ -159,8 +159,6 @@ export default {
       },
       logoutSession2() {
         luis.changeStatus();
-        alert(luis.estado)
-
       },
       drawerClick(e) {
         // if in "mini" state and user

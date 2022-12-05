@@ -75,7 +75,6 @@ export default {
                   icon: 'cloud_done',
                   message: '¡Bienvenido!',
                 });
-                alert("ENTRE ACA")
                 store.changeStatus();
                 router.push('/mobile/index');
             } else {
@@ -85,7 +84,6 @@ export default {
                   color: 'red-10',
                   textColor: 'white',
                 });
-                alert("ERRRROR")
             }
                 // agregar los datos a la variable data.
                /*  if ('') {

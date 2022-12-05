@@ -162,7 +162,7 @@ export default {
       idEstacionamiento(est) {
       console.table(est.estacionamiento.id);
         router.push({
-          name: "forma-pago",
+          name: "elegir-fecha",
           params: {
             id: est.estacionamiento.id
           }
