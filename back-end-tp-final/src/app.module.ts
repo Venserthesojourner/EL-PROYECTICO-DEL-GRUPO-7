@@ -17,6 +17,8 @@ import databaseConfig from './config/database.config';
 import mailerConfig from './config/mailer.config';
 import { ProfileModule } from './modules/profile/profile.module';
 import { PromocionesModule } from './modules/promocion/promocion.module';
+import { VehiculoModule } from './modules/vehiculo/vehiculo.module';
+import { PlanMensualModule } from './modules/plan-mensual/plan-mensual.module';
 
 
 
@@ -35,6 +37,8 @@ import { PromocionesModule } from './modules/promocion/promocion.module';
     MailModule,
     EstacionamientoModule,
     ProfileModule,
+    VehiculoModule,
+    PlanMensualModule,
     //PromocionesModule
   ],
   controllers: [AppController],

@@ -7,6 +7,8 @@ import { Empleado } from './../modules/empleado/entities/empleado.entity';
 import { Estacionamiento } from './../modules/estacionamiento/entitites/estacionamiento.entity';
 import { Profile } from '../modules/profile/entities/profile.entity';
 import { Promocion } from '../modules/promocion/entitites/promocion.entity';
+import { PlanMensual } from '../modules/plan-mensual/entities/plan-mensual.entity';
+import { Vehiculo } from '../modules/vehiculo/entities/vehiculo.entity';
 
 export const databaseProviders = [
     {
@@ -20,7 +22,7 @@ export const databaseProviders = [
                 username,
                 password,
                 database,
-                entities: [Usuario, Propietario, Empleado, Estacionamiento, Profile, Promocion],
+                entities: [Usuario, Propietario, Empleado, Estacionamiento, Profile, Promocion, PlanMensual, Vehiculo],
                 synchronize: false,
                 logging: false,
             });

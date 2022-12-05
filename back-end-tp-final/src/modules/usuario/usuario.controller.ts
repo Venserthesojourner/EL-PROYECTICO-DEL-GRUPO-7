@@ -30,7 +30,7 @@ export class UsuarioController {
 
   @Get('/role/:role')
   findOnebyRole(@Param('role') role: string) {
-    return this.usuarioService.findUserbyId(+role);
+    return this.usuarioService.findAllUsersByRole(role);
   }
 
 
