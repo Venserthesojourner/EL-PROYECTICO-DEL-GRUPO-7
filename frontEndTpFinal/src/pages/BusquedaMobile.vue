@@ -14,7 +14,7 @@
                 }}</q-item-label>
               </q-item-section>
               <q-item-section side>
-                <q-btn size="12px" round dense flat unelevated icon="local_parking" color="positive" />
+                <q-btn size="12px" round dense flat unelevated icon="local_parking" color="primary" />
               </q-item-section>
             </q-item>
 

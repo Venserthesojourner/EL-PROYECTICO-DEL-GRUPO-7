@@ -14,7 +14,7 @@
               <q-item>
                 <q-item-section>
                   <q-item-label caption lines="1">Estacionamiento</q-item-label>
-                  <q-item-label>Parking NQN - {{ estData[0].name }} </q-item-label>
+                  <q-item-label>{{ estData[0].name }}</q-item-label>
                 </q-item-section>
               </q-item>
               <q-item>
@@ -48,8 +48,7 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router';
 import { useRoute } from 'vue-router'
 
-const listaEstacionamientos = [{ id: "1", name: "Estacionamiento Senegal", price: "300.00" }, { id: "2", name: "Estacionamiento pirulin", price: "400.00" }, { id: "3", name: "Estacionamiento MESSSSSI", price: "1000.00" }];
-
+const listaEstacionamientos = [{ id: "1", name: "Buenos Aires Parking", price: "300.00" }, { id: "2", name: "Estacionamiento rioja 456", price: "400.00" }, { id: "3", name: "Paco Parking", price: "450.00" }];
 
 export default {
 
