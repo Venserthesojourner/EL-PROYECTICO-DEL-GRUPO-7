@@ -21,7 +21,7 @@
               <q-th v-for="col in props.cols" :key="col.name" :props="props">
                 {{ col.label }}
               </q-th>
-              <q-th auto-width>Recibo</q-th>
+              <q-th auto-width></q-th>
             </q-tr>
           </template>
 

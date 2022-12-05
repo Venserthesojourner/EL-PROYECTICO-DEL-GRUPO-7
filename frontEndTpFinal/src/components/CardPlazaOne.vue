@@ -1,13 +1,21 @@
 <!-- eslint-disable max-len -->
 <template>
-  <q-card dark :class="[iniciado ? 'iniciar-theme' : pausado ? 'pausar-theme' : 'reiniciar-theme']"
-    class="q-ma-sm column justify-between" style="height: 250px; width: 206px">
+  <q-card horizontal dark :class="[iniciado ? 'iniciar-theme' : pausado ? 'pausar-theme' : 'reiniciar-theme']"
+    style="height: 250px; width: 206px" class="q-ma-sm column justify-between">
     <q-card-section>
-      <div class="text-h6">
-        Plaza #{{ numPlaza }}
-      </div>
+      <div class="text-h6">Plaza #1</div>
     </q-card-section>
-    <q-card-section class="column items-center">
+    <q-card-section horizontal>
+      <q-list dense dark style="min-width: 200px">
+        <q-item v-for="contact in contacts" :key="contact.id">
+          <q-item-section>
+            <q-item-label>{{ contact.codigo }}</q-item-label>
+            <q-item-label lines="1">{{ contact.patente }}</q-item-label>
+          </q-item-section>
+        </q-item>
+      </q-list>
+    </q-card-section>
+    <q-card-section class="row justify-center">
       <div class="text-h4 q-mb-md">{{ timeShow }}</div>
       <q-btn-group push>
         <q-btn color="light-green-3" text-color="black" push icon="play_arrow" @click="iniciar()" />
@@ -20,12 +28,23 @@
 
 <script>
 import { ref } from 'vue';
+import CardPlazaAdd from '../components/CardPlazaAdd.vue';
+
+const contacts = [{
+  id: 1,
+  codigo: 'Parking NQN',
+  patente: '9 de Julio',
+}]
 
 export default {
+  components: {
+    CardPlazaAdd,
+  },
   props: ['index'],
   data() {
     return {
       numPlaza: this.index + 1,
+      basic: ref(false),
     };
   },
   setup() {
@@ -60,6 +79,7 @@ export default {
       acumulado,
       iniciado,
       pausado,
+      contacts,
 
       iniciar() {
         cronometro.value = true;

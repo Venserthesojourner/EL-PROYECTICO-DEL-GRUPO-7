@@ -5,11 +5,6 @@
       <div class="q-mt-md q-gutter-y-md text-center">
         <p class="text-h4 text-weight-bold text-primary">Cronómetro</p>
         <div class="text-h3 q-mb-md">{{ timeShow }}</div>
-        <q-btn-group push>
-          <q-btn size="18px" color="light-green-3" text-color="black" push icon="play_arrow" @click="iniciar()" split />
-          <q-btn size="18px" color="light-green-4" text-color="black" push icon="stop" @click="pausar()" />
-          <q-btn size="18px" color="light-green-5" text-color="black" push icon="replay" @click="reiniciar()" />
-        </q-btn-group>
       </div>
       <!-- Volver -->
       <q-btn to="index" push color="primary" text-color="black" size="lg"

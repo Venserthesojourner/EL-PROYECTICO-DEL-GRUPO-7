@@ -2,35 +2,18 @@
   <q-page class="window-height row justify-center items-center">
     <div class="column justify-center items-center" style="min-width: 300px">
       <div style="min-width: 300px">
-        <p class="text-h4 q-mb-md text-weight-bold text-primary text-center">
-          Opción de Pago
+        <p class="text-h4 text-weight-bold text-primary text-center">
+          Día y Horario
         </p>
-        <q-form @submit.prevent="onSubmit" @reset="onReset" class="q-gutter-md">
-          <!-- Fecha de Caducidad -->
-          <q-input
-            filled
-            dark
-            v-model="date"
-            placeholder="--/--/----"
-            :rules="dateRules"
-            hint="Seleccione una fecha"
-            class="q-mb-lg"
-          >
+        <q-form @submit.prevent="onSubmit" @reset="onReset" class="q-mt-md q-gutter-md">
+          <!-- Fecha -->
+          <q-input filled dark v-model="date" placeholder="--/--/----" :rules="dateRules" hint="Seleccione una fecha">
             <template v-slot:prepend>
               <q-icon name="event" class="cursor-pointer">
-                <q-popup-proxy
-                  cover
-                  transition-show="scale"
-                  transition-hide="scale"
-                >
+                <q-popup-proxy cover transition-show="scale" transition-hide="scale">
                   <q-date color="secondary" class="bg-dark" v-model="date">
                     <div class="row items-center justify-end">
-                      <q-btn
-                        v-close-popup
-                        label="Cerrar"
-                        color="positive"
-                        flat
-                      />
+                      <q-btn v-close-popup label="Cerrar" color="positive" flat />
                     </div>
                   </q-date>
                 </q-popup-proxy>
@@ -38,16 +21,8 @@
             </template>
           </q-input>
           <!-- seleccionar la fecha de inicio -->
-          <q-select
-            filled
-            dark
-            bottom-slots
-            v-model="model1"
-            :options="selectDate"
-            label="¿A partir de que horario?"
-            :dense="dense"
-            :options-dense="denseOpts"
-          >
+          <q-select filled dark bottom-slots v-model="model1" :options="selectDate" label="¿A partir de que horario?"
+            :dense="dense" :options-dense="denseOpts">
             <template v-slot:prepend>
               <q-icon name="schedule" @click.stop.prevent />
             </template>
@@ -55,16 +30,8 @@
             <template v-slot:hint> Seleccione un horario de inicio </template>
           </q-select>
           <!-- seleccionar la cantidad de horas -->
-          <q-select
-            filled
-            dark
-            bottom-slots
-            v-model="model2"
-            :options="selectCantTime"
-            label="¿Cuantas horas?"
-            :dense="dense"
-            :options-dense="denseOpts"
-          >
+          <q-select filled dark bottom-slots v-model="model2" :options="selectCantTime" label="¿Cuantas horas?"
+            :dense="dense" :options-dense="denseOpts">
             <template v-slot:prepend>
               <q-icon name="schedule" @click.stop.prevent />
             </template>
@@ -72,32 +39,13 @@
             <template v-slot:hint> Seleccione la cantidad de horas </template>
           </q-select>
           <!-- Botones -->
-          <div class="row justify-end">
-            <q-btn
-              label="Limpiar"
-              type="reset"
-              color="positive"
-              flat
-              class="q-mr-sm"
-            />
-            <q-btn
-              label="Continuar"
-              type="submit"
-              color="positive"
-              text-color="dark"
-            />
+          <div class="row">
+            <q-btn type="submit" push color="positive" text-color="black" size="lg"
+              class="full-width border-radius-inherit" label="Continuar" no-caps />
           </div>
         </q-form>
-        <q-btn
-          href="http://localhost:9000/mobile/buscar"
-          push
-          color="primary"
-          text-color="black"
-          size="lg"
-          class="full-width border-radius-inherit q-mt-md"
-          label="Volver"
-          no-caps
-        />
+        <q-btn href="http://localhost:9000/mobile/buscar" push color="primary" text-color="black" size="lg"
+          class="full-width border-radius-inherit q-mt-md" label="Volver" no-caps />
       </div>
     </div>
   </q-page>
@@ -130,9 +78,8 @@ export default {
 
     function currentDate() {
       const current = new Date();
-      const dateCurrent = `${current.getFullYear()}/${
-        current.getMonth() + 1
-      }/${current.getDate()}`;
+      const dateCurrent = `${current.getFullYear()}/${current.getMonth() + 1
+        }/${current.getDate()}`;
       return dateCurrent;
     }
 
@@ -158,9 +105,8 @@ export default {
       denseOpts: ref(false),
       codigo,
       dateRules: [
-        (val) => (val && val.length > 0) || "Por favor, ingrese una fecha",
-        (val) =>
-          (val && val > fechaActual) || "Por favor, ingrese una fecha válida",
+        (val) => (val && val.length > 0) || 'Por favor, ingrese una fecha',
+        // (val) => (val && val > fechaActual) || 'Por favor, ingrese una fecha válida',
       ],
 
       onSubmit() {
@@ -182,11 +128,3 @@ export default {
   },
 };
 </script>
-
-<style lang="sass" scoped>
-.q-option-group
-  & .q-radio
-    &__label
-      font-size: 20px
-      text-transform: uppercase
-</style>

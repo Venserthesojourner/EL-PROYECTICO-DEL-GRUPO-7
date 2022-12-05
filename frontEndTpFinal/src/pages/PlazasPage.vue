@@ -3,6 +3,7 @@
   <div class="q-pa-md">
     <div class="container-plaza row justify-start">
       <CardPlazaAdd v-bind:agregarPlaza='agregarPlaza'></CardPlazaAdd>
+      <CardPlazaOne></CardPlazaOne>
       <q-intersection v-for="index in cantidadPlazas" v-bind:key="index">
         <CardPlaza v-bind:index='index'></CardPlaza>
       </q-intersection>
@@ -14,15 +15,17 @@
 import { ref } from 'vue';
 import CardPlaza from '../components/CardPlaza.vue';
 import CardPlazaAdd from '../components/CardPlazaAdd.vue';
+import CardPlazaOne from '../components/CardPlazaOne.vue';
 
 export default {
   components: {
     CardPlaza,
     CardPlazaAdd,
+    CardPlazaOne,
   },
 
   setup() {
-    const cantidadPlazas = ref(10);
+    const cantidadPlazas = ref(9);
     return {
       cantidadPlazas,
 

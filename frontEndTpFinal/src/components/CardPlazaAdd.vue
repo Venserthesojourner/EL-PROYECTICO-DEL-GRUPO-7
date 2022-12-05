@@ -1,6 +1,6 @@
 <!-- eslint-disable max-len -->
 <template>
-    <q-card dark class="q-ma-sm row justify-center items-center" style="height: 250px; width: 200px">
+    <q-card dark class="q-ma-sm row justify-center items-center" style="height: 250px; width: 206px">
         <q-card-section>
             <q-btn-group push>
                 <q-btn color="positive" outline round icon="add" size="25px" @click="agregarPlaza()" />

@@ -63,19 +63,19 @@ export default {
     console.log("ESTO RECIBO:", data)
     let estData = listaEstacionamientos.filter(element => element.id === data)
     console.log("ESTO ARMO", estData.name)
-    const opcionPago = ref('mercado pago')
+    const opcionPago = ref('efectivo')
     const codigo = ref(null)
 
     return {
       opcionPago,
       options: [
         {
-          label: 'Mercado Pago',
-          value: 'mercado pago'
-        },
-        {
           label: 'Efectivo',
           value: 'efectivo'
+        },
+        {
+          label: 'Mercado Pago',
+          value: 'mercado pago'
         },
       ],
       codigo,

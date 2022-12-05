@@ -27,7 +27,7 @@
             </q-item>
 
             <!-- Montos -->
-            <q-expansion-item v-show="luis.estado === false"  expand-separator icon="attach_money" label="Montos">
+            <q-expansion-item v-show="luis.estado === false" expand-separator icon="attach_money" label="Montos">
               <q-list>
                 <q-item to="precios" clickable v-ripple>
                   <q-item-section>
@@ -48,7 +48,7 @@
             </q-expansion-item>
 
             <!-- Horarios -->
-            <q-item v-show="luis.estado === false"  to="horarios" clickable v-ripple>
+            <q-item v-show="luis.estado === false" to="horarios" clickable v-ripple>
               <q-item-section avatar>
                 <q-icon name="schedule" />
               </q-item-section>
@@ -58,7 +58,7 @@
             </q-item>
 
             <!-- Empleados -->
-            <q-expansion-item v-show="luis.estado === false"  expand-separator icon="group" label="Empleados">
+            <q-expansion-item v-show="luis.estado === false" expand-separator icon="group" label="Empleados">
               <q-list>
                 <q-item to="listaEmpleados" clickable v-ripple>
                   <q-item-section>
@@ -104,16 +104,16 @@
       <!-- Perfil Usuario -->
       <q-img class="absolute-top bg-dark" src="../assets/background-admin.jpg" style="height: 150px">
         <div class="absolute-bottom bg-transparent">
-          <q-avatar  v-if="luis.estado === false" size="56px" class="q-mb-sm">
+          <q-avatar v-if="luis.estado === false" size="56px" class="q-mb-sm">
             <img src="../assets/marcosContact.jpg">
           </q-avatar>
-          <q-avatar  v-if="luis.estado === true" size="56px" class="q-mb-sm">
+          <q-avatar v-if="luis.estado === true" size="56px" class="q-mb-sm">
             <img src="../assets/peter-griffin-empleado.jpg">
           </q-avatar>
           <div v-if="luis.estado === false" class="text-weight-bold">Usuario: Marcos</div>
-          <div v-if="luis.estado === false">Puesto: Admin</div>
-          <div v-if="luis.estado === true"  class="text-weight-bold">Usuario: Luis</div>
-          <div v-if="luis.estado === true"  >Puesto: Empleado</div>
+          <div v-if="luis.estado === false">Puesto: Propietario</div>
+          <div v-if="luis.estado === true" class="text-weight-bold">Usuario: Luis</div>
+          <div v-if="luis.estado === true">Puesto: Empleado</div>
         </div>
       </q-img>
     </q-drawer>
@@ -130,7 +130,7 @@
 import { ref } from 'vue';
 import BtnScrollerTop from '../components/BtnScrollerTop.vue';
 import { useSessionStatus } from '../stores/session-store';
-import { useSessionLuis  } from '../stores/userLuis';
+import { useSessionLuis } from '../stores/userLuis';
 import { useSessionMarcos } from '../stores/userMarcos';
 
 export default {
@@ -153,7 +153,7 @@ export default {
 
       logoutSession() {
         store.changeStatus();
-        if(luis.estado) {
+        if (luis.estado) {
           luis.changeStatus();
         }
       },

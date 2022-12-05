@@ -9,38 +9,19 @@
 
       <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
         <!-- Nombre de Usuario -->
-        <q-input
-          filled
-          dark
-          v-model="username"
-          type="text"
-          hint="Ingrese su nombre de usuario"
-          lazy-rules
-          :rules="[
-            (val) =>
-              (val && val.length > 0) ||
-              'Por favor, ingrese su nombre de usuario',
-          ]"
-        />
+        <q-input filled dark v-model="username" type="text" hint="Ingrese su nombre de usuario" lazy-rules :rules="[
+          (val) =>
+            (val && val.length > 0) ||
+            'Por favor, ingrese su nombre de usuario',
+        ]" />
         <!-- Password -->
-        <q-input
-          filled
-          dark
-          v-model="password"
-          :type="isPwd ? 'password' : 'text'"
-          hint="Ingrese su contraseña"
-          :rules="[
-            (val) =>
-              (val !== null && val !== '') ||
-              'Por favor, ingrese su contraseña',
-          ]"
-        >
+        <q-input filled dark v-model="password" :type="isPwd ? 'password' : 'text'" hint="Ingrese su contraseña" :rules="[
+          (val) =>
+            (val !== null && val !== '') ||
+            'Por favor, ingrese su contraseña',
+        ]">
           <template v-slot:append>
-            <q-icon
-              :name="isPwd ? 'visibility_off' : 'visibility'"
-              class="cursor-pointer"
-              @click="isPwd = !isPwd"
-            />
+            <q-icon :name="isPwd ? 'visibility_off' : 'visibility'" class="cursor-pointer" @click="isPwd = !isPwd" />
           </template>
         </q-input>
         <!-- Registrate -->
@@ -49,19 +30,8 @@
         </div>
         <!-- Botones -->
         <div class="row justify-end">
-          <q-btn
-            label="Limpiar"
-            type="reset"
-            color="positive"
-            flat
-            class="q-mr-sm"
-          />
-          <q-btn
-            label="Ingresar"
-            type="submit"
-            color="positive"
-            text-color="dark"
-          />
+          <q-btn label="Limpiar" type="reset" color="positive" flat class="q-mr-sm" />
+          <q-btn label="Ingresar" type="submit" color="positive" text-color="dark" />
         </div>
       </q-form>
     </q-card>
@@ -98,7 +68,7 @@ export default {
         setTimeout(() => {
           $q.notify({
             progress: true,
-            message: "Iniciando sesion...",
+            message: "Iniciando sesión...",
             color: "secondary",
             textColor: "white",
           });
@@ -126,7 +96,7 @@ export default {
             } else {
               $q.notify({
                 message:
-                  "Error en el registro de usuario, contactar con soporte.",
+                  "Usuario o contraseña incorrectos",
                 icon: "warning",
                 color: "red-10",
                 textColor: "white",

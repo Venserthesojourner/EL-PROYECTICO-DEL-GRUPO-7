@@ -59,31 +59,31 @@ export default {
         setTimeout(() => {
           $q.notify({
             progress: true,
-            message: 'Iniciando sesion...',
+            message: 'Iniciando sesión...',
             color: 'secondary',
             textColor: 'white',
           });
           setTimeout(() => {
-            if(username.value === "manuel"){
-           /*  axios.get(`http://localhost:3000/usuario/username/${username.value}`)
-              .then((response) => {
-                console.log(response); */
-                // TODO: seguir aca.
-                $q.notify({
-                  color: 'positive',
-                  textColor: 'dark',
-                  icon: 'cloud_done',
-                  message: '¡Bienvenido!',
-                });
-                store.changeStatus();
-                router.push('/mobile/index');
+            if (username.value === "manuel") {
+              /*  axios.get(`http://localhost:3000/usuario/username/${username.value}`)
+                 .then((response) => {
+                   console.log(response); */
+              // TODO: seguir aca.
+              $q.notify({
+                color: 'positive',
+                textColor: 'dark',
+                icon: 'cloud_done',
+                message: '¡Bienvenido!',
+              });
+              store.changeStatus();
+              router.push('/mobile/index');
             } else {
-                 $q.notify({
-                  message: 'Error en el registro de usuario, contactar con soporte.',
-                  icon: 'warning',
-                  color: 'red-10',
-                  textColor: 'white',
-                });
+              $q.notify({
+                message: 'Usuario o contraseña incorrectos',
+                icon: 'warning',
+                color: 'red-10',
+                textColor: 'white',
+              });
             }
                 // agregar los datos a la variable data.
                /*  if ('') {
