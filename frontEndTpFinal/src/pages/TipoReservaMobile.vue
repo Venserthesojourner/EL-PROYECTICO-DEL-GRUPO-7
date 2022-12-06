@@ -89,6 +89,7 @@ export default {
       ],
       opciones: [
         "061222",
+
       ],
       model,
       codigo,

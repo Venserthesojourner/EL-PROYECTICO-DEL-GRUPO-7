@@ -277,7 +277,9 @@ export default {
       ],
       dateIniRules: [
         (val) => (val && val.length > 0) || 'Por favor, ingrese una fecha',
-  //      (val) => (val && val > fechaActual) || 'Por favor, ingrese una fecha válida',
+
+        //(val) => (val && val > fechaActual) || 'Por favor, ingrese una fecha válida',
+
       ],
       dateFinRules: [
         (val) => (val && val.length > 0) || 'Por favor, ingrese una fecha',
