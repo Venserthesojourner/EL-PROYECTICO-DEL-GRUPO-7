@@ -28,7 +28,7 @@ export class MercadoPagoController {
             },
             auto_return: "approved",
         };
-        await this.mercadoPagoService.createPreference(mercadopago, preference)
+        // await this.mercadoPagoService.createPreference(mercadopago, preference)
     }
 
     @Get("/feedback")
