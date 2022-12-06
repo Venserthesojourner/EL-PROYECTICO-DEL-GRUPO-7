@@ -69,7 +69,7 @@ export default {
       active: ref('primera'),
       patente,
       onSubmit() {
-        axios.get('http://localhost:3005/')
+        axios.post('http://localhost:3005/vehiculo')
           .then((response) => {
             console.table(response);
 

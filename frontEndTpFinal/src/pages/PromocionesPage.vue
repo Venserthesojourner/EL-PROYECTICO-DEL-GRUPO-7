@@ -108,6 +108,9 @@
 import { useQuasar } from 'quasar';
 import { ref, computed, watch, onMounted } from 'vue';
 
+let rows = [{codigo: "123123", precio: "100",  descuento: "10", dateIni: "2022-11-19", dateFin: "2022-11-20"}]
+
+
 export default {
   setup() {
     const $q = useQuasar();
@@ -119,6 +122,12 @@ export default {
     const filter = ref('');
     const promos = ref([]);
     const precioFinal = ref(null);
+
+
+
+    watch(() => $q.screen.name, () => {
+      pagination.value.rowsPerPage = getItemsPerPage();
+    });
 
     onMounted(() => {
       //TODO: en teoria esto se carga primero
@@ -173,7 +182,7 @@ export default {
       setTimeout(() => {
         $q.notify({
           progress: true,
-          message: 'actualizando precio...',
+          message: 'agregando promocion...',
           color: 'secondary',
           textColor: 'white',
         });
@@ -184,7 +193,7 @@ export default {
                 color: 'positive',
                 textColor: 'dark',
                 icon: 'cloud_done',
-                message: '¡precio actualizado!',
+                message: '¡promocion agregada!',
               });
               alert();
             })
@@ -248,6 +257,11 @@ export default {
       filter,
       pagination,
       promos,
+      rows,
+      columns: [
+        { name: 'name', label: 'Name', field: 'name' },
+        { name: 'precio', label: '$ Precio', field: 'precio' },
+      ],
       rowsPerPageOptions: computed(() => ($q.screen.gt.xs
         ? $q.screen.gt.sm ? [2, 4, 8] : [2, 4]
         : [2])),
@@ -263,7 +277,7 @@ export default {
       ],
       dateIniRules: [
         (val) => (val && val.length > 0) || 'Por favor, ingrese una fecha',
-        (val) => (val && val > fechaActual) || 'Por favor, ingrese una fecha válida',
+  //      (val) => (val && val > fechaActual) || 'Por favor, ingrese una fecha válida',
       ],
       dateFinRules: [
         (val) => (val && val.length > 0) || 'Por favor, ingrese una fecha',

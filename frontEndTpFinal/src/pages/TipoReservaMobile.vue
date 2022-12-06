@@ -8,41 +8,18 @@
             <q-option-group name="tipo_reserva" v-model="tipoReserva" :options="options" size="xl" color="primary"
               inline lazy-rules />
           </div>
-          <!-- Código Promoción -->
-          <q-input class="full-width" filled dark v-model="codigo" type="text" label="Código Promoción"
-            hint="Ingresar código de promoción (opcional)" />
-          <!-- Día y Horario -->
-          <q-input filled dark v-model="date" class="full-width" placeholder="2022-12-01 12:44" :rules="dateRules"
-            hint="Seleccionar Día y Horario" lazy-rules>
+            <q-select style="min-width: 300px" filled dark bottom-slots v-model="model" :options="opciones" label="Codigo de promocion"
+            :dense="dense" :options-dense="denseOpts">
             <template v-slot:prepend>
-              <q-icon name="event" class="cursor-pointer">
-                <q-popup-proxy cover transition-show="scale" transition-hide="scale">
-                  <q-date color="secondary" class="bg-dark" v-model="date" mask="YYYY-MM-DD HH:mm">
-                    <div class="row items-center justify-end">
-                      <q-btn v-close-popup label="Cerrar" color="positive" flat />
-                    </div>
-                  </q-date>
-                </q-popup-proxy>
-              </q-icon>
+              <q-icon name="schedule" @click.stop.prevent />
             </template>
 
-            <template v-slot:append>
-              <q-icon name="access_time" class="cursor-pointer">
-                <q-popup-proxy cover transition-show="scale" transition-hide="scale">
-                  <q-time color="secondary" class="bg-dark" v-model="date" mask="YYYY-MM-DD HH:mm" format24h>
-                    <div class="row items-center justify-end">
-                      <q-btn v-close-popup label="Cerrar" color="positive" flat />
-                    </div>
-                  </q-time>
-                </q-popup-proxy>
-              </q-icon>
-            </template>
-          </q-input>
-
+            <template v-slot:hint> Ingresar código de promoción (opcional) </template>
+          </q-select>
           <!-- Botones -->
-          <q-btn to="confirmacion" type="submit" push color="positive" text-color="black" size="lg"
+          <q-btn  type="submit" push color="positive" text-color="black" size="lg"
             class="full-width border-radius-inherit" label="Continuar" no-caps />
-          <q-btn to="buscar" push color="primary" text-color="black" size="lg" class="full-width border-radius-inherit"
+          <q-btn push color="primary" text-color="black" size="lg" class="full-width border-radius-inherit"
             label="Volver" no-caps />
         </q-form>
       </div>
@@ -51,8 +28,11 @@
 </template>
 
 <script>
-import { useQuasar } from 'quasar'
-import { ref } from 'vue'
+import { useQuasar } from "quasar";
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+import { useRoute } from "vue-router";
+
 
 export default {
   setup() {
@@ -62,7 +42,30 @@ export default {
     const codigo = ref(null);
     const date = ref(null);
     const tipo_reserva = ref([]);
+    const model = ref(null);
 
+    const route = useRoute();
+    const router = useRouter();
+
+    let data = route.params.id;
+
+
+    function alert() {
+      $q.dialog({
+        title: 'Importante!',
+        dark: true,
+        textColor: 'white',
+        message: 'Se le aplicara un 25% de descuento por el codigo promocional ingresado',
+        persistent: true,
+      }).onDismiss(() => {
+        router.push({
+          name: "forma-pago",
+          params: {
+            id: data,
+          },
+        });
+      });
+    }
 
     function currentDate() {
       const current = new Date();
@@ -84,35 +87,13 @@ export default {
           value: 'libre'
         },
       ],
-      codigo,
-      date,
-      dateRules: [
-        (val) => (val && val.length > 0) || 'Por favor, ingrese una fecha',
-        (val) => (val && val > fechaActual) || 'Por favor, ingrese una fecha válida',
+      opciones: [
+        "061222",
       ],
-
+      model,
+      codigo,
       onSubmit() {
-        if (accept.value !== true) {
-          tipo_reserva.value = [...tipo_reserva.value, {
-            tipoReserva: tipoReserva.value,
-            codigo: codigo.value,
-            date: date.value,
-          }];
-          $q.notify({
-            color: 'red-10',
-            textColor: 'white',
-            icon: 'warning',
-            message: 'You need to accept the license and terms first'
-          })
-        }
-        else {
-          $q.notify({
-            color: 'positive',
-            textColor: 'dark',
-            icon: 'cloud_done',
-            message: 'Submitted'
-          })
-        }
+        alert();
       },
 
       onReset() {

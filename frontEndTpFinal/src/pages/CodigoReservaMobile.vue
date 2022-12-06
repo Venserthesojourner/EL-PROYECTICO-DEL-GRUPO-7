@@ -8,7 +8,7 @@
           <q-list style="min-width: 300px">
             <!-- codigo generado randomazicamente porque hace calor y uff las alemanas -->
             <q-item clickable v-ripple active-class="bg-grey-2">
-              <q-item-section id="codigo" class="text-overline">{{ codigoRandom }}</q-item-section>
+              <q-item-section id="codigo" class="text-overline">DK4Crp3W</q-item-section>
 
               <q-item-section side>
                 <q-btn size="12px" round dense flat unelevated icon="content_copy" color="grey-4"

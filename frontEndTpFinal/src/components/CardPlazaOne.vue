@@ -7,10 +7,10 @@
     </q-card-section>
     <q-card-section horizontal>
       <q-list dense dark style="min-width: 200px">
-        <q-item v-for="contact in contacts" :key="contact.id">
+        <q-item v-show="(luis.estado === true)" v-for="contact in contacts" :key="contact.id">
           <q-item-section>
-            <q-item-label>{{ contact.codigo }}</q-item-label>
-            <q-item-label lines="1">{{ contact.patente }}</q-item-label>
+            <q-item-label>Cod. Reserva: <span class="text-bold">{{ contact.codigo }}</span></q-item-label>
+            <q-item-label lines="1"> Patente: <span class="text-bold" >{{ contact.patente }}</span></q-item-label>
           </q-item-section>
         </q-item>
       </q-list>
@@ -29,11 +29,13 @@
 <script>
 import { ref } from 'vue';
 import CardPlazaAdd from '../components/CardPlazaAdd.vue';
+import { useSessionLuis } from '../stores/userLuis';
+
 
 const contacts = [{
   id: 1,
-  codigo: 'Parking NQN',
-  patente: '9 de Julio',
+  codigo: 'DK4Crp3W',
+  patente: 'AA-000-BB',
 }]
 
 export default {
@@ -54,6 +56,8 @@ export default {
     const acumulado = ref(0);
     const iniciado = ref(false);
     const pausado = ref(false);
+    const luis = useSessionLuis();
+
 
     function formatearMS(tiempoMS) {
       const minisconds = tiempoMS % 1000;
@@ -80,6 +84,7 @@ export default {
       iniciado,
       pausado,
       contacts,
+      luis,
 
       iniciar() {
         cronometro.value = true;

@@ -48,7 +48,7 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router';
 import { useRoute } from 'vue-router'
 
-const listaEstacionamientos = [{ id: "1", name: "Buenos Aires Parking", price: "300.00" }, { id: "2", name: "Estacionamiento rioja 456", price: "400.00" }, { id: "3", name: "Paco Parking", price: "450.00" }];
+const listaEstacionamientos = [{ id: "1", name: "Buenos Aires Parking", price: "225.00" }, { id: "2", name: "Estacionamiento rioja 456", price: "400.00" }, { id: "3", name: "Paco Parking", price: "450.00" }];
 
 export default {
 

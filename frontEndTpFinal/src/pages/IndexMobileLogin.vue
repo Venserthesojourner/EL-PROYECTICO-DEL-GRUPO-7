@@ -6,7 +6,6 @@
       <img src="../assets/logo.png" alt="logo" style="width: 100px;">
       <p class="title text-weight-bold text-uppercase text-primary">Park-Our</p>
       <p class="no-margin	text-weight-bold text-uppercase text-primary"> Bienvenido Manuel </p>
-      <p class="no-margin	text-weight-bold text-uppercase text-primary"> ID de usuario: 123123123</p>
       <div class="q-mt-md q-gutter-y-md" style="min-width: 300px">
         <q-form @submit="onSubmit" @reset="onReset">
           <q-select dark disable filled v-model="patente" :options="options" />

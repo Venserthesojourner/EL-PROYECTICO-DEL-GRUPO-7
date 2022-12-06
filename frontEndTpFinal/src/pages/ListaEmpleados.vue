@@ -49,13 +49,13 @@ const columns = [
 
 const rows = [
   {
-    name: 'Pepe Argento',
+    name: 'Luis Cañete',
   },
   {
-    name: 'Hannah Montana',
+    name: 'Lisandro Canal',
   },
   {
-    name: 'Firulais',
+    name: 'Mauro Dolz',
   },
 ]
 import { ref, onMounted } from 'vue';
