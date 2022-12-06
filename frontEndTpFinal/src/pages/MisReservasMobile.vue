@@ -49,6 +49,7 @@ import { ref } from "vue";
 import { useQuasar } from 'quasar';
 import ConfiguracionesUser from '../components/ConfiguracionesUser.vue';
 
+
 const columns = [
   {
     name: 'codigo',
@@ -62,18 +63,11 @@ const columns = [
 ]
 
 const rows = [
-  {
-    name: '5Fq23',
-    fecha: '2022-12-13',
-  },
-  {
-    name: 'Abc234',
-    fecha: '2022-12-12',
-  },
-  {
-    name: '6gN1m',
+{
+    name: 'DK4Crp3W',
     fecha: '2022-12-06',
   },
+
 ]
 
 export default {

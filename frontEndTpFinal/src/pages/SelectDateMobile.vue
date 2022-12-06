@@ -112,7 +112,7 @@ export default {
       onSubmit() {
         console.log("estoy en el submit")
         router.push({
-          name: "forma-pago",
+          name: "tipo-reserva",
           params: {
             id: data,
           },

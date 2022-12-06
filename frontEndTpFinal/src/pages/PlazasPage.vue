@@ -16,6 +16,8 @@ import { ref } from 'vue';
 import CardPlaza from '../components/CardPlaza.vue';
 import CardPlazaAdd from '../components/CardPlazaAdd.vue';
 import CardPlazaOne from '../components/CardPlazaOne.vue';
+import { useSessionLuis } from '../stores/userLuis';
+
 
 export default {
   components: {
@@ -26,8 +28,11 @@ export default {
 
   setup() {
     const cantidadPlazas = ref(9);
+    const luis = useSessionLuis();
+
     return {
       cantidadPlazas,
+      luis,
 
       agregarPlaza() {
         cantidadPlazas.value += 1;

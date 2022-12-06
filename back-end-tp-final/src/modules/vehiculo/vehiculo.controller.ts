@@ -2,7 +2,7 @@ import { Body, Controller, Post } from "@nestjs/common";
 import { CreateVehiculoDto } from "./dto/create-vehiculo.dto";
 import { VehiculoService } from "./vehiculo.service";
 
-@Controller()
+@Controller('vehiculo')
 export class VehiculoController {
     constructor(
         private readonly vehiculoService: VehiculoService

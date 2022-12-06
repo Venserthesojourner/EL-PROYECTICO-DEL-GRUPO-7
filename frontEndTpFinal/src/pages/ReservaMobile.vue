@@ -33,7 +33,7 @@ export default {
       codigo,
       codigoRules: [
         (val) => (val !== null) || 'Por favor, ingrese un codigo de reserva',
-        (val) => (val && val.length == 6) || 'Codigo incorrecto',
+        (val) => (val && val.length == 8) || 'Codigo incorrecto',
       ],
       onSubmit() {
         if (codigo.value == null) {
