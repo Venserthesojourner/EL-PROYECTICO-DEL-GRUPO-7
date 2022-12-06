@@ -69,12 +69,17 @@ export default {
       active: ref('primera'),
       patente,
       onSubmit() {
-        $q.notify({
-          color: 'positive',
-          textColor: 'dark',
-          icon: 'cloud_done',
-          message: 'Patente Agregada',
-        });
+        axios.get('http://localhost:3005/')
+          .then((response) => {
+            console.table(response);
+
+            $q.notify({
+              color: 'positive',
+              textColor: 'dark',
+              icon: 'cloud_done',
+              message: 'Patente Agregada',
+            });
+          });
         cantidadPatentes.value += 1;
       },
       cantidadPatentes,

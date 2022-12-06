@@ -4,8 +4,8 @@ import { } from "node_modules/mercadopago"
 @Injectable()
 export class MercadoPagoService {
 
-    async createPreference(preference) {
+    /* async createPreference(preference) {
         let savedPreference = await mercadopago.create(preference)
         return savedPreference
-    }
+    } */
 }
