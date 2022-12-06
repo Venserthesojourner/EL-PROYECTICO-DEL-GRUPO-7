@@ -39,8 +39,8 @@
               :rules="[val => val && val.length > 0 || 'Por favor, ingrese una patente']" />
             <!-- Botones -->
             <div class="row justify-end">
-              <q-btn type="submit" push color="warning" text-color="black" label="Añadir Patente"
-                class="full-width border-radius-inherit q-mt-md" />
+              <q-btn push type="submit" color="warning" text-color="black" label="Añadir Patente"
+                class="full-width q-mt-md" />
             </div>
           </q-form>
         </q-list>

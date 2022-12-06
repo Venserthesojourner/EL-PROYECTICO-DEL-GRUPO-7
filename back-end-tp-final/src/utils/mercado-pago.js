@@ -45,6 +45,10 @@ app.post("/create_preference", (req, res) => {
         });
 });
 
+// How to write this is Typescript?
+
+
+
 app.get('/feedback', function (req, res) {
     res.json({
         Payment: req.query.payment_id,
